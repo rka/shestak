@@ -131,6 +131,7 @@ if GetLocale() == "ruRU" then
 	L_GUI_NAMEPLATE_CASTBAR_NAME = "Имя заклинания"
 	L_GUI_NAMEPLATE_THREAT = "Для танка хорошая угроза = зеленый, плохая угроза = красный"
 	L_GUI_NAMEPLATE_CLASS_ICON = "Иконки классов"
+	L_GUI_NAMEPLATE_NAME_ABBREV = "Отображать сокращенные имена"
 	
 	-- ActionBar options
 	L_GUI_ACTIONBAR_ENABLE = "Включить панели команд"

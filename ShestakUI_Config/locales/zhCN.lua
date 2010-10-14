@@ -132,6 +132,7 @@ if GetLocale() == "zhCN" then
 	L_GUI_NAMEPLATE_CASTBAR_NAME = "显示施法名称"
 	L_GUI_NAMEPLATE_THREAT = "显示仇恨情况"
 	L_GUI_NAMEPLATE_CLASS_ICON = "在PVP情况下显示职业图示"
+	L_GUI_NAMEPLATE_NAME_ABBREV = "Display the abbreviated names"  -- Needs review
 
 	-- ActionBar options
 	L_GUI_ACTIONBAR_ENABLE = "Enable action bars"  -- Needs review

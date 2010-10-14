@@ -56,6 +56,7 @@ SkinBlizzUI:SetScript("OnEvent", function(self, event, addon)
 			"LFDDungeonReadyDialog",
 			"GuildInviteFrame",
 			"ChatConfigFrame",
+			"RolePollPopup",
 		}
 		
 		local insetskins = {
@@ -191,6 +192,9 @@ SkinBlizzUI:SetScript("OnEvent", function(self, event, addon)
 			"LFDDungeonReadyDialogEnterDungeonButton",
 			"ChatConfigFrameDefaultButton",
 			"ChatConfigFrameOkayButton",
+			"RolePollPopupAcceptButton",
+			"LFDRoleCheckPopupDeclineButton",
+			"LFDRoleCheckPopupAcceptButton",
 		}
 		
 		for i = 1, getn(BlizzardButtons) do
@@ -243,6 +247,13 @@ SkinBlizzUI:SetScript("OnEvent", function(self, event, addon)
 		_G["GhostFrame"]:SetPoint("BOTTOM", Minimap, "TOP", 0, SettingsDB.Scale(5))
 		_G["GhostFrameContentsFrameIcon"]:SetTexCoord(0.1, 0.9, 0.1, 0.9)
 		_G["PlayerPowerBarAlt"]:HookScript("OnShow", function(self) self:ClearAllPoints() self:SetPoint("TOP", 0, -12) end)
+		
+		_G["LFDRoleCheckPopupAcceptButtonLeft"]:SetAlpha(0)
+		_G["LFDRoleCheckPopupAcceptButtonMiddle"]:SetAlpha(0)
+		_G["LFDRoleCheckPopupAcceptButtonRight"]:SetAlpha(0)
+		_G["LFDRoleCheckPopupDeclineButtonLeft"]:SetAlpha(0)
+		_G["LFDRoleCheckPopupDeclineButtonMiddle"]:SetAlpha(0)
+		_G["LFDRoleCheckPopupDeclineButtonRight"]:SetAlpha(0)
 		
 		_G["InterfaceOptionsFrameTab1Left"]:SetAlpha(0)
 		_G["InterfaceOptionsFrameTab1Middle"]:SetAlpha(0)

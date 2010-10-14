@@ -22,7 +22,17 @@ for i = 1, 12 do
 	end
 end
 
--- Hide it if needed
+-- Hide bar
 if SettingsCF.actionbar.rightbars < 2 then
 	Bar3Holder:Hide()
+end
+
+-- Mouseover bar
+if SettingsCF.actionbar.rightbars_mouseover == true then
+	for i = 1, 12 do
+		local b = _G["MultiBarLeftButton"..i]
+		b:SetAlpha(0)
+		b:HookScript("OnEnter", function() RightBarMouseOver(1) end)
+		b:HookScript("OnLeave", function() RightBarMouseOver(0) end)
+	end
 end

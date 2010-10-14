@@ -763,9 +763,9 @@ local dmg=function(self,event,...)
 			local spellId,_,_,missType,_ = select(9,...)
 			if(ct.icons)then
 				_,_,icon=GetSpellInfo(spellId)
-					msg=missType.." \124T"..icon..":"..ct.iconsize..":"..ct.iconsize..":0:0:64:64:5:59:5:59\124t"
+				missType=missType.." \124T"..icon..":"..ct.iconsize..":"..ct.iconsize..":0:0:64:64:5:59:5:59\124t"
 			end 
-			xCT4:AddMessage(msg)
+			xCT4:AddMessage(missType)
 
 		elseif(eventType=='SPELL_HEAL' or eventType=='SPELL_PERIODIC_HEAL')then
 			if(ct.healing)then
@@ -788,11 +788,11 @@ local dmg=function(self,event,...)
 					if(ct.icons)then
 						_,_,icon=GetSpellInfo(spellId)
 					end
-               				if (icon) then 
-                				msg=msg..' \124T'..icon..':'..ct.iconsize..':'..ct.iconsize..':0:0:64:64:5:59:5:59\124t'
+               		if (icon) then 
+                		msg=msg..' \124T'..icon..':'..ct.iconsize..':'..ct.iconsize..':0:0:64:64:5:59:5:59\124t'
 					elseif(ct.icons)then
 						msg=msg.." \124T"..ct.blank..":"..ct.iconsize..":"..ct.iconsize..":0:0:64:64:5:59:5:59\124t"
-                			end 
+					end 
 					xCT4:AddMessage(msg,unpack(color))
 				end
 			end

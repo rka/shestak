@@ -131,6 +131,7 @@ if GetLocale() == "esES" then
 	L_GUI_NAMEPLATE_CASTBAR_NAME = "Show castbar name"
 	L_GUI_NAMEPLATE_THREAT = "If tank good aggro = green, bad = red"
 	L_GUI_NAMEPLATE_CLASS_ICON = "Icons by class in pvp"
+	L_GUI_NAMEPLATE_NAME_ABBREV = "Display the abbreviated names"
 	
 	-- ActionBar options
 	L_GUI_ACTIONBAR_ENABLE = "Enable action bars"

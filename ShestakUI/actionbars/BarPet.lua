@@ -62,7 +62,25 @@ bar:SetScript("OnEvent", function(self, event, ...)
 	end
 end)
 
--- Hide it if needed
+-- Hide bar
 if SettingsCF.actionbar.petbar_hide then
 
+end
+
+-- Mouseover bar
+if SettingsCF.actionbar.rightbars_mouseover == true and SettingsCF.actionbar.petbar_horizontal == false then
+	for i = 1, NUM_PET_ACTION_SLOTS do
+		local b = _G["PetActionButton"..i]
+		b:SetAlpha(0)
+		b:HookScript("OnEnter", function() RightBarMouseOver(1) end)
+		b:HookScript("OnLeave", function() RightBarMouseOver(0) end)
+	end
+end
+if SettingsCF.actionbar.petbar_mouseover == true and SettingsCF.actionbar.petbar_horizontal == true then
+	for i = 1, NUM_PET_ACTION_SLOTS do
+		local b = _G["PetActionButton"..i]
+		b:SetAlpha(0)
+		b:HookScript("OnEnter", function() PetMouseOver(1) end)
+		b:HookScript("OnLeave", function() PetMouseOver(0) end)
+	end
 end

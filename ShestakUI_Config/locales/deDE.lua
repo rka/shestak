@@ -131,6 +131,7 @@ if GetLocale() == "deDE" then
 	L_GUI_NAMEPLATE_CASTBAR_NAME = "Zeige den Namen in der Zauberleiste"
 	L_GUI_NAMEPLATE_THREAT = "Falls Tank und sichere Aggro = grün, keine = rot"
 	L_GUI_NAMEPLATE_CLASS_ICON = "Zeige Klassensymbole an (PVP)"
+	L_GUI_NAMEPLATE_NAME_ABBREV = "Display the abbreviated names"  -- Needs review
 	
 	-- ActionBar options
 	L_GUI_ACTIONBAR_ENABLE = "Enable action bars"  -- Needs review

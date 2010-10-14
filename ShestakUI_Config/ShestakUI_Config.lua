@@ -158,6 +158,7 @@ local function Local(o)
 	if o == "UIConfignameplateshow_castbar_name" then o = L_GUI_NAMEPLATE_CASTBAR_NAME end
 	if o == "UIConfignameplateenhance_threat" then o = L_GUI_NAMEPLATE_THREAT end
 	if o == "UIConfignameplateclass_icons" then o = L_GUI_NAMEPLATE_CLASS_ICON end
+	if o == "UIConfignameplatename_abbrev" then o = L_GUI_NAMEPLATE_NAME_ABBREV end
 	
 	-- ActionBar options
 	if o == "UIConfigactionbar" then o = ACTIONBARS_LABEL end
@@ -502,7 +503,7 @@ function CreateUIConfig()
 				okbutton:SetHeight(editbox:GetHeight())
 				okbutton:SetWidth(editbox:GetHeight() + 5)
 				SettingsDB.CreateTemplate(okbutton)
-				okbutton:SetBackdropColor(0, 0, 0, 0)
+				okbutton:SetBackdropColor(0, 0, 0, 0.5)
 				okbutton:SetPoint("LEFT", editbox, "RIGHT", 2, 0)
 				
 				local oktext = okbutton:CreateFontString(nil, "OVERLAY", "GameFontNormal")

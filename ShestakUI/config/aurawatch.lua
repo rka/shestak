@@ -213,7 +213,7 @@ if SettingsCF["unitframe"].plugins_aura_watch == true then
 
 		if not ORD then return end
 		
-		ORD.ShowDispelableDebuff = true
+		ORD.ShowDispelableDebuff = SettingsCF["unitframe"].plugins_debuffhighlight_icon
 		ORD.FilterDispellableDebuff = true
 		ORD.MatchBySpellName = false
 		ORD.SHAMAN_CAN_DECURSE = true
@@ -383,11 +383,6 @@ if SettingsCF["unitframe"].plugins_aura_watch == true then
 				74453,	-- Flame Beacon
 		-- Other debuff
 				5782,	-- Fear
-				
-				--21562,	-- Power Word: Fortitude (Test)
-				--6788,	-- Weakened Soul (Test)
-				--58667,	-- Ley Curse (Test)
-				--467,	-- Test
 		}
 		ORD:RegisterDebuffs(SettingsDB.debuffids)
 	end

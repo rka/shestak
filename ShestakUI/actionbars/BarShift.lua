@@ -51,7 +51,17 @@ local function MoveShapeshift()
 end
 hooksecurefunc("ShapeshiftBar_Update", MoveShapeshift)
 
--- Hide it if needed
+-- Hide bar
 if SettingsCF.actionbar.shapeshift_hide then
 	ShiftHolder:Hide()
+end
+
+-- Mouseover bar
+if SettingsCF.actionbar.shapeshift_mouseover == true then
+	for i = 1, NUM_SHAPESHIFT_SLOTS do
+		local b = _G["ShapeshiftButton"..i]
+		b:SetAlpha(0)
+		b:HookScript("OnEnter", function() ShapeShiftMouseOver(1) end)
+		b:HookScript("OnLeave", function() ShapeShiftMouseOver(0) end)
+	end
 end

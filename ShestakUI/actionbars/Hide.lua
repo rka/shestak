@@ -39,3 +39,79 @@ do
 	end
 	uiManagedFrames = nil
 end
+
+function RightBarMouseOver(alpha)
+	RightActionBarAnchor:SetAlpha(alpha)
+	PetActionBarAnchor:SetAlpha(alpha)
+	if SettingsCF["actionbar"].rightbars >= 2 then
+		if MultiBarLeft:IsShown() then
+			for i = 1, 12 do
+				local pb = _G["MultiBarLeftButton"..i]
+				pb:SetAlpha(alpha)
+			end
+			MultiBarLeft:SetAlpha(alpha)
+		end
+	end
+	if SettingsCF["actionbar"].rightbars > 1 then
+		if SettingsCF.actionbar.bottombars ~= 3 then
+			if MultiBarBottomRight:IsShown() then
+				for i = 1, 12 do
+					local pb = _G["MultiBarBottomRightButton"..i]
+					pb:SetAlpha(alpha)
+				end
+				MultiBarBottomRight:SetAlpha(alpha)
+			end
+		end
+	end
+	if SettingsCF["actionbar"].rightbars > 0 then
+		if MultiBarRight:IsShown() then
+			for i = 1, 12 do
+				local pb = _G["MultiBarRightButton"..i]
+				pb:SetAlpha(alpha)
+			end
+			MultiBarRight:SetAlpha(alpha)
+		end
+	end
+	if SettingsCF.actionbar.petbar_horizontal == false then
+		if PetHolder:IsShown() then
+			for i = 1, NUM_PET_ACTION_SLOTS do
+				local pb = _G["PetActionButton"..i]
+				pb:SetAlpha(alpha)
+			end	
+			PetHolder:SetAlpha(alpha)
+		end
+	end
+end
+
+function ShapeShiftMouseOver(alpha)
+	for i = 1, NUM_SHAPESHIFT_SLOTS do
+		local pb = _G["ShapeshiftButton"..i]
+		pb:SetAlpha(alpha)
+	end
+end
+
+function PetMouseOver(alpha)
+	for i = 1, NUM_PET_ACTION_SLOTS do
+		local pb = _G["PetActionButton"..i]
+		pb:SetAlpha(alpha)
+	end
+	PetHolder:SetAlpha(alpha)
+end
+
+do
+	if SettingsCF.actionbar.rightbars_mouseover == true then
+		RightActionBarAnchor:SetAlpha(0)
+		RightActionBarAnchor:SetScript("OnEnter", function() RightBarMouseOver(1) end)
+		RightActionBarAnchor:SetScript("OnLeave", function() RightBarMouseOver(0) end)
+		if SettingsCF.actionbar.petbar_horizontal == false then
+			PetActionBarAnchor:SetAlpha(0)
+			PetActionBarAnchor:SetScript("OnEnter", function() RightBarMouseOver(1) end)
+			PetActionBarAnchor:SetScript("OnLeave", function() RightBarMouseOver(0) end)
+		end
+	end
+	if SettingsCF.actionbar.petbar_mouseover == true and SettingsCF.actionbar.petbar_horizontal == true then
+		PetActionBarAnchor:SetAlpha(0)
+		PetActionBarAnchor:SetScript("OnEnter", function() PetMouseOver(1) end)
+		PetActionBarAnchor:SetScript("OnLeave", function() PetMouseOver(0) end)
+	end
+end

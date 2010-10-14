@@ -19,6 +19,21 @@ local function Shared(self, unit)
 	-- Menu
 	self.menu = SettingsDB.SpawnMenu
 	
+	-- Width and height
+	if self:GetAttribute("unitsuffix") == "target" or self:GetAttribute("unitsuffix") == "pet" then
+		self:SetWidth(30)
+		self:SetHeight(27)
+	elseif unit == "raid" then
+		self:SetWidth(104)
+		self:SetHeight(17)
+	elseif unit == "party" then
+		self:SetWidth(140)
+		self:SetHeight(27)
+	else
+		self:SetWidth(108)
+		self:SetHeight(20)
+	end
+	
 	-- Backdrop for every units
 	self.FrameBackdrop = CreateFrame("Frame", nil, self)
 	SettingsDB.CreateTemplate(self.FrameBackdrop)
@@ -162,9 +177,9 @@ local function Shared(self, unit)
 	
 	-- Ready check icons
 	if db.icons_ready_check == true then
-		--[[self.ReadyCheck = self.Health:CreateTexture(nil, "OVERLAY")
+		self.ReadyCheck = self.Health:CreateTexture(nil, "OVERLAY")
 		self.ReadyCheck:SetSize(SettingsDB.Scale(12), SettingsDB.Scale(12))
-		self.ReadyCheck:SetPoint("BOTTOMRIGHT", SettingsDB.Scale(2), SettingsDB.Scale(-1))]]
+		self.ReadyCheck:SetPoint("BOTTOMRIGHT", SettingsDB.Scale(2), SettingsDB.Scale(-1))
 	end
 	
 	if unit == "party" and (not (self:GetAttribute("unitsuffix") == "target")) and (not (self:GetAttribute("unitsuffix") == "pet")) then
@@ -237,47 +252,18 @@ oUF:RegisterStyle("ShestakDPS", Shared)
 oUF:Factory(function(self)
 	oUF:SetActiveStyle("ShestakDPS")
 	local party = self:SpawnHeader("oUF_PartyDPS", nil, "custom [@raid6,exists] hide;show",
-		"oUF-initialConfigFunction", [[
-			local header = self:GetParent()
-			self:SetAttribute("*type1", "target")
-			self:SetWidth(header:GetAttribute("initial-width"))
-			self:SetHeight(header:GetAttribute("initial-height"))
-			self:SetAttribute("toggleForVehicle", true)
-			RegisterUnitWatch(self)
-		]],
-		"initial-width", SettingsDB.Scale(140),
-		"initial-height", SettingsDB.Scale(27),	
 		"showSolo", db.solo_mode,
 		"showPlayer", db.player_in_party, 
 		"showParty", true,
 		"showRaid", true,	
 		"yOffset", SettingsDB.Scale(28),
-		"point", "BOTTOM"
+		"point", "BOTTOM",
+		"template", "oUF_PartyV"
 	)
 	party:SetPoint(unpack(SettingsCF["position"].unitframes.party_dps))
-	
-	local pets = {} 
-	pets[1] = self:Spawn("partypet1", "oUF_PartyPet1") 
-	pets[1]:SetPoint("TOPLEFT", party, "TOPRIGHT", SettingsDB.Scale(44), 0)
-	pets[1]:SetSize(SettingsDB.Scale(30), SettingsDB.Scale(27))
-	for i =2, 4 do 
-		pets[i] = oUF:Spawn("partypet"..i, "oUF_PartyPet"..i) 
-		pets[i]:SetPoint("BOTTOM", pets[i-1], "TOP", 0, SettingsDB.Scale(28))
-		pets[i]:SetSize(SettingsDB.Scale(30), SettingsDB.Scale(27))
-	end
 
 	if db.show_raid == true then
 		local raid = self:SpawnHeader("oUF_RaidDPS", nil, "custom [@raid6,exists] show;hide",
-			"oUF-initialConfigFunction", [[
-				local header = self:GetParent()
-				self:SetAttribute("*type1", "target")
-				self:SetWidth(header:GetAttribute("initial-width"))
-				self:SetHeight(header:GetAttribute("initial-height"))
-				self:SetAttribute("toggleForVehicle", true)
-				RegisterUnitWatch(self)
-			]],
-			"initial-width", SettingsDB.Scale(104),
-			"initial-height", SettingsDB.Scale(17),	
 			"showRaid", true, 
 			"yOffset", SettingsDB.Scale(-7),
 			"point", "TOP",
@@ -288,16 +274,6 @@ oUF:Factory(function(self)
 		raid:SetPoint(unpack(SettingsCF["position"].unitframes.raid_dps))
 
 		local raid2 = oUF:SpawnHeader("oUF_RaidDPS2", nil, "custom [@raid21,exists] show;hide",
-			"oUF-initialConfigFunction", [[
-				local header = self:GetParent()
-				self:SetAttribute("*type1", "target")
-				self:SetWidth(header:GetAttribute("initial-width"))
-				self:SetHeight(header:GetAttribute("initial-height"))
-				self:SetAttribute("toggleForVehicle", true)
-				RegisterUnitWatch(self)
-			]],
-			"initial-width", SettingsDB.Scale(104),
-			"initial-height", SettingsDB.Scale(17),	
 			"showRaid", true, 
 			"yOffset", SettingsDB.Scale(-7),
 			"point", "TOP",
@@ -307,24 +283,4 @@ oUF:Factory(function(self)
 		)
 		raid2:SetPoint("TOPLEFT", "oUF_RaidDPS", "TOPRIGHT", SettingsDB.Scale(7), 0)
 	end
-	
-	local ShowPet = CreateFrame("Frame")
-	ShowPet:RegisterEvent("PLAYER_ENTERING_WORLD")
-	ShowPet:RegisterEvent("RAID_ROSTER_UPDATE")
-	ShowPet:RegisterEvent("PARTY_LEADER_CHANGED")
-	ShowPet:RegisterEvent("PARTY_MEMBERS_CHANGED")
-	ShowPet:SetScript("OnEvent", function(self)
-		if InCombatLockdown() then
-			self:RegisterEvent("PLAYER_REGEN_ENABLED")
-		else
-			self:UnregisterEvent("PLAYER_REGEN_ENABLED")
-			local numraid = GetNumRaidMembers()
-			local numparty = GetNumPartyMembers()
-			if numparty > 0 and numraid == 0 or numraid > 0 and numraid <= 5 then
-				for i,v in ipairs(pets) do v:Enable() end
-			else
-				for i,v in ipairs(pets) do v:Disable() end
-			end
-		end
-	end)
 end)

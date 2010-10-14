@@ -61,9 +61,6 @@ function Update(self)
 			SettingsDB.CreateTemplate(bar);
 
 			if (index == 1) then
-				if (f_s.configmode) then
-					bar:SetFrameStrata("BACKGROUND");
-				end
 				bar:SetPoint(unpack(self.setPoint));
 			else
 				if (self.Direction == "UP") then
@@ -104,9 +101,6 @@ function Update(self)
 					bar.statusbar = _G[bar.statusbar:GetName()]
 				else
 					bar.statusbar = CreateFrame("StatusBar", "$parentStatusBar", bar);
-					if (f_s.configmode) then
-						bar.statusbar:SetFrameStrata("BACKGROUND");
-					end
 					bar.statusbar:SetWidth(SettingsDB.Scale(value.data.barWidth - 2));
 					bar.statusbar:SetHeight(SettingsDB.Scale(value.data.size - 10));
 					bar.statusbar:SetStatusBarTexture(SettingsCF["media"].texture);

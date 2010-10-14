@@ -5,6 +5,8 @@ if not SettingsCF["nameplate"].enable == true then return end
 
 local caelNamePlates = CreateFrame("Frame", nil, UIParent)
 caelNamePlates:SetScript("OnEvent", function(self, event, ...) self[event](self, ...) end)
+SetCVar("bloatthreat", 0)
+SetCVar("bloattest", 1)
  
 local select = select
  
@@ -174,7 +176,12 @@ local updatePlate = function(self)
 	self.healthBar:SetPoint("CENTER", self.healthBar:GetParent(), 0, 3)
 	self.healthBar:SetHeight(SettingsCF["nameplate"].height * UIParent:GetEffectiveScale())
 	self.healthBar:SetWidth(SettingsCF["nameplate"].width * UIParent:GetEffectiveScale())
-	self.name:SetText(Abbrev(self.oldname:GetText()))
+	
+	if SettingsCF["nameplate"].name_abbrev == true then
+		self.name:SetText(Abbrev(self.oldname:GetText()))
+	else
+		self.name:SetText(self.oldname:GetText())
+	end
  
 	self.healthBar.hpBackground:SetVertexColor(self.r * 0.30, self.g * 0.30, self.b * 0.30)
 	self.healthBar.hpBackground:SetAlpha(0.9)
@@ -267,6 +274,10 @@ local createPlate = function(frame)
 	newNameRegion:SetPoint("BOTTOM", healthBar, "TOP", 0, 4)
 	newNameRegion:SetFont(SettingsCF["media"].pixel_font, SettingsCF["nameplate"].font_size * offset, SettingsCF["media"].pixel_font_style)
 	newNameRegion:SetTextColor(1, 1, 1)
+	if SettingsCF["nameplate"].name_abbrev ~= true then
+		newNameRegion:SetWidth(SettingsCF["nameplate"].width * offset)
+		newNameRegion:SetHeight(SettingsCF["nameplate"].font_size * offset)
+	end
 	frame.name = newNameRegion
  
 	frame.level = levelTextRegion

@@ -131,6 +131,7 @@ if GetLocale() == "frFR" then
 	L_GUI_NAMEPLATE_CASTBAR_NAME = "Afficher le nom du sort"
 	L_GUI_NAMEPLATE_THREAT = "Afficher la menace (vert = aggro, rouge = OK)"
 	L_GUI_NAMEPLATE_CLASS_ICON = "Icone de classe en JcJ"
+	L_GUI_NAMEPLATE_NAME_ABBREV = "Display the abbreviated names"  -- Needs review
 	
 	-- ActionBar options
 	L_GUI_ACTIONBAR_ENABLE = "Enable action bars"  -- Needs review

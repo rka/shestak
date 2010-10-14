@@ -13,10 +13,17 @@ local function Shared(self, unit)
 	self:SetScript("OnEnter", UnitFrame_OnEnter)
 	self:SetScript("OnLeave", UnitFrame_OnLeave)
 	
-	local unit = (unit and unit:find("partypet%d")) and "partypet" or unit
-	
 	-- Menu
 	self.menu = SettingsDB.SpawnMenu
+	
+	-- Width and height
+	if (self:GetAttribute("unitsuffix") == "pet" or self:GetAttribute("unitsuffix") == "target") and not (self:GetParent():GetName():match"oUF_MainTank") then
+		self:SetWidth(60.2)
+		self:SetHeight(14)
+	else
+		self:SetWidth(60.2)
+		self:SetHeight(26)
+	end
 	
 	-- Backdrop for every units
 	self.FrameBackdrop = CreateFrame("Frame", nil, self)
@@ -129,15 +136,17 @@ local function Shared(self, unit)
 	
 	-- Ready check icons
 	if db.icons_ready_check == true and not (self:GetAttribute("unitsuffix") == "target") then
-		--[[self.ReadyCheck = self.Health:CreateTexture(nil, "OVERLAY")
+		self.ReadyCheck = self.Health:CreateTexture(nil, "OVERLAY")
 		self.ReadyCheck:SetSize(SettingsDB.Scale(12), SettingsDB.Scale(12))
-		self.ReadyCheck:SetPoint("BOTTOMRIGHT", SettingsDB.Scale(2), SettingsDB.Scale(1))]]
+		self.ReadyCheck:SetPoint("BOTTOMRIGHT", SettingsDB.Scale(2), SettingsDB.Scale(1))
 	end
 	
-	self.PhaseIcon = self.Health:CreateTexture(nil, "OVERLAY")
-	self.PhaseIcon:SetSize(SettingsDB.Scale(16), SettingsDB.Scale(16))
-	self.PhaseIcon:SetPoint("BOTTOM", self.Health, "BOTTOM", 0, SettingsDB.Scale(-2))
-	self.PhaseIcon.Override = SettingsDB.Phasing
+	if not ((self:GetAttribute("unitsuffix") == "target") or (self:GetAttribute("unitsuffix") == "pet")) then
+		self.PhaseIcon = self.Health:CreateTexture(nil, "OVERLAY")
+		self.PhaseIcon:SetSize(SettingsDB.Scale(16), SettingsDB.Scale(16))
+		self.PhaseIcon:SetPoint("BOTTOM", self.Health, "BOTTOM", 0, SettingsDB.Scale(-2))
+		self.PhaseIcon.Override = SettingsDB.Phasing
+	end
 	
 	-- Leader/Assistant/ML icons
 	if db.icons_leader == true and not (self:GetAttribute("unitsuffix") == "target") then
@@ -161,10 +170,8 @@ local function Shared(self, unit)
 	if not (self:GetAttribute("unitsuffix") == "target") then
 		self.DebuffHighlight = self.Health:CreateTexture(nil, "OVERLAY")
 		self.DebuffHighlight:SetAllPoints(self.Health)
-		--self.DebuffHighlight:SetTexture(SettingsCF["media"].texture)
 		self.DebuffHighlight:SetTexture(SettingsCF["media"].highlight)
 		self.DebuffHighlight:SetVertexColor(0, 0, 0, 0)
-		--self.DebuffHighlight:SetBlendMode("DISABLE")
 		self.DebuffHighlight:SetBlendMode("ADD")
 		self.DebuffHighlightAlpha = 1
 		self.DebuffHighlightFilter = true
@@ -198,17 +205,6 @@ local function Shared(self, unit)
 			otherBar = ohpb,
 			maxOverflow = 1,
 		}
-	end
-	
-	-- Support oUF_ResComm
-	if IsAddOnLoaded("oUF_ResComm") then
-		--self.ResComm = self.Health:CreateTexture(nil, "OVERLAY")
-		--self.ResComm:SetTexture([[Interface\Icons\Spell_Holy_Resurrection]])
-		--self.ResComm:SetAllPoints(self.Health)
-		--self.ResComm:SetTexCoord(0.1, 0.9, 0.1, 0.9)
-		--self.ResComm:SetBlendMode("ADD")
-		--self.ResComm:SetAlpha(0.25)
-		--self.ResComm.OthersOnly = true
 	end
 
 	-- Range alpha
@@ -264,51 +260,22 @@ oUF:RegisterStyle("ShestakHeal", Shared)
 oUF:Factory(function(self)
 	oUF:SetActiveStyle("ShestakHeal")
 	local party = self:SpawnHeader("oUF_Party", nil, "custom [@raid6,exists] hide;show",
-		"oUF-initialConfigFunction", [[
-			local header = self:GetParent()
-			self:SetAttribute("*type1", "target")
-			self:SetWidth(header:GetAttribute("initial-width"))
-			self:SetHeight(header:GetAttribute("initial-height"))
-			self:SetAttribute("toggleForVehicle", true)
-			RegisterUnitWatch(self)
-		]],
-		"initial-width", 60.2,
-		"initial-height", SettingsDB.Scale(26),
 		"showSolo", db.solo_mode,
 		"showPlayer", db.player_in_party, 
 		"showParty", true,
 		"showRaid", true,			
 		"xOffset", 7,
-		"point", "LEFT"
+		"point", "LEFT",
+		"template", "oUF_PartyH"
 	)
 	if db.player_in_party == true then
 		party:SetPoint(pos.party_heal[1], pos.party_heal[2], pos.party_heal[3], pos.party_heal[4], pos.party_heal[5])
 	else
 		party:SetPoint(pos.party_heal[1], pos.party_heal[2], pos.party_heal[3], pos.party_heal[4] + 32, pos.party_heal[5])
 	end
-	
-	local pets = {} 
-	pets[1] = self:Spawn("partypet1", "oUF_PartyPet1") 
-	pets[1]:SetPoint("TOPLEFT", party, "BOTTOMLEFT", 0, -28)
-	pets[1]:SetSize(60.2, SettingsDB.Scale(14))
-	for i = 2, 4 do 
-		pets[i] = oUF:Spawn("partypet"..i, "oUF_PartyPet"..i) 
-		pets[i]:SetPoint("LEFT", pets[i-1], "RIGHT", SettingsDB.Scale(7), 0)
-		pets[i]:SetSize(60.2, SettingsDB.Scale(14))
-	end
 
 	if db.show_raid == true then
 		local raid = self:SpawnHeader("oUF_RaidHeal", nil, "custom [@raid6,exists] show;hide",
-			"oUF-initialConfigFunction", [[
-				local header = self:GetParent()
-				self:SetAttribute("*type1", "target")
-				self:SetWidth(header:GetAttribute("initial-width"))
-				self:SetHeight(header:GetAttribute("initial-height"))
-				self:SetAttribute("toggleForVehicle", true)
-				RegisterUnitWatch(self)
-			]],
-			"initial-width", 60.2,
-			"initial-height", SettingsDB.Scale(26),
 			"showRaid", true,
 			"xoffset", SettingsDB.Scale(7),
 			"yOffset", SettingsDB.Scale(-5),
@@ -319,48 +286,18 @@ oUF:Factory(function(self)
 			"maxColumns", 8,
 			"unitsPerColumn", 5,
 			"columnSpacing", SettingsDB.Scale(7),
-			"columnAnchorPoint", "TOP"		
+			"columnAnchorPoint", "TOP"
 		)
 		raid:SetPoint(unpack(SettingsCF["position"].unitframes.raid_heal))
 		
 		if db.raid_tanks == true then
 			local raidtank = self:SpawnHeader("oUF_MainTank", nil, "raid",
-				"oUF-initialConfigFunction", [[
-					local header = self:GetParent()
-					self:SetAttribute("*type1", "target")
-					self:SetWidth(header:GetAttribute("initial-width"))
-					self:SetHeight(header:GetAttribute("initial-height"))
-					self:SetAttribute("toggleForVehicle", true)
-					RegisterUnitWatch(self)
-				]],
-				"initial-width", 60.2,
-				"initial-height", SettingsDB.Scale(26),
 				"showRaid", true,
 				"yOffset", -7,
-				"groupFilter", "MAINTANK"
-				--"template", "oUF_MainTank"
+				"groupFilter", "MAINTANK",
+				"template", "oUF_MainTank"
 			)
 			raidtank:SetPoint(unpack(SettingsCF["position"].unitframes.tank))
 		end
 	end
-	
-	local ShowPet = CreateFrame("Frame")
-	ShowPet:RegisterEvent("PLAYER_ENTERING_WORLD")
-	ShowPet:RegisterEvent("RAID_ROSTER_UPDATE")
-	ShowPet:RegisterEvent("PARTY_LEADER_CHANGED")
-	ShowPet:RegisterEvent("PARTY_MEMBERS_CHANGED")
-	ShowPet:SetScript("OnEvent", function(self)
-		if InCombatLockdown() then
-			self:RegisterEvent("PLAYER_REGEN_ENABLED")
-		else
-			self:UnregisterEvent("PLAYER_REGEN_ENABLED")
-			local numraid = GetNumRaidMembers()
-			local numparty = GetNumPartyMembers()
-			if numparty > 0 and numraid == 0 or numraid > 0 and numraid <= 5 then
-				for i,v in ipairs(pets) do v:Enable() end
-			else
-				for i,v in ipairs(pets) do v:Disable() end
-			end
-		end
-	end)
 end)
