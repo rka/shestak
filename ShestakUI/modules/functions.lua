@@ -702,6 +702,8 @@ do
 		local inPhase = UnitInPhase(self.unit)
 		local picon = self.PhaseIcon
 
+		if not UnitIsPlayer(self.unit) then picon:Hide() return end
+		
 		if(inPhase) then
 			picon:Hide()
 			if self.Health.value then self.Health.value:SetAlpha(1) end
@@ -940,10 +942,12 @@ do
 				self.Buffs:Hide()
 				self.Debuffs:Hide()
 				self.Enchant:Hide()
+				
+			else
+				BuffFrame:UnregisterEvent("UNIT_AURA")
+				BuffFrame:Hide()
+				TemporaryEnchantFrame:Hide()
 			end
-			BuffFrame:UnregisterEvent("UNIT_AURA")
-			BuffFrame:Hide()
-			TemporaryEnchantFrame:Hide()
 		elseif self.unit == "pet" and not db.aura_pet_debuffs or self.unit == "focus" and not db.aura_focus_debuffs 
 		or self.unit == "focustarget" and not db.aura_fot_debuffs or self.unit == "targettarget" and not db.aura_tot_debuffs then
 			self.Debuffs:Hide()

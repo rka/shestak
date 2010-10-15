@@ -9,12 +9,16 @@ local SPELL_POWER_ECLIPSE = SPELL_POWER_ECLIPSE
 local MOONKIN_FORM = MOONKIN_FORM
 
 local UNIT_POWER = function(self, event, unit, powerType)
-	if(self.unit ~= unit or powerType ~= 'ECLIPSE') then return end
+	if(event == 'UNIT_POWER' and (self.unit ~= unit or powerType ~= 'ECLIPSE')) then return end
 
 	local eb = self.EclipseBar
 
 	local power = UnitPower(unit, SPELL_POWER_ECLIPSE)
 	local maxPower = UnitPowerMax(unit, SPELL_POWER_ECLIPSE)
+	
+	if(eb.Text) then
+		eb.Text:SetFormattedText('%d%%', abs(power / maxPower * 100))
+	end
 
 	if(eb.LunarBar) then
 		eb.LunarBar:SetMinMaxValues(-maxPower, maxPower)

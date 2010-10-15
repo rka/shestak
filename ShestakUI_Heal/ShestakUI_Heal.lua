@@ -9,7 +9,7 @@ local function Shared(self, unit)
 	self.colors = SettingsDB.oUF_colors
 	
 	-- Register click
-	self:RegisterForClicks("LeftButtonDown", "RightButtonDown")
+	self:RegisterForClicks("AnyDown")
 	self:SetScript("OnEnter", UnitFrame_OnEnter)
 	self:SetScript("OnLeave", UnitFrame_OnLeave)
 	

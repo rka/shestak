@@ -25,11 +25,10 @@ QuestLogScrollFrameScrollBar:HookScript("OnValueChanged", questlevel)
 ----------------------------------------------------------------------------------------
 --	Quest automation(idQuestAutomation by Industrial)
 ----------------------------------------------------------------------------------------
---[[
 if SettingsCF.misc.auto_quest == true then
-	local addon = CreateFrame("Frame")
+	local addon = CreateFrame('Frame')
 	addon.completed_quests = {}
-	addon.uncompleted_quests = {}
+	addon.incomplete_quests = {}
 
 	function addon:canAutomate ()
 		if IsShiftKeyDown() then
@@ -41,9 +40,9 @@ if SettingsCF.misc.auto_quest == true then
 
 	function addon:strip_text (text)
 		if not text then return end
-		text = text:gsub("|c%x%x%x%x%x%x%x%x(.-)|r","%1")
-		text = text:gsub("%[.*%]%s*","")
-		text = text:gsub("(.+) %(.+%)", "%1")
+		text = text:gsub('|c%x%x%x%x%x%x%x%x(.-)|r','%1')
+		text = text:gsub('%[.*%]%s*','')
+		text = text:gsub('(.+) %(.+%)', '%1')
 		text = text:trim()
 		return text
 	end
@@ -64,21 +63,22 @@ if SettingsCF.misc.auto_quest == true then
 		local no_objectives
 
 		self.completed_quests = {}
-		self.uncompleted_quests = {}
+		self.incomplete_quests = {}
 
 		if num_entries > 0 then
 			for i = 1, num_entries do
 				SelectQuestLogEntry(i)
 				title, _, _, _, _, _, is_complete = GetQuestLogTitle(i)
 				no_objectives = GetNumQuestLeaderBoards(i) == 0
-				if title and (is_complete or no_objectives) then
-					self.completed_quests[title] = true
-				else
-					self.uncompleted_quests[title] = true
+				if title then
+					if is_complete or no_objectives then
+						self.completed_quests[title] = true
+					else
+						self.incomplete_quests[title] = true
+					end
 				end
 			end
 		end
-
 		SelectQuestLogEntry(start_entry)
 	end
 
@@ -89,13 +89,13 @@ if SettingsCF.misc.auto_quest == true then
 		local text
 
 		for i = 1, 32 do
-			button = _G["GossipTitleButton" .. i]
+			button = _G['GossipTitleButton' .. i]
 			if button:IsVisible() then
 				text = self:strip_text(button:GetText())
 				ABCDE={button:GetText(), text}
-				if button.type == "Available" then
+				if button.type == 'Available' then
 					button:Click()
-				elseif button.type == "Active" then
+				elseif button.type == 'Active' then
 					if self.completed_quests[text] then
 						button:Click()
 					end
@@ -111,12 +111,12 @@ if SettingsCF.misc.auto_quest == true then
 		local text
 
 		for i = 1, 32 do
-			button = _G["QuestTitleButton" .. i]
+			button = _G['QuestTitleButton' .. i]
 			if button:IsVisible() then
 				text = self:strip_text(button:GetText())
 				if self.completed_quests[text] then
 					button:Click()
-				elseif not self.uncompleted_quests[text] then
+				elseif not self.incomplete_quests[text] then
 					button:Click()
 				end
 			end
@@ -141,14 +141,14 @@ if SettingsCF.misc.auto_quest == true then
 		end
 	end
 
-	addon:SetScript("OnEvent", addon.onevent)
-	addon:RegisterEvent("GOSSIP_SHOW")
-	addon:RegisterEvent("QUEST_COMPLETE")
-	addon:RegisterEvent("QUEST_DETAIL")
-	addon:RegisterEvent("QUEST_FINISHED")
-	addon:RegisterEvent("QUEST_GREETING")
-	addon:RegisterEvent("QUEST_LOG_UPDATE")
-	addon:RegisterEvent("QUEST_PROGRESS")
+	addon:SetScript('OnEvent', addon.onevent)
+	addon:RegisterEvent('GOSSIP_SHOW')
+	addon:RegisterEvent('QUEST_COMPLETE')
+	addon:RegisterEvent('QUEST_DETAIL')
+	addon:RegisterEvent('QUEST_FINISHED')
+	addon:RegisterEvent('QUEST_GREETING')
+	addon:RegisterEvent('QUEST_LOG_UPDATE')
+	addon:RegisterEvent('QUEST_PROGRESS')
 
 	_G.idQuestAutomation = addon
-end]]
+end

@@ -58,7 +58,7 @@ end
 
 local function Update(object, event, unit)
 	if object.unit ~= unit  then return end
-	local debuffType, texture  = GetDebuffType(unit, object.DebuffHighlightFilter)
+	local debuffType, texture = GetDebuffType(unit, object.DebuffHighlightFilter)
 	if debuffType then
 		local color = DebuffTypeColor[debuffType] 
 		if object.DebuffHighlightBackdrop or object.DebuffHighlightBackdropBorder then

@@ -45,7 +45,7 @@ ct={
 ---------------------------------------------------------------------------------
 -- outgoing healing filter, hide this spammy shit, plx
 ct.healfilter={}
-ct.healfilter[47893]=true -- Fel Armor
+ct.healfilter[28176]=true -- Fel Armor
 ct.healfilter[63106]=true -- Siphon Life
 ct.healfilter[54181]=true -- Fel Synergy
 ---------------------------------------------------------------------------------
@@ -410,7 +410,6 @@ end
 
 -- hide some blizz options
 InterfaceOptionsCombatTextPanelFriendlyHealerNames:Hide()
-COMBAT_TEXT_SCROLL_ARC="" --may cause unexpected bugs, use with caution!
 
 -- force hide blizz damage/healing, if desired
 if not(ct.blizzheadnumbers==true)then

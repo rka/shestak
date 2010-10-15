@@ -18,7 +18,7 @@ local function Shared(self, unit)
 	self.colors = SettingsDB.oUF_colors
 
 	-- Register click
-	self:RegisterForClicks("LeftButtonDown", "RightButtonDown")
+	self:RegisterForClicks("AnyDown")
 	self:SetScript("OnEnter", UnitFrame_OnEnter)
 	self:SetScript("OnLeave", UnitFrame_OnLeave)
 	
@@ -312,7 +312,7 @@ local function Shared(self, unit)
 			self.DruidMana:SetTextColor(1, 0.49, 0.04)
 			
 			if db.plugins_eclipse_bar == true then
-				local eclipseBar = CreateFrame("Frame", nil, self)
+				local eclipseBar = CreateFrame("Frame", "EclipseBar", self)
 				eclipseBar:SetPoint("BOTTOMLEFT", self, "TOPLEFT", 0, SettingsDB.Scale(7))
 				eclipseBar:SetSize(SettingsDB.Scale(217), SettingsDB.Scale(7))
 				eclipseBar:SetFrameStrata("MEDIUM")
@@ -590,7 +590,7 @@ local function Shared(self, unit)
 			self.Enchant = CreateFrame("Frame", nil, self)
 			self.Enchant:SetHeight(SettingsDB.Scale(25))
 			self.Enchant:SetWidth(SettingsDB.Scale(53))
-			self.Enchant:SetPoint("TOPRIGHT", UIParent, "TOPRIGHT", SettingsDB.Scale(-22), SettingsDB.Scale(76))
+			self.Enchant:SetPoint("TOPRIGHT", UIParent, "TOPRIGHT", SettingsDB.Scale(-22), SettingsDB.Scale(-76))
 			self.Enchant.size = SettingsDB.Scale(25)
 			self.Enchant.spacing = SettingsDB.Scale(3)
 			self.Enchant.initialAnchor = "TOPRIGHT"

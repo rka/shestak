@@ -19,13 +19,13 @@ if GetLocale() == "zhTW" then
 	L_GUI_MISC_INVKEYWORD = "自動邀請關鍵字 (/ainv)"
 	L_GUI_MISC_RAID_PLANNER = "開啟Raid planner (/com)"
 	L_GUI_MISC_SPIN_CAMERA = "AFK時旋轉鏡頭"
-	L_GUI_MISC_MOVE_WATCH_FRAME = "Quest Watch frame movable" -- Needs review
-	L_GUI_MISC_VEHICLE_MOUSEOVER = "Vehicle frame on mouseover" -- Needs review
+	L_GUI_MISC_MOVE_WATCH_FRAME = "追蹤框體解鎖" -- Needs review
+	L_GUI_MISC_VEHICLE_MOUSEOVER = "駕駛框體解鎖" -- Needs review
 	
 	-- Skins options
-	L_GUI_SKINS = "Stylization" -- Needs review
-	L_GUI_SKINS_DBM = "Enable styling DBM" -- Needs review
-	L_GUI_SKINS_PP = "Enable styling PallyPower" -- Needs review
+	L_GUI_SKINS = "風格化" -- Needs review
+	L_GUI_SKINS_DBM = "開啟DBM樣式增強"
+	L_GUI_SKINS_PP = "開啟PallyPower樣式增強"
 	
 	-- Buffs reminder options
 	L_GUI_REMINDER = "Buffs提示"
@@ -55,17 +55,17 @@ if GetLocale() == "zhTW" then
 	L_GUI_COOLDOWN_ENEMY_IN_ARENA = "在競技場中顯示敵對技能冷卻"
 	
 	-- Threat options
-	L_GUI_THREAT = "Threat bars" -- Needs review
-	L_GUI_THREAT_ENABLE = "Enable threat bars" -- Needs review
-	L_GUI_THREAT_FONT_SIZE = "Threat bars font size" -- Needs review
-	L_GUI_THREAT_HEIGHT = "Threat bars height" -- Needs review
-	L_GUI_THREAT_WIDTH = "Threat bars width" -- Needs review
-	L_GUI_THREAT_ROWS = "Number of threat bars" -- Needs review
-	L_GUI_THREAT_TEST_MODE = "Enable test mode for threat bars" -- Needs review
+	L_GUI_THREAT = "仇恨欄"
+	L_GUI_THREAT_ENABLE = "開啟仇恨欄"
+	L_GUI_THREAT_FONT_SIZE = "仇恨欄字體大小"
+	L_GUI_THREAT_HEIGHT = "仇恨欄高度"
+	L_GUI_THREAT_WIDTH = "仇恨欄寬度"
+	L_GUI_THREAT_ROWS = "仇恨欄數目"
+	L_GUI_THREAT_TEST_MODE = "開啟仇恨欄測試模式"
 	
 	-- Tooltip options
 	L_GUI_TOOLTIP = "提示資訊"
-	L_GUI_TOOLTIP_ENABLE = "Enable tooltip" -- Needs review
+	L_GUI_TOOLTIP_ENABLE = "開啟提示資訊增強"
 	L_GUI_TOOLTIP_SHIFT = "按下shift時顯示提示資訊"
 	L_GUI_TOOLTIP_CURSOR = "提示資訊跟隨滑鼠"
 	L_GUI_TOOLTIP_ICON = "在提示資訊中顯示物品圖示"
@@ -79,9 +79,9 @@ if GetLocale() == "zhTW" then
 	L_GUI_TOOLTIP_ARENA_EXPERIENCE = "在提示資訊中顯示競技場等級"
 	
 	-- Chat options
-	L_GUI_CHAT_ENABLE = "Enable chat" -- Needs review
-	L_GUI_CHAT_BACKGROUND = "Enable chat background" -- Needs review
-	L_GUI_CHAT_BACKGROUND_ALPHA = "Alpha of chat background" -- Needs review
+	L_GUI_CHAT_ENABLE = "開啟聊天框增強"
+	L_GUI_CHAT_BACKGROUND = "開啟聊天框背景"
+	L_GUI_CHAT_BACKGROUND_ALPHA = "聊天背景透明度"
 	L_GUI_CHAT_FONT_SIZE = "聊天框字體大小"
 	L_GUI_CHAT_FONT_STYLE = "字體風格"
 	L_GUI_CHAT_TAB_FONT_SIZE = "標籤文字大小" 
@@ -95,25 +95,25 @@ if GetLocale() == "zhTW" then
 	
 	-- Bag options
 	L_GUI_BAGS = "背包"
-	L_GUI_BAGS_BUTTON_SIZE = "Buttons size"  -- Needs review
-	L_GUI_BAGS_BUTTON_SPACE = "Buttons space"  -- Needs review
+	L_GUI_BAGS_BUTTON_SIZE = "空格大小" 
+	L_GUI_BAGS_BUTTON_SPACE = "空格間隔" 
 	L_GUI_BAGS_BANK = "銀行背包每行數目"
 	L_GUI_BAGS_BAG = "背包每行數目"
 	
 	-- Minimap options
-	L_GUI_MINIMAP_ENABLE = "Enable minimap"  -- Needs review
+	L_GUI_MINIMAP_ENABLE = "開啟迷你地圖增強"
 	L_GUI_MINIMAP_ICON = "追蹤類型圖示"
-	L_GUI_MINIMAP_SIZE = "小地圖大小"
-	L_GUI_MINIMAP_HIDE_COMBAT = "戰鬥中隱藏小地圖"
+	L_GUI_MINIMAP_SIZE = "迷你地圖大小"
+	L_GUI_MINIMAP_HIDE_COMBAT = "戰鬥中隱藏迷你地圖"
 	
 	-- Map options
-	L_GUI_MAP_ENABLE = "Enable world map"  -- Needs review
+	L_GUI_MAP_ENABLE = "開啟世界地圖增強"
 	L_GUI_MAP_SCALE = "世界地圖縮放"
 	L_GUI_MAP_BG_STYLIZATION = "戰場地圖風格"
 	
 	-- Loot options
-	L_GUI_LOOT_ENABLE = "Enable loot frame"  -- Needs review
-	L_GUI_LOOT_ROLL_ENABLE = "Enable group loot frame"  -- Needs review
+	L_GUI_LOOT_ENABLE = "開啟拾取增強"
+	L_GUI_LOOT_ROLL_ENABLE = "開啟團隊拾取框體"
 	L_GUI_LOOT_FONT_SIZE = "拾取框體字體大小"
 	L_GUI_LOOT_ICON_SIZE = "拾取框體圖示大小"
 	L_GUI_LOOT_WIDTH = "拾取框體寬度"
@@ -121,7 +121,7 @@ if GetLocale() == "zhTW" then
 	L_GUI_LOOT_AUTODE = "自動選擇分解選項"
 	
 	-- Nameplate options
-	L_GUI_NAMEPLATE_ENABLE = "Enable nameplates"  -- Needs review
+	L_GUI_NAMEPLATE_ENABLE = "開啟單位名條"
 	L_GUI_NAMEPLATE_COMBAT = "在戰鬥中自動顯示單位名條"
 	L_GUI_NAMEPLATE_HEALTH = "顯示百分比生命值"
 	L_GUI_NAMEPLATE_CASTBAR = "顯示施法條"
@@ -131,26 +131,26 @@ if GetLocale() == "zhTW" then
 	L_GUI_NAMEPLATE_CASTBAR_NAME = "顯示施法名稱"
 	L_GUI_NAMEPLATE_THREAT = "顯示仇恨情況"
 	L_GUI_NAMEPLATE_CLASS_ICON = "在PVP情況下顯示職業圖示"
-	L_GUI_NAMEPLATE_NAME_ABBREV = "Display the abbreviated names"  -- Needs review
+	L_GUI_NAMEPLATE_NAME_ABBREV = "顯示名字縮寫"
 	
 	-- ActionBar options
-	L_GUI_ACTIONBAR_ENABLE = "Enable action bars"  -- Needs review
+	L_GUI_ACTIONBAR_ENABLE = "開啟快捷列"
 	L_GUI_ACTIONBAR_HOTKEY = "顯示熱鍵文字"
 	L_GUI_ACTIONBAR_GRID = "顯示空的快捷列按鈕"
 	L_GUI_ACTIONBAR_BUTTON_SIZE = "按鈕大小"
-	L_GUI_ACTIONBAR_BUTTON_SPACE = "Buttons space"  -- Needs review
-	L_GUI_ACTIONBAR_BOTTOMBARS = "Number of action bars on the bottom (1, 2 or 3)"  -- Needs review
-	L_GUI_ACTIONBAR_RIGHTBARS = "Number of action bars on right (0, 1, 2 or 3)"  -- Needs review
+	L_GUI_ACTIONBAR_BUTTON_SPACE = "按鈕間隔"
+	L_GUI_ACTIONBAR_BOTTOMBARS = "底部快捷列數目 (1, 2 or 3)"
+	L_GUI_ACTIONBAR_RIGHTBARS = "右側快捷列數目 (0, 1, 2 or 3)"
 	L_GUI_ACTIONBAR_RIGHTBARS_MOUSEOVER = "滑鼠劃過顯示右側快捷列"
 	L_GUI_ACTIONBAR_PETBAR_MOUSEOVER = "滑鼠劃過顯示寵物快捷列"
 	L_GUI_ACTIONBAR_PETBAR_HIDE = "隱藏寵物快捷列" 
 	L_GUI_ACTIONBAR_PETBAR_HORIZONTAL = "打開橫向寵物快捷列"
 	L_GUI_ACTIONBAR_SHAPESHIFT_MOUSEOVER = "滑鼠劃過顯示變身/姿態/圖騰快捷列"
 	L_GUI_ACTIONBAR_SHAPESHIFT_HIDE = "隱藏變身/姿態/圖騰快捷列"
-	L_GUI_ACTIONBAR_SHAPESHIFT_HORIZONTAL = "Enable horizontal stance bar"  -- Needs review
+	L_GUI_ACTIONBAR_SHAPESHIFT_HORIZONTAL = "橫向顯示變身/姿態快捷列"
 	
 	-- Unit frame options
-	L_GUI_UF_ENABLE = "Enable unit frames"  -- Needs review
+	L_GUI_UF_ENABLE = "開啟單位框架"
 	L_GUI_UF_FONT_SIZE = "字體大小"
 	L_GUI_UF_AGGRO_BORDER = "仇恨邊框"
 	L_GUI_UF_OWN_COLOR = "在預測治療中顯示你的治療量"
@@ -196,16 +196,16 @@ if GetLocale() == "zhTW" then
 	L_GUI_UF_PORTRAIT_WIDTH = "頭像寬度"
 	L_GUI_UF_PLUGINS_GCD = "公共CD計時"
 	L_GUI_UF_PLUGINS_SWING = "普通攻擊計時條"
-	L_GUI_UF_PLUGINS_ECLIPSE_BAR = "Enable eclipse bar"  -- Needs review
-	L_GUI_UF_PLUGINS_HOLY_BAR = "Enable holy power bar"  -- Needs review
-	L_GUI_UF_PLUGINS_SHARD_BAR = "Enable shards bar" -- Needs review
+	L_GUI_UF_PLUGINS_ECLIPSE_BAR = "開啟日蝕/月蝕欄"
+	L_GUI_UF_PLUGINS_HOLY_BAR = "開啟聖光能量欄"
+	L_GUI_UF_PLUGINS_SHARD_BAR = "開啟靈魂碎片欄"
 	L_GUI_UF_PLUGINS_RUNE_BAR = "符文條"
 	L_GUI_UF_PLUGINS_TOTEM_BAR = "圖騰欄"
 	L_GUI_UF_PLUGINS_TOTEM_BAR_NAME = "圖騰名字"
 	L_GUI_UF_PLUGINS_REPUTATION_BAR = "聲望條"
 	L_GUI_UF_PLUGINS_EXPERIENCE_BAR = "經驗條"
-	L_GUI_UF_PLUGINS_SMOOTH_BAR = "平滑條"  -- Needs review
-	L_GUI_UF_PLUGINS_TALENTS = "Show enemy talent spec" -- Needs review
+	L_GUI_UF_PLUGINS_SMOOTH_BAR = "平滑條"
+	L_GUI_UF_PLUGINS_TALENTS = "開啟顯示敵對玩家天賦"
 	L_GUI_UF_PLUGINS_COMBAT_FEEDBACK = "顯示玩家/目標的文字戰鬥信息"  -- Needs review
 	L_GUI_UF_PLUGINS_DEBUFFHIGHLIGHT_ICON = "Debuff與圖示高亮"
 	L_GUI_UF_PLUGINS_AURA_WATCH = "團隊法術監視"  -- Needs review
@@ -222,16 +222,16 @@ if GetLocale() == "zhTW" then
 	L_GUI_TOP_PANEL_HEIGHT = "面板高度"
 	
 	-- Stats options
-	L_GUI_STATS = "Stats"  -- Needs review
-	L_GUI_STATS_FONT_SIZE = "面板字體大小"  -- Needs review
-	L_GUI_STATS_BG = "戰場分數"  -- Needs review
-	L_GUI_STATS_CLOCK = "Clock"  -- Needs review
-	L_GUI_STATS_LATENCY = "Latency"  -- Needs review
-	L_GUI_STATS_MEMORY = "Memory"  -- Needs review
-	L_GUI_STATS_FPS = "FPS"  -- Needs review
-	L_GUI_STATS_EXPERIENCE = "Experience"  -- Needs review
-	L_GUI_STATS_COORDS = "Coords"  -- Needs review
-	L_GUI_STATS_LOCATION = "Location"  -- Needs review
+	L_GUI_STATS = "統計面板" 
+	L_GUI_STATS_FONT_SIZE = "面板字體大小" 
+	L_GUI_STATS_BG = "戰場分數"
+	L_GUI_STATS_CLOCK = "時鐘" 
+	L_GUI_STATS_LATENCY = "延遲" 
+	L_GUI_STATS_MEMORY = "記憶體佔用"
+	L_GUI_STATS_FPS = "幀數" 
+	L_GUI_STATS_EXPERIENCE = "經驗"
+	L_GUI_STATS_COORDS = "座標" 
+	L_GUI_STATS_LOCATION = "位置" 
 	
 	-- Error options
 	L_GUI_ERROR = "錯誤收集"

@@ -19,7 +19,7 @@
 	 :PostCreateEnchantIcon(button, icons)
 	 :PostUpdateEnchantIcons(icons)
 ]]
-
+if SettingsCF.unitframe.aura_player_auras ~= true then return end
 -- Allow embedding and what not.
 local parent = debugstack():match[[\AddOns\(.-)\]]
 local _, ns = ...

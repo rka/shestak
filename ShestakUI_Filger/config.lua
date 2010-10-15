@@ -41,6 +41,8 @@ Filger_Spells = {
 
 			-- Moonfire
 			{ spellID = 8921, size = 37, unitId = "target", caster = "player", filter = "DEBUFF" },
+			-- Sunfire
+			{ spellID = 93402, size = 37, unitId = "target", caster = "player", filter = "DEBUFF" },
 			-- Insect Swarm
 			{ spellID = 5570, size = 37, unitId = "target", caster = "player", filter = "DEBUFF" },
 			-- Faerie Fire
@@ -337,15 +339,17 @@ Filger_Spells = {
 			-- Arcane Blast
 			{ spellID = 36032, size = 37, unitId = "player", caster = "player", filter = "DEBUFF" },
 			-- Improved Scorch
-			{ spellID = 22959, size = 37, unitId = "target", caster = "all", filter = "DEBUFF" },
+			{ spellID = 11367, size = 37, unitId = "target", caster = "all", filter = "DEBUFF" },
+			-- Scorch
+			{ spellID = 2948, size = 37, unitId = "target", caster = "all", filter = "DEBUFF" },
 			-- Slow
 			{ spellID = 31589, size = 37, unitId = "target", caster = "player", filter = "DEBUFF" },
 			-- Ignite
 			{ spellID = 11119, size = 37, unitId = "target", caster = "player", filter = "DEBUFF" },
 			-- Living Bomb
 			{ spellID = 44457, size = 37, unitId = "target", caster = "player", filter = "DEBUFF" },
-			-- Arcane Blast
-			{ spellID = 36032, size = 37, unitId = "player", caster = "player", filter = "DEBUFF" },
+			-- Pyroblast!
+			{ spellID = 92315, size = 37, unitId = "player", caster = "player", filter = "DEBUFF" },
 		},
 		
 		{
@@ -364,7 +368,7 @@ Filger_Spells = {
 			-- Fireball!
 			{ spellID = 57761, size = 37, unitId = "player", caster = "player", filter = "BUFF" },
 			-- Hot Streak
-			{ spellID = 44448, size = 37, unitId = "player", caster = "player", filter = "BUFF" },
+			{ spellID = 44445, size = 37, unitId = "player", caster = "player", filter = "BUFF" },
 			-- Missile Barrage
 			{ spellID = 54486, size = 37, unitId = "player", caster = "player", filter = "BUFF" },
 			-- Clearcasting
@@ -807,6 +811,12 @@ Filger_Spells = {
             --{ spellID = 15258, size = 37, unitId = "player", caster = "player", filter = "BUFF" },
             -- Improved Spirit Tap
            -- { spellID = 59000, size = 37, unitId = "player", caster = "all", filter = "BUFF" },
+			-- Shadow Orb
+			{ spellID = 77487, size = 37, unitId = "player", caster = "player", filter = "BUFF" },
+			-- Archangel
+			{ spellID = 81700, size = 37, unitId = "player", caster = "player", filter = "BUFF" },
+			-- Evangelism
+			{ spellID = 81661, size = 37, unitId = "player", caster = "player", filter = "BUFF" },
 		},
 		{
 			Name = "T_DE/BUFF_BAR",

@@ -94,6 +94,7 @@ if SettingsCF["reminder"].solo_buffs_enable == true then
 		},
 		DRUID = {
 			1126,	-- Mark of the Wild
+			20217,	-- Blessing of Kings
 		},
 	}
 end
@@ -216,7 +217,6 @@ if SettingsCF["unitframe"].plugins_aura_watch == true then
 		ORD.ShowDispelableDebuff = SettingsCF["unitframe"].plugins_debuffhighlight_icon
 		ORD.FilterDispellableDebuff = true
 		ORD.MatchBySpellName = false
-		ORD.SHAMAN_CAN_DECURSE = true
 		
 		SettingsDB.debuffids = {
 		-- Vault of Archavon

@@ -57,9 +57,12 @@ MiniMapBattlefieldBorder:Hide()
 MiniMapWorldMapButton:Hide()
 
 -- Instance Difficulty icon
-MiniMapInstanceDifficulty:ClearAllPoints()
 MiniMapInstanceDifficulty:SetParent(Minimap)
+MiniMapInstanceDifficulty:ClearAllPoints()
 MiniMapInstanceDifficulty:SetPoint("TOPRIGHT", Minimap, "TOPRIGHT", SettingsDB.Scale(3), SettingsDB.Scale(2))
+GuildInstanceDifficulty:SetParent(Minimap)
+GuildInstanceDifficulty:ClearAllPoints()
+GuildInstanceDifficulty:SetPoint("TOPRIGHT", Minimap, "TOPRIGHT", SettingsDB.Scale(3), SettingsDB.Scale(2))
 
 -- Invites Icon
 GameTimeCalendarInvitesTexture:ClearAllPoints()

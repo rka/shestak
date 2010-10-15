@@ -41,12 +41,14 @@ end
 
 -- Hook setpoint
 local function MoveShapeshift()
-	if SettingsCF["actionbar"].shapeshift_horizontal == true then
-		ShapeshiftButton1:ClearAllPoints()
-		ShapeshiftButton1:SetPoint("BOTTOMLEFT", ShiftHolder, "BOTTOMLEFT", 0, 0)
-	else
-		ShapeshiftButton1:ClearAllPoints()
-		ShapeshiftButton1:SetPoint("TOPLEFT", ShiftHolder, "TOPLEFT", 0, 0)
+	if GetNumShapeshiftForms() == 1 and not InCombatLockdown() then
+		if SettingsCF["actionbar"].shapeshift_horizontal == true then
+			ShapeshiftButton1:ClearAllPoints()
+			ShapeshiftButton1:SetPoint("BOTTOMLEFT", ShiftHolder, "BOTTOMLEFT", 0, 0)
+		else
+			ShapeshiftButton1:ClearAllPoints()
+			ShapeshiftButton1:SetPoint("TOPLEFT", ShiftHolder, "TOPLEFT", 0, 0)
+		end
 	end
 end
 hooksecurefunc("ShapeshiftBar_Update", MoveShapeshift)

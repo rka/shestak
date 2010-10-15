@@ -74,7 +74,7 @@ SettingsCF["reminder"] = {
 	["solo_buffs_sound"] = false,				-- Enable warning sound notification for buff reminder
 	["solo_buffs_size"] = 45,					-- Icon size
 	-- Raid buffs
-	["raid_buffs_enable"] = true,				-- Show missing raid buffs
+	["raid_buffs_enable"] = false,				-- Show missing raid buffs
 	["raid_buffs_always"] = false,				-- Show frame always
 	["raid_buffs_size"] = 15,					-- Icon size
 	["raid_buffs_alpha"] = 0,					-- Transparent icons when the buff is present
@@ -267,7 +267,7 @@ SettingsCF["unitframe"] = {
 	-- Auras/Buffs/Debuffs
 	["aura_show_spiral"] = false,				-- Spiral on aura icons
 	["aura_show_timer"] = true,					-- Show cooldown tier on aura icons
-	["aura_player_auras"] = true,				-- Auras on player frame
+	["aura_player_auras"] = false,				-- Auras on player frame
 	["aura_target_auras"] = true,				-- Auras on target frame
 	["aura_focus_debuffs"] = false,				-- DeBuffs on focus frame
 	["aura_pet_debuffs"] = false,				-- DeBuffs on pet frame
