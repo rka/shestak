@@ -84,11 +84,12 @@ if SettingsDB.client == "zhTW" then
 	L_BAG_OUT_OFF = " / "
 	L_BAG_BANK = "銀行"
 	
-	-- aSettings(Grab mail)
+	-- Grab mail
 	L_MAIL_STOPPED = "無法拾取, 背囊已滿."
 	L_MAIL_COMPLETE = "完成."
 	L_MAIL_NEED = "需要一個信箱."
 	L_MAIL_MESSAGES =  "新郵件"
+	L_MAIL_GOLD = "提取現金"
 	
 	-- Loot
 	L_LOOT_RANDOM = "隨機玩家"

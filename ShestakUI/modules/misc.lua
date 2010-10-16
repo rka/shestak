@@ -144,9 +144,9 @@ if SettingsCF["misc"].afk_spin_camera == true then
 
 	function SpinStart()
 		spinning = true
-		SaveView(4)
-		ResetView(5)
-		SetView(5)
+		--SaveView(4)
+		--ResetView(5)
+		--SetView(5)
 		MoveViewRightStart(0.1)
 		UIParent:Hide()
 	end
@@ -155,7 +155,7 @@ if SettingsCF["misc"].afk_spin_camera == true then
 		if not spinning then return end
 		spinning = nil
 		MoveViewRightStop()
-		SetView(4)
+		--SetView(4)
 		UIParent:Show()
 	end
 end

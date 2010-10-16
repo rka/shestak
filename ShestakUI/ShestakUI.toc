@@ -2,7 +2,7 @@
 ## Title: ShestakUI
 ## Notes: A total UI overhaul for World of Warcraft.
 ## Author: Shestak
-## Version: 2.6.6
+## Version: 2.6.8
 ## Credits: ALZA, Tekkub, Monolit, Awbee, Industrial, Nightcracker, Kemayo, yleaf, Tukz, v6o, Stuck, Fernir, Eclipse, Elv22
 ## OptionalDeps: ShestakUI_Config
 ## SavedVariables: SavedOptions

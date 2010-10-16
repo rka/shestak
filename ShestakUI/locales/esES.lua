@@ -84,11 +84,12 @@ if SettingsDB.client == "esES" then
 	L_BAG_OUT_OFF = " / "
 	L_BAG_BANK = "Banco"
 	
-	-- aSettings(Grab mail)
+	-- Grab mail
 	L_MAIL_STOPPED = "Sin espacio, inventario lleno."
 	L_MAIL_COMPLETE = "Todo enviado."
 	L_MAIL_NEED = "Necesitas un buzon."
 	L_MAIL_MESSAGES =  "messages"  -- Needs review
+	L_MAIL_GOLD = "Recoger efectivo"
 	
 	-- Loot
 	L_LOOT_RANDOM = "Jugador aleatorio"

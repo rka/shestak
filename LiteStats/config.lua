@@ -168,7 +168,7 @@ LPSTAT_CONFIG = {
 		x_off = 3, y_off = 0,
 	},
 	Talents = {
-		enabled = false,
+		enabled = true,
 		fmt = class"T: ".."[spec %d/%d/%d] [unspent]", -- "Protection: 15/0/51 +5", [shortname] shortens spec name.
 		iconsize = 15,  -- Size of talent [icon].
 		nospam = true,  -- Hide talent spam when switching specs.
@@ -186,7 +186,7 @@ LPSTAT_CONFIG = {
 			["Marksmanship"] = "Marks.",
 			["Beast Mastery"] = "B.M.",
 		},
-		anchor_frame = "Bags", anchor_to = "left", anchor_from = "right",
+		anchor_frame = "Loot", anchor_to = "left", anchor_from = "right",
 		x_off = 3, y_off = 0, tip_anchor = "ANCHOR_BOTTOMLEFT", tip_x = 0, tip_y = -6
 	},
 -- MiniMap block

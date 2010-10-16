@@ -90,58 +90,57 @@ if SettingsCF["reminder"].raid_buffs_enable == true then
 	local spell5
 	local spell6
 
-	-- Set buffs 3-6 depending on your roll
-	local function SetCasterBuffs()
-		Spell3Buff = {
+	-- Setup caster buffs
+	local function SetCasterOnlyBuffs()
+		Spell3Buff = {	-- Total Stats
 			69378,	-- Drums of Forgotten Kings
-			20217, -- Blessing of Kings
-		}
-		Spell4Buff = {
+			20217,	-- Blessing of Kings
+			90363,	-- Embrace of the Shale Spider
 			1126,	-- Mark of the Wild
 		}
-		Spell5Buff = {
-			1459,	-- Arcane Brilliance
+		Spell4Buff = {	-- Total Stamina
+			21562,	-- Power Word: Fortitude
+			469,	-- Commanding Shout
+			6307,	-- Blood Pact
+			90364,	-- Qiraji Fortitude
+			69377,	-- Runescroll of Fortitude
+		}
+		Spell5Buff = {	-- Total Mana
 			61316,	-- Dalaran Brilliance
 			48100,	-- Scroll of Intellect VIII
+			1459,	-- Arcane Brilliance
 		}
-		Spell6Buff = {
-			--48936,	-- Blessing of Wisdom
+		Spell6Buff = {	-- Mana Regen
 			5675,	-- Mana Spring Totem
-		}
-	end
-
-	local function SetTankBuffs()
-		Spell3Buff = {
-			69378,	-- Drums of Forgotten Kings
-			20217,	-- Blessing of Kings
-		}
-		Spell4Buff = {
-			1126,	-- Mark of the Wild
-		}
-		Spell5Buff = {
-			69377,	-- Runescroll of Fortitude
-			21562,	-- Power Word: Fortitude
-		}
-		Spell6Buff = {
-			--20911,	-- Blessing of Sanctuary
-		}
-	end
-
-	local function SetMeleeBuffs()
-		Spell3Buff = {
-			69378,	-- Drums of Forgotten Kings
-			20217,	-- Blessing of Kings
-		}
-		Spell4Buff = {
-			1126,	-- Mark of the Wild
-		}
-		Spell5Buff = {
-			69377,	-- Runescroll of Fortitude
-			21562,	-- Power Word: Fortitude
-		}
-		Spell6Buff = {
 			19740,	-- Blessing of Might
-			6673,	-- Battle Shout
+		}
+	end
+	
+	-- Setup everyone else's buffs
+	local function SetBuffs()
+		Spell3Buff = {	-- Total Stats
+			69378,	-- Drums of Forgotten Kings
+			20217,	-- Blessing of Kings
+			90363,	-- Embrace of the Shale Spider
+			1126,	-- Mark of the Wild
+		}
+		Spell4Buff = {	-- Total Stamina
+			21562,	-- Power Word: Fortitude
+			469,	-- Commanding Shout
+			6307,	-- Blood Pact
+			90364,	-- Qiraji Fortitude
+			69377,	-- Runescroll of Fortitude
+		}
+		Spell5Buff = {	-- Total Mana
+			61316,	-- Dalaran Brilliance
+			48100,	-- Scroll of Intellect VIII
+			1459,	-- Arcane Brilliance
+		}
+		Spell6Buff = {	-- Total AP
+			53138,	-- Abom Might
+			19506,	-- Trushot
+			30808,	-- Unleashed Rage
+			19740,	-- Blessing of Might
 		}
 	end
 
@@ -191,10 +190,12 @@ if SettingsCF["reminder"].raid_buffs_enable == true then
 			return
 		end
 
-		if SettingsDB.Role == "Melee" then SetMeleeBuffs() end
-		if SettingsDB.Role == "Caster" then SetCasterBuffs() end
-		if SettingsDB.Role == "Tank" then SetTankBuffs() end	
-		
+		-- If We're a caster we may want to see differant buffs
+		if SettingsDB.Role == "Caster" then 
+			SetCasterOnlyBuffs() 
+		else
+			SetBuffs()
+		end
 		
 		-- Start checking buffs to see if we can find a match from the list
 		if (flaskbuffs and flaskbuffs[1]) then
@@ -268,8 +269,8 @@ if SettingsCF["reminder"].raid_buffs_enable == true then
 				Spell5Frame.t:SetTexture(select(3, GetSpellInfo(Spell5Buff)))
 				spell5 = false
 			end
-		end	
-
+		end
+		
 		for i, Spell6Buff in pairs(Spell6Buff) do
 			local spellname = select(1, GetSpellInfo(Spell6Buff))
 			if UnitAura("player", spellname) then
@@ -307,7 +308,7 @@ if SettingsCF["reminder"].raid_buffs_enable == true then
 
 	-- Create Main bar
 	local raidbuff_reminder = CreateFrame("Frame", "RaidBuffReminder", UIParent)
-	SettingsDB.CreatePanel(raidbuff_reminder, (SettingsCF["reminder"].raid_buffs_size * 6) + 15, SettingsCF["reminder"].raid_buffs_size + 4, "BOTTOMLEFT", Minimap, "TOPLEFT", -2, 5)
+	SettingsDB.CreatePanel(raidbuff_reminder, (SettingsCF["reminder"].raid_buffs_size * 6) + 15, SettingsCF["reminder"].raid_buffs_size + 4, "BOTTOMLEFT", Minimap, "TOPLEFT", -1, 5)
 	raidbuff_reminder:SetBackdropBorderColor(0, 0, 0, 0)
 	raidbuff_reminder:SetBackdropColor(0, 0, 0, 0)
 	raidbuff_reminder.bg:SetVertexColor(0, 0, 0, 0)

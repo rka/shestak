@@ -479,7 +479,7 @@ end
 local numKids = 0
 local lastUpdate = 0
 caelNamePlates:SetScript("OnUpdate", function(self, elapsed)
-	lastUpdate = lastUpdate + elapsed
+	--[[lastUpdate = lastUpdate + elapsed
  
 	if lastUpdate > 0.05 then
 		lastUpdate = 0
@@ -495,6 +495,17 @@ caelNamePlates:SetScript("OnUpdate", function(self, elapsed)
 			end
 			numKids = newNumKids
 		end
+	end]]
+	local newNumKids = WorldFrame:GetNumChildren()
+	if newNumKids ~= numKids then
+		for i = numKids + 1, newNumKids do
+			local frame = select(i, WorldFrame:GetChildren())
+
+			if isValidFrame(frame) then
+				createPlate(frame)
+			end
+		end
+		numKids = newNumKids
 	end
 end)
 
