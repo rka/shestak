@@ -47,10 +47,10 @@ SettingsCF["general"] = {
 SettingsCF["misc"] = {
 	["auto_quest"] = false,						-- Auto accept quests(if hold shift, auto accept is disable)
 	["auto_decline_duel"] = true,				-- Auto decline duel
-	["auto_accept_invite"] = true,				-- Auto accept invite
+	["auto_accept_invite"] = false,				-- Auto accept invite
 	["auto_resurrection"] = true,				-- Auto resurrection in Battle Ground
 	["shift_marking"] = true,					-- Marks target when you push "shift"
-	["invite_keyword"] = "inv",				-- Short keyword for invite(for enable - in game type /ainv)
+	["invite_keyword"] = "invite",				-- Short keyword for invite(for enable - in game type /ainv)
 	["raid_planner"] = false,					-- Raid planner
 	["afk_spin_camera"] = false,				-- Spin camera while afk
 	["move_watchframe"] = true,					-- Quest Watch frame movable
@@ -85,7 +85,7 @@ SettingsCF["reminder"] = {
 ----------------------------------------------------------------------------------------
 SettingsCF["cooldown"] = {
 	-- Raid cooldowns
-	["raid_enable"] = false,						-- Enable raid cooldowns
+	["raid_enable"] = true,						-- Enable raid cooldowns
 	["raid_font_size"] = 8,						-- Font size
 	["raid_height"] = 15,						-- Bars height
 	["raid_width"] = 186,						-- Bars width(if show_icon = false, bar width+28)
@@ -106,10 +106,10 @@ SettingsCF["cooldown"] = {
 --	Threat options
 ----------------------------------------------------------------------------------------
 SettingsCF["threat"] = {
-	["enable"] = true,							-- Enable threat meter
+	["enable"] = false,							-- Enable threat meter
 	["font_size"] = 8,							-- Font size
 	["height"] = 12,							-- Bars height
-	["width"] = 150,							-- Bars width
+	["width"] = 217,							-- Bars width
 	["bar_rows"] = 7,							-- Number of bars
 	["test_mode"] = false,						-- Test mode
 }
@@ -120,12 +120,12 @@ SettingsCF["threat"] = {
 SettingsCF["tooltip"] = {
 	["enable"] = true,							-- Enable tooltip
 	["shift_modifer"] = false,					-- Show tooltip when "shift" is pushed
-	["cursor"] = true,							-- ToolTip under cursor
+	["cursor"] = false,							-- ToolTip under cursor
 	["item_icon"] = false,						-- Item icon in tooltip
 	["health_value"] = false,					-- Numeral health value
 	["hidebuttons"] = false,					-- Hide tooltips for actions bars
 	-- Plugins
-	["talents"] = true,						-- Show tooltip talents
+	["talents"] = false,						-- Show tooltip talents
 	["achievements"] = true,					-- Comparing achievements in tooltip
 	["target"] = true,							-- Target player in tooltip
 	["title"] = false,							-- Player title in tooltip
@@ -140,7 +140,7 @@ SettingsCF["chat"] = {
 	["enable"] = true,							-- Enable chat
 	["background"] = false,						--
 	["background_alpha"] = 0.7,					-- 
-	["font_size"] = 12,							-- Chat font size
+	["font_size"] = 11,							-- Chat font size
 	["font_style"] = "",						-- Font style("OUTLINE", "OUTLINEMONOCHROME", "THICKOUTLINE" or "")
 	["tab_font_size"] = 8,						-- Chat tab font size
 	["tab_font_style"] = "OUTLINEMONOCHROME",	-- Tab font style("OUTLINE", "OUTLINEMONOCHROME", "THICKOUTLINE" or "")
@@ -185,8 +185,8 @@ SettingsCF["map"] = {
 --	Loot options
 ----------------------------------------------------------------------------------------
 SettingsCF["loot"] = {
-	["lootframe"] = false,						-- Enable loot frame
-	["rolllootframe"] = false,					-- Enable group roll frame
+	["lootframe"] = true,						-- Enable loot frame
+	["rolllootframe"] = true,					-- Enable group roll frame
 	["font_size"] = 8,							-- Loot frame font size
 	["icon_size"] = 22,							-- Icon size
 	["width"] = 221,							-- Loot window width
@@ -198,7 +198,7 @@ SettingsCF["loot"] = {
 --	Nameplate options
 ----------------------------------------------------------------------------------------
 SettingsCF["nameplate"] = {
-	["enable"] = false, 							-- Enable nameplate
+	["enable"] = true, 							-- Enable nameplate
 	["font_size"] = 8,							-- Nameplate font size
 	["height"] = 9,								-- Nameplate height
 	["width"] = 120,							-- Nameplate width
@@ -207,6 +207,7 @@ SettingsCF["nameplate"] = {
 	["show_castbar_name"] = false,				-- Show castbar name
 	["enhance_threat"] = true,					-- If tank good aggro = green, bad = red
 	["class_icons"] = false,					-- Icons by class in pvp
+	["name_abbrev"] = true,						-- Display the abbreviated names
 }
 
 ----------------------------------------------------------------------------------------
@@ -214,7 +215,7 @@ SettingsCF["nameplate"] = {
 ----------------------------------------------------------------------------------------
 SettingsCF["actionbar"] = {
 	-- Main
-	["enable"] = false,							-- Enable actionbars
+	["enable"] = true,							-- Enable actionbars
 	["hotkey"] = true,							-- Show text on you hotkey
 	["show_grid"] = true,						-- Show empty action bar buttons
 	["button_size"] = 25,						-- Buttons size
@@ -325,7 +326,7 @@ SettingsCF["stats"] = {
 	["latency"] = true,							-- Latency
 	["memory"] = true,							-- Memory
 	["fps"] = true,								-- FPS
-	["experience"] = true,						-- Experience
+	["experience"] = false,						-- Experience
 	["coords"] = true,							-- Coords
 	["location"] = true,						-- Location
 }
@@ -345,81 +346,50 @@ SettingsCF["error"] = {							-- http://www.wowwiki.com/WoW_Constants/Errors
 ----------------------------------------------------------------------------------------
 SettingsCF["addon"] = {							-- Group AddOns for fast selection
 	raid = {									-- Type /addons raid
-		"PhoenixStyle",
-		"Orbituary",
-		"DrainSouler",
-		"BigBrother",
-		"Energized",
-		"Ora3",
+		"DBM-Core",
+		"DXE",
+		"PallyPower",
+		"alDamageMeter",
+		"Skada",
 		"Recount",
-		"RhadaTip",
-		"Energized",
-		"RaidSlackCheck",
-		"ShadowGreenLight",
-		"Hudmap",
-		"SimpleBossWhisperer",
+		"Omen",
+		"sThreatMeter2",
 	},
 	party = {									-- Type /addons party
 		"DBM-Core",
+		"DXE",
+		"PallyPower",
+		"alDamageMeter",
+		"Skada",
+		"Recount",
+		"Omen",
+		"sThreatMeter2",
 	},
 	pvp = {										-- Type /addons pvp
 		"ArenaHistorian",
 		"ncSpellalert",
 	},
 	quest = {									-- Type /addons quest
-		"QuickTargetMacros",
-	    "Carbonite",
-		"EveryQuest",
-		"EveryQuest_Battlegrounds",
-		"EveryQuest_Classes",
-		"EveryQuest_Dungeons",
-		"EveryQuest_Eastern_Kingdoms",
-		"EveryQuest_Kalimdor",
-		"EveryQuest_Miscellaneous",
-		"EveryQuest_Northrend",
-		"EveryQuest_Outland",
-		"EveryQuest_Professions",
-		"EveryQuest_QuestGivers",
-		"EveryQuest_Raids",
-		"EveryQuest_World_Events",
-		"HandyNotes",
+		"QuestHelper",
 	},
 	trade = {									-- Type /addons trade
-		"MailOpener",
-		"SuperDuperMacro",
---		"MySales",
+		"Auctionator",
+		"!Swatter",
 		"Auc-Advanced",
+		"Auc-Filter-Basic",
 		"Auc-ScanData",
-		"BagExport",
-		"Beancounter",
-		"QuickAuctions",
-		"MarketWatcher",
-		"Postal",
-		"Auctionator", 
-		"Skillet",
-		"BankStack",
-		"Altoholic",
-		"ItemAuditor",
-		"Altoholic_Achievements",
-		"LilSparkysWorkshop",
-		"DataStore",
-		"DataStore_Achievements",
-		"DataStore_Auctions",
-		"DataStore_Mails",
-		"DataStore_Characters",
-		"DataStore_Containers",
-		"DataStore_Crafts",
-		"DataStore_Currencies",
-		"DataStore_Inventory",
-		"DataStore_Pets",
-		"DataStore_Quests",
-		"DataStore_Reputations",
-		"DataStore_Skills",
-		"DataStore_Spells",
-		"DataStore_Stats",
-		"DataStore_Talents",
-		"KevTool Queue",
-		"Panda",
+		"Auc-Stat-Histogram",
+		"Auc-Stat-iLevel",
+		"Auc-Stat-Purchased",
+		"Auc-Stat-Simple",
+		"Auc-Stat-StdDev",
+		"Auc-Util-FixAH",
+		"BeanCounter",
+		"Enchantrix",
+		"Enchantrix-Barker",
+		"Informant",
+		"SlideBar",
+		"Stubby",
 	},
 }
 
@@ -443,8 +413,7 @@ SettingsCF["position"] = {
 	["quest"] = {"TOPLEFT", UIParent, "TOPLEFT", 25, -10},					-- Quest log
 	["loot"] = {"TOPLEFT", UIParent, "TOPLEFT", 245, -220},					-- Loot
 	["group_loot"] = {"BOTTOM", UIParent, "BOTTOM", -210, 500},				-- Group roll loot
-	["threat_meter"] = {"BOTTOMLEFT", "oUF_Target", "TOPLEFT", -60, -73},	-- sThreatMeter2
-	--["threat_meter"] = {"BOTTOMLEFT", "oUF_Target", "TOPLEFT", 0, -123},	-- Threat meter
+	["threat_meter"] = {"BOTTOMLEFT", "oUF_Target", "TOPLEFT", 0, -123},	-- Threat meter
 	["raid_cooldown"] = {"TOPLEFT", UIParent, "TOPLEFT", 51, -28},			-- Raid cooldowns
 	["enemy_cooldown"] = {"BOTTOMRIGHT", "oUF_Player", "TOPRIGHT", 63, 62},	-- Enemy cooldowns
 	["bg_score"] = {"BOTTOMLEFT", UIParent, "BOTTOM", 176, 6},				-- BG stats
@@ -463,11 +432,9 @@ SettingsCF["position"] = {
 		["focus"] = {"BOTTOMRIGHT", "oUF_Player", "TOPRIGHT", 0, -54},				-- Focus frame
 		["focus_target"] = {"BOTTOMLEFT", "oUF_Target", "TOPLEFT", 0, -54},			-- Focus target frame
 		["party_heal"] = {"TOPLEFT", "oUF_Player", "BOTTOMRIGHT", 11, -12},			-- Heal layout Party frames
-		--["raid_heal"] = {"TOPLEFT", "oUF_Player", "BOTTOMRIGHT", 11, -12},			-- Heal layout Raid frames
-		["raid_heal"] = {"LEFT", "oUF_Player", "RIGHT", 490, -160}, 
+		["raid_heal"] = {"TOPLEFT", "oUF_Player", "BOTTOMRIGHT", 11, -12},			-- Heal layout Raid frames
 		["party_dps"] = {"BOTTOMLEFT", UIParent, "LEFT", 22, -70},					-- DPS layout Party frames
-		--["raid_dps"] = {"TOPLEFT", UIParent, "TOPLEFT", 22, -22},					-- DPS layout Raid frames
-		["raid_dps"] = {"LEFT", "oUF_Player", "RIGHT", 490, -180}, 
+		["raid_dps"] = {"TOPLEFT", UIParent, "TOPLEFT", 22, -22},					-- DPS layout Raid frames
 		["arena"] = {"BOTTOMRIGHT", UIParent, "RIGHT", -20, -70},					-- Arena frames
 		["boss"] = {"BOTTOMRIGHT", UIParent, "RIGHT", -20, -70},					-- Boss frames
 		["tank"] = {"BOTTOMLEFT", UIParent, "BOTTOM", 176, 26},						-- Tank frames
