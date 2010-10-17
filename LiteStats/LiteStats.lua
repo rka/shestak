@@ -1,10 +1,10 @@
--- LiteStats / Katae @ WoWI
+-- LiteStats 0.9 / Katae @ WoWI
 ----------------------------------------------------------------------------------------
 -- * Configure the modules in config.lua, if you need more control, edit the core modules.
 -- * AutoSell and AutoRepair can be toggled on/off by right-clicking the text display.
 -- * Junk exceptions for AutoSelling can be configured by the /junk command.
 ----------------------------------------------------------------------------------------
--- Please attain permission AND give credit before distributing any segments of this addon.
+-- Please attain permission before distributing any segments of this addon.
 
 local P = "player" -- Because I'm tired of typing it.
 local realm, char, class, layout = GetRealmName(), UnitName(P), select(2, UnitClass(P)), {}
@@ -151,14 +151,8 @@ local function NewStat(name,stat)
 		strata = strata, level = level
 	} do if not stat[k] then stat[k] = v end end
 	if not stat.text then stat.text = {} end
-	
 	-- retrieve font variables and insert them into text table
-	for k,v in pairs(font) do 
-		if not stat.text[k] then 
-			stat.text[k] = m[k] or v
-		end
-	end
-	-- get/set font variables for individual modules
+	for k,v in pairs(font) do if not stat.text[k] then stat.text[k] = v end end
 	if stat.OnEnter then if stat.OnLeave then hooksecurefunc(stat,"OnLeave",HideTT) else stat.OnLeave = HideTT end end
 	tinsert(layout, stat)
 end
@@ -556,6 +550,7 @@ end
 ------------------------------------------
 --  Clock
 if not modules.Clock.enabled then blank'Clock' else
+	GameTimeFrame:Hide()
 	NewStat("Clock", { -- height = 11,
 		text = {
 			string = function()
@@ -860,7 +855,7 @@ if not modules.Talents.enabled then blank'Talents' else
 			end
 		end)
 	end
-	NewStat("Talents", {
+	NewStat("Talents", { -- height = 11,
 		OnLoad = function(self)
 			RegEvents(self,"PLAYER_LOGIN PLAYER_TALENT_UPDATE CHARACTER_POINTS_CHANGED PLAYER_ENTERING_WORLD PLAYER_LEAVING_WORLD")
 			if modules.Talents.nospam then self:RegisterEvent'UNIT_SPELLCAST_START' end
@@ -878,14 +873,14 @@ if not modules.Talents.enabled then blank'Talents' else
 					self.text:SetText(format("%s %s",NO,TALENTS))
 				elseif GetNumTalentTabs() == 3 then
 					self.talents = {}
-					self.unspent = GetUnspentTalentPoints(false, false, GetActiveTalentGroup())
+					self.unspent = UnitCharacterPoints(P)
 					for i = 1, GetNumTalentGroups() do
 						tinsert(self.talents, {})
 						local tal, pts, icon, name = self.talents[i], -1
 						for tree = 1, GetNumTalentTabs() do
 							tinsert(tal, {GetTalentTabInfo(tree,nil,nil,i)})
-							if tal[tree][5] ~= 0 and tal[tree][5] > pts then
-								name, icon, pts = {tal[tree][1],tree}, tal[tree][4], tal[tree][5]
+							if tal[tree][3] ~= 0 and tal[tree][3] > pts then
+								name, icon, pts = {tal[tree][1],tree}, tal[tree][2], tal[tree][3]
 							end
 						end
 						if not name then name, icon = {format("%s %s",NO,TALENTS)}, "Interface\\Icons\\INV_Misc_QuestionMark" end
@@ -897,7 +892,7 @@ if not modules.Talents.enabled then blank'Talents' else
 								icon = format("|T%s:%d|t",icon,modules.Talents.iconsize),
 								unspent = self.unspent > 0 and format("|cff55ff55+"..self.unspent) or ''
 							},"%[spec(.-)%]", function(spec)
-								return format(spec == '' and "%d/%d/%d" or gsub(spec,'^ ',''),tal[1][5],tal[2][5],tal[3][5])
+								return format(spec == '' and "%d/%d/%d" or gsub(spec,'^ ',''),tal[1][3],tal[2][3],tal[3][3])
 							end,' $',''))
 							tinsert(tal, 1)
 						end
@@ -922,7 +917,7 @@ if not modules.Talents.enabled then blank'Talents' else
 				for i = 1, GetNumTalentGroups() do
 					local tal = self.talents[i]
 					local tree = tal[4][2]
-					local name, icon, talents = tree and tal[tree][2] or NONE, tree and tal[tree][4] or "Interface\\Icons\\INV_Misc_QuestionMark", format("%d/%d/%d",tal[1][5],tal[2][5],tal[3][5])
+					local name, icon, talents = tree and tal[tree][1] or NONE, tree and tal[tree][2] or "Interface\\Icons\\INV_Misc_QuestionMark", format("%d/%d/%d",tal[1][3],tal[2][3],tal[3][3])
 					if tal[5] then r,g,b = 0.3,1,0.3 else r,g,b = 0.5,0.5,0.5 end
 					GameTooltip:AddDoubleLine(format("|T%s:%d|t %s %s",icon,t_icon,gsub(name,".*",modules.Talents.name_subs),talents), i==1 and PRIMARY or SECONDARY,1,1,1,r,g,b)
 				end

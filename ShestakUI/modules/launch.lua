@@ -22,6 +22,7 @@ local function InstallUI()
 	SetCVar("colorblindMode", 0)
 	SetCVar("lootUnderMouse", 0)
 	SetCVar("autoLootDefault", 1)
+	SetCVar("bloatthreat", 0)
 	SetCVar("RotateMinimap", 0)
 	
 	if SettingsDB.name == "Черешок" 

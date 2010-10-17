@@ -84,12 +84,11 @@ if SettingsDB.client == "zhCN" then
 	L_BAG_OUT_OFF = " / "
 	L_BAG_BANK = "银行"
 	
-	-- Grab mail
+	-- aSettings(Grab mail)
 	L_MAIL_STOPPED = "无法拾取, 背包已满."
 	L_MAIL_COMPLETE = "完成."
 	L_MAIL_NEED = "需要一个信箱."
 	L_MAIL_MESSAGES =  "新邮件"
-	L_MAIL_GOLD = "提取现金"
 	
 	-- Loot
 	L_LOOT_RANDOM = "随机拾取"

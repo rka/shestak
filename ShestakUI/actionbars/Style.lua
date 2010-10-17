@@ -1,4 +1,4 @@
-﻿----------------------------------------------------------------------------------------
+----------------------------------------------------------------------------------------
 --	By Tukz
 ----------------------------------------------------------------------------------------
 if not SettingsCF["actionbar"].enable == true then return end
@@ -190,27 +190,26 @@ local function StyleButton(b, checked)
 end
 
 local function updatehotkey(self, actionButtonType)
-	local hotkey = _G[self:GetName() .. "HotKey"]
+	local hotkey = _G[self:GetName() .. 'HotKey']
 	local text = hotkey:GetText()
 	
-	text = replace(text, "(s%-)", "S")
-	text = replace(text, "(a%-)", "A")
-	text = replace(text, "(c%-)", "C")
-	text = replace(text, "(Mouse Button )", "M")
-	text = replace(text, "(Кнопка мыши )", "M")
-	text = replace(text, KEY_BUTTON3, "M3")
-	text = replace(text, "(Num Pad )", "N")
-	text = replace(text, KEY_PAGEUP, "PU")
-	text = replace(text, KEY_PAGEDOWN, "PD")
-	text = replace(text, KEY_SPACE, "SpB")
-	text = replace(text, KEY_INSERT, "Ins")
-	text = replace(text, KEY_HOME, "Hm")
-	text = replace(text, KEY_MOUSEWHEELDOWN, "MWD")
-	text = replace(text, KEY_MOUSEWHEELUP, "MWU")
-	text = replace(text, KEY_DELETE, "Del")
+	text = replace(text, '(s%-)', 'S')
+	text = replace(text, '(a%-)', 'A')
+	text = replace(text, '(c%-)', 'C')
+	text = replace(text, '(Mouse Button )', 'M')
+	text = replace(text, KEY_BUTTON3, 'M3')
+	text = replace(text, '(Num Pad )', 'N')
+	text = replace(text, KEY_PAGEUP, 'PU')
+	text = replace(text, KEY_PAGEDOWN, 'PD')
+	text = replace(text, KEY_SPACE, 'SpB')
+	text = replace(text, KEY_INSERT, 'Ins')
+	text = replace(text, KEY_HOME, 'Hm')
+	text = replace(text, KEY_MOUSEWHEELDOWN, 'MWD')
+	text = replace(text, KEY_MOUSEWHEELUP, 'MWU')
+	text = replace(text, KEY_DELETE, 'Del')
 	
-	if hotkey:GetText() == _G["RANGE_INDICATOR"] then
-		hotkey:SetText("")
+	if hotkey:GetText() == _G['RANGE_INDICATOR'] then
+		hotkey:SetText('')
 	else
 		hotkey:SetText(text)
 	end

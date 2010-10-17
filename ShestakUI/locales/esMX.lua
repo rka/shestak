@@ -84,12 +84,11 @@ if SettingsDB.client == "esMX" then
 	L_BAG_OUT_OFF = " / "
 	L_BAG_BANK = "Bank"
 	
-	-- Grab mail
+	-- aSettings(Grab mail)
 	L_MAIL_STOPPED = "Stopped, inventory is full."
 	L_MAIL_COMPLETE = "All done."
 	L_MAIL_NEED = "Need a mailbox."
 	L_MAIL_MESSAGES =  "messages"
-	L_MAIL_GOLD = "Take Cash"
 	
 	-- Loot
 	L_LOOT_RANDOM = "Random Player"

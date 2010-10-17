@@ -84,12 +84,11 @@ if SettingsDB.client == "deDE" then
 	L_BAG_OUT_OFF = " von "
 	L_BAG_BANK = "Bank"
 	
-	-- Grab mail
+	-- aSettings(Grab mail)
 	L_MAIL_STOPPED = "Angehalten, Inventar ist voll."
 	L_MAIL_COMPLETE = "Alles Fertig."
 	L_MAIL_NEED = "Benötige einen Briefkasten."
 	L_MAIL_MESSAGES =  "nachrichten"
-	L_MAIL_GOLD = "Geld nehmen"
 	
 	-- Loot
 	L_LOOT_RANDOM = "Zufälliger Spieler"

@@ -135,7 +135,7 @@ local function Shared(self, unit)
 	self.Power.bg.multiplier = 0.3
 	
 	self.Power.value = SettingsDB.SetFontString(self.Power, SettingsCF["media"].pixel_font, db.font_size, SettingsCF["media"].pixel_font_style)
-	if unit == "player" then
+	if unit == "player"then
 		self.Power.value:SetPoint("RIGHT", self.Power, "RIGHT", 0, 0)
 		self.Power.value:SetJustifyH("RIGHT")
 	elseif unit == "arena" then
@@ -146,7 +146,7 @@ local function Shared(self, unit)
 			self.Power.value:SetPoint("RIGHT", self.Power, "RIGHT", 0, 0)
 			self.Power.value:SetJustifyH("RIGHT")
 		end
-	elseif unit == "pet" then
+	elseif unit=="pet" then
 		self.Power.value:Hide()
 	else
 		self.Power.value:SetPoint("LEFT", self.Power, "LEFT", SettingsDB.Scale(2), 0)
@@ -347,19 +347,6 @@ local function Shared(self, unit)
 				eclipseBarText:SetPoint("CENTER", eclipseBar, "CENTER")
 				eclipseBarText:SetFont(SettingsCF["media"].pixel_font, db.font_size, SettingsCF["media"].pixel_font_style)
 				eclipseBar.Text = eclipseBarText
-				
-				--[[local eclipseBarInd = solarBar:CreateFontString(nil, "OVERLAY")
-				eclipseBarInd:SetFont(SettingsCF["media"].pixel_font, db.font_size, SettingsCF["media"].pixel_font_style)
-
-				eclipseBar.PostDirectionChange = function(element, unit)
-					if(element.directionIsLunar) then
-						eclipseBarInd:SetPoint("LEFT", eclipseBarText, "RIGHT", 0, 0)
-						eclipseBarInd:SetText("|cff4478BC>>>|r")
-					else
-						eclipseBarInd:SetPoint("RIGHT", eclipseBarText, "LEFT", 0, 0)
-						eclipseBarInd:SetText("|cffE5994C<<<|r")
-					end
-				end]]
 
 				self.EclipseBar = eclipseBar
 			end
@@ -383,8 +370,8 @@ local function Shared(self, unit)
 				bars[i].bg:SetTexture(SettingsCF["media"].texture)
 				
 				if SettingsDB.class == "WARLOCK" then
-					bars[i]:SetStatusBarColor(0.70, 0.32, 0.75)
-					bars[i].bg:SetTexture(0.70, 0.32, 0.75, 0.25)
+					bars[i]:SetStatusBarColor(1, 0.4, 0.4)
+					bars[i].bg:SetTexture(1, 0.4, 0.4, 0.25)
 				elseif SettingsDB.class == "PALADIN" then
 					bars[i]:SetStatusBarColor(0.89, 0.88, 0.1)
 					bars[i].bg:SetTexture(0.89, 0.88, 0.1, 0.25)
@@ -560,8 +547,25 @@ local function Shared(self, unit)
 			self.PortraitOverlay:SetPoint("BOTTOMRIGHT", SettingsDB.Scale(2), SettingsDB.Scale(-2))
 			table.insert(self.__elements, SettingsDB.HidePortrait)
 		end
-		
+
 		if unit == "player" then
+			self.Buffs = CreateFrame("Frame", nil, self)
+			self.Buffs:SetHeight(SettingsDB.Scale(53))
+			self.Buffs:SetWidth(SettingsDB.Scale(445))
+			self.Buffs.size = SettingsDB.Scale(25)
+			self.Buffs.num = 36
+			self.Buffs.spacing = 1
+			self.Buffs["spacing-x"] = SettingsDB.Scale(3)
+			self.Buffs["spacing-y"] = SettingsDB.Scale(3)
+			self.Buffs:SetPoint("TOPRIGHT", UIParent, "TOPRIGHT", SettingsDB.Scale(-22), SettingsDB.Scale(-20))
+			self.Buffs.initialAnchor = "TOPRIGHT"
+			self.Buffs["growth-x"] = "LEFT"
+			self.Buffs["growth-y"] = "DOWN"
+			self.Buffs.filter = true
+			
+			self.Buffs.PostCreateIcon = SettingsDB.PostCreateAura
+			self.Buffs.PostUpdateIcon = SettingsDB.PostUpdateIcon
+
 			self.Debuffs = CreateFrame("Frame", nil, self)
 			self.Debuffs:SetHeight(SettingsDB.Scale(165))
 			self.Debuffs:SetWidth(SettingsDB.Scale(221))
@@ -582,6 +586,17 @@ local function Shared(self, unit)
 			
 			self.Debuffs.PostCreateIcon = SettingsDB.PostCreateAura
 			self.Debuffs.PostUpdateIcon = SettingsDB.PostUpdateIcon
+			
+			self.Enchant = CreateFrame("Frame", nil, self)
+			self.Enchant:SetHeight(SettingsDB.Scale(25))
+			self.Enchant:SetWidth(SettingsDB.Scale(53))
+			self.Enchant:SetPoint("TOPRIGHT", UIParent, "TOPRIGHT", SettingsDB.Scale(-22), SettingsDB.Scale(-76))
+			self.Enchant.size = SettingsDB.Scale(25)
+			self.Enchant.spacing = SettingsDB.Scale(3)
+			self.Enchant.initialAnchor = "TOPRIGHT"
+			self.Enchant["growth-x"] = "LEFT"
+			self.PostCreateEnchantIcon = SettingsDB.PostCreateAura
+			self.PostUpdateEnchantIcons = SettingsDB.CreateEnchantTimer
 		end
 		
 		if unit == "target" then
@@ -827,6 +842,31 @@ local function Shared(self, unit)
 		self.AuraTracker:SetScript("OnUpdate", SettingsDB.AuraTrackerTime)
 	end
 	
+	if SettingsDB.class == "HUNTER" then
+		self:SetAttribute("type3", "spell")
+		self:SetAttribute("spell3", GetSpellInfo(34477))
+	elseif SettingsDB.class == "DRUID" then
+		self:SetAttribute("type3", "spell")
+		self:SetAttribute("spell3", GetSpellInfo(29166))
+	elseif SettingsDB.class == "PALADIN" then
+		self:SetAttribute("type3", "spell")
+		self:SetAttribute("spell3", GetSpellInfo(31789))
+	end
+
+	if unit == "player" or unit == "target" then
+		self:SetAttribute("initial-height", SettingsDB.Scale(27))
+		self:SetAttribute("initial-width", SettingsDB.Scale(217))
+	elseif unit == "arena" or unit == "boss" then
+		self:SetAttribute("initial-height", SettingsDB.Scale(27))
+		self:SetAttribute("initial-width", SettingsDB.Scale(150))
+	elseif unit == "arenatarget" then
+		self:SetAttribute("initial-height", SettingsDB.Scale(27))
+		self:SetAttribute("initial-width", SettingsDB.Scale(30))
+	else
+		self:SetAttribute("initial-height", SettingsDB.Scale(16))
+		self:SetAttribute("initial-width", SettingsDB.Scale(105))
+	end
+
 	if db.aggro_border == true and unit ~= "arenatarget" then
 		table.insert(self.__elements, SettingsDB.UpdateThreat)
 		self:RegisterEvent("PLAYER_TARGET_CHANGED", SettingsDB.UpdateThreat)
@@ -844,8 +884,10 @@ local function Shared(self, unit)
 	if unit ~= "arenatarget" then
 		self.DebuffHighlight = self.Health:CreateTexture(nil, "OVERLAY")
 		self.DebuffHighlight:SetAllPoints(self.Health)
+		--self.DebuffHighlight:SetTexture(SettingsCF["media"].texture)
 		self.DebuffHighlight:SetTexture(SettingsCF["media"].highlight)
 		self.DebuffHighlight:SetVertexColor(0, 0, 0, 0)
+		--self.DebuffHighlight:SetBlendMode("DISABLE")
 		self.DebuffHighlight:SetBlendMode("ADD")
 		self.DebuffHighlightAlpha = 1
 		self.DebuffHighlightFilter = true
@@ -881,6 +923,9 @@ end
 ----------------------------------------------------------------------------------------
 --	Default position of ShestakUI unitframes
 ----------------------------------------------------------------------------------------
+--oUF:RegisterStyle("Shestak", SetStyle)
+--oUF:SetActiveStyle("Shestak")
+
 oUF:RegisterStyle("Shestak", Shared)
 
 local player = oUF:Spawn("player", "oUF_Player")

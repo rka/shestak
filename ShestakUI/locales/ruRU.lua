@@ -57,8 +57,8 @@ if SettingsDB.client == "ruRU" then
 	L_GUI_MINIMAP_ICON_DPS = "Переключиться на *DPS* раскладку"
 	
 	-- Chat
-	L_CHAT_WHISPER = "От"
-	L_CHAT_BN_WHISPER = "От"
+	L_CHAT_WHISPER = "From"
+	L_CHAT_BN_WHISPER = "From"
 	L_CHAT_AFK = "[AFK]"
 	L_CHAT_DND = "[DND]"
 	L_CHAT_GM = "[GM]"
@@ -84,12 +84,11 @@ if SettingsDB.client == "ruRU" then
 	L_BAG_OUT_OFF = " из "
 	L_BAG_BANK = "Банк"
 	
-	-- Grab mail
+	-- aSettings(Grab mail)
 	L_MAIL_STOPPED = "Сбор почты преостановлен из-за Ваших заполненных сумок."
 	L_MAIL_COMPLETE = "Сбор почты окончен."
 	L_MAIL_NEED = "Нужен почтовый ящик."
 	L_MAIL_MESSAGES =  "cообщений"
-	L_MAIL_GOLD = "Золото"
 	
 	-- Loot
 	L_LOOT_RANDOM = "Случайному игроку"

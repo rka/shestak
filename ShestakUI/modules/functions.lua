@@ -939,10 +939,14 @@ do
 	SettingsDB.HideAuraFrame = function(self)
 		if self.unit == "player" then
 			if not db.aura_player_auras then
+				self.Buffs:Hide()
+				self.Debuffs:Hide()
+				self.Enchant:Hide()
+				
+			else
 				BuffFrame:UnregisterEvent("UNIT_AURA")
 				BuffFrame:Hide()
 				TemporaryEnchantFrame:Hide()
-				self.Debuffs:Hide()
 			end
 		elseif self.unit == "pet" and not db.aura_pet_debuffs or self.unit == "focus" and not db.aura_focus_debuffs 
 		or self.unit == "focustarget" and not db.aura_fot_debuffs or self.unit == "targettarget" and not db.aura_tot_debuffs then
@@ -952,6 +956,12 @@ do
 		end
 	end
 	
+	local CancelAura = function(self, button)
+		if button == "RightButton" and not self.debuff then
+			--CancelUnitBuff("player", self:GetID())
+		end
+	end
+
 	SettingsDB.PostCreateAura = function(element, button)
 		SettingsDB.CreateTemplate(button)
 		
@@ -985,6 +995,23 @@ do
 			button.remaining:SetParent(button.overlayFrame)
 		else
 			element.disableCooldown = true
+		end
+
+		if unit == "player" then
+			button:SetScript("OnMouseUp", CancelAura)
+		end
+	end
+
+	SettingsDB.CreateEnchantTimer = function(self, icons)
+		for i = 1, 2 do
+			local icon = icons[i]
+			if icon.expTime then
+				icon.timeLeft = icon.expTime - GetTime()
+				icon.remaining:Show()
+			else
+				icon.remaining:Hide()
+			end
+			icon:SetScript("OnUpdate", CreateAuraTimer)
 		end
 	end
 

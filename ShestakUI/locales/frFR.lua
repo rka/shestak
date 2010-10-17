@@ -84,12 +84,11 @@ if SettingsDB.client == "frFR" then
 	L_BAG_OUT_OFF = " sur "
 	L_BAG_BANK = "Banque"
 	
-	-- Grab mail
+	-- aSettings(Grab mail)
 	L_MAIL_STOPPED = "Inventaire plein."
 	L_MAIL_COMPLETE = "Terminé."
 	L_MAIL_NEED = "Vous avez besoin d'une boîte aux lettres."
 	L_MAIL_MESSAGES =  "messages"
-	L_MAIL_GOLD = "Or"
 	
 	-- Loot
 	L_LOOT_RANDOM = "Joueur aléatoire"

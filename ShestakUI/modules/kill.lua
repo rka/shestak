@@ -13,12 +13,7 @@ Kill:SetScript("OnEvent", function(self, event, addon)
 		if IsAddOnLoaded("ShestakUI_DPS") or IsAddOnLoaded("ShestakUI_Heal") then
 			InterfaceOptionsFrameCategoriesButton11:SetScale(0.00001)
 			InterfaceOptionsFrameCategoriesButton11:SetAlpha(0)
-			CompactRaidFrameManager:SetScale(0.00001)
-			CompactRaidFrameManager:SetAlpha(0)
-			CompactRaidFrameContainer:SetScale(0.00001)
-			CompactRaidFrameContainer:SetAlpha(0)
-			CompactPartyFrame:SetScale(0.00001)
-			CompactPartyFrame:SetAlpha(0)
+			--SetCVar("RaidStylePartyFrames", 0)
 		end
 	else
 		if addon ~= "ShestakUI" then return end

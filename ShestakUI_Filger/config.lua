@@ -31,8 +31,6 @@ Filger_Spells = {
 			{ spellID = 61336, size = 37, unitId = "player", caster = "player", filter = "BUFF" },
 			-- Hyperspeed Accelerators
 			{ spellID = 54999, size = 37, unitId = "player", caster = "player", filter = "BUFF" },
-			-- Tree of Life
-			{ spellID = 33891, size = 37, unitId = "player", caster = "player", filter = "BUFF" },
 		},
 		{
 			Name = "T_DEBUFF_ICON",
@@ -159,8 +157,6 @@ Filger_Spells = {
 			{ spellID = 22570, size = 30, filter = "CD" },
 			-- Cower
 			{ spellID = 8998, size = 30, filter = "CD" },
-			-- Thorns
-			{ spellID = 467, size = 30, filter = "CD" },
 		},
 	},
 	["HUNTER"] = {
