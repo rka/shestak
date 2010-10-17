@@ -31,8 +31,12 @@ Filger_Spells = {
 			{ spellID = 61336, size = 37, unitId = "player", caster = "player", filter = "BUFF" },
 			-- Hyperspeed Accelerators
 			{ spellID = 54999, size = 37, unitId = "player", caster = "player", filter = "BUFF" },
-			-- Tree of Life
-			{ spellID = 33891, size = 37, unitId = "player", caster = "player", filter = "BUFF" },
+			-- Pulverize
+			{ spellID = 80313, size = 37, unitId = "player", caster = "player", filter = "BUFF" },
+			-- Berserk
+			{ spellID = 50334, size = 37, unitId = "player", caster = "player", filter = "BUFF" },
+			-- Shooting Stars
+			{ spellID = 93399, size = 37, unitId = "player", caster = "player", filter = "BUFF" },
 		},
 		{
 			Name = "T_DEBUFF_ICON",
@@ -43,12 +47,14 @@ Filger_Spells = {
 
 			-- Moonfire
 			{ spellID = 8921, size = 37, unitId = "target", caster = "player", filter = "DEBUFF" },
-			-- Sunfire
+			-- sunfire
 			{ spellID = 93402, size = 37, unitId = "target", caster = "player", filter = "DEBUFF" },
 			-- Insect Swarm
 			{ spellID = 5570, size = 37, unitId = "target", caster = "player", filter = "DEBUFF" },
 			-- Faerie Fire
-			{ spellID = 770, size = 37, unitId = "target", caster = "all", filter = "DEBUFF" },
+			--{ spellID = 770, size = 37, unitId = "target", caster = "all", filter = "DEBUFF" },
+			-- Faerie Fire2
+			{ spellID = 91565, size = 37, unitId = "target", caster = "all", filter = "DEBUFF" },
 			-- Entangling Roots
 			{ spellID = 339, size = 37, unitId = "target", caster = "all", filter = "DEBUFF" },
 			-- Earth and Moon
@@ -62,7 +68,7 @@ Filger_Spells = {
 			-- Pounce Bleed
 			{ spellID = 9007, size = 37, unitId = "target", caster = "player", filter = "DEBUFF" },
 			-- Mangle (Cat)
-			{ spellID = 33876, size = 37, unitId = "target", caster = "all", filter = "DEBUFF" },
+			--{ spellID = 33876, size = 37, unitId = "target", caster = "all", filter = "DEBUFF" },
 			-- Mangle (Bear)
 			{ spellID = 33878, size = 37, unitId = "target", caster = "all", filter = "DEBUFF" },
 		},
@@ -100,13 +106,13 @@ Filger_Spells = {
 			setPoint = { "BOTTOMLEFT", "oUF_Target", "BOTTOMRIGHT", 9, -41 },
 			
 			-- Lifebloom
-			{ spellID = 33763, size = 25, barWidth = 187, unitId = "target", caster = "player", filter = "BUFF" },
+			--{ spellID = 33763, size = 25, barWidth = 187, unitId = "target", caster = "player", filter = "BUFF" },
 			-- Rejuvenation
-			{ spellID = 774, size = 25, barWidth = 187, unitId = "target", caster = "player", filter = "BUFF" },
+			--{ spellID = 774, size = 25, barWidth = 187, unitId = "target", caster = "player", filter = "BUFF" },
 			-- Regrowth
-			{ spellID = 8936, size = 25, barWidth = 187, unitId = "target", caster = "player", filter = "BUFF" },
+			--{ spellID = 8936, size = 25, barWidth = 187, unitId = "target", caster = "player", filter = "BUFF" },
 			-- Wild Growth
-			{ spellID = 48438, size = 25, barWidth = 187, unitId = "target", caster = "player", filter = "BUFF" },
+			--{ spellID = 48438, size = 25, barWidth = 187, unitId = "target", caster = "player", filter = "BUFF" },
 			-- Demoralizing Roar
 			{ spellID = 99, size = 25, barWidth = 187, unitId = "target", caster = "player", filter = "DEBUFF" },
 		},
@@ -159,8 +165,6 @@ Filger_Spells = {
 			{ spellID = 22570, size = 30, filter = "CD" },
 			-- Cower
 			{ spellID = 8998, size = 30, filter = "CD" },
-			-- Thorns
-			{ spellID = 467, size = 30, filter = "CD" },
 		},
 	},
 	["HUNTER"] = {
@@ -343,17 +347,15 @@ Filger_Spells = {
 			-- Arcane Blast
 			{ spellID = 36032, size = 37, unitId = "player", caster = "player", filter = "DEBUFF" },
 			-- Improved Scorch
-			{ spellID = 11367, size = 37, unitId = "target", caster = "all", filter = "DEBUFF" },
-			-- Scorch
-			{ spellID = 2948, size = 37, unitId = "target", caster = "all", filter = "DEBUFF" },
+			{ spellID = 22959, size = 37, unitId = "target", caster = "all", filter = "DEBUFF" },
 			-- Slow
 			{ spellID = 31589, size = 37, unitId = "target", caster = "player", filter = "DEBUFF" },
 			-- Ignite
 			{ spellID = 11119, size = 37, unitId = "target", caster = "player", filter = "DEBUFF" },
 			-- Living Bomb
 			{ spellID = 44457, size = 37, unitId = "target", caster = "player", filter = "DEBUFF" },
-			-- Pyroblast!
-			{ spellID = 92315, size = 37, unitId = "player", caster = "player", filter = "DEBUFF" },
+			-- Arcane Blast
+			{ spellID = 36032, size = 37, unitId = "player", caster = "player", filter = "DEBUFF" },
 		},
 		
 		{
@@ -372,7 +374,7 @@ Filger_Spells = {
 			-- Fireball!
 			{ spellID = 57761, size = 37, unitId = "player", caster = "player", filter = "BUFF" },
 			-- Hot Streak
-			{ spellID = 44445, size = 37, unitId = "player", caster = "player", filter = "BUFF" },
+			{ spellID = 44448, size = 37, unitId = "player", caster = "player", filter = "BUFF" },
 			-- Missile Barrage
 			{ spellID = 54486, size = 37, unitId = "player", caster = "player", filter = "BUFF" },
 			-- Clearcasting
@@ -815,12 +817,6 @@ Filger_Spells = {
             --{ spellID = 15258, size = 37, unitId = "player", caster = "player", filter = "BUFF" },
             -- Improved Spirit Tap
            -- { spellID = 59000, size = 37, unitId = "player", caster = "all", filter = "BUFF" },
-			-- Shadow Orb
-			{ spellID = 77487, size = 37, unitId = "player", caster = "player", filter = "BUFF" },
-			-- Archangel
-			{ spellID = 81700, size = 37, unitId = "player", caster = "player", filter = "BUFF" },
-			-- Evangelism
-			{ spellID = 81661, size = 37, unitId = "player", caster = "player", filter = "BUFF" },
 		},
 		{
 			Name = "T_DE/BUFF_BAR",
@@ -921,6 +917,8 @@ Filger_Spells = {
 			{ spellID = 70840, size = 37, unitId = "player", caster = "player", filter = "BUFF" },
 			-- Hyperspeed Accelerators
 			{ spellID = 54999, size = 37, unitId = "player", caster = "player", filter = "BUFF" },
+			-- Demonic Rebirth
+			{ spellID = 88448, size = 37, unitId = "player", caster = "player", filter = "BUFF" },
 		},
 		{
 			Name = "T_DEBUFF_ICON",
@@ -942,7 +940,21 @@ Filger_Spells = {
 			-- Curse of Weakness
 			{ spellID = 702, size = 37, unitId = "target", caster = "all", filter = "DEBUFF" },
 			-- Shadow Embrace
-			{ spellID = 32385, size = 37, unitId = "target", caster = "player", filter = "BUFF" },
+			{ spellID = 32385, size = 30, unitId = "target", caster = "player", filter = "DEBUFF" },
+			--Unstable Affliction
+			{ spellID = 30108, size = 30, unitId = "target", caster = "player", filter = "DEBUFF" },
+			--Corruption
+			{ spellID = 172, size = 30, unitId = "target", caster = "player", filter = "DEBUFF" },
+			--Immolate
+			{ spellID = 348, size = 30, unitId = "target", caster = "player", filter = "DEBUFF" },
+			--BOA
+			{ spellID = 980, size = 30, unitId = "target", caster = "player", filter = "DEBUFF" },
+			--BOD
+			{ spellID = 603, size = 30, unitId = "target", caster = "player", filter = "DEBUFF" },
+			--HAUNT
+			{ spellID = 48181, size = 30, unitId = "target", caster = "player", filter = "DEBUFF" },
+			--HAND OF GULDAN
+			{ spellID = 86000, size = 30, unitId = "target", caster = "player", filter = "DEBUFF" },
 		},
 		{
 			Name = "P_PROC_ICON",
@@ -950,7 +962,8 @@ Filger_Spells = {
 			Interval = 3,
 			Mode = "ICON",
 			setPoint = { "BOTTOMLEFT", "oUF_Target", "TOPLEFT", -2, 213 },
-
+			-- imp soulfire
+			{ spellID = 85114, size = 37, unitId = "player", caster = "player", filter = "BUFF" },
 			-- Essence of Life
 			{ spellID = 60062, size = 37, unitId = "player", caster = "player", filter = "BUFF" },
 			-- Molten Core
@@ -978,25 +991,25 @@ Filger_Spells = {
 			setPoint = { "BOTTOMLEFT", "oUF_Target", "BOTTOMRIGHT", 9, -41 },
 			
 			-- Corruption
-			{ spellID = 172, size = 25, barWidth = 187, unitId = "target", caster = "player", filter = "DEBUFF" },
+			--{ spellID = 172, size = 25, barWidth = 187, unitId = "target", caster = "player", filter = "DEBUFF" },
 			-- Immolate
-			{ spellID = 348, size = 25, barWidth = 187, unitId = "target", caster = "player", filter = "DEBUFF" },
+			--{ spellID = 348, size = 25, barWidth = 187, unitId = "target", caster = "player", filter = "DEBUFF" },
 			-- Curse of Agony
-			{ spellID = 980, size = 25, barWidth = 187, unitId = "target", caster = "player", filter = "DEBUFF" },
+			--{ spellID = 980, size = 25, barWidth = 187, unitId = "target", caster = "player", filter = "DEBUFF" },
 			-- Bane of Doom
-			{ spellID = 603, size = 25, barWidth = 187, unitId = "target", caster = "player", filter = "DEBUFF" },
+			--{ spellID = 603, size = 25, barWidth = 187, unitId = "target", caster = "player", filter = "DEBUFF" },
 			-- Unstable Affliction
-			{ spellID = 30108, size = 25, barWidth = 187, unitId = "target", caster = "player", filter = "DEBUFF" },
+			--{ spellID = 30108, size = 25, barWidth = 187, unitId = "target", caster = "player", filter = "DEBUFF" },
 			-- Haunt
-			{ spellID = 48181, size = 25, barWidth = 187, unitId = "target", caster = "player", filter = "DEBUFF" },	
+			--{ spellID = 48181, size = 25, barWidth = 187, unitId = "target", caster = "player", filter = "DEBUFF" },	
 			-- Seed of Corruption
-			{ spellID = 27243, size = 25, barWidth = 187, unitId = "target", caster = "player", filter = "DEBUFF" },
+			--{ spellID = 27243, size = 25, barWidth = 187, unitId = "target", caster = "player", filter = "DEBUFF" },
 			-- Curse of Weakness
-			{ spellID = 702, size = 25, barWidth = 187, unitId = "target", caster = "player", filter = "DEBUFF" },
+			--{ spellID = 702, size = 25, barWidth = 187, unitId = "target", caster = "player", filter = "DEBUFF" },
 			-- Curse of Tongues
-			{ spellID = 1714, size = 25, barWidth = 187, unitId = "target", caster = "player", filter = "DEBUFF" },
+			--{ spellID = 1714, size = 25, barWidth = 187, unitId = "target", caster = "player", filter = "DEBUFF" },
 			-- Curse of Exhaustion
-			{ spellID = 18223, size = 25, barWidth = 187, unitId = "target", caster = "player", filter = "DEBUFF" },
+			--{ spellID = 18223, size = 25, barWidth = 187, unitId = "target", caster = "player", filter = "DEBUFF" },
 			-- Fear
 			{ spellID = 5782, size = 25, barWidth = 187, unitId = "target", caster = "player", filter = "DEBUFF" },
 			-- Howl of Terror

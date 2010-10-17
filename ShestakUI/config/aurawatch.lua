@@ -105,9 +105,6 @@ end
 if SettingsCF["reminder"].raid_buffs_enable == true then
 	SettingsDB.raid_buffs_reminder = {
 		Flask = {
-			67016,	-- Flask of the North-ING
-			67017,	-- Flask of the North-AGI
-			67018,	-- Flask of the North-STR
 			53758,	-- Flask of Stoneblood
 			53755,	-- Flask of the Frost Wyrm
 			54212,	-- Flask of Pure Mojo
@@ -141,6 +138,7 @@ if SettingsCF["reminder"].raid_buffs_enable == true then
 			57332,	-- 40 Haste
 			57334,	-- 20 MP5
 			57356,	-- 40 EXP
+			57358,	-- 40 ARP
 			57360,	-- 40 Hit
 			57365,	-- 40 Spirit
 			57367,	-- 40 AGI
@@ -168,9 +166,7 @@ if SettingsCF["unitframe"].plugins_aura_watch == true then
 				{33076, "BOTTOMRIGHT", {0.2, 0.7, 0.2}},		-- Prayer of Mending
 				{139, "BOTTOMLEFT", {0.4, 0.7, 0.2}}, 			-- Renew
 				{17, "TOPLEFT", {0.81, 0.85, 0.1}, true},		-- Power Word: Shield
-				{10060, "RIGHT", {0.89, 0.1, 0.1}},				-- Power Infusion
-				{33206, "LEFT", {0.89, 0.1, 0.1}, true},		-- Pain Suppress
-				{47788, "LEFT", {0.86, 0.52, 0}, true},			-- Hand of Freedom
+				{10060, "RIGHT", {0.89, 0.1, 0.1}},				-- Power Infusion	
 			},
 			DRUID = {
 				{774, "TOPRIGHT", {0.8, 0.4, 0.8}},				-- Rejuvenation
@@ -191,7 +187,7 @@ if SettingsCF["unitframe"].plugins_aura_watch == true then
 				{51945, "BOTTOMRIGHT", {0.7, 0.4, 0}},			-- Earthliving
 			},
 			ROGUE = {
-				{57933, "TOPRIGHT", {0.89, 0.1, 0.1}},			-- Tricks of the Trade
+				{57934, "TOPRIGHT", {0.89, 0.1, 0.1}},			-- Tricks of the Trade
 			},
 			DEATHKNIGHT = {
 				{49016, "TOPRIGHT", {0.89, 0.89, 0.1}},			-- Unholy Frenzy
@@ -200,7 +196,7 @@ if SettingsCF["unitframe"].plugins_aura_watch == true then
 				{54646, "TOPRIGHT", {0.2, 0.2, 1}},				-- Focus Magic
 			},
 			WARRIOR = {
-				{59665, "TOPLEFT", {0.2, 0.2, 1}},				-- Vigilance
+				{50720, "TOPLEFT", {0.2, 0.2, 1}},				-- Vigilance
 				{3411, "TOPRIGHT", {0.89, 0.1, 0.1}},			-- Intervene
 			},
 			ALL = {
