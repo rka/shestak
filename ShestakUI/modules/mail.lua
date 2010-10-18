@@ -2,8 +2,6 @@
 --	Grab mail in 1 button(OpenAll by Kemayo)
 ----------------------------------------------------------------------------------------
 if (IsAddOnLoaded("QuickAuctions") or IsAddOnLoaded("OpenAll")) then return end
-local CC = select(4, GetBuildInfo()) == 4e4
-if CC then return end
 
 local deletedelay, t = 0.5, 0
 local takingOnlyCash = false
@@ -50,8 +48,8 @@ function openMail(index)
 	end
 end
 
-function waitForMail()
-	t = t + arg1
+function waitForMail(self, elapsed)
+	t = t + elapsed
 	if (not needsToWait) or (t > deletedelay) then
 		needsToWait = false
 		button:SetScript("OnUpdate", nil)
@@ -96,7 +94,7 @@ end
 button = makeButton("OpenAllButton", ALL, 70, 25, -45, -408)
 button:SetScript("OnClick", openAll)
 button:SetScript("OnEvent", onEvent)
-button2 = makeButton("OpenAllButton2", GUILDCONTROL_OPTION16, 70, 25, 28, -408)
+button2 = makeButton("OpenAllButton2", L_MAIL_GOLD, 70, 25, 28, -408)
 button2:SetScript("OnClick", openAllCash)
 
 button:SetScript("OnEnter", function()

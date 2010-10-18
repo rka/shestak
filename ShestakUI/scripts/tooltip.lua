@@ -233,46 +233,43 @@ if SettingsCF["tooltip"].talents == true then
 	local gtt = GameTooltip;
 	local GetTalentTabInfo = GetTalentTabInfo;
 
-	-- Locals
+	-- Constants
+	local TALENTS_PREFIX = TALENTS..":|cffffffff ";
+	local CACHE_SIZE = 25;		-- Change cache size here (Default 25)
+	local MIN_INSPECT_DELAY = 0.2;
+	local MIN_INSPECT_FREQ = 2;
+	
+	-- Variables
 	local ttt = CreateFrame("Frame", "TipTacTalents");
 	local cache = {};
 	local current = {};
-	local TALENTS_PREFIX = TALENTS..":|cffffffff ";
-	local CACHE_SIZE = 25;		-- Change cache size here (Default 25)
+	local lastInspectRequest = 0;
 
 	-- Allow these to be accessed through other addons
 	ttt.cache = cache;
 	ttt.current = current;
+	ttt:Hide();
 
-	-- Az: wrath/cata compatibility
-	local _, _, _, tocVersion = GetBuildInfo();
-	local TALENT_EVENT = (tocVersion >= 40000 and "INSPECT_READY" or "INSPECT_TALENT_READY");
+	--------------------------------------------------------------------------------------------------------
+	--                                           Gather Talents                                           --
+	--------------------------------------------------------------------------------------------------------
 
-	-- Az: temp function that emulates pre 4.0 function on cataclysm build -- After release, delete this function, and replace "TipTacTalents_GetTalentTabInfo" with "GetTalentTabInfo".
-	local function TipTacTalents_GetTalentTabInfo(...)
-		if (tocVersion >= 40000) then
-			local uniqueId, tabName, description, icon, pointsSpent, background, previewPointsSpent, bool = GetTalentTabInfo(...);
-			return tabName, icon, pointsSpent, background, previewPointsSpent;
-		else
-			return GetTalentTabInfo(...);
-		end
-	end
-	
-	-- GatherTalents
 	local function GatherTalents(isInspect)
 		-- Inspect functions will always use the active spec when not inspecting
 		local group = GetActiveTalentGroup(isInspect);
 		-- Get points per tree, and set "maxTree" to the tree with most points
 		local maxTree, _ = 1;
 		for i = 1, 3 do
-			_, _, current[i] = TipTacTalents_GetTalentTabInfo(i,isInspect,nil,group);
+			local _, _, _, _, pointsSpent = GetTalentTabInfo(i,isInspect,nil,group);
+			current[i] = pointsSpent;
 			if (current[i] > current[maxTree]) then
 				maxTree = i;
 			end
 		end
-		current.tree = TipTacTalents_GetTalentTabInfo(maxTree,isInspect,nil,group);
+		local _, tabName = GetTalentTabInfo(maxTree,isInspect,nil,group);
+		current.tree = tabName;
 		-- Customise output. Use TipTac setting if it exists, otherwise just use formatting style one.
-		local talentFormat = 1;
+		local talentFormat = (1);
 		if (current[maxTree] == 0) then
 			current.format = L_TOOLTIP_NO_TALENT;
 		elseif (talentFormat == 1) then
@@ -298,7 +295,7 @@ if SettingsCF["tooltip"].talents == true then
 			end
 		end
 		-- Organise Cache
-		local cacheSize = CACHE_SIZE;
+		local cacheSize = (CACHE_SIZE);
 		for i = #cache, 1, -1 do
 			if (current.name == cache[i].name) then
 				tremove(cache,i);
@@ -314,17 +311,36 @@ if SettingsCF["tooltip"].talents == true then
 		end
 	end
 
+	--------------------------------------------------------------------------------------------------------
+	--                                           Event Handling                                           --
+	--------------------------------------------------------------------------------------------------------
+
 	-- OnEvent
 	ttt:SetScript("OnEvent",function(self,event,guid)
 		self:UnregisterEvent(event);
-	--	if (guid == current.guid) then	-- Az: change after cata patch
-		if (gtt:GetUnit() == current.name) then
+		if (guid == current.guid) then
 			GatherTalents(1);
+		end
+	end);
+
+	-- OnUpdate
+	ttt:SetScript("OnUpdate",function(self,elapsed)
+		self.nextUpdate = (self.nextUpdate - elapsed);
+		if (self.nextUpdate <= 0) then
+			self:Hide();
+			-- Make sure the mouseover unit is still our unit
+			if (UnitGUID("mouseover") == current.guid) then
+				lastInspectRequest = GetTime();
+				self:RegisterEvent("INSPECT_READY");
+				NotifyInspect(current.unit);
+			end
 		end
 	end);
 
 	-- HOOK: OnTooltipSetUnit
 	gtt:HookScript("OnTooltipSetUnit",function(self,...)
+		-- Abort any delayed inspect in progress
+		ttt:Hide();
 		-- Get the unit -- Check the UnitFrame unit if this tip is from a concated unit, such as "targettarget".
 		local _, unit = self:GetUnit();
 		if (not unit) then
@@ -333,31 +349,42 @@ if SettingsCF["tooltip"].talents == true then
 				unit = mFocus.unit;
 			end
 		end
-		-- Only for players over level 9 -- Ignore PvP flagged people, unless they are friendly
-		if (UnitIsPlayer(unit)) and (UnitLevel(unit) > 9 or UnitLevel(unit) == -1) and (CanInspect(unit)) then
-			wipe(current);
-			current.name = UnitName(unit);
-			current.guid = UnitGUID(unit)
-			-- Player
+		-- No Unit or not a Player
+		if (not unit) or (not UnitIsPlayer(unit)) then
+			return;
+		end
+		-- Only bother for players over level 9
+		local level = UnitLevel(unit);
+		if (level > 9 or level == -1) then
+			-- No need for inspection on the player
 			if (UnitIsUnit(unit,"player")) then
 				GatherTalents();
-			-- Others
-			else
-				local allowInspect = (not InspectFrame or not InspectFrame:IsShown()) and (not Examiner or not Examiner:IsShown());
-				if (allowInspect) then
-					ttt:RegisterEvent(TALENT_EVENT);
-					NotifyInspect(unit);
+				return;
+			end
+			-- Wipe Current Record
+			wipe(current);
+			current.unit = unit;
+			current.name = UnitName(unit);
+			current.guid = UnitGUID(unit)
+			-- Show Cached Talents, If Available
+			local cacheLoaded = false;
+			for _, entry in ipairs(cache) do
+				if (current.name == entry.name) then
+					self:AddLine(TALENTS_PREFIX..entry.format);
+					current.tree = entry.tree;
+					current.format = entry.format;
+					current[1], current[2], current[3] = entry[1], entry[2], entry[3];
+					cacheLoaded = true;
+					break;
 				end
-				for _, entry in ipairs(cache) do
-					if (current.name == entry.name) then
-						self:AddLine(TALENTS_PREFIX..entry.format);
-						current.tree = entry.tree;
-						current.format = entry.format;
-						current[1], current[2], current[3] = entry[1], entry[2], entry[3];
-						return;
-					end
-				end
-				if (allowInspect) then
+			end
+			-- Queue an inspect request
+			local isInspectOpen = (InspectFrame and InspectFrame:IsShown()) or (Examiner and Examiner:IsShown());
+			if (CanInspect(unit)) and (not isInspectOpen) then
+				local lastInspectTime = (GetTime() - lastInspectRequest);
+				ttt.nextUpdate = (lastInspectTime > MIN_INSPECT_FREQ) and MIN_INSPECT_DELAY or (MIN_INSPECT_FREQ - lastInspectTime + MIN_INSPECT_DELAY);
+				ttt:Show();
+				if (not cacheLoaded) then
 					self:AddLine(TALENTS_PREFIX..L_TOOLTIP_LOADING);
 				end
 			end
