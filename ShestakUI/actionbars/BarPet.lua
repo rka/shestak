@@ -3,6 +3,7 @@ if not SettingsCF["actionbar"].enable == true then return end
 ----------------------------------------------------------------------------------------
 --	Setup PetActionBar by Tukz
 ----------------------------------------------------------------------------------------
+-- Create bar
 local bar = CreateFrame("Frame", "PetHolder", UIParent, "SecureHandlerStateTemplate")
 bar:ClearAllPoints()
 bar:SetAllPoints(PetActionBarAnchor)

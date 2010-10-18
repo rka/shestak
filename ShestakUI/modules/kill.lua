@@ -39,13 +39,15 @@ Kill:SetScript("OnEvent", function(self, event, addon)
 		end
 		
 		if SettingsCF.unitframe.enable then
-			SetCVar("ConsolidateBuffs", 0)
+			SetCVar("ConsolidateBuffs", 1)
 			InterfaceOptionsFrameCategoriesButton9:SetScale(0.00001)
 			InterfaceOptionsFrameCategoriesButton9:SetAlpha(0)	
 			InterfaceOptionsFrameCategoriesButton10:SetScale(0.00001)
 			InterfaceOptionsFrameCategoriesButton10:SetAlpha(0)
-			InterfaceOptionsFrameCategoriesButton12:SetScale(0.00001)
-			InterfaceOptionsFrameCategoriesButton12:SetAlpha(0)
+			k(InterfaceOptionsBuffsPanelShowCastableDebuffs)
+			k(InterfaceOptionsBuffsPanelCastableBuffs)
+			k(InterfaceOptionsBuffsPanelDispellableDebuffs)
+			k(InterfaceOptionsBuffsPanelBuffDurations)
 		end
 		
 		if SettingsCF.unitframe.show_arena then

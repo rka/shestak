@@ -45,7 +45,7 @@ if (IsAddOnLoaded("TidyPlates") or IsAddOnLoaded("Aloft") or IsAddOnLoaded("dNam
 	SettingsCF["nameplate"].enable = false
 end
 
-if (IsAddOnLoaded("Dominos") or IsAddOnLoaded("Bartender4") or IsAddOnLoaded("Macaroon")) then
+if (IsAddOnLoaded("Dominos") or IsAddOnLoaded("Bartender4")) then
 	SettingsCF["actionbar"].enable = false
 end
 

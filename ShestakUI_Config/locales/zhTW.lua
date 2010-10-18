@@ -149,6 +149,19 @@ if GetLocale() == "zhTW" then
 	L_GUI_ACTIONBAR_SHAPESHIFT_HIDE = "隱藏變身/姿態/圖騰快捷列"
 	L_GUI_ACTIONBAR_SHAPESHIFT_HORIZONTAL = "橫向顯示變身/姿態快捷列"
 	
+	-- Auras/Buffs/Debuffs
+	L_GUI_AURA_FONT_SIZE = "Auras font size"  -- Needs review
+	L_GUI_AURA_PLAYER_BUFF_SIZE = "Player buffs size"  -- Needs review
+	L_GUI_AURA_SHOW_SPIRAL = "在圖示上顯示漩渦冷卻樣式"
+	L_GUI_AURA_SHOW_TIMER = "在圖示上顯示層數堆疊"
+	L_GUI_AURA_PLAYER_AURAS = "在玩家框體顯示法術效果"
+	L_GUI_AURA_TARGET_AURAS = "在目標框體顯示法術效果"
+	L_GUI_AURA_FOCUS_DEBUFFS = "在焦點目標框體顯示DeBuffs"
+	L_GUI_AURA_PET_DEBUFFS = "在寵物框體顯示DeBuffs"
+	L_GUI_AURA_TOT_DEBUFFS = "在目標的目標框體顯示DeBuffs"
+	L_GUI_AURA_PLAYER_AURA_ONLY = "在目標框體只顯示自己的DeBuffs"
+	L_GUI_AURA_DEBUFF_COLOR_TYPE = "DeBuffs著色依照法術類型"
+	
 	-- Unit frame options
 	L_GUI_UF_ENABLE = "開啟單位框架"
 	L_GUI_UF_FONT_SIZE = "字體大小"
@@ -172,16 +185,7 @@ if GetLocale() == "zhTW" then
 	L_GUI_UF_SOLO_MODE = "總是顯示玩家框體"
 	L_GUI_UF_PLAYER_PARTY = "在小隊中顯示玩家框體"
 	L_GUI_UF_SHOW_TANK = "顯示團隊主坦克框體"
-	L_GUI_UF_RAID_GROUP = "顯示小隊數目(oUF_ShestakHeal風格)"
-	L_GUI_UF_AURA_SHOW_SPIRAL = "在圖示上顯示漩渦冷卻樣式"
-	L_GUI_UF_AURA_SHOW_TIMER = "在圖示上顯示層數堆疊"
-	L_GUI_UF_AURA_PLAYER_AURAS = "在玩家框體顯示法術效果"
-	L_GUI_UF_AURA_TARGET_AURAS = "在目標框體顯示法術效果"
-	L_GUI_UF_AURA_FOCUS_DEBUFFS = "在焦點目標框體顯示DeBuffs"
-	L_GUI_UF_AURA_PET_DEBUFFS = "在寵物框體顯示DeBuffs"
-	L_GUI_UF_AURA_TOT_DEBUFFS = "在目標的目標框體顯示DeBuffs"
-	L_GUI_UF_AURA_PLAYER_AURA_ONLY = "在目標框體只顯示自己的DeBuffs"
-	L_GUI_UF_AURA_DEBUFF_COLOR_TYPE = "DeBuffs著色依照法術類型"
+	L_GUI_UF_RAID_GROUP = "顯示小隊數目(ShestakUI_Heal風格)"
 	L_GUI_UF_ICONS_PVP = "滑鼠劃過玩家/目標顯示PVP狀態文字"  -- Needs review
 	L_GUI_UF_ICONS_LEADER = "顯示團隊隊長標識/助手標識/分配者標識"
 	L_GUI_UF_ICONS_COMBAT = "顯示戰鬥標識"

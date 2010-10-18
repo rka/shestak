@@ -236,6 +236,23 @@ SettingsCF["actionbar"] = {
 }
 
 ----------------------------------------------------------------------------------------
+--	Auras/Buffs/Debuffs
+----------------------------------------------------------------------------------------
+SettingsCF["aura"] = {
+	["font_size"] = 8,							-- Auras font size
+	["player_buff_size"] = 25,					-- Player buffs size
+	["show_spiral"] = false,					-- Spiral on aura icons
+	["show_timer"] = true,						-- Show cooldown tier on aura icons
+	["player_auras"] = true,					-- Auras on player frame
+	["target_auras"] = true,					-- Auras on target frame
+	["focus_debuffs"] = false,					-- DeBuffs on focus frame
+	["pet_debuffs"] = false,					-- DeBuffs on pet frame
+	["tot_debuffs"] = false,					-- DeBuffs on targettarget frame
+	["player_aura_only"] = false,				-- Only your debuff on target frame
+	["debuff_color_type"] = true,				-- Color debuff by type
+}
+
+----------------------------------------------------------------------------------------
 --	UnitFrame options
 ----------------------------------------------------------------------------------------
 SettingsCF["unitframe"] = {
@@ -264,16 +281,6 @@ SettingsCF["unitframe"] = {
 	["player_in_party"] = true,					-- Show player frame in party
 	["raid_tanks"] = true,						-- Show raid tanks
 	["raid_groups"] = "1,2,3,4,5",				-- Number of groups in raid(Only for ShestakUI_Heal)
-	-- Auras/Buffs/Debuffs
-	["aura_show_spiral"] = false,				-- Spiral on aura icons
-	["aura_show_timer"] = true,					-- Show cooldown tier on aura icons
-	["aura_player_auras"] = true,				-- Auras on player frame
-	["aura_target_auras"] = true,				-- Auras on target frame
-	["aura_focus_debuffs"] = false,				-- DeBuffs on focus frame
-	["aura_pet_debuffs"] = false,				-- DeBuffs on pet frame
-	["aura_tot_debuffs"] = false,				-- DeBuffs on targettarget frame
-	["aura_player_aura_only"] = false,			-- Only your debuff on target frame
-	["aura_debuff_color_type"] = true,			-- Color debuff by type
 	-- Icons
 	["icons_pvp"] = false,						-- Mouseover pvp text(not icons) on player and target frames
 	["icons_leader"] = true,					-- Leader icon, assistant icon, master loot icon on frames
@@ -424,6 +431,7 @@ SettingsCF["position"] = {
 	["stance_bar"] = {"BOTTOMRIGHT", UIParent, "BOTTOM", -202, 167},		-- Stance/Shift/Totem bars
 	["vehicle_bar"] = {"BOTTOMRIGHT", "Bar1Holder", "BOTTOMLEFT", -3, 0},	-- Vehicle button
 	-- UnitFrame positions
+	["player_buffs"] = {"TOPRIGHT", UIParent, "TOPRIGHT", -22, -20},		-- Player buffs
 	unitframes = {
 		["player"] = {"BOTTOM", UIParent, "BOTTOM", -284, 236},						-- Player frame
 		["target"] = {"BOTTOM", UIParent, "BOTTOM", 284, 236},						-- Target frame

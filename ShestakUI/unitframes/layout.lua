@@ -597,7 +597,7 @@ local function Shared(self, unit)
 			self.Auras.spacing = SettingsDB.Scale(3)
 			self.Auras.size = SettingsDB.Scale(25)
 			self.Auras.gap = true
-			self.Auras.onlyShowPlayer = db.aura_player_aura_only
+			self.Auras.onlyShowPlayer = SettingsCF["aura"].player_aura_only
 			self.Auras.PostCreateIcon = SettingsDB.PostCreateAura
 			self.Auras.PostUpdateIcon = SettingsDB.PostUpdateIcon			
 

@@ -7,7 +7,7 @@ if not SettingsCF["actionbar"].enable == true then return end
 do
 	local elements = {
 		MainMenuBar, MainMenuBarArtFrame, BonusActionBarFrame, VehicleMenuBar,
-		PossessBarFrame, PetActionBarFrame,
+		PossessBarFrame, PetActionBarFrame, ShapeshiftBarFrame,
 		ShapeshiftBarLeft, ShapeshiftBarMiddle, ShapeshiftBarRight,
 	}
 	for _, element in pairs(elements) do

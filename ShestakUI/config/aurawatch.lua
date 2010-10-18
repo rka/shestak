@@ -31,6 +31,7 @@ if SettingsCF["cooldown"].enemy_enable == true then
 		[1499] = 30,	-- Freezing Trap
 		[16979] = 15,	-- Feral Charge - Bear
 		[49376] = 30,	-- Feral Charge - Cat
+		[85285] = 10,	-- Rebuke
 	}
 end
 
@@ -186,7 +187,7 @@ if SettingsCF["unitframe"].plugins_aura_watch == true then
 			},
 			SHAMAN = {
 				{61295, "TOPRIGHT", {0.7, 0.3, 0.7}},			-- Riptide 
-				{974, "BOTTOMLEFT", {0.2, 0.7, 0.2}},			-- Earth Shield
+				{974, "BOTTOMLEFT", {0.2, 0.7, 0.2}, true},		-- Earth Shield
 				{16236, "TOPLEFT", {0.4, 0.7, 0.2}},			-- Ancestral Fortitude
 				{51945, "BOTTOMRIGHT", {0.7, 0.4, 0}},			-- Earthliving
 			},
@@ -223,13 +224,108 @@ if SettingsCF["unitframe"].plugins_aura_watch == true then
 		ORD.MatchBySpellName = false
 		
 		SettingsDB.debuffids = {
+		--[[-- The Ruby Sanctum
+			74562,	-- Fiery Combustion
+			75883,	-- Combustion
+			74792,	-- Soul Consumption
+			75876,	-- Consumption
+		-- Icecrown Citadel
+			-- The Lower Spire
+				38028,	-- Web Wrap
+				69483,	-- Dark Reckoning
+				71124,	-- Curse of Doom
+			-- The Plagueworks
+				71089,	-- Bubbling Pus
+				71127,	-- Mortal Wound
+				71163,	-- Devour Humanoid
+				71103,	-- Combobulating Spray
+				71157,	-- Infested Wound
+			-- The Crimson Hall
+				70645,	-- Chains of Shadow
+				70671,	-- Leeching Rot
+				70432,	-- Blood Sap
+				70435,	-- Rend Flesh
+			-- Frostwing Hall
+				71257,	-- Barbaric Strike
+				71252,	-- Volley
+				71327,	-- Web
+				36922,	-- Bellowing Roar
+			-- Lord Marrowgar
+				70823,	-- Coldflame
+				69065,	-- Impaled
+				70835,	-- Bone Storm
+			-- Lady Deathwhisper
+				72109,	-- Death and Decay
+				71289,	-- Dominate Mind
+				71204,	-- Touch of Insignificance
+				67934,	-- Frost Fever
+				71237,	-- Curse of Torpor
+				72491,	-- Necrotic Strike
+			-- Gunship Battle
+				69651,	-- Wounding Strike
+			-- Deathbringer Saurfang
+				72293,	-- Mark of the Fallen Champion
+				72442,	-- Boiling Blood
+				72449,	-- Rune of Blood
+				72769,	-- Scent of Blood (heroic)
+			-- Rotface
+				71224,	-- Mutated Infection
+				71215,	-- Ooze Flood
+				69774,	-- Sticky Ooze
+			-- Festergut
+				69279,	-- Gas Spore
+				71218,	-- Vile Gas
+				72219,	-- Gastric Bloat
+			-- Proffessor
+				70341,	-- Slime Puddle
+				72549,	-- Malleable Goo
+				71278,	-- Choking Gas Bomb
+				70215,	-- Gaseous Bloat
+				70447,	-- Volatile Ooze Adhesive
+				72454,	-- Mutated Plague
+				70405,	-- Mutated Transformation
+				72856,	-- Unbound Plague
+				70953,	-- Plague Sickness
+            -- Blood Princes
+				72796,	-- Glittering Sparks
+				71822,	-- Shadow Resonance
+            -- Blood-Queen Lana'thel
+				70838,	-- Blood Mirror
+				72265,	-- Delirious Slash
+				71473,	-- Essence of the Blood Queen
+				71474,	-- Frenzied Bloodthirst
+				73070,	-- Incite Terror
+				71340,	-- Pact of the Darkfallen
+				71265,	-- Swarming Shadows
+				70923,	-- Uncontrollable Frenzy
+            -- Valithria Dreamwalker
+				70873,	-- Emerald Vigor
+				71746,	-- Column of Frost
+				71741,	-- Mana Void
+				71738,	-- Corrosion
+				71733,	-- Acid Burst
+				71283,	-- Gut Spray
+				71941,	-- Twisted Nightmares
+            -- Sindragosa
+				69762,	-- Unchained Magic
+				69766,	-- Instability
+				70126,	-- Frost Beacon
+				70157,	-- Ice Tomb
+            -- The Lich King
+				70337,	-- Necrotic plague
+				72149,	-- Shockwave
+				70541,	-- Infest
+				69242,	-- Soul Shriek
+				69409,	-- Soul Reaper
+				72762,	-- Defile
+				68980,	-- Harvest Soul]]
 		-- Vault of Archavon
 			-- Koralon
 				67332,	-- Flaming Cinder (10)
 				66684,	-- Flaming Cinder (25)
-			--Toravon the Ice Watcher
+			-- Toravon the Ice Watcher
 				72004,72098,72120,72121, -- Frostbite
-			--Toravon the Ice Watcher
+			-- Toravon the Ice Watcher
 				72004,72098,72120,72121, -- Frostbite
 		-- Naxxramas
 			-- Kel'Thuzad

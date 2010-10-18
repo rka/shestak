@@ -1,5 +1,5 @@
 if not SettingsCF["actionbar"].enable == true and SettingsDB.class ~= "SHAMAN" then return end
-
+if SettingsCF["actionbar"].shapeshift_hide == true then return end
 ----------------------------------------------------------------------------------------
 --	Setup Totem Bar by Tukz
 ----------------------------------------------------------------------------------------
@@ -23,5 +23,3 @@ if MultiCastActionBarFrame then
 	MultiCastActionBarFrame.SetPoint = SettingsDB.dummy
 	MultiCastRecallSpellButton.SetPoint = SettingsDB.dummy
 end
-
--- Hide it if needed

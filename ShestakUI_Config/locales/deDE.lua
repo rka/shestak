@@ -149,6 +149,19 @@ if GetLocale() == "deDE" then
 	L_GUI_ACTIONBAR_SHAPESHIFT_HIDE = "Gestaltenleiste verstecken"
 	L_GUI_ACTIONBAR_SHAPESHIFT_HORIZONTAL = "Enable horizontal stance bar"  -- Needs review
 	
+	-- Auras/Buffs/Debuffs
+	L_GUI_AURA_FONT_SIZE = "Auras font size"  -- Needs review
+	L_GUI_AURA_PLAYER_BUFF_SIZE = "Player buffs size"  -- Needs review
+	L_GUI_AURA_SHOW_SPIRAL = "Spirale auf Buffsymbolen"
+	L_GUI_AURA_SHOW_TIMER = "Zeige Abklingzeit für Buffs"
+	L_GUI_AURA_PLAYER_AURAS = "Buffs auf dem Spielerfenster"
+	L_GUI_AURA_TARGET_AURAS = "Buffs auf dem Zielfenster"
+	L_GUI_AURA_FOCUS_DEBUFFS = "Debuffs auf dem Fokusfenster"
+	L_GUI_AURA_PET_DEBUFFS = "Debuffs auf dem Begleiterfenster"
+	L_GUI_AURA_TOT_DEBUFFS = "Debuffs bei Ziel des Ziels anzeigen"
+	L_GUI_AURA_PLAYER_AURA_ONLY = "Nur eigenen Debuffs bei dem Zielfenster anzeigen"
+	L_GUI_AURA_DEBUFF_COLOR_TYPE = "Debuffs nach Art einfärben"
+	
 	-- Unit frame options
 	L_GUI_UF_ENABLE = "Enable unit frames"  -- Needs review
 	L_GUI_UF_FONT_SIZE = "Schriftgröße"
@@ -173,15 +186,6 @@ if GetLocale() == "deDE" then
 	L_GUI_UF_PLAYER_PARTY = "Spielerfenster in der Gruppe anzeigen"
 	L_GUI_UF_SHOW_TANK = "Zeige Raid Tanks an"
 	L_GUI_UF_RAID_GROUP = "Anzahl der Gruppen im Raid(nur für oUF_ShestakHeal)"
-	L_GUI_UF_AURA_SHOW_SPIRAL = "Spirale auf Buffsymbolen"
-	L_GUI_UF_AURA_SHOW_TIMER = "Zeige Abklingzeit für Buffs"
-	L_GUI_UF_AURA_PLAYER_AURAS = "Buffs auf dem Spielerfenster"
-	L_GUI_UF_AURA_TARGET_AURAS = "Buffs auf dem Zielfenster"
-	L_GUI_UF_AURA_FOCUS_DEBUFFS = "Debuffs auf dem Fokusfenster"
-	L_GUI_UF_AURA_PET_DEBUFFS = "Debuffs auf dem Begleiterfenster"
-	L_GUI_UF_AURA_TOT_DEBUFFS = "Debuffs bei Ziel des Ziels anzeigen"
-	L_GUI_UF_AURA_PLAYER_AURA_ONLY = "Nur eigenen Debuffs bei dem Zielfenster anzeigen"
-	L_GUI_UF_AURA_DEBUFF_COLOR_TYPE = "Debuffs nach Art einfärben"
 	L_GUI_UF_ICONS_PVP = "Zeige PVP Text (keine Symbole) bei Mouseover (Spieler+Ziel)"
 	L_GUI_UF_ICONS_LEADER = "Anführer/Assistent/Plündermeister-Symbole an den Fenstern anzeigen"
 	L_GUI_UF_ICONS_COMBAT = "Kampfsymbol"

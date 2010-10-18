@@ -94,7 +94,7 @@ end
 button = makeButton("OpenAllButton", ALL, 70, 25, -45, -408)
 button:SetScript("OnClick", openAll)
 button:SetScript("OnEvent", onEvent)
-button2 = makeButton("OpenAllButton2", L_MAIL_GOLD, 70, 25, 28, -408)
+button2 = makeButton("OpenAllButton2", MONEY, 70, 25, 28, -408)
 button2:SetScript("OnClick", openAllCash)
 
 button:SetScript("OnEnter", function()

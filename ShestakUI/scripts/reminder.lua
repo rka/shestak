@@ -111,7 +111,7 @@ if SettingsCF["reminder"].raid_buffs_enable == true then
 			1459,	-- Arcane Brilliance
 		}
 		Spell6Buff = {	-- Mana Regen
-			5675,	-- Mana Spring Totem
+			24853,	-- Mana Spring Totem
 			19740,	-- Blessing of Might
 		}
 	end

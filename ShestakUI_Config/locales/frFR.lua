@@ -149,13 +149,26 @@ if GetLocale() == "frFR" then
 	L_GUI_ACTIONBAR_SHAPESHIFT_HIDE = "Cacher changeforme"
 	L_GUI_ACTIONBAR_SHAPESHIFT_HORIZONTAL = "Enable horizontal stance bar"  -- Needs review
 	
+	-- Auras/Buffs/Debuffs
+	L_GUI_AURA_FONT_SIZE = "Auras font size"  -- Needs review
+	L_GUI_AURA_PLAYER_BUFF_SIZE = "Player buffs size"  -- Needs review
+	L_GUI_AURA_SHOW_SPIRAL = "Spiral on aura icons"  -- Needs review
+	L_GUI_AURA_SHOW_TIMER = "Afficher le cooldown des icones d'aura"
+	L_GUI_AURA_PLAYER_AURAS = "Auras sur la barre du joueur"
+	L_GUI_AURA_TARGET_AURAS = "Auras sur la barre de cible"
+	L_GUI_AURA_FOCUS_DEBUFFS = "Afficher les debuffs du focus"
+	L_GUI_AURA_PET_DEBUFFS = "Afficher les debuffs du pet"
+	L_GUI_AURA_TOT_DEBUFFS = "Afficher les debuffs de la cible de la cible"
+	L_GUI_AURA_PLAYER_AURA_ONLY = "Afficher seulement ses propres debuffs sur la cible"
+	L_GUI_AURA_DEBUFF_COLOR_TYPE = "Coleur de debuff par type"
+	
 	-- Unit frame options
 	L_GUI_UF_ENABLE = "Enable unit frames"  -- Needs review
 	L_GUI_UF_FONT_SIZE = "Taille de la police"
 	L_GUI_UF_AGGRO_BORDER = "Aggro signalée en bordure"
 	L_GUI_UF_OWN_COLOR = "Mettre la couleur de classe comme couleur pour la barre de vie"
 	L_GUI_UF_ENEMY_HEALTH_COLOR = "Si activée, la couleur des cibles ennemi est rouge"
-	L_GUI_UF_TOTAL_VALUE = "Display of info text on player and target with XXXX/Total" -- don't understand the meaning
+	L_GUI_UF_TOTAL_VALUE = "Display of info text on player and target with XXXX/Total"  -- Needs review
 	L_GUI_UF_DEFICIT_HEALTH = "Déficit en vie du raid"
 	L_GUI_UF_COLOR_VALUE = "Valeur de vie/mana colorée"
 	L_GUI_UF_UNIT_CASTBAR = "Voir la barre de cast"
@@ -172,16 +185,7 @@ if GetLocale() == "frFR" then
 	L_GUI_UF_SOLO_MODE = "Toujours afficher la barre du joueur"
 	L_GUI_UF_PLAYER_PARTY = "Afficher la barre du joueur en groupe"
 	L_GUI_UF_SHOW_TANK = "Afficher les tanks de raid"
-	L_GUI_UF_RAID_GROUP = "Nombre de groupe dans le raid (Seulement pour oUF_ShestakHeal)"
-	L_GUI_UF_AURA_SHOW_SPIRAL = "Spiral on aura icons" -- I don't know
-	L_GUI_UF_AURA_SHOW_TIMER = "Afficher le cooldown des icones d'aura"
-	L_GUI_UF_AURA_PLAYER_AURAS = "Auras sur la barre du joueur"
-	L_GUI_UF_AURA_TARGET_AURAS = "Auras sur la barre de cible"
-	L_GUI_UF_AURA_FOCUS_DEBUFFS = "Afficher les debuffs du focus"
-	L_GUI_UF_AURA_PET_DEBUFFS = "Afficher les debuffs du pet"
-	L_GUI_UF_AURA_TOT_DEBUFFS = "Afficher les debuffs de la cible de la cible"
-	L_GUI_UF_AURA_PLAYER_AURA_ONLY = "Afficher seulement ses propres debuffs sur la cible"
-	L_GUI_UF_AURA_DEBUFF_COLOR_TYPE = "Coleur de debuff par type"
+	L_GUI_UF_RAID_GROUP = "Nombre de groupe dans le raid (Seulement pour ShestakUI_Heal)"
 	L_GUI_UF_ICONS_PVP = "Texte JcJ en Mouseover pour la barre du joueur et celle de la cible"
 	L_GUI_UF_ICONS_LEADER = "Icone du Chef de raid, icone de l'assistant, icone du maоtre du butin"
 	L_GUI_UF_ICONS_COMBAT = "Icone de combat"

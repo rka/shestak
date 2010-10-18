@@ -160,8 +160,46 @@ function SettingsDB.Kill(object)
 end
 
 ----------------------------------------------------------------------------------------
---	Pet bar stile function
+--	Pet and shapeshift bars style function
 ----------------------------------------------------------------------------------------
+function SettingsDB.ShiftBarUpdate()
+	local numForms = GetNumShapeshiftForms()
+	local texture, name, isActive, isCastable
+	local button, icon, cooldown
+	local start, duration, enable
+	for i = 1, NUM_SHAPESHIFT_SLOTS do
+		button = _G["ShapeshiftButton"..i]
+		icon = _G["ShapeshiftButton"..i.."Icon"]
+		if i <= numForms then
+			texture, name, isActive, isCastable = GetShapeshiftFormInfo(i)
+			icon:SetTexture(texture)
+			
+			cooldown = _G["ShapeshiftButton"..i.."Cooldown"]
+			if texture then
+				cooldown:SetAlpha(1)
+			else
+				cooldown:SetAlpha(0)
+			end
+			
+			start, duration, enable = GetShapeshiftFormCooldown(i)
+			CooldownFrame_SetTimer(cooldown, start, duration, enable)
+			
+			if isActive then
+				ShapeshiftBarFrame.lastSelected = button:GetID()
+				button:SetChecked(1)
+			else
+				button:SetChecked(0)
+			end
+
+			if isCastable then
+				icon:SetVertexColor(1.0, 1.0, 1.0)
+			else
+				icon:SetVertexColor(0.4, 0.4, 0.4)
+			end
+		end
+	end
+end
+
 function SettingsDB.PetBarUpdate(self, event)
 	local petActionButton, petActionIcon, petAutoCastableTexture, petAutoCastShine
 	for i = 1, NUM_PET_ACTION_SLOTS, 1 do
@@ -171,6 +209,7 @@ function SettingsDB.PetBarUpdate(self, event)
 		petAutoCastableTexture = _G[buttonName.."AutoCastable"]
 		petAutoCastShine = _G[buttonName.."Shine"]
 		local name, subtext, texture, isToken, isActive, autoCastAllowed, autoCastEnabled = GetPetActionInfo(i)
+		
 		if not isToken then
 			petActionIcon:SetTexture(texture)
 			petActionButton.tooltipName = name
@@ -178,8 +217,10 @@ function SettingsDB.PetBarUpdate(self, event)
 			petActionIcon:SetTexture(_G[texture])
 			petActionButton.tooltipName = _G[name]
 		end
+		
 		petActionButton.isToken = isToken
 		petActionButton.tooltipSubtext = subtext
+		
 		if isActive and name ~= "PET_ACTION_FOLLOW" then
 			petActionButton:SetChecked(1)
 			if IsPetAttackAction(i) then
@@ -191,16 +232,19 @@ function SettingsDB.PetBarUpdate(self, event)
 				PetActionButton_StopFlash(petActionButton)
 			end
 		end
+		
 		if autoCastAllowed then
 			petAutoCastableTexture:Show()
 		else
 			petAutoCastableTexture:Hide()
 		end
+		
 		if autoCastEnabled then
 			AutoCastShine_AutoCastStart(petAutoCastShine)
 		else
 			AutoCastShine_AutoCastStop(petAutoCastShine)
 		end
+		
 		if name then
 			if not SettingsCF["actionbar"].show_grid then
 				petActionButton:SetAlpha(1)
@@ -210,6 +254,7 @@ function SettingsDB.PetBarUpdate(self, event)
 				petActionButton:SetAlpha(0)
 			end
 		end
+		
 		if texture then
 			if GetPetActionSlotUsable(i) then
 				SetDesaturation(petActionIcon, nil)
@@ -220,6 +265,7 @@ function SettingsDB.PetBarUpdate(self, event)
 		else
 			petActionIcon:Hide()
 		end
+		
 		if not PetHasActionBar() and texture and name ~= "PET_ACTION_FOLLOW" then
 			PetActionButton_StopFlash(petActionButton)
 			SetDesaturation(petActionIcon, 1)
@@ -938,16 +984,16 @@ do
 
 	SettingsDB.HideAuraFrame = function(self)
 		if self.unit == "player" then
-			if not db.aura_player_auras then
+			if not SettingsCF["aura"].player_auras then
 				BuffFrame:UnregisterEvent("UNIT_AURA")
 				BuffFrame:Hide()
 				TemporaryEnchantFrame:Hide()
 				self.Debuffs:Hide()
 			end
-		elseif self.unit == "pet" and not db.aura_pet_debuffs or self.unit == "focus" and not db.aura_focus_debuffs 
-		or self.unit == "focustarget" and not db.aura_fot_debuffs or self.unit == "targettarget" and not db.aura_tot_debuffs then
+		elseif self.unit == "pet" and not SettingsCF["aura"].pet_debuffs or self.unit == "focus" and not SettingsCF["aura"].focus_debuffs 
+		or self.unit == "focustarget" and not SettingsCF["aura"].fot_debuffs or self.unit == "targettarget" and not SettingsCF["aura"].tot_debuffs then
 			self.Debuffs:Hide()
-		elseif self.unit == "target" and not db.aura_target_auras then
+		elseif self.unit == "target" and not SettingsCF["aura"].target_auras then
 			self.Auras:Hide()
 		end
 	end
@@ -955,7 +1001,7 @@ do
 	SettingsDB.PostCreateAura = function(element, button)
 		SettingsDB.CreateTemplate(button)
 		
-		button.remaining = SettingsDB.SetFontString(button, SettingsCF["media"].pixel_font, db.font_size, SettingsCF["media"].pixel_font_style)
+		button.remaining = SettingsDB.SetFontString(button, SettingsCF["media"].pixel_font, SettingsCF["aura"].font_size, SettingsCF["media"].pixel_font_style)
 		button.remaining:SetPoint("CENTER", button, "CENTER", SettingsDB.Scale(2), SettingsDB.Scale(1))
 		button.remaining:SetTextColor(1, 1, 1)
 		
@@ -969,10 +1015,10 @@ do
 
 		button.count:SetPoint("BOTTOMRIGHT", button, "BOTTOMRIGHT", 0, SettingsDB.Scale(1))
 		button.count:SetJustifyH("RIGHT")
-		button.count:SetFont(SettingsCF["media"].pixel_font, db.font_size, SettingsCF["media"].pixel_font_style)
+		button.count:SetFont(SettingsCF["media"].pixel_font, SettingsCF["aura"].font_size, SettingsCF["media"].pixel_font_style)
 		button.count:SetTextColor(1, 1, 1)
 
-		if SettingsCF["unitframe"].aura_show_spiral == true then
+		if SettingsCF["aura"].show_spiral == true then
 			element.disableCooldown = false
 			button.cd:SetReverse()
 			button.overlayFrame = CreateFrame("Frame", nil, button, nil)
@@ -1002,7 +1048,7 @@ do
 				icon:SetBackdropBorderColor(unpack(SettingsCF["media"].border_color))
 				icon.icon:SetDesaturated(true)
 			else
-				if SettingsCF["unitframe"].aura_debuff_color_type == true then
+				if SettingsCF["aura"].debuff_color_type == true then
 					local color = DebuffTypeColor[dtype] or DebuffTypeColor.none
 					icon:SetBackdropBorderColor(color.r, color.g, color.b)
 					icon.icon:SetDesaturated(false)
@@ -1018,7 +1064,7 @@ do
 			end
 		end
 
-		if duration and duration > 0 and db.aura_show_timer == true then
+		if duration and duration > 0 and SettingsCF["aura"].show_timer == true then
 			icon.remaining:Show()
 			icon.timeLeft = expirationTime
 			icon:SetScript("OnUpdate", CreateAuraTimer)
@@ -1088,7 +1134,7 @@ do
 		auras.icons = {}
 		auras.PostCreateIcon = SettingsDB.CreateAuraWatchIcon
 
-		if (not db.aura_show_timer) then
+		if (not SettingsCF["aura"].show_timer) then
 			auras.hideCooldown = true
 		end
 

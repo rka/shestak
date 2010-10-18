@@ -16,6 +16,7 @@ local ALLOWED_GROUPS = {
 	["loot"] = 1,
 	["nameplate"] = 1,
 	["actionbar"] = 1,
+	["aura"] = 1,
 	["unitframe"] = 1,
 	["toppanel"] = 1,
 	["error"] = 1,
@@ -177,6 +178,20 @@ local function Local(o)
 	if o == "UIConfigactionbarshapeshift_hide" then o = L_GUI_ACTIONBAR_SHAPESHIFT_HIDE end
 	if o == "UIConfigactionbarshapeshift_horizontal" then o = L_GUI_ACTIONBAR_SHAPESHIFT_HORIZONTAL end
 	
+	-- Auras/Buffs/Debuffs
+	if o == "UIConfigaura" then o = BUFFOPTIONS_LABEL end
+	if o == "UIConfigaurafont_size" then o = L_GUI_AURA_FONT_SIZE end
+	if o == "UIConfigauraplayer_buff_size" then o = L_GUI_AURA_PLAYER_BUFF_SIZE end
+	if o == "UIConfigaurashow_spiral" then o = L_GUI_AURA_SHOW_SPIRAL end
+	if o == "UIConfigaurashow_timer" then o = L_GUI_AURA_SHOW_TIMER end
+	if o == "UIConfigauraplayer_auras" then o = L_GUI_AURA_PLAYER_AURAS end
+	if o == "UIConfigauratarget_auras" then o = L_GUI_AURA_TARGET_AURAS end
+	if o == "UIConfigaurafocus_debuffs" then o = L_GUI_AURA_FOCUS_DEBUFFS end
+	if o == "UIConfigaurapet_debuffs" then o = L_GUI_AURA_PET_DEBUFFS end
+	if o == "UIConfigauratot_debuffs" then o = L_GUI_AURA_TOT_DEBUFFS end
+	if o == "UIConfigauraplayer_aura_only" then o = L_GUI_AURA_PLAYER_AURA_ONLY end
+	if o == "UIConfigauradebuff_color_type" then o = L_GUI_AURA_DEBUFF_COLOR_TYPE end
+	
 	-- Unit frame options
 	if o == "UIConfigunitframe" then o = UNITFRAME_LABEL end
 	if o == "UIConfigunitframeenable" then o = L_GUI_UF_ENABLE end
@@ -202,15 +217,6 @@ local function Local(o)
 	if o == "UIConfigunitframeplayer_in_party" then o = L_GUI_UF_PLAYER_PARTY end
 	if o == "UIConfigunitframeraid_tanks" then o = L_GUI_UF_SHOW_TANK end
 	if o == "UIConfigunitframeraid_groups" then o = L_GUI_UF_RAID_GROUP end
-	if o == "UIConfigunitframeaura_show_spiral" then o = L_GUI_UF_AURA_SHOW_SPIRAL end
-	if o == "UIConfigunitframeaura_show_timer" then o = L_GUI_UF_AURA_SHOW_TIMER end
-	if o == "UIConfigunitframeaura_player_auras" then o = L_GUI_UF_AURA_PLAYER_AURAS end
-	if o == "UIConfigunitframeaura_target_auras" then o = L_GUI_UF_AURA_TARGET_AURAS end
-	if o == "UIConfigunitframeaura_focus_debuffs" then o = L_GUI_UF_AURA_FOCUS_DEBUFFS end
-	if o == "UIConfigunitframeaura_pet_debuffs" then o = L_GUI_UF_AURA_PET_DEBUFFS end
-	if o == "UIConfigunitframeaura_tot_debuffs" then o = L_GUI_UF_AURA_TOT_DEBUFFS end
-	if o == "UIConfigunitframeaura_player_aura_only" then o = L_GUI_UF_AURA_PLAYER_AURA_ONLY end
-	if o == "UIConfigunitframeaura_debuff_color_type" then o = L_GUI_UF_AURA_DEBUFF_COLOR_TYPE end
 	if o == "UIConfigunitframeicons_pvp" then o = L_GUI_UF_ICONS_PVP end
 	if o == "UIConfigunitframeicons_leader" then o = L_GUI_UF_ICONS_LEADER end
 	if o == "UIConfigunitframeicons_combat" then o = L_GUI_UF_ICONS_COMBAT end

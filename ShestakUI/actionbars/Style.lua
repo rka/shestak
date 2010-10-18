@@ -116,7 +116,7 @@ local function stylesmallbutton(normal, button, icon, name, pet)
 	normal:SetPoint("BOTTOMRIGHT")
 end
 
-local function styleshift()
+function SettingsDB.StyleShift()
 	for i = 1, NUM_SHAPESHIFT_SLOTS do
 		local name = "ShapeshiftButton"..i
 		local button = _G[name]
@@ -341,6 +341,3 @@ end
 hooksecurefunc("ActionButton_Update", style)
 hooksecurefunc("ActionButton_UpdateHotkeys", updatehotkey)
 hooksecurefunc("ActionButton_UpdateFlyout", styleflyout)
-hooksecurefunc("ShapeshiftBar_OnLoad", styleshift)
-hooksecurefunc("ShapeshiftBar_Update", styleshift)
-hooksecurefunc("ShapeshiftBar_UpdateState", styleshift)

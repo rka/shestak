@@ -64,7 +64,7 @@ Filger_Spells = {
 			-- Mangle (Cat)
 			{ spellID = 33876, size = 37, unitId = "target", caster = "all", filter = "DEBUFF" },
 			-- Mangle (Bear)
-			{ spellID = 33878, size = 37, unitId = "target", caster = "all", filter = "DEBUFF" },
+			--{ spellID = 33878, size = 37, unitId = "target", caster = "all", filter = "DEBUFF" },
 		},
 		{
 			Name = "P_PROC_ICON",
@@ -97,7 +97,7 @@ Filger_Spells = {
 			Direction = "UP",
 			Interval = 3,
 			Mode = "BAR",
-			setPoint = { "BOTTOMLEFT", "oUF_Target", "BOTTOMRIGHT", 9, -41 },
+			setPoint = { "BOTTOMLEFT", SettingsCF["unitframe"].portrait_enable and "oUF_Target_PortraitOverlay" or "oUF_Target", "BOTTOMRIGHT", SettingsCF["unitframe"].portrait_enable and 3 or 9, SettingsCF["unitframe"].portrait_enable and 0 or -41 },
 			
 			-- Lifebloom
 			{ spellID = 33763, size = 25, barWidth = 187, unitId = "target", caster = "player", filter = "BUFF" },
@@ -161,6 +161,8 @@ Filger_Spells = {
 			{ spellID = 8998, size = 30, filter = "CD" },
 			-- Thorns
 			{ spellID = 467, size = 30, filter = "CD" },
+			-- Tree of Life
+			{ spellID = 33891, size = 30, filter = "CD" },
 		},
 	},
 	["HUNTER"] = {
@@ -191,8 +193,6 @@ Filger_Spells = {
 			{ spellID = 1130, size = 37, unitId = "target", caster = "all", filter = "DEBUFF" },
 			-- Serpent Sting
 			{ spellID = 1978, size = 37, unitId = "target", caster = "player", filter = "DEBUFF" },
-			-- Scorpid Sting
-			--{ spellID = 3043, size = 37, unitId = "target", caster = "player", filter = "DEBUFF" },
 			-- Black Arrow
 			{ spellID = 3674, size = 37, unitId = "target", caster = "player", filter = "DEBUFF" },
 			-- Explosive Shot
@@ -214,14 +214,10 @@ Filger_Spells = {
 			{ spellID = 60233, size = 37, unitId = "player", caster = "player", filter = "BUFF" },
 			-- Mjolnir Runestone
 			{ spellID = 65019, size = 37, unitId = "player", caster = "player", filter = "BUFF" },
-			-- Quick Shots
-			--{ spellID = 6150, size = 37, unitId = "player", caster = "player", filter = "BUFF" },
 			-- Master Tactician
 			{ spellID = 34837, size = 37, unitId = "player", caster = "player", filter = "BUFF" },
 			-- Master Tactician
 			{ spellID = 53224, size = 37, unitId = "player", caster = "player", filter = "BUFF" },
-			-- Expose Weakness
-			--{ spellID = 34503, size = 37, unitId = "player", caster = "player", filter = "BUFF" },
 			-- Exploit Weakness 2t10 proc
 			{ spellID = 70728, size = 37, unitId = "player", caster = "player", filter = "BUFF" },
 			-- Stinger 4t10 proc
@@ -298,8 +294,6 @@ Filger_Spells = {
 			{ spellID = 5116, size = 30, filter = "CD" },
 			-- Counterattack
 			{ spellID = 19306, size = 30, filter = "CD" },
-			-- Mongoose Bite
-			--{ spellID = 53339, size = 30, filter = "CD" },
 			-- Intimidation
 			{ spellID = 19577, size = 30, filter = "CD" },
 			-- Rapid Fire
@@ -354,6 +348,8 @@ Filger_Spells = {
 			{ spellID = 44457, size = 37, unitId = "target", caster = "player", filter = "DEBUFF" },
 			-- Pyroblast!
 			{ spellID = 92315, size = 37, unitId = "player", caster = "player", filter = "DEBUFF" },
+			-- Critical Mass
+			{ spellID = 22959, size = 37, unitId = "player", caster = "player", filter = "DEBUFF" },
 		},
 		
 		{
@@ -383,6 +379,8 @@ Filger_Spells = {
 			{ spellID = 60234, size = 37, unitId = "player", caster = "player", filter = "BUFF" },
 			-- Essence of Life
 			{ spellID = 60062, size = 37, unitId = "player", caster = "player", filter = "BUFF" },
+			-- Arcane Missiles!
+			{ spellID = 79683, size = 37, unitId = "player", caster = "player", filter = "BUFF" },
 		},
 		{
 			Name = "PVE/PVP_CC",
@@ -596,7 +594,7 @@ Filger_Spells = {
 			setPoint = { "BOTTOMLEFT", "oUF_Target", "TOPLEFT", -2, 213 },
 
 			-- Clearcasting
-			{ spellID = 12536, size = 37, unitId = "player", caster = "player", filter = "BUFF" },
+			{ spellID = 16246, size = 37, unitId = "player", caster = "player", filter = "BUFF" },
 			-- Tidal Waves
 			{ spellID = 51562, size = 37, unitId = "player", caster = "player", filter = "BUFF" },
 			-- Essence of Life
@@ -607,7 +605,7 @@ Filger_Spells = {
 			Direction = "UP",
 			Interval = 3,
 			Mode = "BAR",
-			setPoint = { "BOTTOMLEFT", "oUF_Target", "BOTTOMRIGHT", 9, -41 },
+			setPoint = { "BOTTOMLEFT", SettingsCF["unitframe"].portrait_enable and "oUF_Target_PortraitOverlay" or "oUF_Target", "BOTTOMRIGHT", SettingsCF["unitframe"].portrait_enable and 3 or 9, SettingsCF["unitframe"].portrait_enable and 0 or -41 },
 			
 			-- Earth Shield
 			{ spellID = 974, size = 25, barWidth = 187, unitId = "target", caster = "player", filter = "BUFF" },
@@ -677,14 +675,10 @@ Filger_Spells = {
 			{ spellID = 853, size = 37, unitId = "target", caster = "player", filter = "DEBUFF" },
 			-- Judgement of Light
 			{ spellID = 20271, size = 37, unitId = "target", caster = "player", filter = "DEBUFF" },
-			-- Judgement of Justice
-			--{ spellID = 53407, size = 37, unitId = "target", caster = "player", filter = "DEBUFF" },
-			-- Judgement of Wisdom
-			--{ spellID = 20186, size = 37, unitId = "target", caster = "player", filter = "DEBUFF" },
-			-- Heart of the Crusader
-			--{ spellID = 54499, size = 37, unitId = "target", caster = "player", filter = "DEBUFF" },
-			-- Blood Corruption
-			--{ spellID = 53742, size = 37, unitId = "target", caster = "player", filter = "DEBUFF" },
+			-- Speed of Light
+			{ spellID = 85499, size = 37, unitId = "player", caster = "player", filter = "BUFF" },
+			-- Conviction
+			{ spellID = 20057, size = 37, unitId = "player", caster = "player", filter = "BUFF" },
 		},
 		{
 			Name = "P_PROC_ICON",
@@ -735,8 +729,6 @@ Filger_Spells = {
 			{ spellID = 24275, size = 30, filter = "CD" },
 			-- Holy Shock
 			{ spellID = 20473, size = 30, filter = "CD" },
-			-- Holy Shield
-			--{ spellID = 48952, size = 30, filter = "CD" },
 			-- Avenger's Shield
 			{ spellID = 31935, size = 30, filter = "CD" },
 			-- Divine Plea
@@ -811,10 +803,6 @@ Filger_Spells = {
             { spellID = 65007, size = 37, unitId = "player", caster = "player", filter = "BUFF" },
             -- Frostforged Sage
             { spellID = 72416, size = 37, unitId = "player", caster = "player", filter = "BUFF" },
-            -- Shadow Weaving
-            --{ spellID = 15258, size = 37, unitId = "player", caster = "player", filter = "BUFF" },
-            -- Improved Spirit Tap
-           -- { spellID = 59000, size = 37, unitId = "player", caster = "all", filter = "BUFF" },
 			-- Shadow Orb
 			{ spellID = 77487, size = 37, unitId = "player", caster = "player", filter = "BUFF" },
 			-- Archangel
@@ -827,7 +815,7 @@ Filger_Spells = {
 			Direction = "UP",
 			Interval = 3,
 			Mode = "BAR",
-			setPoint = { "BOTTOMLEFT", "oUF_Target", "BOTTOMRIGHT", 9, -41 },
+			setPoint = { "BOTTOMLEFT", SettingsCF["unitframe"].portrait_enable and "oUF_Target_PortraitOverlay" or "oUF_Target", "BOTTOMRIGHT", SettingsCF["unitframe"].portrait_enable and 3 or 9, SettingsCF["unitframe"].portrait_enable and 0 or -41 },
 			
 			-- Renew
 			{ spellID = 139, size = 25, barWidth = 187, unitId = "target", caster = "player", filter = "BUFF" },
@@ -975,7 +963,7 @@ Filger_Spells = {
 			Direction = "UP",
 			Interval = 3,
 			Mode = "BAR",
-			setPoint = { "BOTTOMLEFT", "oUF_Target", "BOTTOMRIGHT", 9, -41 },
+			setPoint = { "BOTTOMLEFT", SettingsCF["unitframe"].portrait_enable and "oUF_Target_PortraitOverlay" or "oUF_Target", "BOTTOMRIGHT", SettingsCF["unitframe"].portrait_enable and 3 or 9, SettingsCF["unitframe"].portrait_enable and 0 or -41 },
 			
 			-- Corruption
 			{ spellID = 172, size = 25, barWidth = 187, unitId = "target", caster = "player", filter = "DEBUFF" },
@@ -1035,8 +1023,6 @@ Filger_Spells = {
 			{ spellID = 7744, size = 30, filter = "CD" },
 			-- Conflagrate
 			{ spellID = 17962, size = 30, filter = "CD" },
-			-- Challenging Howl
-			--{ spellID = 59671, size = 30, filter = "CD" },
 			-- Ritual of Summoning
 			{ spellID = 698, size = 30, filter = "CD" },
 			-- Shadow Ward
@@ -1205,7 +1191,7 @@ Filger_Spells = {
 			Direction = "UP",
 			Interval = 3,
 			Mode = "BAR",
-			setPoint = { "BOTTOMLEFT", "oUF_Target", "BOTTOMRIGHT", 9, -41 },
+			setPoint = { "BOTTOMLEFT", SettingsCF["unitframe"].portrait_enable and "oUF_Target_PortraitOverlay" or "oUF_Target", "BOTTOMRIGHT", SettingsCF["unitframe"].portrait_enable and 3 or 9, SettingsCF["unitframe"].portrait_enable and 0 or -41 },
 			
 			-- Blood Plague
 			{ spellID = 59879, size = 25, barWidth = 187, unitId = "target", caster = "player", filter = "DEBUFF" },
@@ -1227,8 +1213,6 @@ Filger_Spells = {
 			{ spellID = 60229, size = 37, unitId = "player", caster = "player", filter = "BUFF" },
 			-- Unholy Force
 			{ spellID = 67383, size = 37, unitId = "player", caster = "player", filter = "BUFF" },
-			-- Desolation
-			--{ spellID = 66817, size = 37, unitId = "player", caster = "player", filter = "BUFF" },
 			-- Unholy Strength
 			{ spellID = 53365, size = 37, unitId = "player", caster = "player", filter = "BUFF" },
 			-- Pyrite Infusion
@@ -1278,8 +1262,6 @@ Filger_Spells = {
 			{ spellID = 55741, size = 51, unitId = "player", caster = "all", filter = "DEBUFF" },
 			-- Glyph of Heart Strike
 			{ spellID = 58617, size = 51, unitId = "player", caster = "all", filter = "DEBUFF" },
-			-- Icy Clutch (Chilblains)
-			--{ spellID = 50436, size = 51, unitId = "player", caster = "all", filter = "DEBUFF" },
 			-- Hungering Cold
 			{ spellID = 51209, size = 51, unitId = "player", caster = "all", filter = "DEBUFF" },
 			
@@ -1304,14 +1286,10 @@ Filger_Spells = {
 			-- Hunter
 			-- Freezing Trap Effect
 			{ spellID = 3355, size = 51, unitId = "player", caster = "all", filter = "DEBUFF" },
-			-- Freezing Arrow Effect
-			--{ spellID = 60210, size = 51, unitId = "player", caster = "all", filter = "DEBUFF" },
 			-- Scare Beast
 			{ spellID = 1513, size = 51, unitId = "player", caster = "all", filter = "DEBUFF" },
 			-- Scatter Shot
 			{ spellID = 19503, size = 51, unitId = "player", caster = "all", filter = "DEBUFF" },
-			-- Chimera Shot - Scorpid
-			--{ spellID = 53359, size = 51, unitId = "player", caster = "all", filter = "DEBUFF" },
 			-- Snatch (Bird of Prey)
 			{ spellID = 50541, size = 51, unitId = "player", caster = "all", filter = "DEBUFF" },
 			-- Silencing Shot
@@ -1472,8 +1450,6 @@ Filger_Spells = {
 			{ spellID = 12809, size = 51, unitId = "player", caster = "all", filter = "DEBUFF" },
 			-- Intercept
 			{ spellID = 20253, size = 51, unitId = "player", caster = "all", filter = "DEBUFF" },
-			-- Revenge Stun
-			--{ spellID = 12798, size = 51, unitId = "player", caster = "all", filter = "DEBUFF" },
 			-- Shockwave
 			{ spellID = 46968, size = 51, unitId = "player", caster = "all", filter = "DEBUFF" },
 			-- Glyph of Hamstring

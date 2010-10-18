@@ -5,8 +5,10 @@ if not SettingsCF["nameplate"].enable == true then return end
 
 local caelNamePlates = CreateFrame("Frame", nil, UIParent)
 caelNamePlates:SetScript("OnEvent", function(self, event, ...) self[event](self, ...) end)
-SetCVar("bloatthreat", 0)
 SetCVar("bloattest", 1)
+SetCVar("spreadnameplates", 0)
+SetCVar("bloatnameplates", 0)
+SetCVar("bloatthreat", 0)
  
 local select = select
  
