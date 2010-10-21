@@ -4,7 +4,7 @@
 if SettingsCF.stats.battleground == true then
 	-- Info panel
 	local ileft = CreateFrame("Frame", "InfoLeft", UIParent)
-	SettingsDB.CreatePanel(ileft, 300, SettingsCF["media"].pixel_font_size, unpack(SettingsCF["position"].bg_score))
+	SettingsDB.CreatePanel(ileft, 300, SettingsCF.stats.font_size, unpack(SettingsCF.position.bg_score))
 	ileft:SetBackdropBorderColor(0, 0, 0, 0)
 	ileft:SetBackdropColor(0, 0, 0, 0)
 	ileft.bg:SetVertexColor(0, 0, 0, 0)
@@ -48,6 +48,7 @@ if SettingsCF.stats.battleground == true then
 					GameTooltip:AddDoubleLine(HONOR_GAINED..":", format("%d", honorGained), 1, 1, 1)
 					GameTooltip:AddDoubleLine(SCORE_DAMAGE_DONE..":", damageDone, 1, 1, 1)
 					GameTooltip:AddDoubleLine(SCORE_HEALING_DONE..":", healingDone, 1, 1, 1)
+					--GameTooltip:SetNonSpaceWrap(true)
 					-- Add extra statistics to watch based on what BG you are in
 					if GetRealZoneText() == L_DATATEXT_ARATHI then
 						GameTooltip:AddDoubleLine(L_DATATEXT_BASESASSAULTED, GetBattlefieldStatData(i, 1), 1, 1, 1)
@@ -82,19 +83,19 @@ if SettingsCF.stats.battleground == true then
 	Stat:EnableMouse(true)
 	
 	local Text1 = InfoBattleGround:CreateFontString(nil, "OVERLAY")
-	Text1:SetFont(SettingsCF["media"].pixel_font, SettingsCF["media"].pixel_font_size, SettingsCF["media"].pixel_font_style)
+	Text1:SetFont(SettingsCF["media"].pixel_font, SettingsCF.stats.font_size, SettingsCF.media.pixel_font_style)
 	Text1:SetPoint("LEFT", 5, 0)
-	Text1:SetHeight(SettingsCF["media"].pixel_font_size)
+	Text1:SetHeight(SettingsCF.stats.font_size)
 
 	local Text2 = InfoBattleGround:CreateFontString(nil, "OVERLAY")
-	Text2:SetFont(SettingsCF["media"].pixel_font, SettingsCF["media"].pixel_font_size, SettingsCF["media"].pixel_font_style)
+	Text2:SetFont(SettingsCF["media"].pixel_font, SettingsCF.stats.font_size, SettingsCF.media.pixel_font_style)
 	Text2:SetPoint("LEFT", Text1, "RIGHT", 5, 0)
-	Text2:SetHeight(SettingsCF["media"].pixel_font_size)
+	Text2:SetHeight(SettingsCF.stats.font_size)
 
 	local Text3 = InfoBattleGround:CreateFontString(nil, "OVERLAY")
-	Text3:SetFont(SettingsCF["media"].pixel_font, SettingsCF["media"].pixel_font_size, SettingsCF["media"].pixel_font_style)
+	Text3:SetFont(SettingsCF["media"].pixel_font, SettingsCF.stats.font_size, SettingsCF.media.pixel_font_style)
 	Text3:SetPoint("LEFT", Text2, "RIGHT", 5, 0)
-	Text3:SetHeight(SettingsCF["media"].pixel_font_size)
+	Text3:SetHeight(SettingsCF.stats.font_size)
 
 	local int = 1
 	local function Update(self, t)

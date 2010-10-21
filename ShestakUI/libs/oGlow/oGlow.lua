@@ -34,8 +34,6 @@ local event_metatable = {
 
 local oGlow = CreateFrame('Frame', 'oGlow')
 
--- This is a temporary solution. Right now we just want to enable all pipes and
--- filters.
 function oGlow:ADDON_LOADED(event, addon)
 	if(addon == 'ShestakUI') then
 		for pipe in next, pipesTable do
@@ -234,6 +232,8 @@ function oGlow:RegisterFilterOnPipe(pipe, filter)
 
 	if(not pipesTable[pipe]) then return nil, 'Pipe does not exist.' end
 	if(not filtersTable[filter]) then return nil, 'Filter does not exist.' end
+	
+	-- XXX: Clean up this logic.
 	if(not activeFilters[pipe]) then
 		local filterTable = filtersTable[filter]
 		local display = filterTable[1]
@@ -249,26 +249,20 @@ function oGlow:RegisterFilterOnPipe(pipe, filter)
 				return nil, 'Filter function is already registered.'
 			end
 		end
-
 		table.insert(ref, filterTable)
-		return true
 	end
+	return true
 end
 
-do
-	local t
-	local iter = coroutine.wrap(function()
+oGlow.IterateFiltersOnPipe = function(pipe)
+	local t = activeFilters[pipe]
+	return coroutine.wrap(function()
 		for _, sub in next, t do
 			for k, v in next, sub do
 				coroutine.yield(v[3], v[1], v[4])
 			end
 		end
 	end)
-
-	oGlow.IterateFiltersOnPipe = function(pipe)
-		t = activeFilters[pipe]
-		return iter
-	end
 end
 
 function oGlow:UnregisterFilterOnPipe(pipe, filter)
@@ -278,6 +272,7 @@ function oGlow:UnregisterFilterOnPipe(pipe, filter)
 	if(not pipesTable[pipe]) then return nil, 'Pipe does not exist.' end
 	if(not filtersTable[filter]) then return nil, 'Filter does not exist.' end
 
+	--- XXX: Be more defensive here.
 	local filterTable = filtersTable[filter]
 	local ref = activeFilters[pipe][filterTable[1]]
 	if(ref) then

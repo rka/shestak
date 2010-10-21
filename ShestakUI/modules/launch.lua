@@ -7,7 +7,6 @@ local function InstallUI()
 	SetCVar("cameraDistanceMax", 50)
 	SetCVar("cameraDistanceMaxFactor", 3.4)
 	SetCVar("ShowClassColorInNameplate", 1)
-	SetCVar("rotateMinimap", 0)
 	SetCVar("buffDurations", 1)
 	SetCVar("mapQuestDifficulty", 1)
 	SetCVar("showTutorials", 0)
@@ -23,6 +22,7 @@ local function InstallUI()
 	SetCVar("lootUnderMouse", 0)
 	SetCVar("autoLootDefault", 1)
 	SetCVar("RotateMinimap", 0)
+	SetCVar("ConsolidateBuffs", 0)
 	
 	if SettingsDB.name == "Черешок" 
 		or SettingsDB.name == "Вершок"
@@ -201,8 +201,7 @@ OnLogon:SetScript("OnEvent", function(self, event)
 	if SettingsDB.getresolution == "800x600"
 	or SettingsDB.getresolution == "1024x768"
 	or SettingsDB.getresolution == "720x576"
-	or SettingsDB.getresolution == "1024x600"
-	or SettingsDB.getresolution == "1152x864" then
+	or SettingsDB.getresolution == "1024x600" then
 		SetCVar("useUiScale", 0)
 		StaticPopup_Show("DISABLE_UI")
 	else
@@ -227,6 +226,7 @@ OnLogon:SetScript("OnEvent", function(self, event)
 	if SettingsCF["general"].welcome_message == true then
 		print("|cffffff00"..L_WELCOME_LINE_1..SettingsDB.version.." "..SettingsDB.client..".|r")
 		print("|cffffff00"..L_WELCOME_LINE_2_1.." |cffffff00"..L_WELCOME_LINE_2_2)
+		--SettingsDB.InfoTextShow(L_WELCOME_LINE_1..SettingsDB.version.." "..SettingsDB.client)
 	end
 	
 	if (SettingsDB.name == "Черешок" 
@@ -248,6 +248,6 @@ SLASH_CONFIGURE1 = "/resetui"
 SlashCmdList.CONFIGURE = function() StaticPopup_Show("RESET_UI") end
 
 -- Help translate
-if GetLocale() == "esES" or GetLocale() == "koKR" or GetLocale() == "esMX" then
+if GetLocale() == "koKR" then
 	StaticPopup_Show("HELP_TRANSLATE")
 end

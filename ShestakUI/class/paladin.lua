@@ -25,7 +25,7 @@ for i, spell in pairs(spells) do
 	b:SetBackdropBorderColor(SettingsDB.color.r, SettingsDB.color.g, SettingsDB.color.b)
  
 	local l = b:CreateFontString(nil, "OVERLAY", nil)
-	l:SetFont(SettingsCF["media"].pixel_font, SettingsCF["media"].pixel_font_size, SettingsCF["media"].normal_font_style)
+	l:SetFont(SettingsCF["media"].pixel_font, SettingsCF["media"].pixel_font_size, SettingsCF["media"].pixel_font_style)
 	l:SetText(seal)
 	b:SetFontString(l)
  

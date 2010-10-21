@@ -275,20 +275,45 @@ oUF:Factory(function(self)
 	end
 
 	if db.show_raid == true then
-		local raid = self:SpawnHeader("oUF_RaidHeal", nil, "custom [@raid6,exists] show;hide",
-			"showRaid", true,
-			"xoffset", SettingsDB.Scale(7),
-			"yOffset", SettingsDB.Scale(-5),
-			"point", "LEFT",
-			"groupFilter", db.raid_groups,
-			"groupingOrder", db.raid_groups,
-			"groupBy", "GROUP",
-			"maxColumns", 8,
-			"unitsPerColumn", 5,
-			"columnSpacing", SettingsDB.Scale(7),
-			"columnAnchorPoint", "TOP"
-		)
-		raid:SetPoint(unpack(SettingsCF["position"].unitframes.raid_heal))
+		if db.raid_groups_vertical then	
+			local raid = {}
+			for i = 1, db.raid_groups do 
+				local raidgroup = self:SpawnHeader("oUF_RaidHeal"..i, nil, "custom [@raid6,exists] show;hide",
+					"showRaid", true,
+					"yOffset", SettingsDB.Scale(-5),
+					"point", "LEFT",
+					"groupFilter", tostring(i),
+					"maxColumns", 5,
+					"unitsPerColumn", 1,
+					"columnSpacing", SettingsDB.Scale(7),
+					"columnAnchorPoint", "TOP"
+				)
+				if i == 1 then
+					raidgroup:SetPoint(unpack(SettingsCF["position"].unitframes.raid_heal))
+				else
+					raidgroup:SetPoint("TOPLEFT", raid[i-1], "TOPRIGHT", SettingsDB.Scale(7), 0)
+				end
+				raid[i] = raidgroup
+			end
+		else
+			local raid = {}
+			for i = 1, db.raid_groups do 
+				local raidgroup = self:SpawnHeader("oUF_RaidHeal"..i, nil, "custom [@raid6,exists] show;hide",
+					"showRaid", true,
+					"groupFilter", tostring(i),
+					"maxColumns", 5,
+					"unitsPerColumn", 1,
+					"columnSpacing", SettingsDB.Scale(7),
+					"columnAnchorPoint", "LEFT"
+				)
+				if i == 1 then
+					raidgroup:SetPoint(unpack(SettingsCF["position"].unitframes.raid_heal))
+				else
+					raidgroup:SetPoint("TOPLEFT", raid[i-1], "BOTTOMLEFT", 0, SettingsDB.Scale(-7))
+				end
+				raid[i] = raidgroup
+			end
+		end
 		
 		if db.raid_tanks == true then
 			local raidtank = self:SpawnHeader("oUF_MainTank", nil, "raid",
@@ -301,3 +326,28 @@ oUF:Factory(function(self)
 		end
 	end
 end)
+
+----------------------------------------------------------------------------------------
+--	Force a Clique option if not set(by Elv22)
+----------------------------------------------------------------------------------------
+if IsAddOnLoaded("Clique") then
+	local CliquePath = CliqueDB3["char"][SettingsDB.name.." - "..GetRealmName()]["downclick"]	
+	StaticPopupDialogs["SETUP_CLIQUE"] = {
+		text = L_POPUP_SETTINGS_CLIQUE,
+		button1 = ACCEPT,
+		button2 = CANCEL,
+		OnAccept = function() 
+			CliqueDB3["char"][SettingsDB.name.." - "..GetRealmName()]["downclick"] = true 
+			ReloadUI() 
+		end,
+		timeout = 0,
+		whileDead = 1,
+	}
+	local CliqueCheck = CreateFrame("Frame")
+	CliqueCheck:RegisterEvent("PLAYER_ENTERING_WORLD")
+	CliqueCheck:SetScript("OnEvent", function()
+		if CliquePath ~= true then
+			StaticPopup_Show("SETUP_CLIQUE")
+		end
+	end)
+end

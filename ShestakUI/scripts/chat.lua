@@ -50,12 +50,19 @@ end
 ----------------------------------------------------------------------------------------
 --	Custom timestamps color
 ----------------------------------------------------------------------------------------
-_G.TIMESTAMP_FORMAT_HHMM = "|cff"..SettingsCF.chat.time_color.."[%I:%M]|r "
-_G.TIMESTAMP_FORMAT_HHMMSS = "|cff"..SettingsCF.chat.time_color.."[%I:%M:%S]|r "
-_G.TIMESTAMP_FORMAT_HHMMSS_24HR = "|cff"..SettingsCF.chat.time_color.."[%H:%M:%S]|r "
-_G.TIMESTAMP_FORMAT_HHMMSS_AMPM = "|cff"..SettingsCF.chat.time_color.."[%I:%M:%S %p]|r "
-_G.TIMESTAMP_FORMAT_HHMM_24HR = "|cff"..SettingsCF.chat.time_color.."[%H:%M]|r "
-_G.TIMESTAMP_FORMAT_HHMM_AMPM = "|cff"..SettingsCF.chat.time_color.."[%I:%M %p]|r "
+do
+	ChatFrame2ButtonFrameBottomButton:RegisterEvent("PLAYER_LOGIN")
+	ChatFrame2ButtonFrameBottomButton:SetScript("OnEvent", function(f)
+		_G.TIMESTAMP_FORMAT_HHMM = "|cff"..SettingsCF.chat.time_color.."[%I:%M]|r "
+		_G.TIMESTAMP_FORMAT_HHMMSS = "|cff"..SettingsCF.chat.time_color.."[%I:%M:%S]|r "
+		_G.TIMESTAMP_FORMAT_HHMMSS_24HR = "|cff"..SettingsCF.chat.time_color.."[%H:%M:%S]|r "
+		_G.TIMESTAMP_FORMAT_HHMMSS_AMPM = "|cff"..SettingsCF.chat.time_color.."[%I:%M:%S %p]|r "
+		_G.TIMESTAMP_FORMAT_HHMM_24HR = "|cff"..SettingsCF.chat.time_color.."[%H:%M]|r "
+		_G.TIMESTAMP_FORMAT_HHMM_AMPM = "|cff"..SettingsCF.chat.time_color.."[%I:%M %p]|r "
+		f:UnregisterEvent("PLAYER_LOGIN")
+		f:SetScript("OnEvent", nil)
+	end)
+end
 
 -- Hide friends micro button
 SettingsDB.Kill(FriendsMicroButton)
@@ -409,6 +416,10 @@ if SettingsCF.chat.filter == true then
 	ERR_PET_LEARN_ABILITY_S = ""
 	ERR_PET_LEARN_SPELL_S = ""
 	ERR_PET_SPELL_UNLEARNED_S = ""
+	ERR_LEARN_ABILITY_S = ""
+	ERR_LEARN_SPELL_S = ""
+	ERR_SPELL_UNLEARNED_S = ""
+	
 	
 	ChatFrame1.repeatFilter = true
 	ChatFrame1:SetTimeVisible(10)

@@ -49,19 +49,18 @@ if SettingsDB.name == "Черешок"
 	or SettingsDB.name == "Лапушок" 
 	or SettingsDB.name == "Обушок" 
 	or SettingsDB.name == "Ремешок"
-	or SettingsDB.name == "Шестак"
-	or SettingsDB.name == "Shestak"
-	or SettingsDB.name == "Shestazavr" 
-	or SettingsDB.name == "Petiole"
-	or SettingsDB.name == "Shestakoff"
-	or SettingsDB.name == "Shestakk" 
-	or SettingsDB.name == "Shest" then
+	or SettingsDB.name == "Шестак" then
 	SettingsCF["general"].minimap_icon = false
 	SettingsCF["general"].welcome_message = false
 	SettingsCF["misc"].auto_quest = true
 	SettingsCF["misc"].vehicle_mouseover = true
+	SettingsCF["combattext"].treshold = 1000
+	SettingsCF["combattext"].heal_treshold = 1000
+	SettingsCF["combattext"].crit_postfix = ""
 	SettingsCF["tooltip"].shift_modifer = true
 	SettingsCF["tooltip"].cursor = true
 	SettingsCF["tooltip"].title = true
 	SettingsCF["unitframe"].arena_on_right = false
+	SettingsCF["error"].black = false
+	SettingsCF["error"].white = true
 end

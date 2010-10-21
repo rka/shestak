@@ -6,11 +6,12 @@ if SettingsDB.class ~= "HUNTER" then return end
 local PetHappiness = CreateFrame("Frame")
 PetHappiness.happiness = GetPetHappiness()
 
-local OnEvent = function(self, event, unit)
+local OnEvent = function(self, event, ...)
 	local happiness = GetPetHappiness()
 	local hunterPet = select(2, HasPetUI())
+	local unit, power = ...
 	
-	if (event == "UNIT_HAPPINESS" and happiness and hunterPet and self.happiness ~= happiness) then
+	if (event == "UNIT_POWER" and unit == "pet" and power == "HAPPINESS" and happiness and hunterPet and self.happiness ~= happiness) then
 		self.happiness = happiness
 		if (happiness == 1) then
 			DEFAULT_CHAT_FRAME:AddMessage(L_CLASS_HUNTER_UNHAPPY, 1, 0, 0)
@@ -26,6 +27,6 @@ local OnEvent = function(self, event, unit)
 		end
 	end
 end
-PetHappiness:RegisterEvent("UNIT_HAPPINESS")
+PetHappiness:RegisterEvent("UNIT_POWER")
 PetHappiness:RegisterEvent("UNIT_PET")
 PetHappiness:SetScript("OnEvent", OnEvent)

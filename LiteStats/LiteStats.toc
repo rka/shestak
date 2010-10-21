@@ -1,8 +1,8 @@
 ## Interface: 40000
 ## Title: LiteStats
 ## Notes: Useful little info texts
-## Author: Katae of Anvilmar
-## Version: 40000.1
+## Author: Jon Crenshaw
+## Version: 40000.2
 ## RequiredDeps: ShestakUI
 ## SavedVariables: LPSTAT
 

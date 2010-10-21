@@ -210,6 +210,7 @@ if SettingsDB.client == "frFR" then
 	L_POPUP_DISABLEUI = "ShestakUI ne fonctionne pas avec cette résolution, voulez-vous désactiver ShestakUI ? (Annuler si vous souhaitez essayer une autre résolution)"
 	L_POPUP_SETTINGS_ALL = "Voulez-vous appliquer les modifications pour tout ?(DBM/DXE, Skada/Recount et MSBT)"
 	L_POPUP_SETTINGS_DBM = "Need to change the position of elements DBM."  -- Needs review
+	L_POPUP_SETTINGS_CLIQUE = "Your Clique settings are not setup with ShestakUI, would you like to set them up?"  -- Needs review
 	
 	-- Welcome mesage
 	L_WELCOME_LINE_1 = "Welcome to ShestakUI "

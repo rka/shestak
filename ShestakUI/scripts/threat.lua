@@ -1,5 +1,5 @@
 ﻿----------------------------------------------------------------------------------------
---	Based on aTooltip
+--	Based on sThreatMeter2
 ----------------------------------------------------------------------------------------
 if not SettingsCF.threat.enable == true or not SettingsCF.unitframe.enable == true then return end
 

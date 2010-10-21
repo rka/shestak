@@ -32,7 +32,7 @@ UIFonts:SetScript("OnEvent", function(self, event, addon)
 
 	-- Base fonts
 	SetFont(AchievementFont_Small, NORMAL, 12)
-	SetFont(GameTooltipHeader, NORMAL, 13, "OUTLINE")
+	SetFont(GameTooltipHeader, NORMAL, 13)
 	SetFont(InvoiceFont_Med, NORMAL, 13, nil, 0.15, 0.09, 0.04)
 	SetFont(InvoiceFont_Small, NORMAL, 11, nil, 0.15, 0.09, 0.04)
 	SetFont(MailFont_Large, NORMAL, 15, nil, 0.15, 0.09, 0.04, 0.54, 0.4, 0.1, 1, -1)

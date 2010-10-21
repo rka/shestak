@@ -39,7 +39,6 @@ Kill:SetScript("OnEvent", function(self, event, addon)
 		end
 		
 		if SettingsCF.unitframe.enable then
-			SetCVar("ConsolidateBuffs", 1)
 			InterfaceOptionsFrameCategoriesButton9:SetScale(0.00001)
 			InterfaceOptionsFrameCategoriesButton9:SetAlpha(0)	
 			InterfaceOptionsFrameCategoriesButton10:SetScale(0.00001)
@@ -48,6 +47,9 @@ Kill:SetScript("OnEvent", function(self, event, addon)
 			k(InterfaceOptionsBuffsPanelCastableBuffs)
 			k(InterfaceOptionsBuffsPanelDispellableDebuffs)
 			k(InterfaceOptionsBuffsPanelBuffDurations)
+			if SettingsDB.class == "DEATHKNIGHT" then
+				k(RuneFrame)
+			end
 		end
 		
 		if SettingsCF.unitframe.show_arena then

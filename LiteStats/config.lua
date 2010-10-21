@@ -171,7 +171,6 @@ LPSTAT_CONFIG = {
 		enabled = true,
 		fmt = class"T: ".."[spec %d/%d/%d] [unspent]", -- "Protection: 15/0/51 +5", [shortname] shortens spec name.
 		iconsize = 15,  -- Size of talent [icon].
-		nospam = true,  -- Hide talent spam when switching specs.
 		name_subs = { -- Substitutions for long talent tree names, remove and/or change any/all.
 			["Protection"] = "Prot.",
 			["Restoration"] = "Resto.",

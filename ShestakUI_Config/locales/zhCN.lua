@@ -27,6 +27,26 @@ if GetLocale() == "zhCN" then
 	L_GUI_SKINS_DBM = "Enable styling DBM" -- Needs review
 	L_GUI_SKINS_PP = "Enable styling PallyPower" -- Needs review
 	
+	-- Combat text options
+	L_GUI_COMBATTEXT = "Combat Text" -- Needs review
+	L_GUI_COMBATTEXT_FONT_SIZE = "Font size" -- Needs review
+	L_GUI_COMBATTEXT_BLIZZ_HEAD_NUMBERS = "Use blizzard damage/healing output(above mob/player head)" -- Needs review
+	L_GUI_COMBATTEXT_DAMAGE = "Show outgoing damage in it's own frame" -- Needs review
+	L_GUI_COMBATTEXT_HEALING = "Show outgoing healing in it's own frame" -- Needs review
+	L_GUI_COMBATTEXT_DAMAGE_COLOR = "Display damage numbers depending on school of magic" -- Needs review
+	L_GUI_COMBATTEXT_CRIT_PREFIX = "Symbol that will be added before crit" -- Needs review
+	L_GUI_COMBATTEXT_CRIT_POSTFIX = "Symbol that will be added after crit" -- Needs review
+	L_GUI_COMBATTEXT_ICONS = "Show outgoing damage icons" -- Needs review
+	L_GUI_COMBATTEXT_ICON_SIZE = "Icon size of spells in outgoing damage frame, also has effect on dmg font size" -- Needs review
+	L_GUI_COMBATTEXT_DAMAGE_STYLE = "Change default damage/healing font above mobs/player heads(you need to restart WoW to see changes)" -- Needs review
+	L_GUI_COMBATTEXT_TRESHOLD = "Minimum damage to show in damage frame" -- Needs review
+	L_GUI_COMBATTEXT_HEAL_TRESHOLD = "Minimum healing to show in incoming/outgoing healing messages" -- Needs review
+	L_GUI_COMBATTEXT_SCROLLABLE = "Allows you to scroll frame lines with mousewheel" -- Needs review
+	L_GUI_COMBATTEXT_MAX_LINES = "Max lines to keep in scrollable mode(more lines = more memory)" -- Needs review
+	L_GUI_COMBATTEXT_TIME_VISIBLE = "Time(seconds) a single message will be visible" -- Needs review
+	L_GUI_COMBATTEXT_STOP_VE_SPAM = "Automaticly turns off healing spam for priests in shadowform" -- Needs review
+	L_GUI_COMBATTEXT_DK_RUNES = "Show deatchknight rune recharge" -- Needs review
+	
 	-- Buffs reminder options
 	L_GUI_REMINDER = "Buffs提示"
 	L_GUI_REMINDER_SOLO_ENABLE = "显示自身缺少buffs"
@@ -187,6 +207,7 @@ if GetLocale() == "zhCN" then
 	L_GUI_UF_PLAYER_PARTY = "在小队中显示玩家框体"
 	L_GUI_UF_SHOW_TANK = "显示团队主坦克框体"
 	L_GUI_UF_RAID_GROUP = "显示小队数目(ShestakUI_Heal风格)"
+	L_GUI_UF_RAID_VERTICAL_GROUP = "Vertical raid groups(Only for ShestakUI_Heal)"  -- Needs review
 	L_GUI_UF_ICONS_PVP = "鼠标划过玩家/目标时显示PVP状态文字" -- Needs review
 	L_GUI_UF_ICONS_LEADER = "显示团队队长标识/助手标识/分配者标识"
 	L_GUI_UF_ICONS_COMBAT = "显示战斗标识"

@@ -210,6 +210,7 @@ if SettingsDB.client == "deDE" then
 	L_POPUP_DISABLEUI = "ShestakUI funktioniert nicht mit deiner Auflösung, möchtest du ShestakUI ausschalten? (Drücke Abbrechen, falls du eine andere Auflösung testen willst)"
 	L_POPUP_SETTINGS_ALL = "Apply settings for all modifications? (DBM/DXE, Skada/Recount and MSBT)"  -- Needs review
 	L_POPUP_SETTINGS_DBM = "Need to change the position of elements DBM."  -- Needs review
+	L_POPUP_SETTINGS_CLIQUE = "Your Clique settings are not setup with ShestakUI, would you like to set them up?"  -- Needs review
 	
 	-- Welcome mesage
 	L_WELCOME_LINE_1 = "Willkommen bei ShestakUI "

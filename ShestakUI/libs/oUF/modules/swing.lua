@@ -24,12 +24,9 @@ if SettingsCF.unitframe.enable ~= true or SettingsCF.unitframe.plugins_swing ~= 
 local OnDurationUpdate
 do
 	local elapsed = 0
-	--local castcheck = 0
-	--local lastcheck = 0
 	local slamelapsed = 0
 	local slam = GetSpellInfo(1464)
 	function OnDurationUpdate(self, elapsed)
-	--function OnDurationUpdate(self)
 	
 		local spell = UnitCastingInfo("player")
 		
@@ -76,16 +73,12 @@ local function Melee(self, _, _, event, GUID, _, _, _, tarGUID, _, missType, spe
 		
 	elseif UnitGUID(self.unit) == GUID  then
 		
-		-- SPELL_EXTRA_ATTACKS
 		local swordprocc = false
 		if event == "SPELL_EXTRA_ATTACKS" and (spellName == GetSpellInfo(12815) or spellName == GetSpellInfo(13964)) then
 			swordprocc = true
 		end
-		-- SWING_DAMAGE, SWING_MISS, SPELL_CAST_SUCCESS
-		if not string.find(event, "SWING") and not string.find(event, "SPELL_CAST_SUCCESS") then return end
-		if string.find(event, "SPELL_CAST_SUCCESS") then
-			if spellName ~= GetSpellInfo(47450) and spellName ~= GetSpellInfo(47520) and spellName ~= GetSpellInfo(56815) and spellName ~= GetSpellInfo(48996) and spellName ~= GetSpellInfo(48480) then return end
-		end
+
+		if not string.find(event, "SWING") then return end
 		
 		if swordprocc == true then
 			swordprocc = false

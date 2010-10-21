@@ -268,6 +268,10 @@ if SettingsCF["tooltip"].talents == true then
 		end
 		local _, tabName = GetTalentTabInfo(maxTree,isInspect,nil,group);
 		current.tree = tabName;
+		-- Az: Clear Inspect, as we are done using it
+		if (isInspect) then
+			ClearInspectPlayer();
+		end
 		-- Customise output. Use TipTac setting if it exists, otherwise just use formatting style one.
 		local talentFormat = (1);
 		if (current[maxTree] == 0) then
@@ -332,6 +336,10 @@ if SettingsCF["tooltip"].talents == true then
 			if (UnitGUID("mouseover") == current.guid) then
 				lastInspectRequest = GetTime();
 				self:RegisterEvent("INSPECT_READY");
+				-- Az: Fix the blizzard inspect copypasta code (Blizzard_InspectUI\InspectPaperDollFrame.lua @ line 23)
+				if (InspectFrame) then
+					InspectFrame.unit = unit;
+				end
 				NotifyInspect(current.unit);
 			end
 		end
@@ -356,16 +364,16 @@ if SettingsCF["tooltip"].talents == true then
 		-- Only bother for players over level 9
 		local level = UnitLevel(unit);
 		if (level > 9 or level == -1) then
-			-- No need for inspection on the player
-			if (UnitIsUnit(unit,"player")) then
-				GatherTalents();
-				return;
-			end
 			-- Wipe Current Record
 			wipe(current);
 			current.unit = unit;
 			current.name = UnitName(unit);
 			current.guid = UnitGUID(unit)
+			-- No need for inspection on the player
+			if (UnitIsUnit(unit,"player")) then
+				GatherTalents();
+				return;
+			end
 			-- Show Cached Talents, If Available
 			local cacheLoaded = false;
 			for _, entry in ipairs(cache) do
@@ -603,9 +611,6 @@ if SettingsCF["tooltip"].arena_experience == true then
 		596, -- Highest 5 man personal rating
 	}
 	local needAchievements = {
-		401,   -- 2000 arena rating in 2x2
-		404,   -- 2000 arena rating in 5x5
-		405,   -- 2000 arena rating in 3x3
 		1161,  -- 2200 arena rating in 5x5
 		1159,  -- 2200 arena rating in 2x2
 		1160,  -- 2200 arena rating in 3x3
@@ -653,6 +658,7 @@ if SettingsCF["tooltip"].arena_experience == true then
 				GTT:HookScript("OnTooltipCleared", function()
 					if skillf:IsEventRegistered("INSPECT_ACHIEVEMENT_READY") and skillf:IsEventRegistered("INSPECT_ACHIEVEMENT_READY") then
 						skillf:UnregisterEvent("INSPECT_ACHIEVEMENT_READY")
+						ClearAchievementComparisonUnit()
 					end
 					isGTTActive = false
 				end)
@@ -665,15 +671,14 @@ if SettingsCF["tooltip"].arena_experience == true then
 			for indx, Achievement in pairs(needAchievements) do
 				local IDNumber, Name, Points, Completed, Month, Day, Year, Description, Flags, Image, RewardText = GetAchievementInfo(Achievement)
 				if GetAchievementComparisonInfo(Achievement) then
-					GTT:AddLine(Name)
-					GTT:AddTexture(Image)
+					GTT:AddLine("|T"..Image..":16:16:0:0:64:64:4:60:4:60|t "..Name)
 					isGTTActive = true
 				end
 			end
 			
 			for indx, Achievement in pairs(needStatistic) do
 				if GetComparisonStatistic(Achievement) ~= "--" then
-					GTT:AddDoubleLine(select(2,GetAchievementInfo(Achievement)), strGradient(tonumber(GetComparisonStatistic(Achievement)), 0, 2200))
+					GTT:AddDoubleLine(select(2,GetAchievementInfo(Achievement)), strGradient(tonumber(GetComparisonStatistic(Achievement)), 0, 100))
 					isGTTActive = true
 				end
 			end

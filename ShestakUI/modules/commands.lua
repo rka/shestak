@@ -61,7 +61,7 @@ SLASH_CLFIX1 = "/clfix"
 ----------------------------------------------------------------------------------------
 --	Demo mode for DBM
 ----------------------------------------------------------------------------------------
-SlashCmdList["DBMTEST"] = function() DBM:DemoMode() end
+SlashCmdList["DBMTEST"] = function() if IsAddOnLoaded("DBM-Core") then DBM:DemoMode() end end
 SLASH_DBMTEST1 = "/dbmtest"
 
 ----------------------------------------------------------------------------------------

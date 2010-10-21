@@ -66,6 +66,29 @@ SettingsCF["skins"] = {
 }
 
 ----------------------------------------------------------------------------------------
+--	Combat text options
+----------------------------------------------------------------------------------------
+SettingsCF["combattext"] = {
+	["font_size"] = 16,							-- Font size
+	["blizz_head_numbers"] = false,				-- Use blizzard damage/healing output(above mob/player head)
+	["damage"] = true,							-- Show outgoing damage in it's own frame
+	["healing"] = true,							-- Show outgoing healing in it's own frame
+	["damage_color"] = true,					-- Display damage numbers depending on school of magic
+	["crit_prefix"] = "*",						-- Symbol that will be added before crit
+	["crit_postfix"] = "*",						-- Symbol that will be added after crit
+	["icons"] = true,							-- Show outgoing damage icons
+	["icon_size"] = 16,							-- Icon size of spells in outgoing damage frame, also has effect on dmg font size
+	["damage_style"] = true,					-- Change default damage/healing font above mobs/player heads(you need to restart WoW to see changes)
+	["treshold"] = 1,							-- Minimum damage to show in damage frame
+	["heal_treshold"] = 1,						-- Minimum healing to show in incoming/outgoing healing messages
+	["scrollable"] = false,						-- Allows you to scroll frame lines with mousewheel
+	["max_lines"] = 15,							-- Max lines to keep in scrollable mode(more lines = more memory)
+	["time_visible"] = 3,						-- Time(seconds) a single message will be visible
+	["stop_ve_spam"] = false,					-- Automaticly turns off healing spam for priests in shadowform
+	["dk_runes"] = true,						-- Show deatchknight rune recharge
+}
+
+----------------------------------------------------------------------------------------
 --	Buffs reminder options
 ----------------------------------------------------------------------------------------
 SettingsCF["reminder"] = {
@@ -280,7 +303,8 @@ SettingsCF["unitframe"] = {
 	["solo_mode"] = false,						-- Show player frame always
 	["player_in_party"] = true,					-- Show player frame in party
 	["raid_tanks"] = true,						-- Show raid tanks
-	["raid_groups"] = "1,2,3,4,5",				-- Number of groups in raid(Only for ShestakUI_Heal)
+	["raid_groups"] = 5,						-- Number of groups in raid(Only for ShestakUI_Heal)
+	["raid_groups_vertical"] = false,			-- Vertical raid groups(Only for ShestakUI_Heal)
 	-- Icons
 	["icons_pvp"] = false,						-- Mouseover pvp text(not icons) on player and target frames
 	["icons_leader"] = true,					-- Leader icon, assistant icon, master loot icon on frames
@@ -452,4 +476,21 @@ SettingsCF["position"] = {
 		["target_castbar"] = {"CENTER", "oUF_Player_Castbar", "CENTER", -23, 35},	-- Target Castbar
 		["focus_castbar"] = {"CENTER", UIParent, "CENTER", 0, 250},					-- Focus Castbar icon
 	},
+}
+
+----------------------------------------------------------------------------------------
+--NOT WORKING!!!!!!!!!!! Fonts options
+----------------------------------------------------------------------------------------
+SettingsCF["pixelfont"] = {
+	["stats"] = false,
+	["unit_frames"] = false,
+	["auras"] = false,
+	["combat_text"] = false,
+	["chat_tabs"] = false,
+	["action_bars"] = false,
+	["threat_meter"] = false,
+	["raid_cooldowns"] = false,
+	["cooldown_timers"] = false,
+	["filger_bars_name"] = false,
+	["stylization"] = false,
 }

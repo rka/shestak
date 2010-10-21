@@ -39,7 +39,7 @@ if SettingsDB.client == "ruRU" then
 	-- Minimap
 	L_MINIMAP_CALENDAR = "Календарь"
 	
-	-- aLoad
+	-- Addons list
 	L_ALOAD_RL = "Перезагрузить"
 	L_ALOAD_TRADE = "Торговля"
 	L_ALOAD_SOLO = "Соло"
@@ -76,7 +76,7 @@ if SettingsDB.client == "ruRU" then
 	L_CHAT_COME_ONLINE_COLOR = "|cff298F00входит|r в игровой мир!"
 	L_CHAT_GONE_OFFLINE_COLOR = "|cffff0000выходит|r из игрового мира!"
 	
-	-- BaudErrorFrame
+	-- Errors frame
 	L_ERRORFRAME_L = "Щелкните, чтобы посмотреть ошибки."
 	
 	-- Bags
@@ -113,7 +113,7 @@ if SettingsDB.client == "ruRU" then
 	-- Cooldowns
 	L_COOLDOWNS = "Перезарядка: "
 	
-	-- aSettings
+	-- Autoinvite
 	L_INVITE_ENABLE_T = "Автоприглашение включено: invite"
 	L_INVITE_ENABLE = "Автоприглашение включено: "
 	L_INVITE_DISABLE = "Автоприглашение выключено"
@@ -189,13 +189,13 @@ if SettingsDB.client == "ruRU" then
 	L_CLASS_HUNTER_CONTENT = "Ваш питомец доволен!"
 	L_CLASS_HUNTER_HAPPY = "Ваш питомец счастлив!"
 	
-	-- aSettings
+	-- Info text
 	L_INFO_ERRORS = "Ошибок не обнаружено."
 	L_INFO_INVITE = "Приглашение принято от: "
 	L_INFO_DUEL = "Дуэль отклонена от: "
 	L_INFO_DISBAND = "Роспуск группы..."
 	L_INFO_ADDON_SETS1 = "Введите /addons <solo/party/raid/pvp/trade/quest>, чтобы загрузить предустановленный набор модификаций."
-	L_INFO_ADDON_SETS2 = "Вы можете добавить, удалить или изменить списки модификаций изменив файл wtf.lua в папке scripts."
+	L_INFO_ADDON_SETS2 = "Вы можете добавить, удалить или изменить списки модификаций изменив файл wtf.lua в папке modules."
 	L_INFO_SETTINGS_DBM = "Введите /settings dbm, чтобы применить настройки DBM."
 	L_INFO_SETTINGS_MSBT = "Введите /settings msbt, чтобы применить настройки MSBT."
 	L_INFO_SETTINGS_SKADA = "Введите /settings skada, чтобы применить настройки Skada."
@@ -210,6 +210,7 @@ if SettingsDB.client == "ruRU" then
 	L_POPUP_DISABLEUI = "ShestakUI не работает на этом разрешении, хотите отключить ShestakUI? (Отмена если хотите попробовать другое разрешение)"
 	L_POPUP_SETTINGS_ALL = "Применить настройки для всех модификаций? (DBM/DXE, Skada/Recount и MSBT)"
 	L_POPUP_SETTINGS_DBM = "Необходимо изменить позиции элементов DBM."
+	L_POPUP_SETTINGS_CLIQUE = "Настройки Clique установлены не корректно для ShestakUI, Вы хотели бы их настроить?"
 	
 	-- Welcome mesage
 	L_WELCOME_LINE_1 = "Добро пожаловать в ShestakUI "

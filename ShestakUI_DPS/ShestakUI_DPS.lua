@@ -284,3 +284,28 @@ oUF:Factory(function(self)
 		raid2:SetPoint("TOPLEFT", "oUF_RaidDPS", "TOPRIGHT", SettingsDB.Scale(7), 0)
 	end
 end)
+
+----------------------------------------------------------------------------------------
+--	Force a Clique option if not set(by Elv22)
+----------------------------------------------------------------------------------------
+if IsAddOnLoaded("Clique") then
+	local CliquePath = CliqueDB3["char"][SettingsDB.name.." - "..GetRealmName()]["downclick"]	
+	StaticPopupDialogs["SETUP_CLIQUE"] = {
+		text = L_POPUP_SETTINGS_CLIQUE,
+		button1 = ACCEPT,
+		button2 = CANCEL,
+		OnAccept = function() 
+			CliqueDB3["char"][SettingsDB.name.." - "..GetRealmName()]["downclick"] = true 
+			ReloadUI() 
+		end,
+		timeout = 0,
+		whileDead = 1,
+	}
+	local CliqueCheck = CreateFrame("Frame")
+	CliqueCheck:RegisterEvent("PLAYER_ENTERING_WORLD")
+	CliqueCheck:SetScript("OnEvent", function()
+		if CliquePath ~= true then
+			StaticPopup_Show("SETUP_CLIQUE")
+		end
+	end)
+end

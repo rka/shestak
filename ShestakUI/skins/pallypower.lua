@@ -25,10 +25,6 @@ PPSkin:SetScript("OnEvent", function(self, event, addon)
 		settings.display.buttonWidth = hundred+three
 		settings.display.buttonHeight = forty-three
 		
-		--PallyPower.opt.buffscale = one
-		--PallyPower.opt.display.buttonWidth = hundred+three
-		--PallyPower.opt.display.buttonHeight = forty-three
-		
 		local _applyskin = PallyPower.ApplySkin
 		function PallyPower:ApplySkin(skinname)
 
@@ -51,7 +47,7 @@ PPSkin:SetScript("OnEvent", function(self, event, addon)
 					local fs = _G[fname..fontstring]
 					if fs then
 						local _, size = fs:GetFont()
-						fs:SetFont(font, SettingsCF["media"].pixel_font_size, SettingsCF["media"].pixel_font_style)
+						fs:SetFont(font, SettingsCF["media"].pixel_font_size/settings.buffscale, SettingsCF["media"].pixel_font_style)
 						fs:SetShadowColor(0, 0, 0, 0)
 						if not fname:find("PowerC%d+P%d+$") then
 							if fontstring == "Text" then

@@ -131,7 +131,7 @@ elseif gl == "ruRU" then
     cBnivL.Trades = "Хозяйственные товары"
     cBnivL.Consumables = "Расходуемые"
     cBnivL.Quest = "Задания"
-    cBnivL.MarkAsNew = "Mark as New"
+    cBnivL.MarkAsNew = "Отметить новым"
     cBnivL.MarkAsKnown = "Mark as Known"
     cBnivL.bagCaptions = {
 		["cBniv_Bank"] 			= "Банк",
@@ -140,7 +140,7 @@ elseif gl == "ruRU" then
         ["cBniv_BankQuest"]		= "Задания",
         ["cBniv_BankTrade"]		= "Хозяйственные товары",
         ["cBniv_BankCons"]		= "Расходуемые",
-		["cBniv_Stuff"]			= "Cool Stuff",
+		["cBniv_Stuff"]			= "Интересные предметы",
         ["cBniv_Junk"]			= "Мусор",
 		["cBniv_ItemSets"]	    = "Наборы экипировки",
 		["cBniv_Armor"]			= "Оружие и Доспехи",

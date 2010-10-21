@@ -205,27 +205,41 @@ SkinBlizzUI:SetScript("OnEvent", function(self, event, addon)
 		end
 		
 		-- Button position or text
+		_G["VideoOptionsFrameDefaults"]:ClearAllPoints()
+		_G["VideoOptionsFrameDefaults"]:SetPoint("TOPLEFT", _G["VideoOptionsFrameCategoryFrame"], "BOTTOMLEFT", 0, -14)
+		_G["VideoOptionsFrameApply"]:ClearAllPoints()
+		_G["VideoOptionsFrameApply"]:SetPoint("TOPRIGHT", _G["VideoOptionsFramePanelContainer"], "BOTTOMRIGHT", 0, -14)
 		_G["VideoOptionsFrameCancel"]:ClearAllPoints()
-		_G["VideoOptionsFrameCancel"]:SetPoint("RIGHT", _G["VideoOptionsFrameApply"], "LEFT", -4, 0)	 
+		_G["VideoOptionsFrameCancel"]:SetPoint("RIGHT", _G["VideoOptionsFrameApply"], "LEFT", -4, 0)
 		_G["VideoOptionsFrameOkay"]:ClearAllPoints()
 		_G["VideoOptionsFrameOkay"]:SetPoint("RIGHT", _G["VideoOptionsFrameCancel"], "LEFT", -4, 0)
+		_G["AudioOptionsFrameDefaults"]:ClearAllPoints()
+		_G["AudioOptionsFrameDefaults"]:SetPoint("TOPLEFT", _G["AudioOptionsFrameCategoryFrame"], "BOTTOMLEFT", 0, -14)
+		_G["AudioOptionsFrameCancel"]:ClearAllPoints()
+		_G["AudioOptionsFrameCancel"]:SetPoint("TOPRIGHT", _G["AudioOptionsFramePanelContainer"], "BOTTOMRIGHT", 0, -14)
 		_G["AudioOptionsFrameOkay"]:ClearAllPoints()
 		_G["AudioOptionsFrameOkay"]:SetPoint("RIGHT", _G["AudioOptionsFrameCancel"], "LEFT", -4, 0)
+		
+		
+		_G["InterfaceOptionsFrameDefaults"]:ClearAllPoints()
+		_G["InterfaceOptionsFrameDefaults"]:SetPoint("TOPLEFT", _G["InterfaceOptionsFrameCategories"], "BOTTOMLEFT", 0, -14)
+		_G["InterfaceOptionsFrameCancel"]:ClearAllPoints()
+		_G["InterfaceOptionsFrameCancel"]:SetPoint("TOPRIGHT", _G["InterfaceOptionsFramePanelContainer"], "BOTTOMRIGHT", 0, -14)
 		_G["InterfaceOptionsFrameOkay"]:ClearAllPoints()
 		_G["InterfaceOptionsFrameOkay"]:SetPoint("RIGHT", _G["InterfaceOptionsFrameCancel"], "LEFT", -4, 0)
 		_G["ColorPickerOkayButton"]:ClearAllPoints()
-		_G["ColorPickerOkayButton"]:SetPoint("BOTTOMLEFT", _G["ColorPickerFrame"], "BOTTOMLEFT", 6, 6)		 
+		_G["ColorPickerOkayButton"]:SetPoint("BOTTOMLEFT", _G["ColorPickerFrame"], "BOTTOMLEFT", 6, 6)
 		_G["ColorPickerCancelButton"]:ClearAllPoints()
 		_G["ColorPickerCancelButton"]:SetPoint("BOTTOMRIGHT", _G["ColorPickerFrame"], "BOTTOMRIGHT", -6, 6)
 		_G["ReadyCheckFrameYesButton"]:SetParent(_G["ReadyCheckFrame"])
-		_G["ReadyCheckFrameNoButton"]:SetParent(_G["ReadyCheckFrame"]) 
+		_G["ReadyCheckFrameNoButton"]:SetParent(_G["ReadyCheckFrame"])
 		_G["ReadyCheckFrameYesButton"]:SetPoint("RIGHT", _G["ReadyCheckFrame"], "CENTER", -6, 0)
 		_G["ReadyCheckFrameNoButton"]:SetPoint("LEFT", _G["ReadyCheckFrameYesButton"], "RIGHT", 6, 0)
-		_G["ReadyCheckFrameText"]:SetParent(_G["ReadyCheckFrame"])	
+		_G["ReadyCheckFrameText"]:SetParent(_G["ReadyCheckFrame"])
 		_G["ReadyCheckFrameText"]:ClearAllPoints()
 		_G["ReadyCheckFrameText"]:SetPoint("TOP", 0, -12)
 		_G["InterfaceOptionsFrameTab1"]:ClearAllPoints()
-		_G["InterfaceOptionsFrameTab1"]:SetPoint("TOPLEFT", _G["InterfaceOptionsFrameCategories"], "TOPLEFT", 10, 27)
+		_G["InterfaceOptionsFrameTab1"]:SetPoint("TOPLEFT", _G["InterfaceOptionsFrameCategories"], "TOPLEFT", 5, 27)
 		_G["InterfaceOptionsFrameTab2"]:ClearAllPoints()
 		_G["InterfaceOptionsFrameTab2"]:SetPoint("TOPLEFT", _G["InterfaceOptionsFrameTab1"], "TOPRIGHT", 6, 0)
 		_G["ChatConfigFrameDefaultButton"]:SetWidth(125)
@@ -272,8 +286,12 @@ SkinBlizzUI:SetScript("OnEvent", function(self, event, addon)
 	end
 	
 	-- AtlasLoot Tooltip
-	if addon == "AtlasLoot" then
-		AtlasLootTooltip:HookScript("OnShow", function(self) SettingsDB.SkinFadedPanel(self) end)
+	if IsAddOnLoaded("AtlasLoot") then
+		SettingsDB.SkinFadedPanel(AtlasLootTooltip)
+		AtlasLootTooltip:HookScript("OnShow", function(self) 
+			self:SetBackdropColor(unpack(SettingsCF.media.overlay_color))
+			self:SetBackdropBorderColor(unpack(SettingsCF.media.border_color))
+		end)
 	end
 	
 	-- DBM-GUI Frame
@@ -327,14 +345,14 @@ end)
 ----------------------------------------------------------------------------------------
 if IsMacClient() then
 	-- Skin main frame and reposition the header
-	SettingsDB.CreateBlizzard(MacOptionsFrame)
+	SettingsDB.SkinFadedPanel(MacOptionsFrame)
 	MacOptionsFrameHeader:SetTexture("")
 	MacOptionsFrameHeader:ClearAllPoints()
 	MacOptionsFrameHeader:SetPoint("TOP", MacOptionsFrame, 0, 0)
  
 	-- Skin internal frames
-	SettingsDB.CreateBlizzard(MacOptionsFrameMovieRecording)
-	SettingsDB.CreateBlizzard(MacOptionsITunesRemote)
+	SettingsDB.SkinPanel(MacOptionsFrameMovieRecording)
+	SettingsDB.SkinPanel(MacOptionsITunesRemote)
  
 	-- Skin buttons
 	SkinButton(_G["MacOptionsFrameCancel"])

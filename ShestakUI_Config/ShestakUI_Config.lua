@@ -5,6 +5,7 @@ local ALLOWED_GROUPS = {
 	["general"] = 1,
 	["misc"] = 1,
 	["skins"] = 1,
+	["combattext"] = 1,
 	["reminder"] = 1,
 	["cooldown"] = 1,
 	["threat"] = 1,
@@ -49,6 +50,26 @@ local function Local(o)
 	if o == "UIConfigskins" then o = L_GUI_SKINS end
 	if o == "UIConfigskinsdbm" then o = L_GUI_SKINS_DBM end
 	if o == "UIConfigskinspallypower" then o = L_GUI_SKINS_PP end
+	
+	-- Combat text options
+	if o == "UIConfigcombattext" then o = L_GUI_COMBATTEXT end
+	if o == "UIConfigcombattextfont_size" then o = L_GUI_COMBATTEXT_FONT_SIZE end
+	if o == "UIConfigcombattextblizz_head_numbers" then o = L_GUI_COMBATTEXT_BLIZZ_HEAD_NUMBERS end
+	if o == "UIConfigcombattextdamage" then o = L_GUI_COMBATTEXT_DAMAGE end
+	if o == "UIConfigcombattexthealing" then o = L_GUI_COMBATTEXT_HEALING end
+	if o == "UIConfigcombattextdamage_color" then o = L_GUI_COMBATTEXT_DAMAGE_COLOR end
+	if o == "UIConfigcombattextcrit_prefix" then o = L_GUI_COMBATTEXT_CRIT_PREFIX end
+	if o == "UIConfigcombattextcrit_postfix" then o = L_GUI_COMBATTEXT_CRIT_POSTFIX end
+	if o == "UIConfigcombattexticons" then o = L_GUI_COMBATTEXT_ICONS end
+	if o == "UIConfigcombattexticon_size" then o = L_GUI_COMBATTEXT_ICON_SIZE end
+	if o == "UIConfigcombattextdamage_style" then o = L_GUI_COMBATTEXT_DAMAGE_STYLE end
+	if o == "UIConfigcombattexttreshold" then o = L_GUI_COMBATTEXT_TRESHOLD end
+	if o == "UIConfigcombattextheal_treshold" then o = L_GUI_COMBATTEXT_HEAL_TRESHOLD end
+	if o == "UIConfigcombattextscrollable" then o = L_GUI_COMBATTEXT_SCROLLABLE end
+	if o == "UIConfigcombattextmax_lines" then o = L_GUI_COMBATTEXT_MAX_LINES end
+	if o == "UIConfigcombattexttime_visible" then o = L_GUI_COMBATTEXT_TIME_VISIBLE end
+	if o == "UIConfigcombattextstop_ve_spam" then o = L_GUI_COMBATTEXT_STOP_VE_SPAM end
+	if o == "UIConfigcombattextdk_runes" then o = L_GUI_COMBATTEXT_DK_RUNES end
 	
 	-- Buffs reminder options
 	if o == "UIConfigreminder" then o = L_GUI_REMINDER end
@@ -217,6 +238,7 @@ local function Local(o)
 	if o == "UIConfigunitframeplayer_in_party" then o = L_GUI_UF_PLAYER_PARTY end
 	if o == "UIConfigunitframeraid_tanks" then o = L_GUI_UF_SHOW_TANK end
 	if o == "UIConfigunitframeraid_groups" then o = L_GUI_UF_RAID_GROUP end
+	if o == "UIConfigunitframeraid_groups_vertical" then o = L_GUI_UF_RAID_VERTICAL_GROUP end
 	if o == "UIConfigunitframeicons_pvp" then o = L_GUI_UF_ICONS_PVP end
 	if o == "UIConfigunitframeicons_leader" then o = L_GUI_UF_ICONS_LEADER end
 	if o == "UIConfigunitframeicons_combat" then o = L_GUI_UF_ICONS_COMBAT end

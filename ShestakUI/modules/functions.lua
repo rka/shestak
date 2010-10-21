@@ -45,12 +45,14 @@ local backdrop = {
 
 -- Create overlay frame
 function SettingsDB.SetOverlay(f)
+	if f.bg then return end
 	f.bg = f:CreateTexture(f:GetName() and f:GetName().."_overlay" or nil, "BORDER", f)
 	f.bg:ClearAllPoints()
 	f.bg:SetPoint("TOPLEFT", f, "TOPLEFT", mult, -mult)
 	f.bg:SetPoint("BOTTOMRIGHT", f, "BOTTOMRIGHT", -mult, mult)
 	f.bg:SetTexture(media.texture)
 	f.bg:SetVertexColor(0.1, 0.1, 0.1, 1)
+	return f.bg
 end
 
 -- Skin panels
@@ -80,17 +82,32 @@ function SettingsDB.CreateTemplate(f)
 	f:SetBackdropBorderColor(unpack(media.border_color))
 end
 
--- Create border for faded panels or it looks shit
-function SettingsDB.CreateBorder(f)
-	local border = CreateFrame("Frame", nil, f)
-	border:SetFrameLevel(0)
-	border:SetPoint("TOPLEFT", -mult, mult)
-	border:SetPoint("BOTTOMRIGHT", mult, -mult)
-	border:SetBackdrop({
-	  edgeFile = media.blank, edgeSize = 3, 
-	  insets = { left = 0, right = 0, top = 0, bottom = 0 }
+function SettingsDB.StyleInnerBorder(f)
+	if f.iborder then return end
+	f.iborder = CreateFrame("Frame", nil, f)
+	f.iborder:SetPoint("TOPLEFT", mult, -mult)
+	f.iborder:SetPoint("BOTTOMRIGHT", -mult, mult)
+	f.iborder:SetBackdrop({
+		edgeFile = media.blank, 
+		edgeSize = mult, 
+		insets = { left = mult, right = mult, top = mult, bottom = mult }
 	})
-	border:SetBackdropBorderColor(unpack(media.backdrop_color))
+	f.iborder:SetBackdropBorderColor(unpack(media.backdrop_color))
+	return f.iborder
+end
+
+function SettingsDB.StyleOuterBorder(f)
+	if f.oborder then return end
+	f.oborder = CreateFrame("Frame", nil, f)
+	f.oborder:SetPoint("TOPLEFT", -mult, mult)
+	f.oborder:SetPoint("BOTTOMRIGHT", mult, -mult)
+	f.oborder:SetBackdrop({
+		edgeFile = media.blank, 
+		edgeSize = mult, 
+		insets = { left = mult, right = mult, top = mult, bottom = mult }
+	})
+	f.oborder:SetBackdropBorderColor(unpack(media.backdrop_color))
+	return f.oborder
 end
 
 -- Skin more shit
@@ -98,7 +115,8 @@ function SettingsDB.SkinFadedPanel(f)
 	f:SetBackdrop(backdrop)
 	f:SetBackdropColor(unpack(media.overlay_color))
 	f:SetBackdropBorderColor(unpack(media.border_color))
-	SettingsDB.CreateBorder(f)
+	SettingsDB.StyleInnerBorder(f)
+	SettingsDB.StyleOuterBorder(f)
 end
 
 -- Create our faded panels
@@ -111,18 +129,6 @@ function SettingsDB.CreateFadedPanel(f, w, h, a1, p, a2, x, y)
 	f:SetFrameStrata("BACKGROUND")
 	f:SetPoint(a1, p, a2, x, y)
 	SettingsDB.SkinFadedPanel(f)
-end
-
--- secret :3
-function SettingsDB.CreateButton(f, w, h, a1, p, a2, x, y)
-	sh = scale(h)
-	sw = scale(w)	
-	f:SetFrameLevel(1)
-	f:SetHeight(sh)
-	f:SetWidth(sw)
-	f:SetFrameStrata("BACKGROUND")
-	f:SetPoint(a1, p, a2, x, y)
-	SettingsDB.CreateTemplate(f)
 end
 
 function SettingsDB.CreateBlizzard(f)

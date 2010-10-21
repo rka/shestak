@@ -60,9 +60,12 @@ MiniMapWorldMapButton:Hide()
 MiniMapInstanceDifficulty:SetParent(Minimap)
 MiniMapInstanceDifficulty:ClearAllPoints()
 MiniMapInstanceDifficulty:SetPoint("TOPRIGHT", Minimap, "TOPRIGHT", SettingsDB.Scale(3), SettingsDB.Scale(2))
+MiniMapInstanceDifficulty:SetScale(0.8)
+
 GuildInstanceDifficulty:SetParent(Minimap)
 GuildInstanceDifficulty:ClearAllPoints()
-GuildInstanceDifficulty:SetPoint("TOPRIGHT", Minimap, "TOPRIGHT", SettingsDB.Scale(3), SettingsDB.Scale(2))
+GuildInstanceDifficulty:SetPoint("TOPRIGHT", Minimap, "TOPRIGHT", SettingsDB.Scale(-2), SettingsDB.Scale(2))
+GuildInstanceDifficulty:SetScale(0.8)
 
 -- Invites Icon
 GameTimeCalendarInvitesTexture:ClearAllPoints()
@@ -133,8 +136,6 @@ local addonmenu = {
     func = function() if IsAddOnLoaded("DBM-Core") then DBM:LoadGUI() end end},
 	{text = "DXE",
     func = function() if IsAddOnLoaded("DXE") then DXE:ToggleConfig() end end},
-	{text = "PallyPower",
-    func = function() if IsAddOnLoaded("PallyPower") then PallyPowerConfigFrame:Show() end end},
 	{text = "Skada",
     func = function() if IsAddOnLoaded("Skada") then Skada:ToggleWindow() end end},
 	{text = "WIM",
@@ -148,11 +149,11 @@ local addonmenu = {
 }
 
 Minimap:SetScript("OnMouseUp", function(self, button)
-	if button == "RightButton" then
+	if button == "RightButton" and not InCombatLockdown() then
 		EasyMenu(micromenu, menuFrame, "cursor", 0, 0, "MENU", 2)
 	elseif button == "MiddleButton" then
 		EasyMenu(addonmenu, menuFrame, "cursor", 0, 0, "MENU", 2)
-	else
+	elseif button == "LeftButton" then
 		Minimap_OnClick(self)
 	end
 end)

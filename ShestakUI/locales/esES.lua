@@ -1,5 +1,5 @@
 ﻿----------------------------------------------------------------------------------------
---	Localization for esES client(Thanks to Seal for the translation)
+--	Localization for esES client(Thanks to Seal and Revisado for the translation)
 ----------------------------------------------------------------------------------------
 if SettingsDB.client == "esES" then
 	-- Tooltip
@@ -18,7 +18,7 @@ if SettingsDB.client == "esES" then
 	
 	-- Flask name
 	L_FLASK_STR = "Frasco del Norte - Fuerza"
-	L_FLASK_SPD = "Frasco del Norte - Daño Magico"
+	L_FLASK_SPD = "Frasco del Norte - Daсo Magico"
 	L_FLASK_AP = "Frasco del Norte - Poder de Ataque"
 	
 	-- UnitFrame
@@ -28,9 +28,9 @@ if SettingsDB.client == "esES" then
 	L_UF_DRAGON = "Dracohalcon"
 	L_UF_VIPER = "Vibora"
 	L_UF_MANA = "Mana bajo"
-	L_UF_TRINKET_READY = "Trinket ready: "  -- Needs review
-	L_UF_TRINKET_USED = "Trinket used: "  -- Needs review
-	L_UF_WOTF_USED = "WotF used: "  -- Needs review
+	L_UF_TRINKET_READY = "Abalorio listo: "
+	L_UF_TRINKET_USED = "Abalorio usado: "
+	L_UF_WOTF_USED = "WotF usado: "
 	
 	-- Map
 	L_MAP_CURSOR = "Cursor: "
@@ -40,27 +40,27 @@ if SettingsDB.client == "esES" then
 	L_MINIMAP_CALENDAR = "Calendario"
 	
 	-- aLoad
-	L_ALOAD_RL = "Reload UI"  -- Needs review
-	L_ALOAD_TRADE = "Trade"  -- Needs review
-	L_ALOAD_SOLO = "Solo"  -- Needs review
+	L_ALOAD_RL = "Recargar UI"
+	L_ALOAD_TRADE = "Comercio"
+	L_ALOAD_SOLO = "Solo"
 	
 	-- ShestakUI_Config
-	L_GUI_MINIMAP_ICON_LM = "Left Click - Enter to GUI"  -- Needs review
-	L_GUI_MINIMAP_ICON_RM = "Right Click - Dropdown menu"  -- Needs review
-	L_GUI_MINIMAP_ICON_SD = "Shift + Drag - Move Button"  -- Needs review
-	L_GUI_MINIMAP_ICON_SRM = "Shift + Right Click - ReloadUI"  -- Needs review
-	L_GUI_MINIMAP_ICON_SLASH = "Slash commands"  -- Needs review
-	L_GUI_MINIMAP_ICON_SPEC = "Spec switching"  -- Needs review
-	L_GUI_MINIMAP_ICON_CL = "Fix combatlog"  -- Needs review
-	L_GUI_MINIMAP_ICON_DBM = "DBM test mode"  -- Needs review
-	L_GUI_MINIMAP_ICON_HEAL = "Switch to heal layout"  -- Needs review
-	L_GUI_MINIMAP_ICON_DPS = "Switch to dps layout"  -- Needs review
+	L_GUI_MINIMAP_ICON_LM = "Click izquierdo - Entrar a la GUI"
+	L_GUI_MINIMAP_ICON_RM = "Click derecho - Menu adicional"
+	L_GUI_MINIMAP_ICON_SD = "Shift + Arrastrar - Mover botón"
+	L_GUI_MINIMAP_ICON_SRM = "Shift + Click derecho - Recargar UI"
+	L_GUI_MINIMAP_ICON_SLASH = "Barra de comandos"
+	L_GUI_MINIMAP_ICON_SPEC = "Cambiar talentos"
+	L_GUI_MINIMAP_ICON_CL = "Fijar registro de combate"
+	L_GUI_MINIMAP_ICON_DBM = "Modo test de DBM"
+	L_GUI_MINIMAP_ICON_HEAL = "Cambiar a interfaz de sanador"
+	L_GUI_MINIMAP_ICON_DPS = "Cambiar a interfaz de daсo"
 
 	-- Chat
-	L_CHAT_WHISPER = "From"
-	L_CHAT_BN_WHISPER = "From"
+	L_CHAT_WHISPER = "De"
+	L_CHAT_BN_WHISPER = "De"
 	L_CHAT_AFK = "[AFK]"
-	L_CHAT_DND = "[DND]"
+	L_CHAT_DND = "[NM]"
 	L_CHAT_GM = "[GM]"
 	L_CHAT_GUILD = "H"
 	L_CHAT_PARTY = "G"
@@ -71,10 +71,10 @@ if SettingsDB.client == "esES" then
 	L_CHAT_BATTLEGROUND	= "CB"
 	L_CHAT_BATTLEGROUND_LEADER = "CBL"
 	L_CHAT_OFFICER = "O"
-	L_CHAT_COME_ONLINE = "has come online."  -- Needs review(The exact text that is written in the chat)
-	L_CHAT_GONE_OFFLINE = "has gone offline."  -- Needs review(The exact text that is written in the chat)
-	L_CHAT_COME_ONLINE_COLOR = "is now |cff298F00online|r !"  -- Needs review(The exact text that is written in the chat)
-	L_CHAT_GONE_OFFLINE_COLOR = "is now |cffff0000offline|r !"  -- Needs review(The exact text that is written in the chat)
+	L_CHAT_COME_ONLINE = "se ha conectado."
+	L_CHAT_GONE_OFFLINE = "se ha desconectado."
+	L_CHAT_COME_ONLINE_COLOR = "se ha |cff298F00conectado|r !"
+	L_CHAT_GONE_OFFLINE_COLOR = "se ha |cffff0000desconectado|r !"
 
 	-- BaudErrorFrame
 	L_ERRORFRAME_L = "Click para ver errores."
@@ -88,13 +88,13 @@ if SettingsDB.client == "esES" then
 	L_MAIL_STOPPED = "Sin espacio, inventario lleno."
 	L_MAIL_COMPLETE = "Todo enviado."
 	L_MAIL_NEED = "Necesitas un buzon."
-	L_MAIL_MESSAGES =  "messages"  -- Needs review
+	L_MAIL_MESSAGES =  "mensajes"
 	L_MAIL_GOLD = "Recoger efectivo"
 	
 	-- Loot
 	L_LOOT_RANDOM = "Jugador aleatorio"
 	L_LOOT_SELF = "Despojar automaticamente"
-	L_LOOT_UNKNOWN = "Unknown"
+	L_LOOT_UNKNOWN = "Desconocido"
 	L_LOOT_FISH = "Despojar pescado"
 	L_LOOT_MONSTER = ">> Botin de "
 	L_LOOT_CHEST = ">> Botin del cofre"
@@ -103,7 +103,7 @@ if SettingsDB.client == "esES" then
 	L_LOOT_TO_PARTY = "  grupo"
 	L_LOOT_TO_GUILD = "  hermandad"
 	L_LOOT_TO_SAY = "  decir"
-	L_LOOT_CANNOT = "No puedes rolear"
+	L_LOOT_CANNOT = "No puedes tirar dados"
 
 	-- LitePanels AFK module
 	L_PANELS_AFK = "Estas ausente!"
@@ -111,7 +111,7 @@ if SettingsDB.client == "esES" then
 	L_PANELS_AFK_LCLICK = "Boton izquierdo para retroceder."
 
 	-- Cooldowns
-	L_COOLDOWNS = "CD: "  -- Needs review
+	L_COOLDOWNS = "TR: "
 	
 	-- aSettings
 	L_INVITE_ENABLE_T = "Auto Invitar ON: invite"
@@ -126,15 +126,15 @@ if SettingsDB.client == "esES" then
 	L_BIND_SAVED = "La configuración de las teclas ha sido guardada."
 	L_BIND_DISCARD = "Se han descartado los cambios en la configuración de las teclas."
 	L_BIND_INSTRUCT = "Coloca el cursor encima de cualquier botón para asignar una tecla. Presiona la tecla ESC o el botón derecho del ratón para quitar la asignación actual."
-	L_BIND_CLEARED = "All keybindings cleared for"  -- Needs review
-	L_BIND_BINDING = "Binding"  -- Needs review
-	L_BIND_KEY = "Key"  -- Needs review
-	L_BIND_NO_SET = "No bindings set"  -- Needs review
+	L_BIND_CLEARED = "Todas las asignaciones de teclas se han limpiado para"
+	L_BIND_BINDING = "Asignación"
+	L_BIND_KEY = "Tecla"
+	L_BIND_NO_SET = "No tiene asignación"
 	
 	-- Raid Planner
-	L_PLANNER_TITLE = "Raid Planner"  -- Needs review
-	L_PLANNER_IMP_TALENT = "Improved talent"  -- Needs review
-	L_PLANNER_INSPECT = "Inspecting"  -- Needs review
+	L_PLANNER_TITLE = "Planificador de banda"
+	L_PLANNER_IMP_TALENT = "Mejora de talento"
+	L_PLANNER_INSPECT = "Inspeccionando"
 	L_PLANNER_DEATHKNIGHT_1 = "Sangre"
 	L_PLANNER_DEATHKNIGHT_2 = "Escarcha"
 	L_PLANNER_DEATHKNIGHT_3 = "Profana"
@@ -169,7 +169,7 @@ if SettingsDB.client == "esES" then
 	-- aSettings(bg score)
 	L_DATATEXT_ARATHI = "Cuenca de Arathi"
 	L_DATATEXT_WARSONG = "Garganta Grito de Guerra"
-	L_DATATEXT_EYE = "Cuenca de Arathi"
+	L_DATATEXT_EYE = "Ojo de la Tormenta"
 	L_DATATEXT_ALTERAC = "Valle de Alterac"
 	L_DATATEXT_ANCIENTS = "Playa de los Ancestros"
 	L_DATATEXT_ISLE = "Isla de la Conquista"
@@ -199,8 +199,8 @@ if SettingsDB.client == "esES" then
 	L_INFO_SETTINGS_DBM = "Escribe /settings dbm, para aplicar las preferencias del DBM."
 	L_INFO_SETTINGS_MSBT = "Escribe /settings msbt, para aplicar las preferencias del MSBT."
 	L_INFO_SETTINGS_SKADA = "Escribe /settings skada, para aplicar las preferencias del Skada."
-	L_INFO_SETTINGS_RECOUNT = "Type /settings recount, to apply the settings Recount. Then in Recount options select *Default* profile."  -- Needs review
-	L_INFO_SETTINGS_DXE = "Type /settings dxe, to apply the settings DXE. Then in DXE options select *Default* profile."  -- Needs review
+	L_INFO_SETTINGS_RECOUNT = "Escribe /settings recount, para aplicar las preferencias del Recount. Luego en las opciones de Recount selecciona el perfil *Por defecto*."
+	L_INFO_SETTINGS_DXE = "Escribe /settings dxe, para aplicar las preferencias del DXE. Luego en las opciones de DXE selecciona el perfil *Por defecto*."
 	L_INFO_SETTINGS_ALL = "Escribe /settings all, para aplicar todas las modificaciones."
 	
 	-- Popups
@@ -208,11 +208,12 @@ if SettingsDB.client == "esES" then
 	L_POPUP_RESETUI = "¿Estás seguro de que desea restablecer ShestakUI?"
 	L_POPUP_SWITCH_RAID = "Hay activos 2 estilos para banda, por favor selecciona uno."
 	L_POPUP_DISABLEUI = "ShestakUI no funciona con esta resolución, ¿Quieres desactivar ShestakUI? (Pulsa cancelar si quieres probar otra resolución)"
-	L_POPUP_SETTINGS_ALL = "Apply settings for all modifications? (DBM/DXE, Skada/Recount and MSBT)"  -- Needs review
-	L_POPUP_SETTINGS_DBM = "Need to change the position of elements DBM."  -- Needs review
+	L_POPUP_SETTINGS_ALL = "¿Aplicar modificaciones para todos los addons? (DBM/DXE, Skada/Recount ó MSBT)"
+	L_POPUP_SETTINGS_DBM = "Necesito cambiar la posición de los elementos del DBM."
+	L_POPUP_SETTINGS_CLIQUE = "Your Clique settings are not setup with ShestakUI, would you like to set them up?"  -- Needs review
 	
 	-- Welcome mesage
-	L_WELCOME_LINE_1 = "Welcome to ShestakUI "  -- Needs review
-	L_WELCOME_LINE_2_1 = "Type /cfg to config interface, or visit http://shestak.org"  -- Needs review
-	L_WELCOME_LINE_2_2 = "for more informations."  -- Needs review
+	L_WELCOME_LINE_1 = "Bienvenido a ShestakUI "
+	L_WELCOME_LINE_2_1 = "Escribe /cfg para configurar la interfaz, o visita http://shestak.org"
+	L_WELCOME_LINE_2_2 = "para más información."
 end

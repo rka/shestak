@@ -1,9 +1,9 @@
 -- LiteStats / Katae @ WoWI
-----------------------------------------------------------------------------------------
+-------------------------------------------------------------------------------------------
 -- * Configure the modules in config.lua, if you need more control, edit the core modules.
 -- * AutoSell and AutoRepair can be toggled on/off by right-clicking the text display.
 -- * Junk exceptions for AutoSelling can be configured by the /junk command.
-----------------------------------------------------------------------------------------
+-------------------------------------------------------------------------------------------
 -- Please attain permission AND give credit before distributing any segments of this addon.
 
 local P = "player" -- Because I'm tired of typing it.
@@ -17,7 +17,6 @@ local ttsubh = {r=0.75, g=0.90, b=1.00} -- Subheaders
 local strata, level = "HIGH", 10
 
 -- Globals
-local modules = LPSTAT_CONFIG
 local profiles = LPSTAT_PROFILES
 local font = LPSTAT_FONT
 local t_icon = LTIPICONSIZE or 20
@@ -35,6 +34,29 @@ local floor = math.floor
 local select = select
 local max = max
 local gsub = gsub
+
+-- Config missing?
+local modules = LPSTAT_CONFIG
+if not modules then return end
+
+local fps = modules.FPS
+local latency = modules.Latency
+local memory = modules.Memory
+local durability = modules.Durability
+local gold = modules.Gold
+local clock = modules.Clock
+local location = modules.Location
+local coords = modules.Coords
+local ping = modules.Ping
+local guild = modules.Guild
+local friends = modules.Friends
+local bags = modules.Bags
+local talents = modules.Talents
+local stats = modules.Stats
+local experience = modules.Experience
+local loot = modules.Loot
+local cloak = modules.Cloak
+local helm = modules.Helm
 
 -- Locale
 local locale = LSTLOCALE or {}
@@ -85,11 +107,11 @@ ls:SetScript("OnEvent", function(_,event,addon)
 		end
 	end
 end)
-if modules and ((modules.Coords and modules.Coords.enabled) or (modules.Location and modules.Location.enabled)) then
+if modules and ((coords and coords.enabled) or (location and location.enabled)) then
 	ls:RegisterEvent'ZONE_CHANGED_NEW_AREA'
 	ls:SetScript("OnUpdate", function() coordX, coordY = GetPlayerMapPosition(P) end)
 	WorldMapFrame:HookScript("OnHide", SetMapToCurrentZone)
-	function Coords() return format(modules.Coords and modules.Coords.fmt or "%d,%d", coordX*100, coordY*100) end
+	function Coords() return format(coords and coords.fmt or "%d,%d", coordX*100, coordY*100) end
 end
 
 -- Set profile
@@ -99,8 +121,6 @@ if profiles then for _,p in ipairs{class,format("%s - %s",char,realm)} do
 	end end
 end profiles = nil end
 
--- Config missing?
-if not modules then return end
 
 ------------------------------------------
 local function zsub(s,...) local t={...} for i=1,#t,2 do s=gsub(s,t[i],t[i+1]) end return s end
@@ -140,7 +160,11 @@ end
 
 local function HideTT(self) GameTooltip:Hide() self.hovered = false end
 
-local function NewStat(name,stat)
+local pxpx = {height=1, width=1}
+local function Inject(name, stat)
+	if not name then return end
+	if not stat then stat = pxpx end
+	
 	local m = modules[name]	
 	for k,v in pairs{ -- retrieving config variables from LPSTAT_CONFIG
 		--name = name, anchor_frame = m.anchor_frame,
@@ -153,22 +177,19 @@ local function NewStat(name,stat)
 	if not stat.text then stat.text = {} end
 	
 	-- retrieve font variables and insert them into text table
-	for k,v in pairs(font) do 
-		if not stat.text[k] then 
+	for k,v in pairs(font) do
+		if not stat.text[k] then
 			stat.text[k] = m[k] or v
 		end
 	end
-	-- get/set font variables for individual modules
+
 	if stat.OnEnter then if stat.OnLeave then hooksecurefunc(stat,"OnLeave",HideTT) else stat.OnLeave = HideTT end end
 	tinsert(layout, stat)
 end
 
-local pxpx = {height=1,width=1}
-local function blank(module)
-	-- A fix for anchoring to disabled modules.
-	-- If text alignment is off by 1px, this is why.
-	NewStat(module,pxpx)
-	modules[module] = nil
+-- Inject dummy frames for disabled modules
+for name, conf in pairs(modules) do
+	if not conf.enabled then Inject(name) end
 end
 
 local function AltUpdate(self)
@@ -177,47 +198,47 @@ local function AltUpdate(self)
 	elseif not IsAltKeyDown() and self.altdown then self.altdown = false self:GetScript("OnEnter")(self) end
 end
 
-SLASH_LSTATS1, SLASH_LSTATS2 = "/lstats", "/litestats"
-local function SlashPrint(...)
+SLASH_LSTATS1, SLASH_LSTATS2, SLASH_LSTATS3 = "/ls", "/lstats", "/litestats"
+local function slprint(...)
 	local m, l = "|cffbcee68", "|cffff9912 -|r"
 	local t = {...} print(m,t[1])
 	for i = 2, #t do print(l,t[i]) end
 end
 function SlashCmdList.LSTATS()
 	print("|cffffffffLite|cff66C6FFStats|cffffffff "..L"tips"..":")
-	if modules.Memory.enabled then
-		SlashPrint(L"Memory",
+	if memory.enabled then
+		slprint(L"Memory",
 			L"Right-Click collects Lua garbage.")
-	end if modules.Gold.enabled then
-		SlashPrint(strtrim(gsub(GOLD_AMOUNT,"%%d","")),
+	end if gold.enabled then
+		slprint(strtrim(gsub(GOLD_AMOUNT,"%%d","")),
 			L"Left-Click opens currency tab.",
 			L"Right-Click toggles AutoSelling.",
 			L"Use /junk to configure which items not to sell.",
 			L"Watched currency tab items will reflect onto the tooltip.")
-	end if modules.Durability.enabled then
-		SlashPrint(DURABILITY,
+	end if durability.enabled then
+		slprint(DURABILITY,
 			L"Left-Click opens character tab.",
 			L"Right-Click toggles AutoRepairing.",
 			L"Shift-Click or Middle-Click for equipment set changer.")
-	end if modules.Location.enabled or modules.Coords.enabled then
-		SlashPrint(L"Location/Coords",
+	end if location.enabled or coords.enabled then
+		slprint(L"Location/Coords",
 			L"Clicking opens world map.",
 			L"Shift-Clicking location or coords module inserts your coords into chat.")
-	end if modules.Clock.enabled then
-		SlashPrint(TIMEMANAGER_TITLE,
+	end if clock.enabled then
+		slprint(TIMEMANAGER_TITLE,
 			L"Left-Click opens calendar (/cal).",
 			L"Right-Click opens time manager frame.",
 			L"Local/realm & 24hr time can be toggled from the time manager.")
-	end if modules.Friends.enabled or modules.Guild.enabled then
-		SlashPrint(format("%s/%s",FRIENDS,GUILD),
+	end if friends.enabled or guild.enabled then
+		slprint(format("%s/%s",FRIENDS,GUILD),
 			L"Hold alt key to view ranks, notes and officer notes.",
 			L"(Guild) Right-Click to change the sorting, shift-right-click to reverse order.")
-	end if modules.Talents.enabled then
-		SlashPrint(TALENTS,
+	end if talents.enabled then
+		slprint(TALENTS,
 			L"Left-Click opens the talent UI frame.",
 			L"Right-Click toggles your dual specs.")
-	end if modules.Experience.enabled then
-		SlashPrint(format("%s/%s/%s",COMBAT_XP_GAIN,TIME_PLAYED_MSG,FACTION),
+	end if experience.enabled then
+		slprint(format("%s/%s/%s",COMBAT_XP_GAIN,TIME_PLAYED_MSG,FACTION),
 			L"Right-Click to cycle through experience, time played, and faction watcher.",
 			L"Watch factions from the character faction UI.")
 	end
@@ -228,47 +249,32 @@ CreateFrame("Frame", "LSMenus", UIParent, "UIDropDownMenuTemplate")
 
 ------------------------------------------
 --  FPS
-if not modules.FPS.enabled then blank'FPS' else
-	NewStat("FPS", {
-		text = { string = function() return format(modules.FPS.fmt, floor(GetFramerate())) end }
+if fps.enabled then
+	Inject("FPS", {
+		text = { string = function() return format(fps.fmt, floor(GetFramerate())) end }
 	})
 end
 ------------------------------------------
 --  Latency
-if not modules.Latency.enabled then blank'Latency' else
-	NewStat("Latency", {
+if latency.enabled then
+	Inject("Latency", {
 		text = {
 			string = function()
 				local lat,r = select(3,GetNetStats()),750
-				return format(gsub(modules.Latency.fmt,"%[color%]",(gradient(1-lat/r))),lat)
+				return format(gsub(latency.fmt,"%[color%]",(gradient(1-lat/r))),lat)
 			end
 		}
 	})
 end
 ------------------------------------------
--- Coordinates
-if not modules.Coords.enabled then blank'Coords' else
-	NewStat("Coords", {
-		text = { string = Coords },
-		OnClick = function(_,button)
-			if button == "LeftButton" then
-				ToggleFrame(WorldMapFrame)
-			else
-				ChatEdit_ActivateChat(ChatEdit_ChooseBoxForSend())
-				ChatEdit_ChooseBoxForSend():Insert(format(" (%s: %s)",GetZoneText(),Coords()))
-			end
-		end
-	})
-end
-------------------------------------------
 --  Memory
-if not modules.Memory.enabled then blank'Memory' else
+if memory.enabled then
 	local function sortdesc(a, b) return a[2] > b[2] end	
 	local function formatmem(val,dec)
 		return format(format("%%.%df %s",dec or 1,val > 1024 and "MB" or "KB"),val/(val > 1024 and 1024 or 1))
 	end
-	local memory = {}
-	NewStat("Memory", {
+	local memoryt = {}
+	Inject("Memory", {
 		text = {
 			string = function(self)
 				self.total = 0
@@ -276,13 +282,13 @@ if not modules.Memory.enabled then blank'Memory' else
 				local parent = self:GetParent()
 				for i = 1, GetNumAddOns() do self.total = self.total + GetAddOnMemoryUsage(i) end
 				if parent.hovered then self:GetParent():GetScript("OnEnter")(parent) end
-				return self.total >= 1024 and format(modules.Memory.fmt_mb, self.total / 1024) or format(modules.Memory.fmt_kb, self.total)
+				return self.total >= 1024 and format(memory.fmt_mb, self.total / 1024) or format(memory.fmt_kb, self.total)
 			end, update = 5,
 		},
 		OnEnter = function(self)
 			collectgarbage()
 			self.hovered = true
-			GameTooltip:SetOwner(self, modules.Memory.tip_anchor, modules.Memory.tip_x, modules.Memory.tip_y)
+			GameTooltip:SetOwner(self, memory.tip_anchor, memory.tip_x, memory.tip_y)
 			GameTooltip:ClearLines()
 			local lat,r = select(3,GetNetStats()),750
 			GameTooltip:AddDoubleLine(
@@ -290,20 +296,20 @@ if not modules.Memory.enabled then blank'Memory' else
 				format("%s: |cffffffff%s",ADDONS,formatmem(self.text.total)),
 				tthead.r,tthead.g,tthead.b,tthead.r,tthead.g,tthead.b)
 			GameTooltip:AddLine' '
-			if modules.Memory.max_addons ~= 0 or IsAltKeyDown() then
+			if memory.max_addons ~= 0 or IsAltKeyDown() then
 				if not self.timer or self.timer + 5 < time() then
 					self.timer = time()
 					UpdateMemUse()
-					for i = 1, #memory do memory[i] = nil end
+					for i = 1, #memoryt do memoryt[i] = nil end
 					for i = 1, GetNumAddOns() do
 						local addon, name = GetAddOnInfo(i)
-						if IsAddOnLoaded(i) then tinsert(memory,{name or addon, GetAddOnMemoryUsage(i)}) end
+						if IsAddOnLoaded(i) then tinsert(memoryt,{name or addon, GetAddOnMemoryUsage(i)}) end
 					end
-					table.sort(memory, sortdesc)
+					table.sort(memoryt, sortdesc)
 				end
 				local exmem = 0
-				for i,t in ipairs(memory) do
-					if modules.Memory.max_addons and i > modules.Memory.max_addons and not IsAltKeyDown() then
+				for i,t in ipairs(memoryt) do
+					if memory.max_addons and i > memory.max_addons and not IsAltKeyDown() then
 						exmem = exmem + t[2]
 					else
 						local color = t[2] <= 102.4 and {0,1} -- 0 - 100
@@ -316,7 +322,7 @@ if not modules.Memory.enabled then blank'Memory' else
 					end
 				end
 				if exmem > 0 and not IsAltKeyDown() then
-					local more = #memory - modules.Memory.max_addons
+					local more = #memoryt - memory.max_addons
 					GameTooltip:AddDoubleLine(format("%d %s (%s)",more,L"Hidden",L"ALT"),formatmem(exmem),ttsubh.r,ttsubh.g,ttsubh.b,ttsubh.r,ttsubh.g,ttsubh.b)
 				end
 				GameTooltip:AddDoubleLine(" ","--------------",1,1,1,0.5,0.5,0.5)
@@ -342,29 +348,29 @@ if not modules.Memory.enabled then blank'Memory' else
 end
 ------------------------------------------
 --  Durability
-if not modules.Durability.enabled then blank'Durability' else
-	NewStat("Durability", {
+if durability.enabled then
+	Inject("Durability", {
 		OnLoad = function(self)
 			CreateFrame("GameTooltip", "LPDURA")
 			LPDURA:SetOwner(WorldFrame,"ANCHOR_NONE")
-			if modules.Durability.man then DurabilityFrame.Show = DurabilityFrame.Hide end
+			if durability.man then DurabilityFrame.Show = DurabilityFrame.Hide end
 			RegEvents(self,"UPDATE_INVENTORY_DURABILITY MERCHANT_SHOW PLAYER_LOGIN")
 		end,
 		OnEvent = function(self, event, ...)
 			if event == "UPDATE_INVENTORY_DURABILITY" or event == "PLAYER_LOGIN" then
-				local durability = 100
+				local dmin = 100
 				for id = 1, 18 do
 			        local dur, dmax = GetInventoryItemDurability(id)
-					if dur ~= dmax then durability = floor(min(durability,dur/dmax*100)) end
+					if dur ~= dmax then dmin = floor(min(dmin,dur/dmax*100)) end
 				end
-				self.text:SetText(format(gsub(modules.Durability.fmt,"%[color%]",(gradient(durability/100))), durability))
+				self.text:SetText(format(gsub(durability.fmt,"%[color%]",(gradient(dmin/100))), dmin))
 			elseif event == "MERCHANT_SHOW" and not IsAltKeyDown() then
 				if conf.AutoRepair and CanMerchantRepair() then
 			        local cost, total = GetRepairAllCost(), 0
 			        if cost > 0 then
-						if modules.Durability.gfunds and CanGuildBankRepair() then RepairAllItems(1) total = cost end
+						if durability.gfunds and CanGuildBankRepair() then RepairAllItems(1) total = cost end
 						if GetRepairAllCost() > 0 then
-							if not modules.Durability.ignore_inventory and GetRepairAllCost() <= GetMoney() then
+							if not durability.ignore_inventory and GetRepairAllCost() <= GetMoney() then
 								total = GetRepairAllCost(); RepairAllItems()
 							else
 								for id = 1, 18 do
@@ -384,7 +390,7 @@ if not modules.Durability.enabled then blank'Durability' else
 			end
 		end,
 		OnEnter = function(self)
-			GameTooltip:SetOwner(self, modules.Durability.tip_anchor, modules.Durability.tip_x, modules.Durability.tip_y)
+			GameTooltip:SetOwner(self, durability.tip_anchor, durability.tip_x, durability.tip_y)
 			GameTooltip:ClearLines()
 			GameTooltip:AddLine(DURABILITY,tthead.r,tthead.g,tthead.b)
 			GameTooltip:AddLine' '
@@ -395,7 +401,7 @@ if not modules.Durability.enabled then blank'Durability' else
 				if dur ~= dmax then
 					local perc = dur ~= 0 and dur/dmax or 0
 					local hex = gradient(perc)
-					GameTooltip:AddDoubleLine(modules.Durability.gear_icons and format("|T%s:%d|t %s",GetInventoryItemTexture(P,slot),t_icon,string) or string,format("|cffaaaaaa%s/%s | %s%s%%",dur,dmax,hex,floor(perc*100)),1,1,1)
+					GameTooltip:AddDoubleLine(durability.gear_icons and format("|T%s:%d|t %s",GetInventoryItemTexture(P,slot),t_icon,string) or string,format("|cffaaaaaa%s/%s | %s%s%%",dur,dmax,hex,floor(perc*100)),1,1,1)
 					totalcost, nodur = totalcost + select(3,LPDURA:SetInventoryItem(P,slot))
 				end
 			end
@@ -413,7 +419,7 @@ if not modules.Durability.enabled then blank'Durability' else
 			if button == "RightButton" then
 				conf.AutoRepair = not conf.AutoRepair
 				self:GetScript("OnEnter")(self)
-			elseif GetCVarBool'equipmentManager' and ((button == "LeftButton" and IsShiftKeyDown()) or button == "MiddleButton") then
+			elseif GetNumEquipmentSets() > 0 and ((button == "LeftButton" and IsShiftKeyDown()) or button == "MiddleButton") then
 				local menulist = {{ isTitle=true, text=format(gsub(EQUIPMENT_SETS,":",""),"") }}
 				if GetNumEquipmentSets() == 0 then
 					tinsert(menulist, {text = NONE, disabled = true})
@@ -432,8 +438,8 @@ if not modules.Durability.enabled then blank'Durability' else
 end
 ------------------------------------------
 --  Gold
-if not modules.Gold.enabled then blank'Gold' else
-	NewStat("Gold", {
+if gold.enabled then
+	Inject("Gold", {
 		OnLoad = function(self)
 			self.started = GetMoney()
 			RegEvents(self,"PLAYER_LOGIN PLAYER_MONEY MERCHANT_SHOW")
@@ -461,12 +467,12 @@ if not modules.Gold.enabled then blank'Gold' else
 				end
 				return
 			end
-			self.text:SetText(formatgold(modules.Gold.style, conf.Gold))
+			self.text:SetText(formatgold(gold.style, conf.Gold))
 		end,
 		OnEnter = function(self)
 			local curgold = GetMoney()
 			conf.Gold = curgold
-			GameTooltip:SetOwner(self, modules.Gold.tip_anchor, modules.Gold.tip_x, modules.Gold.tip_y)
+			GameTooltip:SetOwner(self, gold.tip_anchor, gold.tip_x, gold.tip_y)
 			GameTooltip:ClearLines()
 			GameTooltip:AddLine(CURRENCY,tthead.r,tthead.g,tthead.b)
 			GameTooltip:AddLine' '
@@ -487,16 +493,12 @@ if not modules.Gold.enabled then blank'Gold' else
 			GameTooltip:AddDoubleLine(" ","-----------------",1,1,1,0.5,0.5,0.5)
 			GameTooltip:AddDoubleLine(L"Total", formatgold(1, total),ttsubh.r,ttsubh.g,ttsubh.b,1,1,1)
 			GameTooltip:AddLine' '
+			
 			local currencies = 0
 			for i = 1, GetCurrencyListSize() do
-				local name,_,_,_,watched,count,ctype,icon = GetCurrencyListInfo(i)
+				local name,_,_,_,watched,count,icon = GetCurrencyListInfo(i)
 				if watched then
 					if currencies == 0 then GameTooltip:AddLine(format("%s %s",PLAYER,CURRENCY),ttsubh.r,ttsubh.g,ttsubh.b) end
-					if ctype == 1 then
-						icon = "Interface\\PVPFrame\\PVP-ArenaPoints-Icon"
-					elseif ctype == 2 then
-						icon = format("Interface\\PVPFrame\\PVP-Currency-%s",UnitFactionGroup(P))
-					end
 					local r,g,b
 					if count > 0 then r,g,b = 1,1,1 else r,g,b = 0.5,0.5,0.5 end
 					GameTooltip:AddDoubleLine(name, format("%d |T%s:%d|t",count,icon,t_icon),r,g,b,r,g,b)
@@ -555,18 +557,18 @@ if not modules.Gold.enabled then blank'Gold' else
 end
 ------------------------------------------
 --  Clock
-if not modules.Clock.enabled then blank'Clock' else
-	NewStat("Clock", { -- height = 11,
+if clock.enabled then
+	Inject("Clock", { -- height = 11,
 		text = {
 			string = function()
-				return zsub(GameTime_GetTime(true),'%s*AM',modules.Clock.AM,'%s*PM',modules.Clock.PM,':',modules.Clock.colon)
+				return zsub(GameTime_GetTime(true),'%s*AM',clock.AM,'%s*PM',clock.PM,':',clock.colon)
 			end
 		},
 		OnLoad = function(self) RequestRaidInfo() self:RegisterEvent'UPDATE_INSTANCE_INFO' end,
 		OnEvent = function(self) if self.hovered then self:GetScript("OnEnter")(self) end end,
 		OnEnter = function(self)
 			if not self.hovered then RequestRaidInfo() self.hovered = true end			
-			GameTooltip:SetOwner(self, modules.Clock.tip_anchor, modules.Clock.tip_x, modules.Clock.tip_y)
+			GameTooltip:SetOwner(self, clock.tip_anchor, clock.tip_x, clock.tip_y)
 			GameTooltip:ClearLines()
 			GameTooltip:AddLine(date'%A, %B %d %Y',tthead.r,tthead.g,tthead.b)
 			GameTooltip:AddLine' '
@@ -596,8 +598,8 @@ if not modules.Clock.enabled then blank'Clock' else
 end
 ------------------------------------------
 --  Location
-if not modules.Location.enabled then blank'Location' else
-	NewStat("Location", { -- height = 13, width = 113, 
+if location.enabled then
+	Inject("Location", { -- height = 13, width = 113, 
 		OnLoad = function(self)
 			MiniMapWorldMapButton:Hide()
 			RegEvents(self,"ZONE_CHANGED ZONE_CHANGED_INDOORS ZONE_CHANGED_NEW_AREA PLAYER_ENTERING_WORLD")
@@ -613,9 +615,9 @@ if not modules.Location.enabled then blank'Location' else
 		OnEvent = function(self)
 			self.subzone, self.zone, self.pvp = GetSubZoneText(), GetZoneText(), {GetZonePVPInfo()}
 			if not self.pvp[1] then self.pvp[1] = "neutral" end
-			local label = (self.subzone ~= "" and modules.Location.subzone) and self.subzone or self.zone
+			local label = (self.subzone ~= "" and location.subzone) and self.subzone or self.zone
 			local r,g,b = unpack(self.pvp[1] and (self[self.pvp[1]][2] or self.other) or self.other)
-			self.text:SetText(modules.Location.truncate == 0 and label or strtrim(strsub(label,1,modules.Location.truncate)))
+			self.text:SetText(location.truncate == 0 and label or strtrim(strsub(label,1,location.truncate)))
 			self.text:SetTextColor(r,g,b,font.alpha)
 		end,
 		OnUpdate = function(self,u)
@@ -636,7 +638,7 @@ if not modules.Location.enabled then blank'Location' else
 		end,
 		OnEnter = function(self)
 			self.hovered, self.init = true, true
-			GameTooltip:SetOwner(self, modules.Location.tip_anchor, modules.Location.tip_x, modules.Location.tip_y)
+			GameTooltip:SetOwner(self, location.tip_anchor, location.tip_x, location.tip_y)
 		end,
 		OnClick = function(self,button)
 			if IsShiftKeyDown() then
@@ -647,15 +649,30 @@ if not modules.Location.enabled then blank'Location' else
 	})
 end
 ------------------------------------------
+-- Coordinates
+if coords.enabled then
+	Inject("Coords", {
+		text = { string = Coords },
+		OnClick = function(_,button)
+			if button == "LeftButton" then
+				ToggleFrame(WorldMapFrame)
+			else
+				ChatEdit_ActivateChat(ChatEdit_ChooseBoxForSend())
+				ChatEdit_ChooseBoxForSend():Insert(format(" (%s: %s)",GetZoneText(),Coords()))
+			end
+		end
+	})
+end
+------------------------------------------
 --  Ping
-if not modules.Ping.enabled then blank'Ping' else
-	NewStat("Ping", {
+if ping.enabled then
+	Inject("Ping", {
 		OnLoad = function(self) self:RegisterEvent'MINIMAP_PING' end,
 		OnEvent = function(self, event, unit)
-			if unit == P and modules.Ping.hide_self then return end
+			if unit == P and ping.hide_self then return end
 			if (unit == P and self.timer and time() - self.timer > 1) or not self.timer or unit ~= P then
 				local class = (CUSTOM_CLASS_COLORS or RAID_CLASS_COLORS)[select(2,UnitClass(unit))]
-				self.text:SetText(format(modules.Ping.fmt, UnitName(unit)))
+				self.text:SetText(format(ping.fmt, UnitName(unit)))
 				self.text:SetTextColor(class.r,class.g,class.b,1)
 	 			if UIFrameIsFading(self) then UIFrameFlashRemoveFrame(self) end
 				UIFrameFlash(self,0.2,2.8,8,false,0,5)
@@ -666,28 +683,23 @@ if not modules.Ping.enabled then blank'Ping' else
 end
 ------------------------------------------
 --	Guild
-if not modules.Guild.enabled then blank'Guild' else
+if guild.enabled then
 	hooksecurefunc("SortGuildRoster", function(type) CURRENT_GUILD_SORTING = type end)
-	NewStat("Guild", {
+	Inject("Guild", {
 		text = {
 			string = function()
 				if IsInGuild() then
 					local online, total = 0, GetNumGuildMembers(true)
 					for i = 0, total do if select(9, GetGuildRosterInfo(i)) then online = online + 1 end end
-					return format(modules.Guild.fmt, online, total)
+					return format(guild.fmt, online, total)
 				else return format("%s %s",NO,GUILD) end
 			end, update = 5
 		},
 		OnLoad = function(self)
 			GuildRoster()
-			SortGuildRoster(modules.Guild.sorting == "note" and "rank" or "note")
-			SortGuildRoster(modules.Guild.sorting)
-			self:RegisterEvent("PARTY_MEMBERS_CHANGED")
-			self:RegisterEvent("GUILD_ROSTER_UPDATE")
-			self:RegisterEvent("PLAYER_GUILD_UPDATE")
-			self:RegisterEvent("GUILD_PERK_UPDATE")
-			self:RegisterEvent("PLAYER_ENTERING_WORLD")
-			self:RegisterEvent("CHAT_MSG_SYSTEM")
+			SortGuildRoster(guild.sorting == "note" and "rank" or "note")
+			SortGuildRoster(guild.sorting)
+			self:RegisterEvent'PARTY_MEMBERS_CHANGED'
 		end,
 		OnEvent = function(self) if self.hovered then self:GetScript("OnEnter")(self) end end,
 		OnUpdate = function(self,u)
@@ -721,19 +733,19 @@ if not modules.Guild.enabled then blank'Guild' else
 				local online, total, gmotd = 0, GetNumGuildMembers(true), GetGuildRosterMOTD()
 				for i = 0, total do if select(9, GetGuildRosterInfo(i)) then online = online + 1 end end
 				
-				GameTooltip:SetOwner(self, modules.Guild.tip_anchor, modules.Guild.tip_x, modules.Guild.tip_y)
+				GameTooltip:SetOwner(self, guild.tip_anchor, guild.tip_x, guild.tip_y)
 				GameTooltip:ClearLines()
 				GameTooltip:AddDoubleLine(GetGuildInfo(P),format("%s: %d/%d",GUILD_ONLINE_LABEL,online,total),tthead.r,tthead.g,tthead.b,tthead.r,tthead.g,tthead.b)
 				if gmotd ~= "" then GameTooltip:AddLine(format("  %s |cffaaaaaa- |cffffffff%s",GUILD_MOTD,gmotd),ttsubh.r,ttsubh.g,ttsubh.b,1) end
-				if modules.Guild.maxguild ~= 0 and online > 1 then
+				if guild.maxguild ~= 0 and online >= 1 then
 					GameTooltip:AddLine' '
 					for i = 1, total do
-						if modules.Guild.maxguild and i > modules.Guild.maxguild then
-							if online > 2 then GameTooltip:AddLine(format("%d %s (%s)",online - modules.Guild.maxguild,L"Hidden",L"ALT"),ttsubh.r,ttsubh.g,ttsubh.b) end
+						if guild.maxguild and i > guild.maxguild then
+							if online > 2 then GameTooltip:AddLine(format("%d %s (%s)",online - guild.maxguild,L"Hidden",L"ALT"),ttsubh.r,ttsubh.g,ttsubh.b) end
 							break
 						end
 						name, rank, _, level, _, zone, note, officernote, connected, status, class = GetGuildRosterInfo(i)
-						if connected and level >= modules.Guild.threshold and name ~= UnitName(P) then
+						if connected and level >= guild.threshold then
 							if GetRealZoneText() == zone then zone_r, zone_g, zone_b = 0.3, 1.0, 0.3 else zone_r, zone_g, zone_b = 0.65, 0.65, 0.65 end
 							classc, levelc = (CUSTOM_CLASS_COLORS or RAID_CLASS_COLORS)[class], GetQuestDifficultyColor(level)
 							grouped = (UnitInParty(name) or UnitInRaid(name)) and (GetRealZoneText() == zone and " |cff7fff00*|r" or " |cffff7f00*|r") or ""
@@ -756,21 +768,18 @@ if not modules.Guild.enabled then blank'Guild' else
 end
 ------------------------------------------
 --	Friends
-if not modules.Friends.enabled then blank'Friends' else
-	NewStat("Friends", {
-		--OnLoad = function(self) RegEvents(self,"PLAYER_LOGIN FRIENDLIST_UPDATE PARTY_MEMBERS_CHANGED BN_CONNECTED BN_DISCONNECTED BN_FRIEND_INVITE_LIST_INITIALIZED BN_FRIEND_ACCOUNT_ONLINE BN_FRIEND_ACCOUNT_OFFLINE BN_FRIEND_INVITE_ADDED BN_FRIEND_INVITE_REMOVED") end,
-		OnLoad = function(self) RegEvents(self,"FRIENDLIST_SHOW FRIENDLIST_UPDATE MUTELIST_UPDATE WHO_LIST_UPDATE PLAYER_FLAGS_CHANGED BN_FRIEND_LIST_SIZE_CHANGED BN_FRIEND_INFO_CHANGED BN_FRIEND_INVITE_LIST_INITIALIZED BN_FRIEND_INVITE_ADDED BN_FRIEND_INVITE_REMOVED BN_SELF_ONLINE BN_BLOCK_LIST_UPDATED PLAYER_ENTERING_WORLD BN_CONNECTED BN_DISCONNECTED CHAT_MSG_SYSTEM") end,
+if friends.enabled then
+	Inject("Friends", {
+		OnLoad = function(self) RegEvents(self,"PLAYER_LOGIN FRIENDLIST_UPDATE PARTY_MEMBERS_CHANGED") end,
 		OnEvent = function(self, event)
-			--if event ~= "PARTY_MEMBERS_CHANGED" then
+			if event ~= "PARTY_MEMBERS_CHANGED" then
+				local numBNetTotal, numBNetOnline = BNGetNumFriends()
 				local online, total = 0, GetNumFriends()
-				local BNonline, BNtotal = 0, BNGetNumFriends()
 				for i = 0, total do if select(5, GetFriendInfo(i)) then online = online + 1 end end
-				if BNtotal > 0 then
-					for i = 1, BNtotal do if select(7, BNGetFriendInfo(i)) then BNonline = BNonline + 1 end end
-				end
-				local totalonline = online + BNonline
-				self.text:SetText(format(modules.Friends.fmt, totalonline, total + BNtotal))
-			--end
+				online=online+numBNetOnline
+				total=total+numBNetTotal
+				self.text:SetText(format(friends.fmt, online, total))
+			end
 			if self.hovered then self:GetScript("OnEnter")(self) end
 		end,
 		OnUpdate = AltUpdate,
@@ -821,7 +830,7 @@ if not modules.Friends.enabled then blank'Friends' else
 							local hasFocus, toonName, client, realmName, faction, race, class, guild, zoneName, level= BNGetToonInfo(toonID)
 							GameTooltip:AddDoubleLine("|cffeeeeee"..client.." ("..level.." "..toonName..")|r", "|cffeeeeee"..givenName.." "..surname.."|r")
 						else
-							GameTooltip:AddDoubleLine("|cffeeeeee"..client..")("..toonName..")|r", "|cffeeeeee"..givenName.." "..surname.."|r")
+							GameTooltip:AddDoubleLine("|cffeeeeee("..client..")("..toonName..")|r", "|cffeeeeee"..givenName.." "..surname.."|r")
 						end
 					end
 				end
@@ -834,36 +843,25 @@ if not modules.Friends.enabled then blank'Friends' else
 end
 ------------------------------------------
 --	Bags
-if not modules.Bags.enabled then blank'Bags' else
-	NewStat("Bags", {
+if bags.enabled then
+	Inject("Bags", {
 		OnLoad = function(self) RegEvents(self,"PLAYER_LOGIN BAG_UPDATE") end,
 		OnEvent = function(self)
 			local free, total = 0, 0
 			for i = 0, NUM_BAG_SLOTS do
 				free, total = free + GetContainerNumFreeSlots(i), total + GetContainerNumSlots(i)
 			end
-			self.text:SetText(format(modules.Bags.fmt, free, total))
+			self.text:SetText(format(bags.fmt, free, total))
 		end,
 		OnClick = function() OpenAllBags() end
 	})
 end
 ------------------------------------------
 --  Talents
-if not modules.Talents.enabled then blank'Talents' else
-	local timer = 0
-	if modules.Talents.nospam then
-		ChatFrame_AddMessageEventFilter("CHAT_MSG_SYSTEM", function(_,_,msg)
-			if timer > GetTime() - 8 then
-				if strfind(msg, gsub(ERR_LEARN_ABILITY_S,'%%s','(.*)')) then return true end
-				if strfind(msg, gsub(ERR_LEARN_SPELL_S,'%%s','(.*)')) then return true end
-				if strfind(msg, gsub(ERR_SPELL_UNLEARNED_S,'%%s','(.*)')) then return true end
-			end
-		end)
-	end
-	NewStat("Talents", {
+if talents.enabled then
+	Inject("Talents", {
 		OnLoad = function(self)
 			RegEvents(self,"PLAYER_LOGIN PLAYER_TALENT_UPDATE CHARACTER_POINTS_CHANGED PLAYER_ENTERING_WORLD PLAYER_LEAVING_WORLD")
-			if modules.Talents.nospam then self:RegisterEvent'UNIT_SPELLCAST_START' end
 		end,
 		OnEvent = function(self, event, ...)
 			if event == "PLAYER_ENTERING_WORLD" then
@@ -892,9 +890,9 @@ if not modules.Talents.enabled then blank'Talents' else
 						tinsert(tal, name)
 						if i == GetActiveTalentGroup() then
 						
-							self.text:SetText(zsub(modules.Talents.fmt,"%[(.-)%]", {
-								name = name[1], shortname = gsub(name[1],".*",modules.Talents.name_subs),
-								icon = format("|T%s:%d|t",icon,modules.Talents.iconsize),
+							self.text:SetText(zsub(talents.fmt,"%[(.-)%]", {
+								name = name[1], shortname = gsub(name[1],".*",talents.name_subs),
+								icon = format("|T%s:%d|t",icon,talents.iconsize),
 								unspent = self.unspent > 0 and format("|cff55ff55+"..self.unspent) or ''
 							},"%[spec(.-)%]", function(spec)
 								return format(spec == '' and "%d/%d/%d" or gsub(spec,'^ ',''),tal[1][5],tal[2][5],tal[3][5])
@@ -915,16 +913,16 @@ if not modules.Talents.enabled then blank'Talents' else
 		OnEnter = function(self)
 			self.hovered = true
 			if UnitLevel(P) >= 10 then
-				GameTooltip:SetOwner(self, modules.Talents.tip_anchor, modules.Talents.tip_x, modules.Talents.tip_y)
+				GameTooltip:SetOwner(self, talents.tip_anchor, talents.tip_x, talents.tip_y)
 				GameTooltip:ClearLines()
 				GameTooltip:AddDoubleLine(TALENTS,self.unspent > 0 and format("%d %s",self.unspent,UNUSED) or '',tthead.r,tthead.g,tthead.b,tthead.r,tthead.g,tthead.b)
 				GameTooltip:AddLine' '
 				for i = 1, GetNumTalentGroups() do
 					local tal = self.talents[i]
 					local tree = tal[4][2]
-					local name, icon, talents = tree and tal[tree][2] or NONE, tree and tal[tree][4] or "Interface\\Icons\\INV_Misc_QuestionMark", format("%d/%d/%d",tal[1][5],tal[2][5],tal[3][5])
+					local name, icon, spent = tree and tal[tree][2] or NONE, tree and tal[tree][4] or "Interface\\Icons\\INV_Misc_QuestionMark", format("%d/%d/%d",tal[1][5],tal[2][5],tal[3][5])
 					if tal[5] then r,g,b = 0.3,1,0.3 else r,g,b = 0.5,0.5,0.5 end
-					GameTooltip:AddDoubleLine(format("|T%s:%d|t %s %s",icon,t_icon,gsub(name,".*",modules.Talents.name_subs),talents), i==1 and PRIMARY or SECONDARY,1,1,1,r,g,b)
+					GameTooltip:AddDoubleLine(format("|T%s:%d|t %s %s",icon,t_icon,gsub(name,".*",talents.name_subs),spent), i==1 and PRIMARY or SECONDARY,1,1,1,r,g,b)
 				end
 				GameTooltip:Show()
 			end
@@ -941,7 +939,7 @@ if not modules.Talents.enabled then blank'Talents' else
 end
 ------------------------------------------
 --	Character Stats
-if not modules.Stats.enabled then blank'Stats' else
+if stats.enabled then
 	local function tags(sub)
 		local percent, string = true
 		if sub == "ap" then
@@ -1007,7 +1005,7 @@ if not modules.Stats.enabled then blank'Stats' else
 		if not percent then return string end
 		return format("%.1f", string)
 	end
-	NewStat("Stats", {
+	Inject("Stats", {
 		OnLoad = function(self)
 			RegEvents(self,"PLAYER_LOGIN UNIT_STATS UNIT_DAMAGE UNIT_RANGEDDAMAGE PLAYER_DAMAGE_DONE_MODS UNIT_ATTACK_SPEED UNIT_ATTACK_POWER UNIT_RANGED_ATTACK_POWER")
 		end,
@@ -1015,7 +1013,7 @@ if not modules.Stats.enabled then blank'Stats' else
 		OnUpdate = function(self, u)
 			self.elapsed = self.elapsed + u
 			if self.fired and self.elapsed > 2.5 then
-				self.text:SetText(gsub(modules.Stats[format("spec%dfmt",GetActiveTalentGroup())], "%[(%w-)%]", tags))
+				self.text:SetText(gsub(stats[format("spec%dfmt",GetActiveTalentGroup())], "%[(%w-)%]", tags))
 				self.elapsed, self.fired = 0, false
 			end
 		end
@@ -1023,7 +1021,7 @@ if not modules.Stats.enabled then blank'Stats' else
 end
 ------------------------------------------
 --	Experience/Played/Rep
-if not modules.Experience.enabled then blank'Experience' else
+if experience.enabled then
 	local logintime, playedtotal, playedlevel, playedmsg, gained, lastkill, lastquest = GetTime(), 0, 0, 0, 0
 	local repname, repcolor, standingname, currep, minrep, maxrep, reppercent
 	local mobxp = gsub(COMBATLOG_XPGAIN_FIRSTPERSON,"%%[sd]","(.*)")
@@ -1032,15 +1030,15 @@ if not modules.Experience.enabled then blank'Experience' else
 		if short or tt then
 			num = tonumber(num)
 			if num >= 1000000 then
-				return gsub(format("%.1f%s", num/1000000, modules.Experience.million or 'm'),"%.0","")
+				return gsub(format("%.1f%s", num/1000000, experience.million or 'm'),"%.0","")
 			elseif num >= 1000 then
-				return gsub(format("%.1f%s", num/1000, modules.Experience.thousand or 'k'),"%.0","")
+				return gsub(format("%.1f%s", num/1000, experience.thousand or 'k'),"%.0","")
 			end
 		end
 		return floor(tonumber(num))
 	end
 	local function tags(sub,tt)
-		local t = modules.Experience
+		local t = experience
 			-- exp tags
 		return sub == "level" and UnitLevel(P)
 			or sub == "curxp" and short(UnitXP(P),tt)
@@ -1071,15 +1069,15 @@ if not modules.Experience.enabled then blank'Experience' else
 			or sub == "rep%" and floor(abs(currep-minrep) / abs(maxrep-minrep) * 100)
 			or format("[%s]",sub)
 	end
-	NewStat("Experience", {
+	Inject("Experience", {
 		text = {
 			string = function(self)
 				if conf.ExpMode == "rep" then
 					return self:GetText()
 				elseif conf.ExpMode == "played" then
-					return gsub(modules.Experience.played_fmt,"%[([%w%%]-)%]",tags)
+					return gsub(experience.played_fmt,"%[([%w%%]-)%]",tags)
 				elseif conf.ExpMode == "xp" then
-					return gsub(modules.Experience[format("xp_%s_fmt",(GetXPExhaustion() or 0) > 0 and "rested" or "normal")],"%[([%w%%]-)%]",tags) or " "
+					return gsub(experience[format("xp_%s_fmt",(GetXPExhaustion() or 0) > 0 and "rested" or "normal")],"%[([%w%%]-)%]",tags) or " "
 				end
 			end
 		},
@@ -1125,7 +1123,7 @@ if not modules.Experience.enabled then blank'Experience' else
 				standingname = _G[format("FACTION_STANDING_LABEL%s%s",standing,UnitSex(P) == 3 and "_FEMALE" or "")]
 				if not standingname then standingname = UNKNOWN end
 				repcolor = format("%02x%02x%02x", min(color.r*255+40,255), min(color.g*255+40,255), min(color.b*255+40,255))
-				self.text:SetText(gsub(modules.Experience.faction_fmt,"%[([%w%%]-)%]",tags))
+				self.text:SetText(gsub(experience.faction_fmt,"%[([%w%%]-)%]",tags))
 			end
 			if event == "PLAYER_LOGOUT" or event == "TIME_PLAYED_MSG" then
 				conf.Played = floor(playedtotal + GetTime() - playedmsg)
@@ -1133,7 +1131,7 @@ if not modules.Experience.enabled then blank'Experience' else
 		end,
 		OnEnter = function(self)
 			self.hovered = true
-			GameTooltip:SetOwner(self, modules.Experience.tip_anchor, modules.Experience.tip_x, modules.Experience.tip_y)
+			GameTooltip:SetOwner(self, experience.tip_anchor, experience.tip_x, experience.tip_y)
 			GameTooltip:ClearLines()
 			if conf.ExpMode == "played" then
 				GameTooltip:AddLine(TIME_PLAYED_MSG,tthead.r,tthead.g,tthead.b)
@@ -1209,24 +1207,24 @@ if not modules.Experience.enabled then blank'Experience' else
 end
 ------------------------------------------
 --  Loot
-if not modules.Loot.enabled then blank'Loot' else
-	NewStat("Loot", {
+if loot.enabled then
+	Inject("Loot", {
 		OnLoad = function(self) RegEvents(self,"PLAYER_LOGIN") end,
 		OnEvent = function(self)
 			if GetCVarBool("AutoLootDefault") then
-				self.text:SetText(format(modules.Loot.fmt,"|cff55ff55"..L"ON".."|r"))
+				self.text:SetText(format(loot.fmt,"|cff55ff55"..L"ON".."|r"))
 			else
-				self.text:SetText(format(modules.Loot.fmt,"|cffff5555"..strupper(OFF).."|r"))
+				self.text:SetText(format(loot.fmt,"|cffff5555"..strupper(OFF).."|r"))
 			end
 		end,
 		OnClick = function(self, button)
 			if button == "RightButton" or button == "LeftButton" then
 				if GetCVarBool("AutoLootDefault") then
 					SetCVar("AutoLootDefault", 0)
-					self.text:SetText(format(modules.Loot.fmt,"|cffff5555"..strupper(OFF).."|r"))
+					self.text:SetText(format(loot.fmt,"|cffff5555"..strupper(OFF).."|r"))
 				else
 					SetCVar("AutoLootDefault", 1)
-					self.text:SetText(format(modules.Loot.fmt,"|cff55ff55"..L"ON".."|r"))
+					self.text:SetText(format(loot.fmt,"|cff55ff55"..L"ON".."|r"))
 				end
 			end
 		end
@@ -1234,24 +1232,24 @@ if not modules.Loot.enabled then blank'Loot' else
 end
 ------------------------------------------
 -- Helm
-if not modules.Helm.enabled then blank'Helm' else
-	NewStat("Helm", {
+if helm.enabled then
+	Inject("Helm", {
 		OnLoad = function(self) RegEvents(self,"PLAYER_LOGIN") end,
 		OnEvent = function(self)
 			if ShowingHelm() then
-				self.text:SetText(format(modules.Helm.fmt,"|cff55ff55"..L"ON".."|r"))
+				self.text:SetText(format(helm.fmt,"|cff55ff55"..L"ON".."|r"))
 			else
-				self.text:SetText(format(modules.Helm.fmt,"|cffff5555"..strupper(OFF).."|r"))
+				self.text:SetText(format(helm.fmt,"|cffff5555"..strupper(OFF).."|r"))
 			end
 		end,
 		OnClick = function(self, button)
 			if button == "RightButton" or button == "LeftButton" then
 				if ShowingHelm() then 
 					ShowHelm(0)
-					self.text:SetText(format(modules.Helm.fmt,"|cffff5555"..strupper(OFF).."|r"))					
+					self.text:SetText(format(helm.fmt,"|cffff5555"..strupper(OFF).."|r"))					
 				else
 					ShowHelm(1)
-					self.text:SetText(format(modules.Helm.fmt,"|cff55ff55"..L"ON".."|r"))
+					self.text:SetText(format(helm.fmt,"|cff55ff55"..L"ON".."|r"))
 				end
 			end
 		end
@@ -1259,24 +1257,24 @@ if not modules.Helm.enabled then blank'Helm' else
 end
 ------------------------------------------
 --  Cloak
-if not modules.Cloak.enabled then blank'Cloak' else
-	NewStat("Cloak", {
+if cloak.enabled then
+	Inject("Cloak", {
 		OnLoad = function(self) RegEvents(self,"PLAYER_LOGIN") end,
 		OnEvent = function(self)
 			if ShowingCloak() then
-				self.text:SetText(format(modules.Cloak.fmt,"|cff55ff55"..L"ON".."|r"))
+				self.text:SetText(format(cloak.fmt,"|cff55ff55"..L"ON".."|r"))
 			else
-				self.text:SetText(format(modules.Cloak.fmt,"|cffff5555"..strupper(OFF).."|r"))
+				self.text:SetText(format(cloak.fmt,"|cffff5555"..strupper(OFF).."|r"))
 			end
 		end,
 		OnClick = function(self, button)
 			if button == "RightButton" or button == "LeftButton" then
 				if ShowingCloak() then 
 					ShowCloak(0)
-					self.text:SetText(format(modules.Cloak.fmt,"|cffff5555"..strupper(OFF).."|r"))
+					self.text:SetText(format(cloak.fmt,"|cffff5555"..strupper(OFF).."|r"))
 				else
 					ShowCloak(1)
-					self.text:SetText(format(modules.Cloak.fmt,"|cff55ff55"..L"ON".."|r"))
+					self.text:SetText(format(cloak.fmt,"|cff55ff55"..L"ON".."|r"))
 				end
 			end
 		end
@@ -1287,4 +1285,4 @@ end
 lpanels:CreateLayout("LiteStats", layout)
 lpanels:ApplyLayout(nil, "LiteStats")
 
-NewStat, blank = nil
+Inject = nil

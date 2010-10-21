@@ -95,6 +95,7 @@
 	
 	<Script file="class\hunter.lua"/>
 	<Script file="class\paladin.lua"/>
+	<Script file="class\mage.lua"/>
 	
 	<Script file="skins\dbm.lua"/>
 	<Script file="skins\pallypower.lua"/>

@@ -302,6 +302,8 @@ Filger_Spells = {
 			{ spellID = 20572, size =30, filter = "CD" },
 			-- Readiness
 			{ spellID = 23989, size = 30, filter = "CD" },
+			-- Chimera Shot
+			{ spellID = 53209, size = 30, filter = "CD" },
 		},
 	},
 	["MAGE"] = {
@@ -350,6 +352,8 @@ Filger_Spells = {
 			{ spellID = 92315, size = 37, unitId = "player", caster = "player", filter = "DEBUFF" },
 			-- Critical Mass
 			{ spellID = 22959, size = 37, unitId = "player", caster = "player", filter = "DEBUFF" },
+			-- Combustion
+			{ spellID = 83853, size = 37, unitId = "player", caster = "player", filter = "DEBUFF" },
 		},
 		
 		{
@@ -733,8 +737,6 @@ Filger_Spells = {
 			{ spellID = 31935, size = 30, filter = "CD" },
 			-- Divine Plea
 			{ spellID = 54428, size = 30, filter = "CD" },
-			-- Shield of Righteousness
-			--{ spellID = 61411, size = 30, filter = "CD" },
 			-- Holy Wrath
 			{ spellID = 2812, size = 30, filter = "CD" },
 			-- Aura Mastery
@@ -747,6 +749,10 @@ Filger_Spells = {
 			{ spellID = 53385, size = 30, filter = "CD" },
 			-- Hammer of the Righteous
 			{ spellID = 53595, size = 30, filter = "CD" },
+			-- Holy Shock
+			{ spellID = 25912, size = 30, filter = "CD" },
+			-- Light of Dawn
+			{ spellID = 85222, size = 30, filter = "CD" },
 		},
 	},
 	["PRIEST"] = {
@@ -809,6 +815,20 @@ Filger_Spells = {
 			{ spellID = 81700, size = 37, unitId = "player", caster = "player", filter = "BUFF" },
 			-- Evangelism
 			{ spellID = 81661, size = 37, unitId = "player", caster = "player", filter = "BUFF" },
+		},
+		{
+			Name = "T_DEBUFF_ICON",
+			Direction = "RIGHT",
+			Interval = 3,
+			Mode = "ICON",
+			setPoint = { "BOTTOMLEFT", "oUF_Target", "TOPLEFT", -2, 213 },
+
+			-- Chakra: Prayer of Healing
+			{ spellID = 81206, size = 37, unitId = "player", caster = "player", filter = "BUFF" },
+			-- Chakra: Renew
+			{ spellID = 81207, size = 37, unitId = "player", caster = "player", filter = "BUFF" },
+			-- Chakra: Heal
+			{ spellID = 81208, size = 37, unitId = "player", caster = "player", filter = "BUFF" },
 		},
 		{
 			Name = "T_DE/BUFF_BAR",
@@ -885,6 +905,12 @@ Filger_Spells = {
             { spellID = 47585, size = 30, filter = "CD" },
 			-- Psychic Horror
             { spellID = 64044, size = 30, filter = "CD" },
+			-- Holy Word: Serenity
+			{ spellID = 88684, size = 30, filter = "CD" },
+			-- Holy Word: Sanctuary
+			{ spellID = 88685, size = 30, filter = "CD" },
+			-- Holy Word: Aspire
+			{ spellID = 88682, size = 30, filter = "CD" },
 		},
 	},
 	["WARLOCK"] = {

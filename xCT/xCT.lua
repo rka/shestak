@@ -7,8 +7,6 @@ Thanks ALZA and Shestak for making this mod possible. Thanks Tukz for his wonder
 
 ]]--
 local myname, _ = UnitName("player")
-local version, build, date = GetBuildInfo()
-local release = tonumber(string.sub(version,0,1))
 
 ct={
 
@@ -17,30 +15,30 @@ ct={
 ---------------------------------------------------------------------------------
 -- config
 -- options
-	["blizzheadnumbers"] = false,	-- use blizzard damage/healing output (above mob/player head)
-	["damage"] = true,		-- show outgoing damage in it's own frame
-	["healing"] = true,		-- show outgoing healing in it's own frame
-	["damagecolor"] = true,		-- display damage numbers depending on school of magic, see http://www.wowwiki.com/API_COMBAT_LOG_EVENT
-	["critprefix"] = "*",		-- symbol that will be added before amount, if you deal critical strike/heal. leave "" for empty.
-	["critpostfix"] = "*",		-- postfix symbol, "" for empty.
-	["icons"] = true,		-- show outgoing damage icons
-	["iconsize"] = 16,		-- icon size of spells in outgoing damage frame, also has effect on dmg font size.
-	["damagestyle"] = true,		-- change default damage/healing font above mobs/player heads. you need to restart WoW to see changes!
-	["treshold"] = 1,		-- minimum damage to show in damage frame
-	["healtreshold"] = 1,		-- minimum healing to show in incoming/outgoing healing messages.
-	["scrollable"] = false,		-- allows you to scroll frame lines with mousewheel.
-	["maxlines"] = 64,		-- max lines to keep in scrollable mode. more lines=more memory. nom nom nom.
+	["blizzheadnumbers"] = SettingsCF["combattext"].blizz_head_numbers,	-- use blizzard damage/healing output (above mob/player head)
+	["damage"] = SettingsCF["combattext"].damage,		-- show outgoing damage in it's own frame
+	["healing"] = SettingsCF["combattext"].healing,		-- show outgoing healing in it's own frame
+	["damagecolor"] = SettingsCF["combattext"].damage_color,		-- display damage numbers depending on school of magic, see http://www.wowwiki.com/API_COMBAT_LOG_EVENT
+	["critprefix"] = SettingsCF["combattext"].crit_prefix,		-- symbol that will be added before amount, if you deal critical strike/heal. leave "" for empty.
+	["critpostfix"] = SettingsCF["combattext"].crit_postfix,		-- postfix symbol, "" for empty.
+	["icons"] = SettingsCF["combattext"].icons,		-- show outgoing damage icons
+	["iconsize"] = SettingsCF["combattext"].icon_size,		-- icon size of spells in outgoing damage frame, also has effect on dmg font size.
+	["damagestyle"] = SettingsCF["combattext"].damage_style,		-- change default damage/healing font above mobs/player heads. you need to restart WoW to see changes!
+	["treshold"] = SettingsCF["combattext"].treshold,		-- minimum damage to show in damage frame
+	["healtreshold"] = SettingsCF["combattext"].heal_treshold,		-- minimum healing to show in incoming/outgoing healing messages.
+	["scrollable"] = SettingsCF["combattext"].scrollable,		-- allows you to scroll frame lines with mousewheel.
+	["maxlines"] = SettingsCF["combattext"].max_lines,		-- max lines to keep in scrollable mode. more lines=more memory. nom nom nom.
 
 -- appearence
 	["font"] = SettingsCF["media"].pixel_font,	-- "Fonts\\ARIALN.ttf" is default WoW font.
-	["fontsize"] = SettingsCF["media"].pixel_font_size * 2,
+	["fontsize"] = SettingsCF["combattext"].font_size,
 	["fontstyle"] = SettingsCF["media"].pixel_font_style,	-- valid options are "OUTLINE", "MONOCHROME", "THICKOUTLINE", "OUTLINE,MONOCHROME", "THICKOUTLINE,MONOCHROME"
 	["damagefont"] = SettingsCF["media"].pixel_font,	 -- "Fonts\\FRIZQT__.ttf" is default WoW damage font
 	["timevisible"] = 3, 		-- time (seconds) a single message will be visible. 3 is a good value.
 
 -- class modules and goodies
-	["stopvespam"] = false,		-- automaticly turns off healing spam for priests in shadowform. HIDE THOSE GREEN NUMBERS PLX!
-	["dkrunes"] = true,		-- show deatchknight rune recharge
+	["stopvespam"] = SettingsCF["combattext"].stop_ve_spam,		-- automaticly turns off healing spam for priests in shadowform. HIDE THOSE GREEN NUMBERS PLX!
+	["dkrunes"] = SettingsCF["combattext"].dk_runes,		-- show deatchknight rune recharge
 }
 ---------------------------------------------------------------------------------
 -- outgoing healing filter, hide this spammy shit, plx
@@ -313,9 +311,7 @@ elseif event=="UNIT_ENTERED_VEHICLE"or event=="UNIT_EXITING_VEHICLE"then
 
 elseif event=="PLAYER_ENTERING_WORLD"then
 	SetUnit()
-	if(release==3)then
-		ScrollDirection()
-	end
+	--ScrollDirection()
 	
 	if(ct.scrollable)then
 		SetScroll()
@@ -372,10 +368,10 @@ for i=1,numf do
 	else
 		f:SetJustifyH"RIGHT"
 		f:SetPoint("CENTER",330,205)
-		if (ct.icons)then
-			a,_,c=f:GetFont()
-			f:SetFont(a,ct.iconsize,c)
-		end
+		--if (ct.icons)then
+		--	a,_,c=f:GetFont()
+		--	f:SetFont(a,ct.iconsize,c)
+		--end
 	end
 	ct.frames[i] = f
 end
@@ -425,11 +421,9 @@ end
 
 
 -- hook blizz float mode selector. blizz sucks, because changing  cVar combatTextFloatMode doesn't fire CVAR_UPDATE
-if(release==3)then
-	hooksecurefunc("InterfaceOptionsCombatTextPanelFCTDropDown_OnClick",ScrollDirection)
-else
-	InterfaceOptionsCombatTextPanelFCTDropDown:Hide()
-end
+--hooksecurefunc("InterfaceOptionsCombatTextPanelFCTDropDown_OnClick",ScrollDirection)
+--COMBAT_TEXT_SCROLL_ARC="" --may cause unexpected bugs, use with caution!
+InterfaceOptionsCombatTextPanelFCTDropDown:Hide()
 
 -- modify blizz ct options title lol
 InterfaceOptionsCombatTextPanelTitle:SetText(COMBAT_TEXT_LABEL.." (powered by |cffFF0000x|rCT)")

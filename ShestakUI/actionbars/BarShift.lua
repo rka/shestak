@@ -31,10 +31,10 @@ local States = {
 	["WARRIOR"] = "show",
 	["PALADIN"] = "show",
 	["DEATHKNIGHT"] = "show",
-	["ROGUE"] = "show,",
-	["PRIEST"] = "show,",
-	["HUNTER"] = "show,",
-	["WARLOCK"] = "show,",
+	["ROGUE"] = "show",
+	["PRIEST"] = "show",
+	["HUNTER"] = "show",
+	["WARLOCK"] = "show",
 }
 
 bar:RegisterEvent("PLAYER_LOGIN")

@@ -189,13 +189,13 @@ if SettingsDB.client == "enUS" or SettingsDB.client == "enGB" then
 	L_CLASS_HUNTER_CONTENT = "Your pet is content!"
 	L_CLASS_HUNTER_HAPPY = "Your pet is happy!"
 	
-	-- aSettings
+	-- Info text
 	L_INFO_ERRORS = "No error yet."
 	L_INFO_INVITE = "Accepted invite from: "
 	L_INFO_DUEL = "Declined duel request from: "
 	L_INFO_DISBAND = "Disbanding group..."
 	L_INFO_ADDON_SETS1 = "Type /addons <solo/party/raid/pvp/trade/quest>, to load the preinstalled set of modifications."
-	L_INFO_ADDON_SETS2 = "You can add, delete or change lists of modifications, modifying wtf.lua in `scripts` folder."
+	L_INFO_ADDON_SETS2 = "You can add, delete or change lists of modifications, modifying wtf.lua in *modules* folder."
 	L_INFO_SETTINGS_DBM = "Type /settings dbm, to apply the settings DBM."
 	L_INFO_SETTINGS_MSBT = "Type /settings msbt, to apply the settings MSBT."
 	L_INFO_SETTINGS_SKADA = "Type /settings skada, to apply the settings Skada."
@@ -210,6 +210,7 @@ if SettingsDB.client == "enUS" or SettingsDB.client == "enGB" then
 	L_POPUP_DISABLEUI = "ShestakUI doesn't work for this resolution, do you want to disable ShestakUI? (Cancel if you want to try another resolution)"
 	L_POPUP_SETTINGS_ALL = "Apply settings for all modifications? (DBM/DXE, Skada/Recount and MSBT)"
 	L_POPUP_SETTINGS_DBM = "Need to change the position of elements DBM."
+	L_POPUP_SETTINGS_CLIQUE = "Your Clique settings are not setup with ShestakUI, would you like to set them up?"
 	
 	-- Welcome mesage
 	L_WELCOME_LINE_1 = "Welcome to ShestakUI "

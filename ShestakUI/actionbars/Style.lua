@@ -10,6 +10,7 @@ local replace = string.gsub
 
 function style(self)
 	local name = self:GetName()
+	if name:match("MultiCastActionButton") then return end
 	local action = self.action
 	local Button = self
 	local Icon = _G[name.."Icon"]
@@ -154,39 +155,33 @@ local function StyleButton(b, checked)
     hover:SetTexture(1, 1, 1, 0.3)
     hover:SetHeight(button:GetHeight())
     hover:SetWidth(button:GetWidth())
-    hover:SetPoint("TOPLEFT", button, SettingsDB.Scale(2), SettingsDB.Scale(-2))
-    hover:SetPoint("BOTTOMRIGHT", button, SettingsDB.Scale(-2), SettingsDB.Scale(2))
+    hover:SetPoint("TOPLEFT", button, "TOPLEFT", SettingsDB.Scale(2), SettingsDB.Scale(-2))
+    hover:SetPoint("BOTTOMRIGHT", button, "BOTTOMRIGHT", SettingsDB.Scale(-2), SettingsDB.Scale(2))
     button:SetHighlightTexture(hover)
  
     local pushed = b:CreateTexture("Frame", nil, self)
     pushed:SetTexture(0.9, 0.8, 0.1, 0.3)
     pushed:SetHeight(button:GetHeight())
     pushed:SetWidth(button:GetWidth())
-    pushed:SetPoint("TOPLEFT", button, SettingsDB.Scale(2), SettingsDB.Scale(-2))
-    pushed:SetPoint("BOTTOMRIGHT", button, SettingsDB.Scale(-2), SettingsDB.Scale(2))
+    pushed:SetPoint("TOPLEFT", button, "TOPLEFT", SettingsDB.Scale(2), SettingsDB.Scale(-2))
+    pushed:SetPoint("BOTTOMRIGHT", button, "BOTTOMRIGHT", SettingsDB.Scale(-2), SettingsDB.Scale(2))
     button:SetPushedTexture(pushed)
  
-	--if checked then
+	if checked then
 		local checked = b:CreateTexture("Frame", nil, self)
 		checked:SetTexture(0, 1, 0, 0.3)
 		checked:SetHeight(button:GetHeight())
 		checked:SetWidth(button:GetWidth())
-		checked:SetPoint("TOPLEFT", button, SettingsDB.Scale(2), SettingsDB.Scale(-2))
-		checked:SetPoint("BOTTOMRIGHT", button, SettingsDB.Scale(-2), SettingsDB.Scale(2))
+		checked:SetPoint("TOPLEFT", button, "TOPLEFT", SettingsDB.Scale(2), SettingsDB.Scale(-2))
+		checked:SetPoint("BOTTOMRIGHT", button, "BOTTOMRIGHT", SettingsDB.Scale(-2), SettingsDB.Scale(2))
 		button:SetCheckedTexture(checked)
-	--end
+	end
 	
-    --[[local flasht = b:CreateTexture("Frame", nil, self)
-    flasht:SetTexture(1, 0, 1, 0)
-    flasht:SetHeight(button:GetHeight())
-    flasht:SetWidth(button:GetWidth())
-    flasht:SetPoint("TOPLEFT", button, SettingsDB.Scale(2), SettingsDB.Scale(-2))
-    flasht:SetPoint("BOTTOMRIGHT", button, SettingsDB.Scale(-2), SettingsDB.Scale(2))
-    flash:SetTexture(flasht)]]
-	
-	--[[cooldown:ClearAllPoints()
-	cooldown:SetPoint("TOPLEFT", button, "TOPLEFT", SettingsDB.Scale(2), SettingsDB.Scale(-2))
-	cooldown:SetPoint("BOTTOMRIGHT", button, "BOTTOMRIGHT", SettingsDB.Scale(-2), SettingsDB.Scale(2))]]
+	if cooldown then
+		cooldown:ClearAllPoints()
+		cooldown:SetPoint("TOPLEFT", button, "TOPLEFT", SettingsDB.Scale(2), SettingsDB.Scale(-2))
+		cooldown:SetPoint("BOTTOMRIGHT", button, "BOTTOMRIGHT", SettingsDB.Scale(-2), SettingsDB.Scale(2))
+	end
 end
 
 local function updatehotkey(self, actionButtonType)

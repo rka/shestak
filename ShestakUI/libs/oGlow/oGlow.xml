@@ -8,6 +8,7 @@
 	<Script file="pipes\tradeskill.lua" />
 	<Script file="pipes\merchant.lua" />
 	<Script file="pipes\mail.lua" />
+	<Script file="pipes\char-flyout.lua" />
 	
 	<Script file="displays\border.lua" />
 	
