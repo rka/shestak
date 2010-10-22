@@ -8,6 +8,7 @@ if SettingsDB.client == "enUS" or SettingsDB.client == "enGB" then
 	L_TOOLTIP_ACH_STATUS = "Your Status:"
 	L_TOOLTIP_ACH_COMPLETE = "Your Status: Completed on "
 	L_TOOLTIP_ACH_INCOMPLETE = "Your Status: Incomplete"
+	L_TOOLTIP_SPELL_ID = "Spell ID:"
 
 	-- Zone name
 	L_ZONE_DALARAN = "Dalaran"
@@ -39,7 +40,7 @@ if SettingsDB.client == "enUS" or SettingsDB.client == "enGB" then
 	-- Minimap
 	L_MINIMAP_CALENDAR = "Calendar"
 	
-	-- aLoad
+	-- Addons list
 	L_ALOAD_RL = "Reload UI"
 	L_ALOAD_TRADE = "Trade"
 	L_ALOAD_SOLO = "Solo"
@@ -76,7 +77,7 @@ if SettingsDB.client == "enUS" or SettingsDB.client == "enGB" then
 	L_CHAT_COME_ONLINE_COLOR = "is now |cff298F00online|r !"
 	L_CHAT_GONE_OFFLINE_COLOR = "is now |cffff0000offline|r !"
 
-	-- BaudErrorFrame
+	-- Errors frame
 	L_ERRORFRAME_L = "Click to view errors."
 	
 	-- Bags
@@ -113,11 +114,12 @@ if SettingsDB.client == "enUS" or SettingsDB.client == "enGB" then
 	-- Cooldowns
 	L_COOLDOWNS = "CD: "
 	
-	-- aSettings
+	-- Autoinvite
 	L_INVITE_ENABLE_T = "Autoinvite ON: invite"
 	L_INVITE_ENABLE = "Autoinvite ON: "
 	L_INVITE_DISABLE = "Autoinvite OFF"
 	
+	-- Quest watch
 	L_WATCH_UNLOCK = "WatchFrame unlock."
 	L_WATCH_LOCK = "WatchFrame lock."
 	
@@ -166,7 +168,7 @@ if SettingsDB.client == "enUS" or SettingsDB.client == "enGB" then
 	L_PLANNER_PALADIN_2 = "Protection"
 	L_PLANNER_PALADIN_3 = "Retribution"
 	
-	-- aSettings(bg score)
+	-- BG stats
 	L_DATATEXT_ARATHI = "Arathi Basin"
 	L_DATATEXT_WARSONG = "Warsong Gulch"
 	L_DATATEXT_EYE = "Eye of the Storm"

@@ -305,10 +305,17 @@ end
 
 local RoleUpdater = CreateFrame("Frame")
 local function CheckRole(self, event, unit)
-	if (SettingsDB.class == "PALADIN" and GetPrimaryTalentTree() == 2) or 
+	local resilience
+	if GetCombatRating(COMBAT_RATING_RESILIENCE_PLAYER_DAMAGE_TAKEN)*0.02828 > GetDodgeChance() then
+		resilience = true
+	else
+		resilience = false
+	end
+	if ((SettingsDB.class == "PALADIN" and GetPrimaryTalentTree() == 2) or 
 	(SettingsDB.class == "WARRIOR" and GetPrimaryTalentTree() == 3) or 
-	(SettingsDB.class == "DEATHKNIGHT" and GetPrimaryTalentTree() == 1) or
-	(SettingsDB.class == "DRUID" and GetPrimaryTalentTree() == 2 and SettingsDB.CheckForKnownTalent(16929)) then
+	(SettingsDB.class == "DEATHKNIGHT" and GetPrimaryTalentTree() == 1)) and
+	resilience == false or
+	(SettingsDB.class == "DRUID" and GetPrimaryTalentTree() == 2 and GetBonusBarOffset() == 3) then
 		SettingsDB.Role = "Tank"
 	else
 		local playerint = select(2, UnitStat("player", 4))
@@ -327,6 +334,8 @@ RoleUpdater:RegisterEvent("PLAYER_ENTERING_WORLD")
 RoleUpdater:RegisterEvent("ACTIVE_TALENT_GROUP_CHANGED")
 RoleUpdater:RegisterEvent("PLAYER_TALENT_UPDATE")
 RoleUpdater:RegisterEvent("CHARACTER_POINTS_CHANGED")
+RoleUpdater:RegisterEvent("UNIT_INVENTORY_CHANGED")
+RoleUpdater:RegisterEvent("UPDATE_BONUS_ACTIONBAR")
 RoleUpdater:SetScript("OnEvent", CheckRole)
 CheckRole()
 

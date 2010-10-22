@@ -28,24 +28,24 @@ if GetLocale() == "zhTW" then
 	L_GUI_SKINS_PP = "開啟PallyPower樣式增強"
 	
 	-- Combat text options
-	L_GUI_COMBATTEXT = "Combat Text" -- Needs review
-	L_GUI_COMBATTEXT_FONT_SIZE = "Font size" -- Needs review
-	L_GUI_COMBATTEXT_BLIZZ_HEAD_NUMBERS = "Use blizzard damage/healing output(above mob/player head)" -- Needs review
-	L_GUI_COMBATTEXT_DAMAGE = "Show outgoing damage in it's own frame" -- Needs review
-	L_GUI_COMBATTEXT_HEALING = "Show outgoing healing in it's own frame" -- Needs review
-	L_GUI_COMBATTEXT_DAMAGE_COLOR = "Display damage numbers depending on school of magic" -- Needs review
-	L_GUI_COMBATTEXT_CRIT_PREFIX = "Symbol that will be added before crit" -- Needs review
-	L_GUI_COMBATTEXT_CRIT_POSTFIX = "Symbol that will be added after crit" -- Needs review
-	L_GUI_COMBATTEXT_ICONS = "Show outgoing damage icons" -- Needs review
-	L_GUI_COMBATTEXT_ICON_SIZE = "Icon size of spells in outgoing damage frame, also has effect on dmg font size" -- Needs review
-	L_GUI_COMBATTEXT_DAMAGE_STYLE = "Change default damage/healing font above mobs/player heads(you need to restart WoW to see changes)" -- Needs review
-	L_GUI_COMBATTEXT_TRESHOLD = "Minimum damage to show in damage frame" -- Needs review
-	L_GUI_COMBATTEXT_HEAL_TRESHOLD = "Minimum healing to show in incoming/outgoing healing messages" -- Needs review
-	L_GUI_COMBATTEXT_SCROLLABLE = "Allows you to scroll frame lines with mousewheel" -- Needs review
-	L_GUI_COMBATTEXT_MAX_LINES = "Max lines to keep in scrollable mode(more lines = more memory)" -- Needs review
-	L_GUI_COMBATTEXT_TIME_VISIBLE = "Time(seconds) a single message will be visible" -- Needs review
-	L_GUI_COMBATTEXT_STOP_VE_SPAM = "Automaticly turns off healing spam for priests in shadowform" -- Needs review
-	L_GUI_COMBATTEXT_DK_RUNES = "Show deatchknight rune recharge" -- Needs review
+	L_GUI_COMBATTEXT = "戰鬥文本設置-（需要/RL)"
+	L_GUI_COMBATTEXT_FONT_SIZE = "字體尺寸設置"
+	L_GUI_COMBATTEXT_BLIZZ_HEAD_NUMBERS = "使用暴雪默認傷害/治療字體"
+	L_GUI_COMBATTEXT_DAMAGE = "獨立顯示輸出傷害"
+	L_GUI_COMBATTEXT_HEALING = "獨立顯示輸出治療"
+	L_GUI_COMBATTEXT_DAMAGE_COLOR = "傷害字體著色"
+	L_GUI_COMBATTEXT_CRIT_PREFIX = "暴擊傷害數字符號修飾（前）"
+	L_GUI_COMBATTEXT_CRIT_POSTFIX = "暴擊傷害數字符號修飾（後）"
+	L_GUI_COMBATTEXT_ICONS = "顯示輸出傷害技能圖標"
+	L_GUI_COMBATTEXT_ICON_SIZE = "顯示輸出傷害技能圖標+字體尺寸設置"
+	L_GUI_COMBATTEXT_DAMAGE_STYLE = "更改默認頭的头像上的傷害/治療字體"
+	L_GUI_COMBATTEXT_TRESHOLD = "最小化顯示傷害框體（建議1000）"
+	L_GUI_COMBATTEXT_HEAL_TRESHOLD = "最小化顯示治療框體（建議1000）"
+	L_GUI_COMBATTEXT_SCROLLABLE = "允許鼠標調整滾動框"
+	L_GUI_COMBATTEXT_MAX_LINES = "滾動框體尺寸調整"
+	L_GUI_COMBATTEXT_TIME_VISIBLE = "信息保留時間（建議3）"
+	L_GUI_COMBATTEXT_STOP_VE_SPAM = "自動過濾牧師暗影形態下的垃圾信息"
+	L_GUI_COMBATTEXT_DK_RUNES = "顯示死亡騎士符文恢復"
 	
 	-- Buffs reminder options
 	L_GUI_REMINDER = "Buffs提示"
@@ -177,6 +177,7 @@ if GetLocale() == "zhTW" then
 	L_GUI_AURA_PLAYER_AURAS = "在玩家框體顯示法術效果"
 	L_GUI_AURA_TARGET_AURAS = "在目標框體顯示法術效果"
 	L_GUI_AURA_FOCUS_DEBUFFS = "在焦點目標框體顯示DeBuffs"
+	L_GUI_AURA_FOT_DEBUFFS = "DeBuffs on focus target frame"  -- Needs review
 	L_GUI_AURA_PET_DEBUFFS = "在寵物框體顯示DeBuffs"
 	L_GUI_AURA_TOT_DEBUFFS = "在目標的目標框體顯示DeBuffs"
 	L_GUI_AURA_PLAYER_AURA_ONLY = "在目標框體只顯示自己的DeBuffs"

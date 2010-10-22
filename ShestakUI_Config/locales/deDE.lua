@@ -177,6 +177,7 @@ if GetLocale() == "deDE" then
 	L_GUI_AURA_PLAYER_AURAS = "Buffs auf dem Spielerfenster"
 	L_GUI_AURA_TARGET_AURAS = "Buffs auf dem Zielfenster"
 	L_GUI_AURA_FOCUS_DEBUFFS = "Debuffs auf dem Fokusfenster"
+	L_GUI_AURA_FOT_DEBUFFS = "DeBuffs on focus target frame"  -- Needs review
 	L_GUI_AURA_PET_DEBUFFS = "Debuffs auf dem Begleiterfenster"
 	L_GUI_AURA_TOT_DEBUFFS = "Debuffs bei Ziel des Ziels anzeigen"
 	L_GUI_AURA_PLAYER_AURA_ONLY = "Nur eigenen Debuffs bei dem Zielfenster anzeigen"

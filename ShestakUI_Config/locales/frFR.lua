@@ -177,6 +177,7 @@ if GetLocale() == "frFR" then
 	L_GUI_AURA_PLAYER_AURAS = "Auras sur la barre du joueur"
 	L_GUI_AURA_TARGET_AURAS = "Auras sur la barre de cible"
 	L_GUI_AURA_FOCUS_DEBUFFS = "Afficher les debuffs du focus"
+	L_GUI_AURA_FOT_DEBUFFS = "DeBuffs on focus target frame"  -- Needs review
 	L_GUI_AURA_PET_DEBUFFS = "Afficher les debuffs du pet"
 	L_GUI_AURA_TOT_DEBUFFS = "Afficher les debuffs de la cible de la cible"
 	L_GUI_AURA_PLAYER_AURA_ONLY = "Afficher seulement ses propres debuffs sur la cible"

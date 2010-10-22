@@ -905,12 +905,8 @@ Filger_Spells = {
             { spellID = 47585, size = 30, filter = "CD" },
 			-- Psychic Horror
             { spellID = 64044, size = 30, filter = "CD" },
-			-- Holy Word: Serenity
-			{ spellID = 88684, size = 30, filter = "CD" },
-			-- Holy Word: Sanctuary
-			{ spellID = 88685, size = 30, filter = "CD" },
-			-- Holy Word: Aspire
-			{ spellID = 88682, size = 30, filter = "CD" },
+			-- Holy Word: Chastise
+			{ spellID = 88625, size = 30, filter = "CD" },
 		},
 	},
 	["WARLOCK"] = {

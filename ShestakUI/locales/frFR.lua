@@ -8,6 +8,7 @@ if SettingsDB.client == "frFR" then
 	L_TOOLTIP_ACH_STATUS = "Votre statut :"
 	L_TOOLTIP_ACH_COMPLETE = "Votre statut : Oui "
 	L_TOOLTIP_ACH_INCOMPLETE = "Votre statut : Non terminé"
+	L_TOOLTIP_SPELL_ID = "Spell ID:"  -- Needs review
 	
 	-- Zone name
 	L_ZONE_DALARAN = "Dalaran"
@@ -39,7 +40,7 @@ if SettingsDB.client == "frFR" then
 	-- Minimap
 	L_MINIMAP_CALENDAR = "Calendrier"
 	
-	-- aLoad
+	-- Addons list
 	L_ALOAD_RL = "Recharger l'interface"
 	L_ALOAD_TRADE = "Echanger"
 	L_ALOAD_SOLO = "Solo"
@@ -76,7 +77,7 @@ if SettingsDB.client == "frFR" then
 	L_CHAT_COME_ONLINE_COLOR = "est maintenant |cff298F00connecté|r !"
 	L_CHAT_GONE_OFFLINE_COLOR = "est maintenant |cffff0000déconnecté|r !"
 	
-	-- BaudErrorFrame
+	-- Errors frame
 	L_ERRORFRAME_L = "Clic gauche pour afficher les erreurs."
 	
 	-- Bags
@@ -113,11 +114,12 @@ if SettingsDB.client == "frFR" then
 	-- Cooldowns
 	L_COOLDOWNS = "Accusation : "
 	
-	-- aSettings
+	-- Autoinvite
 	L_INVITE_ENABLE_T = "Invitation automatique : invite"
 	L_INVITE_ENABLE = "Invitation automatique activée : "
 	L_INVITE_DISABLE = "Invitation automatique désactivée"
 	
+	-- Quest watch
 	L_WATCH_UNLOCK = "Fenêtre des quêtes déverrouillée."
 	L_WATCH_LOCK = "Fenêtre des quêtes verrouillée."
 	
@@ -166,7 +168,7 @@ if SettingsDB.client == "frFR" then
 	L_PLANNER_PALADIN_2 = "Protection"
 	L_PLANNER_PALADIN_3 = "Vindicte"
 	
-	-- aSettings(bg score)
+	-- BG stats
 	L_DATATEXT_ARATHI = "Bassin d'Arathi"
 	L_DATATEXT_WARSONG = "Goulet des Chanteguerres"
 	L_DATATEXT_EYE = "L'Œil du cyclone"
@@ -189,7 +191,7 @@ if SettingsDB.client == "frFR" then
 	L_CLASS_HUNTER_CONTENT = "Votre familier est heureux!"
 	L_CLASS_HUNTER_HAPPY = "Votre familier est très heureux!"
 	
-	-- aSettings
+	-- Info text
 	L_INFO_ERRORS = "Pas d'erreur pour le moment."
 	L_INFO_INVITE = "Invitation acceptée par : "
 	L_INFO_DUEL = "Duel rejetée par : "

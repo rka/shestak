@@ -219,8 +219,6 @@ SkinBlizzUI:SetScript("OnEvent", function(self, event, addon)
 		_G["AudioOptionsFrameCancel"]:SetPoint("TOPRIGHT", _G["AudioOptionsFramePanelContainer"], "BOTTOMRIGHT", 0, -14)
 		_G["AudioOptionsFrameOkay"]:ClearAllPoints()
 		_G["AudioOptionsFrameOkay"]:SetPoint("RIGHT", _G["AudioOptionsFrameCancel"], "LEFT", -4, 0)
-		
-		
 		_G["InterfaceOptionsFrameDefaults"]:ClearAllPoints()
 		_G["InterfaceOptionsFrameDefaults"]:SetPoint("TOPLEFT", _G["InterfaceOptionsFrameCategories"], "BOTTOMLEFT", 0, -14)
 		_G["InterfaceOptionsFrameCancel"]:ClearAllPoints()

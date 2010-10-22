@@ -8,6 +8,7 @@ if SettingsDB.client == "deDE" then
 	L_TOOLTIP_ACH_STATUS = "Dein Fortschritt:"
 	L_TOOLTIP_ACH_COMPLETE = "Dein Status: Fertig gestellt am "
 	L_TOOLTIP_ACH_INCOMPLETE = "Dein Status: Noch nicht Ferig"
+	L_TOOLTIP_SPELL_ID = "Spell ID:"  -- Needs review
 
 	-- Zone name
 	L_ZONE_DALARAN = "Dalaran"
@@ -39,7 +40,7 @@ if SettingsDB.client == "deDE" then
 	-- Minimap
 	L_MINIMAP_CALENDAR = "Kalender"
 
-	-- aLoad
+	-- Addons list
 	L_ALOAD_RL = "Interface Neuladen"
 	L_ALOAD_TRADE = "Handel"
 	L_ALOAD_SOLO = "Solo"
@@ -76,7 +77,7 @@ if SettingsDB.client == "deDE" then
 	L_CHAT_COME_ONLINE_COLOR = "ist jetzt |cff298F00online|r !"
 	L_CHAT_GONE_OFFLINE_COLOR = "ist jetzt |cffff0000offline|r !"
 
-	-- BaudErrorFrame
+	-- Errors frame
 	L_ERRORFRAME_L = "Klick um Fehler anzuzeigen."
 	
 	-- Bags
@@ -113,11 +114,12 @@ if SettingsDB.client == "deDE" then
 	-- Cooldowns
     L_COOLDOWNS = "Abklingzeit: "
 	
-	-- aSettings
+	-- Autoinvite
 	L_INVITE_ENABLE_T = "Autoinvite AN: invite"
 	L_INVITE_ENABLE = "Autoinvite AN: "
 	L_INVITE_DISABLE = "Autoinvite AUS"
 	
+	-- Quest watch
 	L_WATCH_UNLOCK = "Quest Tracker entriegelt."
 	L_WATCH_LOCK = "Quest Tracker verriegelt."
 	
@@ -166,7 +168,7 @@ if SettingsDB.client == "deDE" then
 	L_PLANNER_PALADIN_2 = "Schutz"
 	L_PLANNER_PALADIN_3 = "Vergeltung"
 	
-	-- aSettings(bg score)
+	-- BG stats
 	L_DATATEXT_ARATHI = "Arathibecken"
 	L_DATATEXT_WARSONG = "Kriegshymnenschlucht"
 	L_DATATEXT_EYE = "Auge des Sturms"
@@ -189,7 +191,7 @@ if SettingsDB.client == "deDE" then
 	L_CLASS_HUNTER_CONTENT = "Dein Begleiter ist zufrieden!"
 	L_CLASS_HUNTER_HAPPY = "Dein Begleiter ist glücklich!"
 
-	-- aSettings
+	-- Info text
 	L_INFO_ERRORS = "Noch keine Fehler."
 	L_INFO_INVITE = "Gruppeneinladung akzeptiert von: "
 	L_INFO_DUEL = "Duellanfrage Ignoriert von: "

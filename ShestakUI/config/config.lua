@@ -154,6 +154,7 @@ SettingsCF["tooltip"] = {
 	["title"] = false,							-- Player title in tooltip
 	["rank"] = true,							-- Player guild-rank in tooltip
 	["arena_experience"] = false,				-- Player PVP experience in arena
+	["spell_id"] = false,						-- Id number spells
 }
 
 ----------------------------------------------------------------------------------------
@@ -269,6 +270,7 @@ SettingsCF["aura"] = {
 	["player_auras"] = true,					-- Auras on player frame
 	["target_auras"] = true,					-- Auras on target frame
 	["focus_debuffs"] = false,					-- DeBuffs on focus frame
+	["fot_debuffs"] = false,					-- DeBuffs on focustarget frame
 	["pet_debuffs"] = false,					-- DeBuffs on pet frame
 	["tot_debuffs"] = false,					-- DeBuffs on targettarget frame
 	["player_aura_only"] = false,				-- Only your debuff on target frame
@@ -479,7 +481,7 @@ SettingsCF["position"] = {
 }
 
 ----------------------------------------------------------------------------------------
---NOT WORKING!!!!!!!!!!! Fonts options
+--	Fonts options !!!!!!!!!!!NOT WORKING!!!!!!!!!!!
 ----------------------------------------------------------------------------------------
 SettingsCF["pixelfont"] = {
 	["stats"] = false,

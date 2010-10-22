@@ -49,7 +49,7 @@ if SettingsCF["reminder"].solo_buffs_enable == true then
 		end
 
 		local frame = CreateFrame("Frame", _, UIParent)
-		SettingsDB.CreatePanel(frame, SettingsCF["reminder"].solo_buffs_size + 4, SettingsCF["reminder"].solo_buffs_size + 4, "CENTER", UIParent, "CENTER", 0, 200)
+		SettingsDB.CreatePanel(frame, SettingsCF["reminder"].solo_buffs_size + 4, SettingsCF["reminder"].solo_buffs_size + 4, "CENTER", UIParent, "CENTER", 0, 190)
 		
 		frame.icon = frame:CreateTexture(nil, "OVERLAY")
 		frame.icon:SetTexCoord(0.1, 0.9, 0.1, 0.9)

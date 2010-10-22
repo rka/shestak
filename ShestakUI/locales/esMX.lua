@@ -8,6 +8,7 @@ if SettingsDB.client == "esMX" then
 	L_TOOLTIP_ACH_STATUS = "Estado:"
 	L_TOOLTIP_ACH_COMPLETE = "Estado: Completado "
 	L_TOOLTIP_ACH_INCOMPLETE = "Estado: Incompleto"
+	L_TOOLTIP_SPELL_ID = "Spell ID:"  -- Needs review
 
 	-- Zone name
 	L_ZONE_DALARAN = "Dalaran"
@@ -39,7 +40,7 @@ if SettingsDB.client == "esMX" then
 	-- Minimap
 	L_MINIMAP_CALENDAR = "Calendario"
 	
-	-- aLoad
+	-- Addons list
 	L_ALOAD_RL = "Recargar UI"
 	L_ALOAD_TRADE = "Comercio"
 	L_ALOAD_SOLO = "Solo"
@@ -76,7 +77,7 @@ if SettingsDB.client == "esMX" then
 	L_CHAT_COME_ONLINE_COLOR = "se ha |cff298F00conectado|r !"
 	L_CHAT_GONE_OFFLINE_COLOR = "se ha |cffff0000desconectado|r !"
 
-	-- BaudErrorFrame
+	-- Errors frame
 	L_ERRORFRAME_L = "Click para ver errores."
 	
 	-- Bags
@@ -113,11 +114,12 @@ if SettingsDB.client == "esMX" then
 	-- Cooldowns
 	L_COOLDOWNS = "TR: "
 	
-	-- aSettings
+	-- Autoinvite
 	L_INVITE_ENABLE_T = "Auto Invitar ON: invite"
 	L_INVITE_ENABLE = "Auto Invitar ON: "
 	L_INVITE_DISABLE = "Auto Invitar OFF"
 	
+	-- Quest watch
 	L_WATCH_UNLOCK = "Registro de Misiones Desbloqueado."
 	L_WATCH_LOCK = "Registro de Misiones Bloqueado."
 	
@@ -166,7 +168,7 @@ if SettingsDB.client == "esMX" then
 	L_PLANNER_PALADIN_2 = "Protección"
 	L_PLANNER_PALADIN_3 = "Reprensión"
 	
-	-- aSettings(bg score)
+	-- BG stats
 	L_DATATEXT_ARATHI = "Cuenca de Arathi"
 	L_DATATEXT_WARSONG = "Garganta Grito de Guerra"
 	L_DATATEXT_EYE = "Ojo de la Tormenta"
@@ -189,7 +191,7 @@ if SettingsDB.client == "esMX" then
 	L_CLASS_HUNTER_CONTENT = "Tu mascota está contenta!"
 	L_CLASS_HUNTER_HAPPY = "Tu mascota está feliz!"
 	
-	-- aSettings
+	-- Info text
 	L_INFO_ERRORS = "Ningun error aun."
 	L_INFO_INVITE = "Invitacion aceptada de: "
 	L_INFO_DUEL = "Duelo rechazado de: "

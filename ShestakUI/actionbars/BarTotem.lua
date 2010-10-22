@@ -7,13 +7,13 @@ if MultiCastActionBarFrame then
 	MultiCastActionBarFrame:SetScript("OnUpdate", nil)
 	MultiCastActionBarFrame:SetScript("OnShow", nil)
 	MultiCastActionBarFrame:SetScript("OnHide", nil)
-	MultiCastActionBarFrame:SetParent(ShiftHolder)
+	MultiCastActionBarFrame:SetParent("ShiftBar")
 	MultiCastActionBarFrame:ClearAllPoints()
-	MultiCastActionBarFrame:SetPoint("BOTTOMLEFT", "ShiftBar", "BOTTOMLEFT", 0, 0)
+	MultiCastActionBarFrame:SetPoint("BOTTOMLEFT", "ShiftBar", "BOTTOMLEFT", 0, -10)
  
 	hooksecurefunc("MultiCastActionButton_Update",function(actionbutton) if not InCombatLockdown() then actionbutton:SetAllPoints(actionbutton.slotButton) end end)
  
-	MultiCastActionBarFrame.SetParent = SettingsDB.dummy
-	MultiCastActionBarFrame.SetPoint = SettingsDB.dummy
+	--MultiCastActionBarFrame.SetParent = SettingsDB.dummy
+	--MultiCastActionBarFrame.SetPoint = SettingsDB.dummy
 	--MultiCastRecallSpellButton.SetPoint = SettingsDB.dummy
 end

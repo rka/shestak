@@ -43,7 +43,7 @@ local GetTotemInfo, SetValue, GetTime = GetTotemInfo, SetValue, GetTime
 	
 local Abbrev = function(name)	
 	local newname = (string.len(name) > 11) and string.gsub(name, "%s?(.[\128-\191]*)%S+%s", "%1. ") or name
-	return utf8sub(newname, 11, false)
+	return SettingsDB.UTF(newname, 11, false)
 end
 local function TotemOnClick(self,...)
 	local id = self.ID

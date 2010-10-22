@@ -299,7 +299,7 @@ local function Shared(self, unit)
 				
 				if db.plugins_totem_bar_name == true then
 					self.TotemBar[i].Name = SettingsDB.SetFontString(self.TotemBar[i], SettingsCF["media"].pixel_font, db.font_size, SettingsCF["media"].pixel_font_style)
-					self.TotemBar[i].Name:SetPoint("CENTER", self.TotemBar[i], "CENTER", 0, SettingsDB.Scale(1))
+					self.TotemBar[i].Name:SetPoint("CENTER", self.TotemBar[i], "CENTER", 0, 0)
 					self.TotemBar[i].Name:SetTextColor(1, 1, 1)
 				end
 			end
@@ -962,6 +962,21 @@ if db.show_arena == true then
 end
 
 ----------------------------------------------------------------------------------------
+--	Remove SET_FOCUS & CLEAR_FOCUS from menu, to prevent errors
+----------------------------------------------------------------------------------------
+do 
+    for k,v in pairs(UnitPopupMenus) do
+        for x,y in pairs(UnitPopupMenus[k]) do
+            if y == "SET_FOCUS" then
+                table.remove(UnitPopupMenus[k],x)
+            elseif y == "CLEAR_FOCUS" then
+                table.remove(UnitPopupMenus[k],x)
+            end
+        end
+    end
+end
+
+----------------------------------------------------------------------------------------
 --	Testmode(by Fernir)
 ----------------------------------------------------------------------------------------
 SlashCmdList.TestUI = function() 
@@ -969,16 +984,17 @@ SlashCmdList.TestUI = function()
 		for i, v in pairs(oUF.units) do
 			if not v.fff then
 				v.fff = CreateFrame("Frame")
+				SettingsDB.SkinFadedPanel(v.fff)
+				v.fff:SetPoint("TOPLEFT", v, SettingsDB.Scale(-2), SettingsDB.Scale(2))
+				v.fff:SetPoint("BOTTOMRIGHT", v, SettingsDB.Scale(2), SettingsDB.Scale(-2))
+			
 				v.fffs = v.fff:CreateFontString(nil, "OVERLAY", "GameFontNormal")
 				v.fffs:SetFont(SettingsCF["media"].pixel_font, SettingsCF["unitframe"].font_size, SettingsCF["media"].pixel_font_style)
 				v.fffs:SetShadowOffset(0, 0)
 				v.fffs:SetAllPoints(v.fff)
 				v.fffs:SetText(v:GetName())
 			end
-			SettingsDB.CreateTemplate(v.fff)
-			v.fff:SetBackdropColor(unpack(SettingsCF["media"].overlay_color))
-			v.fff:SetPoint("TOPLEFT", v, SettingsDB.Scale(-2), SettingsDB.Scale(2))
-			v.fff:SetPoint("BOTTOMRIGHT", v, SettingsDB.Scale(2), SettingsDB.Scale(-2))
+			
 			if v.fff:IsVisible() then 
 				v.fff:Hide()
 			else

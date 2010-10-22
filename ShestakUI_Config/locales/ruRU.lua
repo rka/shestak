@@ -177,6 +177,7 @@ if GetLocale() == "ruRU" then
 	L_GUI_AURA_PLAYER_AURAS = "Ауры игрока"
 	L_GUI_AURA_TARGET_AURAS = "Ауры цели"
 	L_GUI_AURA_FOCUS_DEBUFFS = "Отрицательные эффекты фокуса"
+	L_GUI_AURA_FOT_DEBUFFS = "Отрицательные эффекты цели фокуса"
 	L_GUI_AURA_PET_DEBUFFS = "Отрицательные эффекты питомца"
 	L_GUI_AURA_TOT_DEBUFFS = "Отрицательные эффекты цели цели"
 	L_GUI_AURA_PLAYER_AURA_ONLY = "Только ваши отрицательные эффекты на цели"

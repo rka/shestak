@@ -8,6 +8,7 @@ if SettingsDB.client == "ruRU" then
 	L_TOOLTIP_ACH_STATUS = "Ваш статус:"
 	L_TOOLTIP_ACH_COMPLETE = "Ваш статус: Получено "
 	L_TOOLTIP_ACH_INCOMPLETE = "Ваш статус: Не завершено"
+	L_TOOLTIP_SPELL_ID = "Номер заклинания:"
 	
 	-- Zone name
 	L_ZONE_DALARAN = "Даларан"
@@ -118,6 +119,7 @@ if SettingsDB.client == "ruRU" then
 	L_INVITE_ENABLE = "Автоприглашение включено: "
 	L_INVITE_DISABLE = "Автоприглашение выключено"
 	
+	-- Quest watch
 	L_WATCH_UNLOCK = "Список отслеживаемых задач разблокирован."
 	L_WATCH_LOCK = "Список отслеживаемых задач закреплен."
 	
@@ -166,7 +168,7 @@ if SettingsDB.client == "ruRU" then
 	L_PLANNER_PALADIN_2 = "Защита"
 	L_PLANNER_PALADIN_3 = "Возмездие"
 	
-	-- aSettings(bg score)
+	-- BG stats
 	L_DATATEXT_ARATHI = "Низина Арати"
 	L_DATATEXT_WARSONG = "Ущелье Песни Войны"
 	L_DATATEXT_EYE = "Око Бури"

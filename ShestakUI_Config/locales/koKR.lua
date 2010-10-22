@@ -177,6 +177,7 @@ if GetLocale() == "koKR" then
 	L_GUI_AURA_PLAYER_AURAS = "Auras on player frame"
 	L_GUI_AURA_TARGET_AURAS = "Auras on target frame"
 	L_GUI_AURA_FOCUS_DEBUFFS = "DeBuffs on focus frame"
+	L_GUI_AURA_FOT_DEBUFFS = "DeBuffs on focus target frame"  -- Needs review
 	L_GUI_AURA_PET_DEBUFFS = "DeBuffs on pet frame"
 	L_GUI_AURA_TOT_DEBUFFS = "DeBuffs on targettarget frame"
 	L_GUI_AURA_PLAYER_AURA_ONLY = "Only your debuff on target frame"

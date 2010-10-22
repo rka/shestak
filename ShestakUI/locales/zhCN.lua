@@ -8,6 +8,7 @@ if SettingsDB.client == "zhCN" then
 	L_TOOLTIP_ACH_STATUS = "你的状态:"
 	L_TOOLTIP_ACH_COMPLETE = "你的状态: 完成 "
 	L_TOOLTIP_ACH_INCOMPLETE = "你的状态: 未完成"
+	L_TOOLTIP_SPELL_ID = "Spell ID:"  -- Needs review
 	
 	-- Zone name
 	L_ZONE_DALARAN = "达拉然"
@@ -39,7 +40,7 @@ if SettingsDB.client == "zhCN" then
 	-- Minimap
 	L_MINIMAP_CALENDAR = "日历"
 	
-	-- aLoad
+	-- Addons list
 	L_ALOAD_RL = "重新加载UI"
 	L_ALOAD_TRADE = "贸易"
 	L_ALOAD_SOLO = "独自"
@@ -76,7 +77,7 @@ if SettingsDB.client == "zhCN" then
 	L_CHAT_COME_ONLINE_COLOR = "|cff298F00上线了|r !"
 	L_CHAT_GONE_OFFLINE_COLOR = "|cffff0000下线了|r !"
 
-	-- BaudErrorFrame
+	-- Errors frame
 	L_ERRORFRAME_L = "点击查看错误."
 	
 	-- Bags
@@ -113,11 +114,12 @@ if SettingsDB.client == "zhCN" then
 	-- Cooldowns
 	L_COOLDOWNS = "CD: "
 	
-	-- aSettings
+	-- Autoinvite
 	L_INVITE_ENABLE_T = "启用自动邀请: invite"
 	L_INVITE_ENABLE = "自动邀请功能已启用: "
 	L_INVITE_DISABLE = "自动邀请功能已关闭"
 	
+	-- Quest watch
 	L_WATCH_UNLOCK = "WatchFrame unlock." -- Needs review
 	L_WATCH_LOCK = "WatchFrame lock." -- Needs review
 	
@@ -166,7 +168,7 @@ if SettingsDB.client == "zhCN" then
 	L_PLANNER_PALADIN_2 = "防护"
 	L_PLANNER_PALADIN_3 = "惩戒"
 	
-	-- aSettings(bg score)
+	-- BG stats
 	L_DATATEXT_ARATHI = "阿拉希盆地" 
 	L_DATATEXT_WARSONG = "战歌峡谷" 
 	L_DATATEXT_EYE = "风暴之眼" 
@@ -189,7 +191,7 @@ if SettingsDB.client == "zhCN" then
 	L_CLASS_HUNTER_CONTENT = "你的宠物感到满足!"
 	L_CLASS_HUNTER_HAPPY = "你的宠物感到高兴!"
 	
-	-- aSettings
+	-- Info text
 	L_INFO_ERRORS = "目前没有错误."
 	L_INFO_INVITE = "接受邀请: "
 	L_INFO_DUEL = "拒绝决斗请求: "
