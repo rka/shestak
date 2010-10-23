@@ -121,6 +121,7 @@ local function Local(o)
 	if o == "UIConfigtooltiptitle" then o = L_GUI_TOOLTIP_TITLE end
 	if o == "UIConfigtooltiprank" then o = L_GUI_TOOLTIP_RANK end
 	if o == "UIConfigtooltiparena_experience" then o = L_GUI_TOOLTIP_ARENA_EXPERIENCE end
+	if o == "UIConfigtooltipspell_id" then o = L_GUI_TOOLTIP_SPELL_ID end
 	
 	-- Chat options
 	if o == "UIConfigchat" then o = SOCIALS end

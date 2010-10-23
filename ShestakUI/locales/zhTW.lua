@@ -8,7 +8,7 @@ if SettingsDB.client == "zhTW" then
 	L_TOOLTIP_ACH_STATUS = "你的狀態:"
 	L_TOOLTIP_ACH_COMPLETE = "你的狀態: 完成 "
 	L_TOOLTIP_ACH_INCOMPLETE = "你的狀態: 未完成"
-	L_TOOLTIP_SPELL_ID = "Spell ID:"  -- Needs review
+	L_TOOLTIP_SPELL_ID = "法術ID:"
 
 	-- Zone name
 	L_ZONE_DALARAN = "達拉然"
@@ -211,8 +211,8 @@ if SettingsDB.client == "zhTW" then
 	L_POPUP_SWITCH_RAID = "多個團隊樣式被加載,請選擇一個樣式."
 	L_POPUP_DISABLEUI = "ShestakUI並不支援此解析度, 你想要停用ShestakUI嗎? (若果您想要嘗試其他解析度, 請按取消)"
 	L_POPUP_SETTINGS_ALL = "應用所有的UI設置? (DBM/DXE, Skada/Recount and MSBT)"
-	L_POPUP_SETTINGS_DBM = "Need to change the position of elements DBM."  -- Needs review
-	L_POPUP_SETTINGS_CLIQUE = "Your Clique settings are not setup with ShestakUI, would you like to set them up?"  -- Needs review
+	L_POPUP_SETTINGS_DBM = "需要改變DBM描點及風格化元素。" 
+	L_POPUP_SETTINGS_CLIQUE = "你的Clique設置沒有正確安裝，現在應用Clique設置?"
 	
 	-- Welcome mesage
 	L_WELCOME_LINE_1 = "歡迎使用ShestakUI "

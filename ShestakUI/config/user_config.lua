@@ -63,4 +63,5 @@ if SettingsDB.name == "Черешок"
 	SettingsCF["unitframe"].arena_on_right = false
 	SettingsCF["error"].black = false
 	SettingsCF["error"].white = true
+	SettingsCF["bag"].bag_columns = 10
 end

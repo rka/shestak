@@ -23,6 +23,7 @@ local function InstallUI()
 	SetCVar("autoLootDefault", 1)
 	SetCVar("RotateMinimap", 0)
 	SetCVar("ConsolidateBuffs", 0)
+	SetCVar("scriptErrors", 0)
 	
 	if SettingsDB.name == "Черешок" 
 		or SettingsDB.name == "Вершок"
@@ -228,20 +229,6 @@ OnLogon:SetScript("OnEvent", function(self, event)
 		print("|cffffff00"..L_WELCOME_LINE_2_1.." |cffffff00"..L_WELCOME_LINE_2_2)
 		--SettingsDB.InfoTextShow(L_WELCOME_LINE_1..SettingsDB.version.." "..SettingsDB.client)
 	end
-	
-	if (SettingsDB.name == "Черешок" 
-		or SettingsDB.name == "Вершок"
-		or SettingsDB.name == "Вещмешок" 
-		or SettingsDB.name == "Гребешок" 
-		or SettingsDB.name == "Кулешок" 
-		or SettingsDB.name == "Лапушок" 
-		or SettingsDB.name == "Обушок" 
-		or SettingsDB.name == "Ремешок"
-		or SettingsDB.name == "Шестак") then
-		SetCVar("scriptErrors", 1)
-	else
-		SetCVar("scriptErrors", 0)
-	end	
 end)
 
 SLASH_CONFIGURE1 = "/resetui"

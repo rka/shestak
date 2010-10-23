@@ -51,6 +51,7 @@
 	<Script file="modules\friendlist.lua"/>
 	<Script file="modules\kill.lua"/>
 	<Script file="modules\durability.lua"/>
+	<Script file="modules\autobutton.lua"/>
 
 	<Script file="scripts\font.lua"/>
 	<Script file="scripts\minimap.lua"/>
@@ -82,10 +83,12 @@
 	<Script file="scripts\skin.lua"/>
 	<Script file="scripts\threat.lua"/>
 	<Script file="scripts\bubbles.lua"/>
-	<!--<Script file="scripts\raidcomp.lua"/>-->
 	<Script file="scripts\reminder.lua"/>
 	<Script file="scripts\enemycd.lua"/>
 	<Script file="scripts\raidcd.lua"/>
+	<!--<Script file="scripts\bags.lua"/>-->
+	<!--<Script file="scripts\raidcomp.lua"/>-->
+	<!--<Script file="scripts\pulsecd.lua"/>-->
 	
 	<Script file="datatext\battleground.lua"/>
 

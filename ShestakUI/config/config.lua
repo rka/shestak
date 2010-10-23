@@ -51,10 +51,10 @@ SettingsCF["misc"] = {
 	["auto_resurrection"] = true,				-- Auto resurrection in Battle Ground
 	["shift_marking"] = true,					-- Marks target when you push "shift"
 	["invite_keyword"] = "invite",				-- Short keyword for invite(for enable - in game type /ainv)
-	["raid_planner"] = false,					-- Raid planner
 	["afk_spin_camera"] = false,				-- Spin camera while afk
 	["move_watchframe"] = true,					-- Quest Watch frame movable
 	["vehicle_mouseover"] = false,				-- Vehicle frame on mouseover
+	["quest_auto_button"] = false,				-- Quest auto button
 }
 
 ----------------------------------------------------------------------------------------
@@ -162,8 +162,8 @@ SettingsCF["tooltip"] = {
 ----------------------------------------------------------------------------------------
 SettingsCF["chat"] = {
 	["enable"] = true,							-- Enable chat
-	["background"] = false,						--
-	["background_alpha"] = 0.7,					-- 
+	["background"] = false,						-- Enable background for chat
+	["background_alpha"] = 0.7,					-- Background alpha
 	["font_size"] = 11,							-- Chat font size
 	["font_style"] = "",						-- Font style("OUTLINE", "OUTLINEMONOCHROME", "THICKOUTLINE" or "")
 	["tab_font_size"] = 8,						-- Chat tab font size
@@ -180,6 +180,7 @@ SettingsCF["chat"] = {
 --	Bag options
 ----------------------------------------------------------------------------------------
 SettingsCF["bag"] = {
+	["enable"] = true,							-- Enable bags
 	["button_size"] = 27,						-- Buttons size
 	["button_space"] = 3,						-- Buttons space
 	["bank_columns"] = 17,						-- Horizontal number of columns in bank

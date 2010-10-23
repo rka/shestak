@@ -61,10 +61,8 @@ Filger_Spells = {
 			{ spellID = 33745, size = 37, unitId = "target", caster = "player", filter = "DEBUFF" },
 			-- Pounce Bleed
 			{ spellID = 9007, size = 37, unitId = "target", caster = "player", filter = "DEBUFF" },
-			-- Mangle (Cat)
+			-- Mangle
 			{ spellID = 33876, size = 37, unitId = "target", caster = "all", filter = "DEBUFF" },
-			-- Mangle (Bear)
-			--{ spellID = 33878, size = 37, unitId = "target", caster = "all", filter = "DEBUFF" },
 		},
 		{
 			Name = "P_PROC_ICON",
@@ -338,10 +336,6 @@ Filger_Spells = {
 			
 			-- Arcane Blast
 			{ spellID = 36032, size = 37, unitId = "player", caster = "player", filter = "DEBUFF" },
-			-- Improved Scorch
-			{ spellID = 11367, size = 37, unitId = "target", caster = "all", filter = "DEBUFF" },
-			-- Scorch
-			{ spellID = 2948, size = 37, unitId = "target", caster = "all", filter = "DEBUFF" },
 			-- Slow
 			{ spellID = 31589, size = 37, unitId = "target", caster = "player", filter = "DEBUFF" },
 			-- Ignite
@@ -351,9 +345,9 @@ Filger_Spells = {
 			-- Pyroblast!
 			{ spellID = 92315, size = 37, unitId = "player", caster = "player", filter = "DEBUFF" },
 			-- Critical Mass
-			{ spellID = 22959, size = 37, unitId = "player", caster = "player", filter = "DEBUFF" },
+			{ spellID = 22959, size = 37, unitId = "target", caster = "player", filter = "DEBUFF" },
 			-- Combustion
-			{ spellID = 83853, size = 37, unitId = "player", caster = "player", filter = "DEBUFF" },
+			{ spellID = 83853, size = 37, unitId = "target", caster = "player", filter = "DEBUFF" },
 		},
 		
 		{
@@ -363,8 +357,6 @@ Filger_Spells = {
 			Mode = "ICON",
 			setPoint = { "BOTTOMLEFT", "oUF_Target", "TOPLEFT", -2, 213 },
 			
-			-- Frostbite
-			--{ spellID = 11071, size = 37, unitId = "target", caster = "all", filter = "DEBUFF" },
 			-- Winter's Chill
 			{ spellID = 28593, size = 37, unitId = "target", caster = "player", filter = "DEBUFF" },
 			-- Fingers of Frost
@@ -475,8 +467,6 @@ Filger_Spells = {
 			{ spellID = 94009, size = 37, unitId = "target", caster = "player", filter = "DEBUFF" },
 			-- Sunder Armor
 			{ spellID = 7386, size = 37, unitId = "target", caster = "all", filter = "DEBUFF" },
-			-- Expose Armor
-			--{ spellID = 48669, size = 37, unitId = "target", caster = "player", filter = "DEBUFF" },
 			-- Thunder Clap
 			{ spellID = 6343, size = 37, unitId = "target", caster = "player", filter = "DEBUFF" },
 			-- Infected Wounds
@@ -979,6 +969,12 @@ Filger_Spells = {
 			{ spellID = 60234, size = 37, unitId = "player", caster = "player", filter = "BUFF" },
 			-- Nightfall
 			{ spellID = 18095, size = 37, unitId = "player", caster = "player", filter = "BUFF" },
+			-- Eradication
+			{ spellID = 47195, size = 37, unitId = "player", caster = "player", filter = "BUFF" },
+			-- Improved Soul Fire
+			{ spellID = 85113, size = 37, unitId = "player", caster = "player", filter = "BUFF" },
+			-- Empowered Imp
+			{ spellID = 47283, size = 37, unitId = "player", caster = "player", filter = "BUFF" },
 		},
 		{
 			Name = "T_DE/BUFF_BAR",
@@ -1087,6 +1083,8 @@ Filger_Spells = {
 			{ spellID = 19505, size = 30, filter = "CD" },
 			-- Soul Harvest
 			{ spellID = 79268, size = 30, filter = "CD" },
+			-- Felstorm
+			{ spellID = 89751, size = 30, filter = "CD" },
 		},
 	},
 	["ROGUE"] = {	
@@ -1524,7 +1522,7 @@ Filger_Spells = {
 			setPoint = { "BOTTOMLEFT", "oUF_Target", "TOPLEFT", -2, 253 },
 			
 			-- Aspect of the Pack
-			{ spellID = 13159, size = 51, unitId = "player", caster = "player", filter = "BUFF" },
+			{ spellID = 13159, size = 51, unitId = "player", caster = "all", filter = "BUFF" },
 			-- Innervate
 			{ spellID = 29166, size = 51, unitId = "target", caster = "all", filter = "BUFF"},
 			-- Spell Reflection

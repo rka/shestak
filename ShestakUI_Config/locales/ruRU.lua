@@ -97,6 +97,7 @@ if GetLocale() == "ruRU" then
 	L_GUI_TOOLTIP_TITLE = "Звание или имя сервера в подсказке"
 	L_GUI_TOOLTIP_RANK = "Ранг в гильдии цели в подсказке"
 	L_GUI_TOOLTIP_ARENA_EXPERIENCE = "PvP достижения цели в подсказке"
+	L_GUI_TOOLTIP_SPELL_ID = "Номер заклинания"
 	
 	-- Chat options
 	L_GUI_CHAT_ENABLE = "Включить чат"

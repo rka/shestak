@@ -28,23 +28,23 @@ if GetLocale() == "zhTW" then
 	L_GUI_SKINS_PP = "開啟PallyPower樣式增強"
 	
 	-- Combat text options
-	L_GUI_COMBATTEXT = "戰鬥文本設置-（需要/RL)"
-	L_GUI_COMBATTEXT_FONT_SIZE = "字體尺寸設置"
-	L_GUI_COMBATTEXT_BLIZZ_HEAD_NUMBERS = "使用暴雪默認傷害/治療字體"
-	L_GUI_COMBATTEXT_DAMAGE = "獨立顯示輸出傷害"
-	L_GUI_COMBATTEXT_HEALING = "獨立顯示輸出治療"
-	L_GUI_COMBATTEXT_DAMAGE_COLOR = "傷害字體著色"
-	L_GUI_COMBATTEXT_CRIT_PREFIX = "暴擊傷害數字符號修飾（前）"
-	L_GUI_COMBATTEXT_CRIT_POSTFIX = "暴擊傷害數字符號修飾（後）"
-	L_GUI_COMBATTEXT_ICONS = "顯示輸出傷害技能圖標"
-	L_GUI_COMBATTEXT_ICON_SIZE = "顯示輸出傷害技能圖標+字體尺寸設置"
-	L_GUI_COMBATTEXT_DAMAGE_STYLE = "更改默認頭的头像上的傷害/治療字體"
-	L_GUI_COMBATTEXT_TRESHOLD = "最小化顯示傷害框體（建議1000）"
-	L_GUI_COMBATTEXT_HEAL_TRESHOLD = "最小化顯示治療框體（建議1000）"
-	L_GUI_COMBATTEXT_SCROLLABLE = "允許鼠標調整滾動框"
-	L_GUI_COMBATTEXT_MAX_LINES = "滾動框體尺寸調整"
-	L_GUI_COMBATTEXT_TIME_VISIBLE = "信息保留時間（建議3）"
-	L_GUI_COMBATTEXT_STOP_VE_SPAM = "自動過濾牧師暗影形態下的垃圾信息"
+	L_GUI_COMBATTEXT = "戰鬥文字"
+	L_GUI_COMBATTEXT_FONT_SIZE = "字體大小"
+	L_GUI_COMBATTEXT_BLIZZ_HEAD_NUMBERS = "使用暴雪默認傷害/治療模式（模型頂部/玩家頭像）" 
+	L_GUI_COMBATTEXT_DAMAGE = "獨立顯示傷害輸出"
+	L_GUI_COMBATTEXT_HEALING = "獨立顯示治療輸出"
+	L_GUI_COMBATTEXT_DAMAGE_COLOR = "以法術系別顏色顯示傷害文字"
+	L_GUI_COMBATTEXT_CRIT_PREFIX = "文本右側致命效果修飾符號"
+	L_GUI_COMBATTEXT_CRIT_POSTFIX = "文本右側致命效果修飾符號"
+	L_GUI_COMBATTEXT_ICONS = "顯示輸出傷害技能圖示"
+	L_GUI_COMBATTEXT_ICON_SIZE = "傷害輸出圖示大小"
+	L_GUI_COMBATTEXT_DAMAGE_STYLE = "改變模型頂部/玩家頭像的傷害/治療字體"
+	L_GUI_COMBATTEXT_TRESHOLD = "傷害輸出信息最小閥值"
+	L_GUI_COMBATTEXT_HEAL_TRESHOLD = "治療承受信息/輸出最小閥值"
+	L_GUI_COMBATTEXT_SCROLLABLE = "允許滑鼠調整滾動區域"
+	L_GUI_COMBATTEXT_MAX_LINES = "滾動區域顯示最多行數"
+	L_GUI_COMBATTEXT_TIME_VISIBLE = "信息保留時間(秒)"
+	L_GUI_COMBATTEXT_STOP_VE_SPAM = "自動屏蔽吸血鬼之擁(@暗牧)的垃圾信息"
 	L_GUI_COMBATTEXT_DK_RUNES = "顯示死亡騎士符文恢復"
 	
 	-- Buffs reminder options
@@ -170,14 +170,14 @@ if GetLocale() == "zhTW" then
 	L_GUI_ACTIONBAR_SHAPESHIFT_HORIZONTAL = "橫向顯示變身/姿態快捷列"
 	
 	-- Auras/Buffs/Debuffs
-	L_GUI_AURA_FONT_SIZE = "Auras font size"  -- Needs review
-	L_GUI_AURA_PLAYER_BUFF_SIZE = "Player buffs size"  -- Needs review
+	L_GUI_AURA_FONT_SIZE = "法術效果圖示大小"
+	L_GUI_AURA_PLAYER_BUFF_SIZE = "玩家Buffs圖示大小"
 	L_GUI_AURA_SHOW_SPIRAL = "在圖示上顯示漩渦冷卻樣式"
 	L_GUI_AURA_SHOW_TIMER = "在圖示上顯示層數堆疊"
 	L_GUI_AURA_PLAYER_AURAS = "在玩家框體顯示法術效果"
 	L_GUI_AURA_TARGET_AURAS = "在目標框體顯示法術效果"
 	L_GUI_AURA_FOCUS_DEBUFFS = "在焦點目標框體顯示DeBuffs"
-	L_GUI_AURA_FOT_DEBUFFS = "DeBuffs on focus target frame"  -- Needs review
+	L_GUI_AURA_FOT_DEBUFFS = "在焦點目標的目標框體顯示DeBuffs"
 	L_GUI_AURA_PET_DEBUFFS = "在寵物框體顯示DeBuffs"
 	L_GUI_AURA_TOT_DEBUFFS = "在目標的目標框體顯示DeBuffs"
 	L_GUI_AURA_PLAYER_AURA_ONLY = "在目標框體只顯示自己的DeBuffs"
@@ -207,7 +207,7 @@ if GetLocale() == "zhTW" then
 	L_GUI_UF_PLAYER_PARTY = "在小隊中顯示玩家框體"
 	L_GUI_UF_SHOW_TANK = "顯示團隊主坦克框體"
 	L_GUI_UF_RAID_GROUP = "顯示小隊數目(ShestakUI_Heal風格)"
-	L_GUI_UF_RAID_VERTICAL_GROUP = "Vertical raid groups(Only for ShestakUI_Heal)"  -- Needs review
+	L_GUI_UF_RAID_VERTICAL_GROUP = "竪向排列團隊隊伍(ShestakUI_Heal風格)"
 	L_GUI_UF_ICONS_PVP = "滑鼠劃過玩家/目標顯示PVP狀態文字"  -- Needs review
 	L_GUI_UF_ICONS_LEADER = "顯示團隊隊長標識/助手標識/分配者標識"
 	L_GUI_UF_ICONS_COMBAT = "顯示戰鬥標識"

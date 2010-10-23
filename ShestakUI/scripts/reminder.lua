@@ -81,10 +81,10 @@ if SettingsCF["reminder"].raid_buffs_enable == true then
 	local guardianelixirbuffs = SettingsDB.raid_buffs_reminder["GuardianElixir"]
 	local foodbuffs = SettingsDB.raid_buffs_reminder["Food"]
 	local visible
-	local flasked		
-	local battleelixired	
-	local guardianelixired	
-	local food		
+	local flasked
+	local battleelixired
+	local guardianelixired
+	local food
 	local spell3
 	local spell4
 	local spell5

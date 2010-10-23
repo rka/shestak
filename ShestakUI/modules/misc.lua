@@ -85,6 +85,7 @@ checkflask:RegisterEvent("COMBAT_LOG_EVENT_UNFILTERED")
 ----------------------------------------------------------------------------------------
 --	Protection from hidden windows auction at the opening of other windows(by Fernir)
 ----------------------------------------------------------------------------------------
+--[[
 local eventframe = CreateFrame("Frame")
 eventframe:RegisterEvent("ADDON_LOADED")
 eventframe:SetScript("OnEvent", function(self, event, addon)
@@ -116,7 +117,7 @@ eventframe:SetScript("OnEvent", function(self, event, addon)
       self:UnregisterEvent"ADDON_LOADED"
       self:SetScript("OnEvent", nil)
     end
-end)
+end)]]
 
 ----------------------------------------------------------------------------------------
 --	Spin camera while afk(by Telroth and Eclipse)

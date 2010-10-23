@@ -113,7 +113,7 @@ function Update(self)
 				if (bar.bg)then
 					bar.bg = _G[bar.bg:GetName()]
 				else
-					bar.bg = CreateFrame("Frame","$parentBG", bar.statusbar)
+					bar.bg = CreateFrame("Frame", "$parentBG", bar.statusbar)
 					bar.bg:SetPoint("TOPLEFT", SettingsDB.Scale(-2), SettingsDB.Scale(2))
 					bar.bg:SetPoint("BOTTOMRIGHT", SettingsDB.Scale(2), SettingsDB.Scale(-2))
 					bar.bg:SetFrameStrata("BACKGROUND")

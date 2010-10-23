@@ -200,7 +200,7 @@ LPSTAT_CONFIG = {
 	Gold = {
 		enabled = true, -- To clear all money data: /script for _,t in pairs(LPSTAT) do if type(t)=='table' then t.Gold = nil end end
 		style = 1, -- Display styles: [1] 55g 21s 11c [2] 8829.4g [3] 823.55.94
-		anchor_frame = IsAddOnLoaded("cargBags_Pernobilis") and "cBags_Main" or "NivayacBniv_Bag", anchor_to = "right", anchor_from = "bottomright",
+		anchor_frame = "NivayacBniv_Bag", anchor_to = "right", anchor_from = "bottomright",
 		x_off = 0, y_off = 6, tip_anchor = "ANCHOR_TOPRIGHT", tip_x = -3, tip_y = 7
 	},
 }
