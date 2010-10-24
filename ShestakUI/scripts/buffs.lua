@@ -3,8 +3,6 @@
 ----------------------------------------------------------------------------------------
 if SettingsCF.aura.player_auras ~= true then return end
 
---BUFF_MIN_ALPHA = 1;
-
 local mainhand, _, _, offhand, _, _, hand3 = GetWeaponEnchantInfo()
 local rowbuffs = 16
 
@@ -89,6 +87,11 @@ local function StyleBuffs(buttonName, index, debuff)
 	if border then border:Hide() end
 end
 
+function UpdateFlash(self, elapsed)
+	local index = self:GetID()
+	self:SetAlpha(1)
+end
+
 local UpdateDuration = function(auraButton, timeLeft)
 	local duration = auraButton.duration
 	if SHOW_BUFF_DURATIONS == "1" and timeLeft and SettingsCF["aura"].show_timer == true then
@@ -160,4 +163,5 @@ end
 hooksecurefunc("BuffFrame_UpdateAllBuffAnchors", UpdateBuffAnchors)
 hooksecurefunc("DebuffButton_UpdateAnchors", UpdateDebuffAnchors)
 hooksecurefunc("AuraButton_UpdateDuration", UpdateDuration)
+hooksecurefunc("AuraButton_OnUpdate", UpdateFlash)
 hooksecurefunc("ConsolidatedBuffs_UpdateAllAnchors", UpdateConsolidatedBuffsAnchors)

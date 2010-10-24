@@ -10,12 +10,12 @@ if SettingsDB.client == "koKR" then
 	L_TOOLTIP_ACH_INCOMPLETE = "Your Status: Incomplete"
 	L_TOOLTIP_SPELL_ID = "Spell ID:"
 
+	-- Raid Utility
+	L_RAID_UTIL = "Raid Utility"
+	L_RAID_UTIL_DISBAND = "Disband Group"
+	
 	-- Zone name
-	L_ZONE_DALARAN = "Dalaran"
-    L_ZONE_UNDERBELLY = "The Underbelly"
-    L_ZONE_KRASUS = "Krasus' Landing"
     L_ZONE_WINTERGRASP = "Wintergrasp"
-    L_ZONE_VC = "The Violet Citadel"
 	
 	-- Flask name
 	L_FLASK_STR = "Gained Flask of the North - Strength"
@@ -26,8 +26,6 @@ if SettingsDB.client == "koKR" then
 	L_UF_GHOST = "Ghost"
 	L_UF_DEAD = "Dead"
 	L_UF_OFFLINE = "Offline"
-	L_UF_DRAGON = "Dragonhawk"
-	L_UF_VIPER = "Viper"
 	L_UF_MANA = "Low mana"
 	L_UF_TRINKET_READY = "Trinket ready: "
 	L_UF_TRINKET_USED = "Trinket used: "
@@ -81,9 +79,24 @@ if SettingsDB.client == "koKR" then
 	L_ERRORFRAME_L = "Click to view errors."
 	
 	-- Bags
-	L_BAG_FREE = "Space: "
-	L_BAG_OUT_OFF = " / "
 	L_BAG_BANK = "Bank"
+	L_BAG_NO_SLOTS = "소지품이 가득 찼습니다."
+	L_BAG_COSTS = "가격: %.2f 골"
+	L_BAG_BUY_SLOTS = "가방 보관함을 추가로 구입하시기 위해서는 /bags를 입력해주세요."
+	L_BAG_OPEN_BANK = "먼저 은행을 열어야 합니다."
+	L_BAG_SORT = "열려있는 가방이나 은행에 있는 아이템을 정리합니다."
+	L_BAG_STACK = "띄엄띄엄 있는 아이템을 정리합니다."
+	L_BAG_BUY_BANKS_SLOT = "가방 보관함을 추가로 구입합니다."
+	L_BAG_SORT_MENU = "분류"
+	L_BAG_SORT_SPECIAL = "특수물품 분류"
+	L_BAG_STACK_MENU = "정리"
+	L_BAG_STACK_SPECIAL = "특수물품 정리"
+	L_BAG_SHOW_BAGS = "가방 보기"
+	L_BAG_SORTING_BAGS = "분류 완료."
+	L_BAG_NOTHING_SORT = "분류할 것이 없습니다."
+	L_BAG_BAGS_BIDS = "사용 중인 가방: "
+	L_BAG_STACK_END = "재정리 완료."
+	L_BAG_RIGHT_CLICK_SEARCH = "Right-click to search"
 	
 	-- Grab mail
 	L_MAIL_STOPPED = "Stopped, inventory is full."
@@ -133,10 +146,7 @@ if SettingsDB.client == "koKR" then
 	L_BIND_KEY = "Key"
 	L_BIND_NO_SET = "No bindings set"
 	
-	-- Raid Planner
-	L_PLANNER_TITLE = "Raid Planner"
-	L_PLANNER_IMP_TALENT = "Improved talent"
-	L_PLANNER_INSPECT = "Inspecting"
+	-- Talent spec
 	L_PLANNER_DEATHKNIGHT_1 = "혈기"
 	L_PLANNER_DEATHKNIGHT_2 = "냉기"
 	L_PLANNER_DEATHKNIGHT_3 = "부정"

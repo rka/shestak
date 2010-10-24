@@ -1,25 +1,4 @@
-﻿tukuilocal = { }
-tukuilocal.bags_noslots = "невозможно купить еще ячеек!"
-	tukuilocal.bags_costs = "Цена: %.2f золотых"
-	tukuilocal.bags_buyslots = "Купить новую ячейку коммандой /bags purchase yes"
-	tukuilocal.bags_openbank = "Сначала откройте банк."
-	tukuilocal.bags_sort = "Сортировать предметы в сумке или банке, если они открыты."
-	tukuilocal.bags_stack = "Заполнить неполные стопки в сумках или банке, если они открыты."
-	tukuilocal.bags_buybankslot = "купить банковскую ячейку. (банк должен быть открыт)"
-	tukuilocal.bags_sortmenu = "Сортировать"
-	tukuilocal.bags_sortspecial = "Сортировать в спецсумках"
-	tukuilocal.bags_stackmenu = "Сложить"
-	tukuilocal.bags_stackspecial = "Сложить в спецсумках"
-	tukuilocal.bags_showbags = "Показать сумки"
-	tukuilocal.bags_sortingbags = "Сортировка завершена."
-	tukuilocal.bags_nothingsort= "Нечего сортировать."
-	tukuilocal.bags_bids = "Использование сумок: "
-	tukuilocal.bags_stackend = "Заполнение завершено."
-	tukuilocal.bags_rightclick_search = "ПКМ для поиска."
-
-
-
-if (IsAddOnLoaded("cargBags_Nivaya") or IsAddOnLoaded("cargBags")) then return end
+﻿if (IsAddOnLoaded("cargBags_Nivaya") or IsAddOnLoaded("cargBags")) then return end
 --[[
 	A featureless, 'pure' version of Stuffing. 
 	This version should work on absolutely everything, 
@@ -162,33 +141,12 @@ function Stuffing:SlotUpdate(b)
 			b.frame:SetBackdropBorderColor(GetItemQualityColor(b.rarity))
 		end
 
-			--[[if not StuffingTT then
-				StuffingTT = CreateFrame("GameTooltip", "StuffingTT", nil, "GameTooltipTemplate")
-				StuffingTT:Hide()
-			end]]
-
 			if QUEST_ITEM_STRING == nil then
 				-- GetItemInfo returns a localized item type.
 				-- this is to figure out what that string is.
 				local t = {GetAuctionItemClasses()}
 				QUEST_ITEM_STRING = t[#t]	-- #t == 12
 			end
-
-			-- load tooltip, check if ITEM_BIND_QUEST ("Quest Item") is in it.
-			-- If the tooltip says its a quest item, we assume it is a quest item
-			-- and ignore the item type from GetItemInfo.
-			--[[StuffingTT:SetOwner(WorldFrame, "ANCHOR_NONE")
-			StuffingTT:ClearLines()
-			StuffingTT:SetBagItem(b.bag, b.slot)
-			for i = 1, StuffingTT:NumLines() do
-				local txt = getglobal("StuffingTTTextLeft" .. i)
-				if txt then
-					local text = txt:GetText()
-					if string.find (txt:GetText(), ITEM_BIND_QUEST) then
-						iType = QUEST_ITEM_STRING
-					end
-				end
-			end]]
 
 			if iType and iType == QUEST_ITEM_STRING then
 				b.qitem = true
@@ -546,7 +504,7 @@ function Stuffing:InitBags()
 	local tooltip_show = function (self)
 		GameTooltip:SetOwner(self, "ANCHOR_CURSOR")
 		GameTooltip:ClearLines()
-		GameTooltip:SetText(tukuilocal.bags_rightclick_search)
+		GameTooltip:SetText(L_BAG_RIGHT_CLICK_SEARCH)
 	end
 
 	button:SetScript("OnEnter", tooltip_show)
@@ -693,10 +651,21 @@ function Stuffing:Layout(lb)
 				b.frame:SetBackdropColor(0, 0, 0, 0.5) -- we just need border with SetTemplate, not the backdrop. Hopefully this will fix invisible item that some users have.
 				SettingsDB.StyleButton(b.frame, false)
 				
+				
+				-----------------------------
+				local clink = GetContainerItemLink
+				if (clink and b.rarity and b.rarity > 1) then
+					b.frame:SetBackdropBorderColor(GetItemQualityColor(b.rarity))
+				elseif bagType == ST_SPECIAL then
+					b.frame:SetBackdropBorderColor(0.2, 0.2, 0.8)
+					b.frame.lock = true
+				end
+				-----------------------------
+				
 				-- color profession bag slot border ~yellow
 				if bagType == ST_SPECIAL then b.frame:SetBackdropBorderColor(1, 0.9, 0.3) b.frame.lock = true end
 				
-				self:SlotUpdate(b)
+				--self:SlotUpdate(b)
 				
 				local iconTex = _G[b.frame:GetName() .. "IconTexture"]
 				iconTex:SetTexCoord(0.1, 0.9, 0.1, 0.9)
@@ -764,7 +733,7 @@ function Stuffing:SetBagsForSorting(c)
 		end
 	end
 
-	local bids = tukuilocal.bags_bids
+	local bids = L_BAG_BAGS_BIDS
 	for _, i in ipairs(self.sortBags) do
 		bids = bids .. i .. " "
 	end
@@ -793,7 +762,7 @@ local function StuffingSlashCmd(Cmd)
 		if Stuffing.bankFrame and Stuffing.bankFrame:IsShown() then
 			local cnt, full = GetNumBankSlots()
 			if full then
-				Print(tukuilocal.bags_noslots)
+				Print(L_BAG_NO_SLOTS)
 				return
 			end
 
@@ -802,15 +771,15 @@ local function StuffingSlashCmd(Cmd)
 				return
 			end
 
-			Print(string.format(tukuilocal.bags_costs, GetBankSlotCost() / 10000))
-			Print(tukuilocal.bags_buyslots)
+			Print(string.format(L_BAG_COSTS, GetBankSlotCost() / 10000))
+			Print(L_BAG_BUY_SLOTS)
 		else
-			Print(tukuilocal.bags_openbank)
+			Print(L_BAG_OPEN_BANK)
 		end
 	else
-		Print("sort - " .. tukuilocal.bags_sort)
-		Print("stack - " .. tukuilocal.bags_stack)
-		Print("purchase - " .. tukuilocal.bags_buybankslot)
+		Print("sort - " .. L_BAG_SORT)
+		Print("stack - " .. L_BAG_STACK)
+		Print("purchase - " .. L_BAG_BUY_BANKS_SLOT)
 	end
 end
 
@@ -1076,7 +1045,7 @@ function Stuffing:SortOnUpdate(e)
 	if (not changed and not blocked) or self.itmax > 250 then
 		self:SetScript("OnUpdate", nil)
 		self.sortList = nil
-		Print (tukuilocal.bags_sortingbags)
+		Print (L_BAG_SORTING_BAGS)
 	end
 end
 
@@ -1098,7 +1067,7 @@ end
 function Stuffing:SortBags()
 	local bs = self.sortBags
 	if #bs < 1 then
-		Print (tukuilocal.bags_nothingsort)
+		Print (L_BAG_NOTHING_SORT)
 		return
 	end
 
@@ -1178,7 +1147,7 @@ function Stuffing:SortBags()
 
 	-- kick off moving of stuff, if needed.
 	if st == nil or next(st, nil) == nil then
-		Print(tukuilocal.bags_sortingbags)
+		Print(L_BAG_SORTING_BAGS)
 		self:SetScript("OnUpdate", nil)
 	else
 		self.sortList = st
@@ -1257,7 +1226,7 @@ function Stuffing:Restack()
 		self:SetScript("OnUpdate", Stuffing.RestackOnUpdate)
 	else
 		self:SetScript("OnUpdate", nil)
-		Print (tukuilocal.bags_stackend)
+		Print (L_BAG_STACK_END)
 	end
 end
 
@@ -1275,7 +1244,7 @@ function Stuffing.Menu(self, level)
 	end
 
 	wipe(info)
-	info.text = tukuilocal.bags_sortmenu
+	info.text = L_BAG_SORT_MENU
 	info.notCheckable = 1
 	info.func = function()
 		Stuffing_Sort("d")
@@ -1283,7 +1252,7 @@ function Stuffing.Menu(self, level)
 	UIDropDownMenu_AddButton(info, level)
 	
 	wipe(info)
-	info.text = tukuilocal.bags_sortspecial
+	info.text = L_BAG_SORT_SPECIAL
 	info.notCheckable = 1
 	info.func = function()
 		Stuffing_Sort("c/p")
@@ -1291,7 +1260,7 @@ function Stuffing.Menu(self, level)
 	UIDropDownMenu_AddButton(info, level)
 
 	wipe(info)
-	info.text = tukuilocal.bags_stackmenu
+	info.text = L_BAG_STACK_MENU
 	info.notCheckable = 1
 	info.func = function()
 		Stuffing:SetBagsForSorting("d")
@@ -1300,7 +1269,7 @@ function Stuffing.Menu(self, level)
 	UIDropDownMenu_AddButton(info, level)
 	
 	wipe(info)
-	info.text = tukuilocal.bags_stackspecial
+	info.text = L_BAG_STACK_SPECIAL
 	info.notCheckable = 1
 	info.func = function()
 		Stuffing:SetBagsForSorting("c/p")
@@ -1309,7 +1278,7 @@ function Stuffing.Menu(self, level)
 	UIDropDownMenu_AddButton(info, level)
 
 	wipe(info)
-	info.text = tukuilocal.bags_showbags
+	info.text = L_BAG_SHOW_BAGS
 	info.checked = function()
 		return bag_bars == 1
 	end

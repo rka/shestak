@@ -17,10 +17,11 @@ if GetLocale() == "zhCN" then
 	L_GUI_MISC_AUTORESSURECT = "在战场中自动释放灵魂"
 	L_GUI_MISC_MARKING = "点击shift显示团队标记图示菜单"
 	L_GUI_MISC_INVKEYWORD = "自动邀请关键字(/ainv)"
-	L_GUI_MISC_RAID_PLANNER = "开启Raid planner (/com)"
 	L_GUI_MISC_SPIN_CAMERA = "afk时旋转镜头"
 	L_GUI_MISC_MOVE_WATCH_FRAME = "Quest Watch frame movable" -- Needs review
 	L_GUI_MISC_VEHICLE_MOUSEOVER = "Vehicle frame on mouseover" -- Needs review
+	L_GUI_MISC_QUEST_AUTOBUTTON = "Quest/item auto button" -- Needs review
+	L_GUI_MISC_RAID_TOOLS = "Raid tools" -- Needs review
 	
 	-- Skins options
 	L_GUI_SKINS = "Stylization" -- Needs review
@@ -31,14 +32,17 @@ if GetLocale() == "zhCN" then
 	L_GUI_COMBATTEXT = "战斗文本设置-（需/RL）"
 	L_GUI_COMBATTEXT_FONT_SIZE = "字体大小设置"
 	L_GUI_COMBATTEXT_BLIZZ_HEAD_NUMBERS = "使用暴雪默认伤害/治疗字体"
+	L_GUI_COMBATTEXT_DAMAGE_STYLE = "更改默认的头像上的伤害/治疗字体"
 	L_GUI_COMBATTEXT_DAMAGE = "独立显示输出伤害"
 	L_GUI_COMBATTEXT_HEALING = "独立显示输出治疗"
+	L_GUI_COMBATTEXT_HOTS = "Show periodic healing effects in healing frame" -- Needs review
+	L_GUI_COMBATTEXT_PET_DAMAGE = "Show your pet damage" -- Needs review
+	L_GUI_COMBATTEXT_DOT_DAMAGE = "Show damage from your dots" -- Needs review
 	L_GUI_COMBATTEXT_DAMAGE_COLOR = "伤害字体着色"
 	L_GUI_COMBATTEXT_CRIT_PREFIX = "暴击伤害字体符号修饰（左）"
 	L_GUI_COMBATTEXT_CRIT_POSTFIX = "暴击伤害字体符号修饰（右）"
 	L_GUI_COMBATTEXT_ICONS = "显示伤害输出图标"
 	L_GUI_COMBATTEXT_ICON_SIZE = "伤害输出图标/字体尺寸设置"
-	L_GUI_COMBATTEXT_DAMAGE_STYLE = "更改默认的头像上的伤害/治疗字体"
 	L_GUI_COMBATTEXT_TRESHOLD = "最小化显示伤害框体（建议1000）"
 	L_GUI_COMBATTEXT_HEAL_TRESHOLD = "最小化显示治疗框体（建议1000）"
 	L_GUI_COMBATTEXT_SCROLLABLE = "允许鼠标调整滚动框"
@@ -97,6 +101,7 @@ if GetLocale() == "zhCN" then
 	L_GUI_TOOLTIP_TITLE = "在提示资讯中显示目标称号"
 	L_GUI_TOOLTIP_RANK = "在提示资讯中显示公会会阶"
 	L_GUI_TOOLTIP_ARENA_EXPERIENCE = "在提示资讯中显示竞技场等级"
+	L_GUI_TOOLTIP_SPELL_ID = "Spell ID" -- Needs review
 
 	-- Chat options
 	L_GUI_CHAT_ENABLE = "Enable chat" -- Needs review
@@ -112,9 +117,11 @@ if GetLocale() == "zhCN" then
 	L_GUI_CHAT_BAR = "显示频道快捷图示栏"
 	L_GUI_CHAT_TIMESTAMP = "时间标签颜色"
 	L_GUI_CHAT_WHISP = "接受密语时声音提示"
+	L_GUI_CHAT_SKIN_BUBBLE = "Skin Blizzard chat bubbles"  -- Needs review
 
 	-- Bag options
 	L_GUI_BAGS = "背包"
+	L_GUI_BAGS_ENABLE = "Enable bags"  -- Needs review
 	L_GUI_BAGS_BUTTON_SIZE = "Buttons size"  -- Needs review
 	L_GUI_BAGS_BUTTON_SPACE = "Buttons space"  -- Needs review
 	L_GUI_BAGS_BANK = "银行背包每行数目"
@@ -153,6 +160,7 @@ if GetLocale() == "zhCN" then
 	L_GUI_NAMEPLATE_THREAT = "显示仇恨情况"
 	L_GUI_NAMEPLATE_CLASS_ICON = "在PVP情况下显示职业图示"
 	L_GUI_NAMEPLATE_NAME_ABBREV = "Display the abbreviated names"  -- Needs review
+	L_GUI_NAMEPLATE_OVERLAP = "Allow nameplates to overlap"  -- Needs review
 
 	-- ActionBar options
 	L_GUI_ACTIONBAR_ENABLE = "Enable action bars"  -- Needs review
@@ -236,14 +244,11 @@ if GetLocale() == "zhCN" then
 	L_GUI_UF_PLUGINS_COMBAT_FEEDBACK = "显示玩家/目标的文字战斗信息" -- Needs review
 	L_GUI_UF_PLUGINS_DEBUFFHIGHLIGHT_ICON = "Debuff与图示高亮"
 	L_GUI_UF_PLUGINS_AURA_WATCH = "团队法术监视" -- Needs review
-	L_GUI_UF_PLUGINS_HEALCOMM = "在团队框体启用oUF_HealComm4"
-	L_GUI_UF_PLUGINS_HEALCOMM_BAR = "即将受到的治疗条" -- Needs review
-	L_GUI_UF_PLUGINS_HEALCOMM_OVER = "过量治疗条" -- Needs review
-	L_GUI_UF_PLUGINS_HEALCOMM_TEXT = "即将受到的治疗文字信息" -- Needs review
-	L_GUI_UF_PLUGINS_HEALCOMM_OTHERS = "隐藏自身的即将受到治疗效果" -- Needs review
+	L_GUI_UF_PLUGINS_HEALCOMM = "即将受到的治疗条"
 
 	-- Panel options
 	L_GUI_TOP_PANEL = "顶部面板"
+	L_GUI_TOP_PANEL_ENABLE = "Enable top panel"	-- Needs review
 	L_GUI_TOP_PANEL_MOUSE = "鼠标划过时显示顶部面板"
 	L_GUI_TOP_PANEL_WIDTH = "面板宽度"
 	L_GUI_TOP_PANEL_HEIGHT = "面板高度"
@@ -259,6 +264,7 @@ if GetLocale() == "zhCN" then
 	L_GUI_STATS_EXPERIENCE = "Experience"  -- Needs review
 	L_GUI_STATS_COORDS = "Coords"  -- Needs review
 	L_GUI_STATS_LOCATION = "Location"  -- Needs review
+	L_GUI_STATS_GUILD_REPAIR = "Repair from guild bank" -- Needs review
 
 	-- Error options
 	L_GUI_ERROR = "错误收集"

@@ -17,10 +17,11 @@ if GetLocale() == "koKR" then
 	L_GUI_MISC_AUTORESSURECT = "Auto resurrection in Battle Ground"
 	L_GUI_MISC_MARKING = "Marks target when you push *shift*"
 	L_GUI_MISC_INVKEYWORD = "Short keyword for invite (/ainv)"
-	L_GUI_MISC_RAID_PLANNER = "Enable Raid planner (/com)"
 	L_GUI_MISC_SPIN_CAMERA = "Spin camera while afk"
 	L_GUI_MISC_MOVE_WATCH_FRAME = "Quest Watch frame movable"
 	L_GUI_MISC_VEHICLE_MOUSEOVER = "Vehicle frame on mouseover"
+	L_GUI_MISC_QUEST_AUTOBUTTON = "Quest/item auto button"
+	L_GUI_MISC_RAID_TOOLS = "Raid tools" -- Needs review
 	
 	-- Skins options
 	L_GUI_SKINS = "Stylization"
@@ -28,24 +29,27 @@ if GetLocale() == "koKR" then
 	L_GUI_SKINS_PP = "Enable styling PallyPower"
 	
 	-- Combat text options
-	L_GUI_COMBATTEXT = "Combat Text" -- Needs review
-	L_GUI_COMBATTEXT_FONT_SIZE = "Font size" -- Needs review
-	L_GUI_COMBATTEXT_BLIZZ_HEAD_NUMBERS = "Use blizzard damage/healing output(above mob/player head)" -- Needs review
-	L_GUI_COMBATTEXT_DAMAGE = "Show outgoing damage in it's own frame" -- Needs review
-	L_GUI_COMBATTEXT_HEALING = "Show outgoing healing in it's own frame" -- Needs review
-	L_GUI_COMBATTEXT_DAMAGE_COLOR = "Display damage numbers depending on school of magic" -- Needs review
-	L_GUI_COMBATTEXT_CRIT_PREFIX = "Symbol that will be added before crit" -- Needs review
-	L_GUI_COMBATTEXT_CRIT_POSTFIX = "Symbol that will be added after crit" -- Needs review
-	L_GUI_COMBATTEXT_ICONS = "Show outgoing damage icons" -- Needs review
-	L_GUI_COMBATTEXT_ICON_SIZE = "Icon size of spells in outgoing damage frame, also has effect on dmg font size" -- Needs review
-	L_GUI_COMBATTEXT_DAMAGE_STYLE = "Change default damage/healing font above mobs/player heads(you need to restart WoW to see changes)" -- Needs review
-	L_GUI_COMBATTEXT_TRESHOLD = "Minimum damage to show in damage frame" -- Needs review
-	L_GUI_COMBATTEXT_HEAL_TRESHOLD = "Minimum healing to show in incoming/outgoing healing messages" -- Needs review
-	L_GUI_COMBATTEXT_SCROLLABLE = "Allows you to scroll frame lines with mousewheel" -- Needs review
-	L_GUI_COMBATTEXT_MAX_LINES = "Max lines to keep in scrollable mode(more lines = more memory)" -- Needs review
-	L_GUI_COMBATTEXT_TIME_VISIBLE = "Time(seconds) a single message will be visible" -- Needs review
-	L_GUI_COMBATTEXT_STOP_VE_SPAM = "Automaticly turns off healing spam for priests in shadowform" -- Needs review
-	L_GUI_COMBATTEXT_DK_RUNES = "Show deatchknight rune recharge" -- Needs review
+	L_GUI_COMBATTEXT = "Combat Text"
+	L_GUI_COMBATTEXT_FONT_SIZE = "Font size"
+	L_GUI_COMBATTEXT_BLIZZ_HEAD_NUMBERS = "Use blizzard damage/healing output(above mob/player head)"
+	L_GUI_COMBATTEXT_DAMAGE_STYLE = "Change default damage/healing font above mobs/player heads(you need to restart WoW to see changes)"
+	L_GUI_COMBATTEXT_DAMAGE = "Show outgoing damage in it's own frame"
+	L_GUI_COMBATTEXT_HEALING = "Show outgoing healing in it's own frame"
+	L_GUI_COMBATTEXT_HOTS = "Show periodic healing effects in healing frame" -- Needs review
+	L_GUI_COMBATTEXT_PET_DAMAGE = "Show your pet damage" -- Needs review
+	L_GUI_COMBATTEXT_DOT_DAMAGE = "Show damage from your dots" -- Needs review
+	L_GUI_COMBATTEXT_DAMAGE_COLOR = "Display damage numbers depending on school of magic"
+	L_GUI_COMBATTEXT_CRIT_PREFIX = "Symbol that will be added before crit"
+	L_GUI_COMBATTEXT_CRIT_POSTFIX = "Symbol that will be added after crit"
+	L_GUI_COMBATTEXT_ICONS = "Show outgoing damage icons"
+	L_GUI_COMBATTEXT_ICON_SIZE = "Icon size of spells in outgoing damage frame, also has effect on dmg font size"
+	L_GUI_COMBATTEXT_TRESHOLD = "Minimum damage to show in damage frame"
+	L_GUI_COMBATTEXT_HEAL_TRESHOLD = "Minimum healing to show in incoming/outgoing healing messages"
+	L_GUI_COMBATTEXT_SCROLLABLE = "Allows you to scroll frame lines with mousewheel"
+	L_GUI_COMBATTEXT_MAX_LINES = "Max lines to keep in scrollable mode(more lines = more memory)"
+	L_GUI_COMBATTEXT_TIME_VISIBLE = "Time(seconds) a single message will be visible"
+	L_GUI_COMBATTEXT_STOP_VE_SPAM = "Automaticly turns off healing spam for priests in shadowform"
+	L_GUI_COMBATTEXT_DK_RUNES = "Show deatchknight rune recharge"
 	
 	-- Buffs reminder options
 	L_GUI_REMINDER = "Buffs reminder"
@@ -97,6 +101,7 @@ if GetLocale() == "koKR" then
 	L_GUI_TOOLTIP_TITLE = "Player title in tooltip"
 	L_GUI_TOOLTIP_RANK = "Player guild-rank in tooltip"
 	L_GUI_TOOLTIP_ARENA_EXPERIENCE = "Player PVP experience in arena"
+	L_GUI_TOOLTIP_SPELL_ID = "Spell ID"
 	
 	-- Chat options
 	L_GUI_CHAT_ENABLE = "Enable chat"
@@ -112,9 +117,11 @@ if GetLocale() == "koKR" then
 	L_GUI_CHAT_BAR = "Lite Button Bar for switch chat channel"
 	L_GUI_CHAT_TIMESTAMP = "Timestamp coloring"
 	L_GUI_CHAT_WHISP = "Sound when whisper"
+	L_GUI_CHAT_SKIN_BUBBLE = "Skin Blizzard chat bubbles"
 	
 	-- Bag options
 	L_GUI_BAGS = "Bags"
+	L_GUI_BAGS_ENABLE = "Enable bags"
 	L_GUI_BAGS_BUTTON_SIZE = "Buttons size"
 	L_GUI_BAGS_BUTTON_SPACE = "Buttons space"
 	L_GUI_BAGS_BANK = "Number of columns in bank"
@@ -152,6 +159,7 @@ if GetLocale() == "koKR" then
 	L_GUI_NAMEPLATE_THREAT = "If tank good aggro = green, bad = red"
 	L_GUI_NAMEPLATE_CLASS_ICON = "Icons by class in pvp"
 	L_GUI_NAMEPLATE_NAME_ABBREV = "Display the abbreviated names"
+	L_GUI_NAMEPLATE_OVERLAP = "Allow nameplates to overlap"
 	
 	-- ActionBar options
 	L_GUI_ACTIONBAR_ENABLE = "Enable action bars"
@@ -167,17 +175,17 @@ if GetLocale() == "koKR" then
 	L_GUI_ACTIONBAR_PETBAR_HORIZONTAL = "Enable horizontal pet bar"
 	L_GUI_ACTIONBAR_SHAPESHIFT_MOUSEOVER = "Shapeshift/Stance/Totem bars on mouseover"
 	L_GUI_ACTIONBAR_SHAPESHIFT_HIDE = "Hide shapeshift"
-	L_GUI_ACTIONBAR_SHAPESHIFT_HORIZONTAL = "Enable horizontal stance bar"  -- Needs review
+	L_GUI_ACTIONBAR_SHAPESHIFT_HORIZONTAL = "Enable horizontal stance bar"
 	
 	-- Auras/Buffs/Debuffs
-	L_GUI_AURA_FONT_SIZE = "Auras font size"  -- Needs review
-	L_GUI_AURA_PLAYER_BUFF_SIZE = "Player buffs size"  -- Needs review
+	L_GUI_AURA_FONT_SIZE = "Auras font size"
+	L_GUI_AURA_PLAYER_BUFF_SIZE = "Player buffs size"
 	L_GUI_AURA_SHOW_SPIRAL = "Spiral on aura icons"
 	L_GUI_AURA_SHOW_TIMER = "Show cooldown timer on aura icons"
 	L_GUI_AURA_PLAYER_AURAS = "Auras on player frame"
 	L_GUI_AURA_TARGET_AURAS = "Auras on target frame"
 	L_GUI_AURA_FOCUS_DEBUFFS = "DeBuffs on focus frame"
-	L_GUI_AURA_FOT_DEBUFFS = "DeBuffs on focus target frame"  -- Needs review
+	L_GUI_AURA_FOT_DEBUFFS = "DeBuffs on focus target frame"
 	L_GUI_AURA_PET_DEBUFFS = "DeBuffs on pet frame"
 	L_GUI_AURA_TOT_DEBUFFS = "DeBuffs on targettarget frame"
 	L_GUI_AURA_PLAYER_AURA_ONLY = "Only your debuff on target frame"
@@ -207,7 +215,7 @@ if GetLocale() == "koKR" then
 	L_GUI_UF_PLAYER_PARTY = "Show player frame in party"
 	L_GUI_UF_SHOW_TANK = "Show raid tanks"
 	L_GUI_UF_RAID_GROUP = "Number of groups in raid(Only for ShestakUI_Heal)"
-	L_GUI_UF_RAID_VERTICAL_GROUP = "Vertical raid groups(Only for ShestakUI_Heal)"  -- Needs review
+	L_GUI_UF_RAID_VERTICAL_GROUP = "Vertical raid groups(Only for ShestakUI_Heal)"
 	L_GUI_UF_ICONS_PVP = "Mouseover pvp text(not icons) on player and target frames"
 	L_GUI_UF_ICONS_LEADER = "Leader icon, assistant icon, master loot icon on frames"
 	L_GUI_UF_ICONS_COMBAT = "Combat icon"
@@ -235,14 +243,11 @@ if GetLocale() == "koKR" then
 	L_GUI_UF_PLUGINS_COMBAT_FEEDBACK = "Combat text on player/target frame"
 	L_GUI_UF_PLUGINS_DEBUFFHIGHLIGHT_ICON = "Debuff highlight texture + icon"
 	L_GUI_UF_PLUGINS_AURA_WATCH = "*RAID* Auras watch"
-	L_GUI_UF_PLUGINS_HEALCOMM = "oUF_HealComm4 on raid frame"
-	L_GUI_UF_PLUGINS_HEALCOMM_BAR = "Bar incoming heal"
-	L_GUI_UF_PLUGINS_HEALCOMM_OVER = "Overheal bar"
-	L_GUI_UF_PLUGINS_HEALCOMM_TEXT = "Text incoming heal"
-	L_GUI_UF_PLUGINS_HEALCOMM_OTHERS = "Hide your incoming heal"
+	L_GUI_UF_PLUGINS_HEALCOMM = "Bar incoming heal"
 	
 	-- Panel options
 	L_GUI_TOP_PANEL = "Top panel"
+	L_GUI_TOP_PANEL_ENABLE = "Enable top panel"	-- Needs review
 	L_GUI_TOP_PANEL_MOUSE = "Top panel on mouseover"
 	L_GUI_TOP_PANEL_WIDTH = "Panel width"
 	L_GUI_TOP_PANEL_HEIGHT = "Panel height"
@@ -258,6 +263,7 @@ if GetLocale() == "koKR" then
 	L_GUI_STATS_EXPERIENCE = "Experience"
 	L_GUI_STATS_COORDS = "Coords"
 	L_GUI_STATS_LOCATION = "Location"
+	L_GUI_STATS_GUILD_REPAIR = "Repair from guild bank"
 	
 	-- Error options
 	L_GUI_ERROR = "Errors"

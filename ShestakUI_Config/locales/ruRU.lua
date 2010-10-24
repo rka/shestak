@@ -17,10 +17,11 @@ if GetLocale() == "ruRU" then
 	L_GUI_MISC_AUTORESSURECT = "Автоматическое воскрешение на Полях Сражений"
 	L_GUI_MISC_MARKING = "Меню с метками при нажатие *shift*"
 	L_GUI_MISC_INVKEYWORD = "Ключевое слово для автоматического приглашения (/ainv)"
-	L_GUI_MISC_RAID_PLANNER = "Включить планировщик рейда (/com)"
 	L_GUI_MISC_SPIN_CAMERA = "Прокручивать камеру во время афк"
 	L_GUI_MISC_MOVE_WATCH_FRAME = "Включить перемещение списка задач"
 	L_GUI_MISC_VEHICLE_MOUSEOVER = "Индикатор транспорта по наведению курсора"
+	L_GUI_MISC_QUEST_AUTOBUTTON = "Кнопка квестовых(список) предметов около мини-карты"
+	L_GUI_MISC_RAID_TOOLS = "Инструменты рейда"
 	
 	-- Skins options
 	L_GUI_SKINS = "Стилизация"
@@ -31,20 +32,23 @@ if GetLocale() == "ruRU" then
 	L_GUI_COMBATTEXT = "Текст боя"
 	L_GUI_COMBATTEXT_FONT_SIZE = "Рамзер шрифта текста боя"
 	L_GUI_COMBATTEXT_BLIZZ_HEAD_NUMBERS = "Разблокировать исходящий текст боя Blizzard(над головами)"
+	L_GUI_COMBATTEXT_DAMAGE_STYLE = "Стилизация стандартого текст боя над головами"
 	L_GUI_COMBATTEXT_DAMAGE = "Оторажать исходящий урон в его блоке"
 	L_GUI_COMBATTEXT_HEALING = "Оторажать исходящее лечение в его блоке"
+	L_GUI_COMBATTEXT_HOTS = "Отображать лечение ваших периодических заклинаний"
+	L_GUI_COMBATTEXT_PET_DAMAGE = "Отображать урон вашего питомца"
+	L_GUI_COMBATTEXT_DOT_DAMAGE = "Отображать урон ваших периодических заклинаний"
 	L_GUI_COMBATTEXT_DAMAGE_COLOR = "Окрашивать значения урона в цвет магии"
 	L_GUI_COMBATTEXT_CRIT_PREFIX = "Символ до значения, отображающий критическое значение"
 	L_GUI_COMBATTEXT_CRIT_POSTFIX = "Символ после значения, отображающий критическое значение"
 	L_GUI_COMBATTEXT_ICONS = "Отображать иконки исходящего лечения и урона"
 	L_GUI_COMBATTEXT_ICON_SIZE = "Размер иконки в блоке исходящего лечения и урона"
-	L_GUI_COMBATTEXT_DAMAGE_STYLE = "Change default damage/healing font above mobs/player heads(you need to restart WoW to see changes)"
 	L_GUI_COMBATTEXT_TRESHOLD = "Минимальное отображаемое значение урона"
 	L_GUI_COMBATTEXT_HEAL_TRESHOLD = "Минимальное отображаемое значение лечения"
 	L_GUI_COMBATTEXT_SCROLLABLE = "Включить прокручивание текста в блоках колесом мыши"
-	L_GUI_COMBATTEXT_MAX_LINES = "Max lines to keep in scrollable mode(more lines = more memory)"
+	L_GUI_COMBATTEXT_MAX_LINES = "Колличество линий для прокручиваемого блока"
 	L_GUI_COMBATTEXT_TIME_VISIBLE = "Время(в секундах) до исчезновения текста"
-	L_GUI_COMBATTEXT_STOP_VE_SPAM = "Отключать входящее лечение для Жрецов в "
+	L_GUI_COMBATTEXT_STOP_VE_SPAM = "Отключать входящее лечение для Жрецов в шедоуформе"
 	L_GUI_COMBATTEXT_DK_RUNES = "Отображать перезарядку рун Рыцарей Смерти"
 	
 	-- Buffs reminder options
@@ -113,9 +117,11 @@ if GetLocale() == "ruRU" then
 	L_GUI_CHAT_BAR = "Панель кнопок каналов"
 	L_GUI_CHAT_TIMESTAMP = "Цвет времени чата"
 	L_GUI_CHAT_WHISP = "Звуковое оповещение во время шепота"
+	L_GUI_CHAT_SKIN_BUBBLE = "Стилизация облачков чата"
 	
 	-- Bag options
 	L_GUI_BAGS = "Сумки"
+	L_GUI_BAGS_ENABLE = "Включить сумки"
 	L_GUI_BAGS_BUTTON_SIZE = "Размер ячеек"
 	L_GUI_BAGS_BUTTON_SPACE = "Расстояние между ячейками"
 	L_GUI_BAGS_BANK = "Горизонтальное кол-во ячеек банка"
@@ -153,6 +159,7 @@ if GetLocale() == "ruRU" then
 	L_GUI_NAMEPLATE_THREAT = "Для танка хорошая угроза = зеленый, плохая угроза = красный"
 	L_GUI_NAMEPLATE_CLASS_ICON = "Иконки классов"
 	L_GUI_NAMEPLATE_NAME_ABBREV = "Отображать сокращенные имена"
+	L_GUI_NAMEPLATE_OVERLAP = "Allow nameplates to overlap"
 	
 	-- ActionBar options
 	L_GUI_ACTIONBAR_ENABLE = "Включить панели команд"
@@ -237,13 +244,10 @@ if GetLocale() == "ruRU" then
 	L_GUI_UF_PLUGINS_DEBUFFHIGHLIGHT_ICON = "Иконка + текстура снимаемых отрицательных эффектов"
 	L_GUI_UF_PLUGINS_AURA_WATCH = "Отображать отрицательные эффекты на рамках группы/рейда"
 	L_GUI_UF_PLUGINS_HEALCOMM = "Отображать поступающее лечение на рамках группы/рейда"
-	L_GUI_UF_PLUGINS_HEALCOMM_BAR = "Полоса поступающего лечения на рамках группы/рейда"
-	L_GUI_UF_PLUGINS_HEALCOMM_OVER = "Отображать избыточное лечение в виде текстуры"
-	L_GUI_UF_PLUGINS_HEALCOMM_TEXT = "Текстовое значение поступающего лечения на рамках группы/рейда"
-	L_GUI_UF_PLUGINS_HEALCOMM_OTHERS = "Скрыть ваше поступающее лечение на рамках группы/рейда"
 	
 	-- Panel options
 	L_GUI_TOP_PANEL = "Верхняя панель"
+	L_GUI_TOP_PANEL_ENABLE = "Включить верхнюю панель"
 	L_GUI_TOP_PANEL_MOUSE = "Панель по наведению курсора"
 	L_GUI_TOP_PANEL_WIDTH = "Высота панели"
 	L_GUI_TOP_PANEL_HEIGHT = "Ширина панели"
@@ -259,6 +263,7 @@ if GetLocale() == "ruRU" then
 	L_GUI_STATS_EXPERIENCE = "Опыт"
 	L_GUI_STATS_COORDS = "Координаты"
 	L_GUI_STATS_LOCATION = "Зона"
+	L_GUI_STATS_GUILD_REPAIR = "Починка из банка гильдии"
 	
 	-- Error options
 	L_GUI_ERROR = "Ошибки боя"

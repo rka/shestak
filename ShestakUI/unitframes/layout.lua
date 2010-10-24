@@ -964,7 +964,8 @@ end
 ----------------------------------------------------------------------------------------
 --	Remove SET_FOCUS & CLEAR_FOCUS from menu, to prevent errors
 ----------------------------------------------------------------------------------------
-do 
+--[[
+do
     for k,v in pairs(UnitPopupMenus) do
         for x,y in pairs(UnitPopupMenus[k]) do
             if y == "SET_FOCUS" then
@@ -974,7 +975,7 @@ do
             end
         end
     end
-end
+end]]
 
 ----------------------------------------------------------------------------------------
 --	Testmode(by Fernir)

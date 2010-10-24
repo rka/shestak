@@ -752,7 +752,7 @@ do
 		local percMana = UnitMana("player") / UnitManaMax("player") * 100
 
 		if percMana <= 20 then
-			self.ManaLevel:SetText("|cffaf5050"..L_UF_MANA.."|r")
+			self.ManaLevel:SetText("|cffaf5050"..MANA_LOW.."|r")
 			Flash(self, 0.3)
 		else
 			self.ManaLevel:SetText()
@@ -770,7 +770,7 @@ do
 			
 			local percMana = min / max * 100
 			if percMana <= 20 then
-				self.FlashInfo.ManaLevel:SetText("|cffaf5050"..L_UF_MANA.."|r")
+				self.FlashInfo.ManaLevel:SetText("|cffaf5050"..MANA_LOW.."|r")
 				Flash(self.FlashInfo, 0.3)
 			else
 				self.FlashInfo.ManaLevel:SetText()

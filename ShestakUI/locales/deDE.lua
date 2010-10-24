@@ -10,12 +10,12 @@ if SettingsDB.client == "deDE" then
 	L_TOOLTIP_ACH_INCOMPLETE = "Dein Status: Noch nicht Ferig"
 	L_TOOLTIP_SPELL_ID = "Spell ID:"  -- Needs review
 
+	-- Raid Utility
+	L_RAID_UTIL = "Raid Utility"
+	L_RAID_UTIL_DISBAND = "Gruppe auflösen"
+	
 	-- Zone name
-	L_ZONE_DALARAN = "Dalaran"
-    L_ZONE_UNDERBELLY = "Die Schattenseite"
-    L_ZONE_KRASUS = "Krasus' Landeplatz"
     L_ZONE_WINTERGRASP = "Tausendwinter"
-    L_ZONE_VC = "Die Violette Zitadelle"
 
 	-- Flask name
 	L_FLASK_STR = "Fläschchen des Nordens erhalten - Stärke"
@@ -26,8 +26,6 @@ if SettingsDB.client == "deDE" then
 	L_UF_GHOST = "Geist"
 	L_UF_DEAD = "Tod"
 	L_UF_OFFLINE = "Offline"
-	L_UF_DRAGON = "Aspekt des Drachenfalken"
-	L_UF_VIPER = "Aspekt der Viper"
 	L_UF_MANA = "Niedriges Mana"
 	L_UF_TRINKET_READY = "Schmuckstück bereit: "
 	L_UF_TRINKET_USED = "Schmuckstück benutzt: "
@@ -58,8 +56,8 @@ if SettingsDB.client == "deDE" then
 	L_GUI_MINIMAP_ICON_DPS = "Zu DPS-Layout wechseln"
 	
 	-- Chat
-	L_CHAT_WHISPER = "From"
-	L_CHAT_BN_WHISPER = "From"
+	L_CHAT_WHISPER = "Von"
+	L_CHAT_BN_WHISPER = "Von"
 	L_CHAT_AFK = "[AFK]"
 	L_CHAT_DND = "[DND]"
 	L_CHAT_GM = "[GM]"
@@ -81,9 +79,24 @@ if SettingsDB.client == "deDE" then
 	L_ERRORFRAME_L = "Klick um Fehler anzuzeigen."
 	
 	-- Bags
-	L_BAG_FREE = "Platz: "
-	L_BAG_OUT_OFF = " von "
 	L_BAG_BANK = "Bank"
+	L_BAG_NO_SLOTS = "Kann keine weiteren Taschenplätze kaufen!"
+	L_BAG_COSTS = "Kosten: %.2f Gold"
+	L_BAG_BUY_SLOTS = "Kaufe neuen Platz mit /bags purchase yes"
+	L_BAG_OPEN_BANK = "Du musst erst das Bankfach öffnen."
+	L_BAG_SORT = "Sortiert deine Taschen oder die Bank, falls geöffnet."
+	L_BAG_STACK = "Stapelt Items neu in deinen Taschen und der Bank, falls geöffnet."
+	L_BAG_BUY_BANKS_SLOT = "Kaufe Bankplatz. (Bank muss geöffnet sein)"
+	L_BAG_SORT_MENU = "Sortieren"
+	L_BAG_SORT_SPECIAL = "Sortieren Spezialtasche"
+	L_BAG_STACK_MENU = "Stapeln"
+	L_BAG_STACK_SPECIAL = "Stapeln Spezialtasche"
+	L_BAG_SHOW_BAGS = "Zeige Taschen"
+	L_BAG_SORTING_BAGS = "Sortieren abgeschlossen."
+	L_BAG_NOTHING_SORT = "Nichts zu sortieren."
+	L_BAG_BAGS_BIDS = "Benutze Taschen: "
+	L_BAG_STACK_END = "Neu stapeln abgeschlossen."
+	L_BAG_RIGHT_CLICK_SEARCH = "Rechtsklick um zu suchen"
 	
 	-- Grab mail
 	L_MAIL_STOPPED = "Angehalten, Inventar ist voll."
@@ -133,10 +146,7 @@ if SettingsDB.client == "deDE" then
 	L_BIND_KEY = "Taste"
 	L_BIND_NO_SET = "Keine Tastaturbelegung festgelegt"
 	
-	-- Raid Planner
-	L_PLANNER_TITLE = "Raid Planner"  -- Needs review
-	L_PLANNER_IMP_TALENT = "Improved talent"  -- Needs review
-	L_PLANNER_INSPECT = "Inspecting"  -- Needs review
+	-- Talent spec
 	L_PLANNER_DEATHKNIGHT_1 = "Blut"
 	L_PLANNER_DEATHKNIGHT_2 = "Frost"
 	L_PLANNER_DEATHKNIGHT_3 = "Unheilig"

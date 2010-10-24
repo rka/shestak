@@ -171,14 +171,10 @@ Filger_Spells = {
 			Mode = "ICON",
 			setPoint = { "BOTTOMRIGHT", "oUF_Player", "TOPRIGHT", 2, 173 },
 			
-			-- Innervate
-			{ spellID = 29166, size = 37, unitId = "player", caster = "all", filter = "BUFF" },
 			-- Bloodlust
 			{ spellID = 2825, size = 37, unitId = "player", caster = "all", filter = "BUFF" },
 			-- Heroism
 			{ spellID = 32182, size = 37, unitId = "player", caster = "all", filter = "BUFF" },
-			-- Hyperspeed Accelerators
-			{ spellID = 54999, size = 37, unitId = "player", caster = "player", filter = "BUFF" },
 		},
 		{
 			Name = "T_DEBUFF_ICON",
@@ -189,6 +185,10 @@ Filger_Spells = {
 			
 			-- Hunter's Mark
 			{ spellID = 1130, size = 37, unitId = "target", caster = "all", filter = "DEBUFF" },
+			-- Marked for Death
+			{ spellID = 88691, size = 37, unitId = "target", caster = "all", filter = "DEBUFF" },
+			-- Piercing shots
+			{ spellID = 63468, size = 37, unitId = "target", caster = "player", filter = "DEBUFF" },
 			-- Serpent Sting
 			{ spellID = 1978, size = 37, unitId = "target", caster = "player", filter = "DEBUFF" },
 			-- Black Arrow
@@ -204,46 +204,72 @@ Filger_Spells = {
 			Mode = "ICON",
 			setPoint = { "BOTTOMLEFT", "oUF_Target", "TOPLEFT", -2, 213 },
 			
-			-- Lock and Load
+			-- Ready, Set, Aim... (*MM spec)
+			{ spellID = 82925, size = 37, unitId = "player", caster = "player", filter = "BUFF" },
+			-- Lock and Load (*SV spec)
 			{ spellID = 56342, size = 37, unitId = "player", caster = "player", filter = "BUFF" },
-			-- Fury of the Five Flights
-			{ spellID = 60314, size = 37, unitId = "player", caster = "player", filter = "BUFF" },
-			-- Greatness
-			{ spellID = 60233, size = 37, unitId = "player", caster = "player", filter = "BUFF" },
-			-- Mjolnir Runestone
-			{ spellID = 65019, size = 37, unitId = "player", caster = "player", filter = "BUFF" },
-			-- Master Tactician
+			-- Master Tactician (*SV spec)
 			{ spellID = 34837, size = 37, unitId = "player", caster = "player", filter = "BUFF" },
-			-- Master Tactician
-			{ spellID = 53224, size = 37, unitId = "player", caster = "player", filter = "BUFF" },
-			-- Exploit Weakness 2t10 proc
-			{ spellID = 70728, size = 37, unitId = "player", caster = "player", filter = "BUFF" },
-			-- Stinger 4t10 proc
-			{ spellID = 71007, size = 37, unitId = "player", caster = "player", filter = "BUFF" },
-			-- Power of the Taunka
-			{ spellID = 71486, size = 37, unitId = "player", caster = "player", filter = "BUFF" },
-			-- Aim of the Iron Dwarves
-			{ spellID = 71491, size = 37, unitId = "player", caster = "player", filter = "BUFF" },
-			-- Agility of the Vrykul
-			{ spellID = 71485, size = 37, unitId = "player", caster = "player", filter = "BUFF" },
-			-- Icy Rage
-			{ spellID = 71401, size = 37, unitId = "player", caster = "player", filter = "BUFF" },
-			-- Rapid Fire
+			-- Rapid Fire (*all spec)
 			{ spellID = 3045, size = 37, unitId = "player", caster = "player", filter = "BUFF" },
-			-- Berserking
-			{ spellID = 26297, size = 37, unitId = "player", caster = "player", filter = "BUFF" },
-			-- Potion of Speed
-			{ spellID = 53908, size = 37, unitId = "player", caster = "player", filter = "BUFF" },
-			-- Potion of Wild Magic
-			{ spellID = 53909, size = 37, unitId = "player", caster = "player", filter = "BUFF" },
-			-- Blood Fury
-			{ spellID = 20572, size = 37, unitId = "player", caster = "player", filter = "BUFF" },
-			-- Call of the Wild
+			-- Call of the Wild (*ferocity pet use)
 			{ spellID = 53434, size = 37, unitId = "player", caster = "player", filter = "BUFF" },
-			-- Hyperspeed Acceleration
+			-- Berserking (*troll racial)
+			{ spellID = 26297, size = 37, unitId = "player", caster = "player", filter = "BUFF" },
+			-- Blood Fury (*orc racial)
+			{ spellID = 20572, size = 37, unitId = "player", caster = "player", filter = "BUFF" },
+			-- Hyperspeed Acceleration (*engineer use)
 			{ spellID = 54758, size = 37, unitId = "player", caster = "player", filter = "BUFF" },
-			-- Frostforged Champion
+			-- Potion of Speed (*)
+			{ spellID = 53908, size = 37, unitId = "player", caster = "player", filter = "BUFF" },
+			-- Potion of Wild Magic (*)
+			{ spellID = 53909, size = 37, unitId = "player", caster = "player", filter = "BUFF" },
+			-- Exploit Weakness (2t10 proc)
+			{ spellID = 70728, size = 37, unitId = "player", caster = "player", filter = "BUFF" },
+			-- Stinger (4t10 proc)
+			{ spellID = 71007, size = 37, unitId = "player", caster = "player", filter = "BUFF" },
+			-- Piercing Twilight (halion25 trinket)
+			{ spellID = 75458, size = 37, unitId = "player", caster = "player", filter = "BUFF" },
+			-- Power of the Taunka (DBW icc25 trinket)
+			{ spellID = 71486, size = 37, unitId = "player", caster = "player", filter = "BUFF" },
+			-- Aim of the Iron Dwarves (DBW icc25 trinket)
+			{ spellID = 71491, size = 37, unitId = "player", caster = "player", filter = "BUFF" },
+			-- Agility of the Vrykul (DBW icc25 trinket)
+			{ spellID = 71485, size = 37, unitId = "player", caster = "player", filter = "BUFF" },
+			-- Icy Rage (icc10 trinket)
+			{ spellID = 71401, size = 37, unitId = "player", caster = "player", filter = "BUFF" },
+			-- Frostforged Champion (icc reputation ring)
 			{ spellID = 72412, size = 37, unitId = "player", caster = "player", filter = "BUFF" },
+			-- Mjolnir Runestone (ulduar10hm trinket)
+			{ spellID = 65019, size = 37, unitId = "player", caster = "player", filter = "BUFF" },
+			-- Fury of the Five Flights (sartharion25 trinket)
+			{ spellID = 60314, size = 37, unitId = "player", caster = "player", filter = "BUFF" },
+			-- Greatness (darkmoon dark trinket)
+			{ spellID = 60233, size = 37, unitId = "player", caster = "player", filter = "BUFF" },
+			-- Improved Steady Shot
+			{ spellID = 53220, size = 37, unitId = "player", caster = "player", filter = "BUFF" },
+			-- Fire!
+			{ spellID = 82926, size = 37, unitId = "player", caster = "player", filter = "BUFF" },
+		},
+		{
+			Name = "T_DE/BUFF_BAR",
+			Direction = "UP",
+			Interval = 3,
+			Mode = "BAR",
+			setPoint = { "BOTTOMLEFT", SettingsCF["unitframe"].portrait_enable and "oUF_Target_PortraitOverlay" or "oUF_Target", "BOTTOMRIGHT", SettingsCF["unitframe"].portrait_enable and 3 or 9, SettingsCF["unitframe"].portrait_enable and 0 or -41 },
+			
+			-- Hunter's Mark
+			{ spellID = 1130, size = 25, barWidth = 187, unitId = "target", caster = "player", filter = "DEBUFF" },
+			-- Marked for Death
+			{ spellID = 88691, size = 25, barWidth = 187, unitId = "target", caster = "player", filter = "DEBUFF" },
+			-- Piercing shots
+			{ spellID = 63468, size = 25, barWidth = 187, unitId = "target", caster = "player", filter = "DEBUFF" },
+			-- Serpent Sting
+			{ spellID = 1978, size = 25, barWidth = 187, unitId = "target", caster = "player", filter = "DEBUFF" },
+			-- Black Arrow
+			{ spellID = 3674, size = 25, barWidth = 187, unitId = "target", caster = "player", filter = "DEBUFF" },
+			-- Explosive Shot
+			{ spellID = 53301, size = 25, barWidth = 187, unitId = "target", caster = "player", filter = "DEBUFF" },	
 		},
 		{
 			Name = "PVE/PVP_CC",
@@ -501,6 +527,8 @@ Filger_Spells = {
 			{ spellID = 71560, size = 37, unitId = "player", caster = "player", filter = "BUFF" },
 			-- Aim of the Iron Dwarves
 			{ spellID = 71559, size = 37, unitId = "player", caster = "player", filter = "BUFF" },
+			-- Thunderstruck
+			{ spellID = 80980, size = 37, unitId = "player", caster = "player", filter = "BUFF" }, 
 		},
 		{
 			Name = "COOLDOWN",
@@ -535,6 +563,8 @@ Filger_Spells = {
 			{ spellID = 23920, size = 30, filter = "CD" },
 			-- Shield Block
 			{ spellID = 2565, size = 30, filter = "CD" },
+			-- Commanding Shout
+			{ spellID = 469, size = 30, filter = "CD" }, 
 		},
 	},
 	["SHAMAN"] = {
@@ -897,6 +927,16 @@ Filger_Spells = {
             { spellID = 64044, size = 30, filter = "CD" },
 			-- Holy Word: Chastise
 			{ spellID = 88625, size = 30, filter = "CD" },
+			-- Power Word: Barrier
+			{ spellID = 62618, size = 30, filter = "CD" },
+			-- Inner Focus
+			{ spellID = 89485, size = 30, filter = "CD" },
+			-- Archangel
+			{ spellID = 87151, size = 30, filter = "CD" },
+			-- Chakra
+			{ spellID = 14751, size = 30, filter = "CD" },
+			-- Desperate Prayer
+			{ spellID = 19236, size = 30, filter = "CD" },
 		},
 	},
 	["WARLOCK"] = {
@@ -1286,6 +1326,14 @@ Filger_Spells = {
 			{ spellID = 51209, size = 51, unitId = "player", caster = "all", filter = "DEBUFF" },
 			
 			-- Druid
+			-- Skull Bash (Bear Form)
+			{ spellID = 80964, size = 51, unitId = "player", caster = "all", filter = "DEBUFF" },
+			-- Skull Bash (Cat Form)
+			{ spellID = 80965, size = 51, unitId = "player", caster = "all", filter = "DEBUFF" },
+			-- Solar Beam
+			{ spellID = 78675, size = 51, unitId = "player", caster = "all", filter = "DEBUFF" },
+			-- Fungal Growth
+			{ spellID = 78788, size = 51, unitId = "player", caster = "all", filter = "DEBUFF" },
 			-- Cyclone
 			{ spellID = 33786, size = 51, unitId = "player", caster = "all", filter = "DEBUFF" },
 			-- Hibernate
@@ -1344,12 +1392,30 @@ Filger_Spells = {
 			{ spellID = 51209, size = 51, unitId = "player", caster = "all", filter = "DEBUFF" },
 			-- Tendon Rip (Hyena)
 			{ spellID = 51209, size = 51, unitId = "player", caster = "all", filter = "DEBUFF" },
-			
+			--Serenity Dust (Moth)
+			{ spellID = 50318, size = 51, unitId = "player", caster = "all", filter = "DEBUFF" },
+			-- Swoop (Moth)
+			{ spellID = 52825, size = 51, unitId = "player", caster = "all", filter = "DEBUFF" },
+			-- Ankle Crack (Crocolisk)
+			{ spellID = 50433, size = 51, unitId = "player", caster = "all", filter = "DEBUFF" },
+			-- Pummel (Gorilla)
+			{ spellID = 26090, size = 51, unitId = "player", caster = "all", filter = "DEBUFF" },
+			-- Clench (Scorpid)
+			{ spellID = 50541, size = 51, unitId = "player", caster = "all", filter = "DEBUFF" },
+			-- Time Warp (Warp Stalker)
+			{ spellID = 35346, size = 51, unitId = "player", caster = "all", filter = "DEBUFF" },
+			-- Sting (Wasp)
+			{ spellID = 56626, size = 51, unitId = "player", caster = "all", filter = "DEBUFF" },
+			-- Nether Shock (Nether Ray)
+			{ spellID = 50479, size = 51, unitId = "player", caster = "all", filter = "DEBUFF" },
+
 			-- Mage
 			-- Dragon's Breath
 			{ spellID = 31661, size = 51, unitId = "player", caster = "all", filter = "DEBUFF" },
 			-- Polymorph
 			{ spellID = 118, size = 51, unitId = "player", caster = "all", filter = "DEBUFF" },
+			--Improved Polymorph
+			{ spellID = 11210, size = 51, unitId = "player", caster = "all", filter = "DEBUFF" },
 			-- Silenced - Improved Counterspell
 			{ spellID = 18469, size = 51, unitId = "player", caster = "all", filter = "DEBUFF" },
 			-- Deep Freeze
@@ -1396,6 +1462,10 @@ Filger_Spells = {
 			{ spellID = 15487, size = 51, unitId = "player", caster = "all", filter = "DEBUFF" },
 			-- Mind Flay
 			{ spellID = 15407, size = 51, unitId = "player", caster = "all", filter = "DEBUFF" },
+			-- Sin and Punishment
+			{ spellID = 87099, size = 51, unitId = "player", caster = "all", filter = "DEBUFF" },
+			-- Shackle Undead
+			{ spellID = 9484, size = 51, unitId = "player", caster = "all", filter = "DEBUFF" },
 			
 			-- Rogue
 			-- Dismantle
@@ -1434,8 +1504,20 @@ Filger_Spells = {
 			{ spellID = 3600, size = 51, unitId = "player", caster = "all", filter = "DEBUFF" },
 			-- Frost Shock
 			{ spellID = 8056, size = 51, unitId = "player", caster = "all", filter = "DEBUFF" },
+			-- Bind Elemental
+			{ spellID = 76780, size = 51, unitId = "player", caster = "all", filter = "DEBUFF" },
+			-- Bash (Feral Spirit)
+			{ spellID = 58861, size = 51, unitId = "player", caster = "all", filter = "DEBUFF" },
+			-- Earthquake
+			{ spellID = 77505, size = 51, unitId = "player", caster = "all", filter = "DEBUFF" },
 			
 			-- Warlock
+			-- Aura of Foreboding
+			{ spellID = 89604, size = 51, unitId = "player", caster = "all", filter = "DEBUFF" },
+			-- Axe Toss (Felguard)
+			{ spellID = 89766, size = 51, unitId = "player", caster = "all", filter = "DEBUFF" },
+			-- Demon Leap
+			{ spellID = 54785, size = 51, unitId = "player", caster = "all", filter = "DEBUFF" },
 			-- Banish
 			{ spellID = 710, size = 51, unitId = "player", caster = "all", filter = "DEBUFF" },
 			-- Death Coil
@@ -1458,6 +1540,8 @@ Filger_Spells = {
 			{ spellID = 18223, size = 51, unitId = "player", caster = "all", filter = "DEBUFF" },
 			
 			-- Warrior
+			-- Throwdown
+			{ spellID = 85388, size = 51, unitId = "player", caster = "all", filter = "DEBUFF" },
 			-- Intimidating Shout
 			{ spellID = 20511, size = 51, unitId = "player", caster = "all", filter = "DEBUFF" },
 			-- Disarm

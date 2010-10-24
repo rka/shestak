@@ -41,10 +41,11 @@ local function Local(o)
 	if o == "UIConfigmiscauto_resurrection" then o = L_GUI_MISC_AUTORESSURECT end
 	if o == "UIConfigmiscshift_marking" then o = L_GUI_MISC_MARKING end
 	if o == "UIConfigmiscinvite_keyword" then o = L_GUI_MISC_INVKEYWORD end
-	if o == "UIConfigmiscraid_planner" then o = L_GUI_MISC_RAID_PLANNER end
 	if o == "UIConfigmiscafk_spin_camera" then o = L_GUI_MISC_SPIN_CAMERA end
 	if o == "UIConfigmiscmove_watchframe" then o = L_GUI_MISC_MOVE_WATCH_FRAME end
 	if o == "UIConfigmiscvehicle_mouseover" then o = L_GUI_MISC_VEHICLE_MOUSEOVER end
+	if o == "UIConfigmiscquest_auto_button" then o = L_GUI_MISC_QUEST_AUTOBUTTON end
+	if o == "UIConfigmiscraid_tools" then o = L_GUI_MISC_RAID_TOOLS end
 	
 	-- Skins options
 	if o == "UIConfigskins" then o = L_GUI_SKINS end
@@ -55,14 +56,17 @@ local function Local(o)
 	if o == "UIConfigcombattext" then o = L_GUI_COMBATTEXT end
 	if o == "UIConfigcombattextfont_size" then o = L_GUI_COMBATTEXT_FONT_SIZE end
 	if o == "UIConfigcombattextblizz_head_numbers" then o = L_GUI_COMBATTEXT_BLIZZ_HEAD_NUMBERS end
+	if o == "UIConfigcombattextdamage_style" then o = L_GUI_COMBATTEXT_DAMAGE_STYLE end
 	if o == "UIConfigcombattextdamage" then o = L_GUI_COMBATTEXT_DAMAGE end
 	if o == "UIConfigcombattexthealing" then o = L_GUI_COMBATTEXT_HEALING end
+	if o == "UIConfigcombattextshow_hots" then o = L_GUI_COMBATTEXT_HOTS end
+	if o == "UIConfigcombattextpet_damage" then o = L_GUI_COMBATTEXT_PET_DAMAGE end
+	if o == "UIConfigcombattextdot_damage" then o = L_GUI_COMBATTEXT_DOT_DAMAGE end
 	if o == "UIConfigcombattextdamage_color" then o = L_GUI_COMBATTEXT_DAMAGE_COLOR end
 	if o == "UIConfigcombattextcrit_prefix" then o = L_GUI_COMBATTEXT_CRIT_PREFIX end
 	if o == "UIConfigcombattextcrit_postfix" then o = L_GUI_COMBATTEXT_CRIT_POSTFIX end
 	if o == "UIConfigcombattexticons" then o = L_GUI_COMBATTEXT_ICONS end
 	if o == "UIConfigcombattexticon_size" then o = L_GUI_COMBATTEXT_ICON_SIZE end
-	if o == "UIConfigcombattextdamage_style" then o = L_GUI_COMBATTEXT_DAMAGE_STYLE end
 	if o == "UIConfigcombattexttreshold" then o = L_GUI_COMBATTEXT_TRESHOLD end
 	if o == "UIConfigcombattextheal_treshold" then o = L_GUI_COMBATTEXT_HEAL_TRESHOLD end
 	if o == "UIConfigcombattextscrollable" then o = L_GUI_COMBATTEXT_SCROLLABLE end
@@ -138,9 +142,11 @@ local function Local(o)
 	if o == "UIConfigchatchat_bar" then o = L_GUI_CHAT_BAR end
 	if o == "UIConfigchattime_color" then o = L_GUI_CHAT_TIMESTAMP end
 	if o == "UIConfigchatwhisp_sound" then o = L_GUI_CHAT_WHISP end
+	if o == "UIConfigchatbubbles" then o = L_GUI_CHAT_SKIN_BUBBLE end
 	
 	-- Bag options
 	if o == "UIConfigbag" then o = L_GUI_BAGS end
+	if o == "UIConfigbagenable" then o = L_GUI_BAGS_ENABLE end
 	if o == "UIConfigbagbutton_size" then o = L_GUI_BAGS_BUTTON_SIZE end
 	if o == "UIConfigbagbutton_space" then o = L_GUI_BAGS_BUTTON_SPACE end
 	if o == "UIConfigbagbank_columns" then o = L_GUI_BAGS_BANK end
@@ -182,6 +188,7 @@ local function Local(o)
 	if o == "UIConfignameplateenhance_threat" then o = L_GUI_NAMEPLATE_THREAT end
 	if o == "UIConfignameplateclass_icons" then o = L_GUI_NAMEPLATE_CLASS_ICON end
 	if o == "UIConfignameplatename_abbrev" then o = L_GUI_NAMEPLATE_NAME_ABBREV end
+	if o == "UIConfignameplateoverlap" then o = L_GUI_NAMEPLATE_OVERLAP end
 	
 	-- ActionBar options
 	if o == "UIConfigactionbar" then o = ACTIONBARS_LABEL end
@@ -269,13 +276,10 @@ local function Local(o)
 	if o == "UIConfigunitframeplugins_debuffhighlight_icon" then o = L_GUI_UF_PLUGINS_DEBUFFHIGHLIGHT_ICON end
 	if o == "UIConfigunitframeplugins_aura_watch" then o = L_GUI_UF_PLUGINS_AURA_WATCH end
 	if o == "UIConfigunitframeplugins_healcomm" then o = L_GUI_UF_PLUGINS_HEALCOMM end
-	if o == "UIConfigunitframeplugins_healcomm_bar" then o = L_GUI_UF_PLUGINS_HEALCOMM_BAR end
-	if o == "UIConfigunitframeplugins_healcomm_over" then o = L_GUI_UF_PLUGINS_HEALCOMM_OVER end
-	if o == "UIConfigunitframeplugins_healcomm_text" then o = L_GUI_UF_PLUGINS_HEALCOMM_TEXT end
-	if o == "UIConfigunitframeplugins_healcomm_others" then o = L_GUI_UF_PLUGINS_HEALCOMM_OTHERS end
 	
 	-- Panel options
 	if o == "UIConfigtoppanel" then o = L_GUI_TOP_PANEL end
+	if o == "UIConfigtoppanelenable" then o = L_GUI_TOP_PANEL_ENABLE end
 	if o == "UIConfigtoppanelmouseover" then o = L_GUI_TOP_PANEL_MOUSE end
 	if o == "UIConfigtoppanelheight" then o = L_GUI_TOP_PANEL_HEIGHT end
 	if o == "UIConfigtoppanelwidth" then o = L_GUI_TOP_PANEL_WIDTH end
@@ -291,6 +295,7 @@ local function Local(o)
 	if o == "UIConfigstatsexperience" then o = L_GUI_STATS_EXPERIENCE end
 	if o == "UIConfigstatscoords" then o = L_GUI_STATS_COORDS end
 	if o == "UIConfigstatslocation" then o = L_GUI_STATS_LOCATION end
+	if o == "UIConfigstatsguild_repair" then o = L_GUI_STATS_GUILD_REPAIR end
 	
 	-- Error options
 	if o == "UIConfigerror" then o = L_GUI_ERROR end

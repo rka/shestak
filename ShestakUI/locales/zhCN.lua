@@ -10,12 +10,12 @@ if SettingsDB.client == "zhCN" then
 	L_TOOLTIP_ACH_INCOMPLETE = "你的状态: 未完成"
 	L_TOOLTIP_SPELL_ID = "Spell ID:"  -- Needs review
 	
+	-- Raid Utility
+	L_RAID_UTIL = "Raid Utility" -- Needs review
+	L_RAID_UTIL_DISBAND = "Disband Group" -- Needs review
+	
 	-- Zone name
-	L_ZONE_DALARAN = "达拉然"
-    L_ZONE_UNDERBELLY = "地底区"
-    L_ZONE_KRASUS = "卡萨斯平台"
     L_ZONE_WINTERGRASP = "冬握湖"
-    L_ZONE_VC = "紫罗兰城堡"
 	
 	-- Flask name
 	L_FLASK_STR = "北方精练药剂 - 力量"
@@ -26,8 +26,6 @@ if SettingsDB.client == "zhCN" then
 	L_UF_GHOST = "灵魂"
 	L_UF_DEAD = "死亡"
 	L_UF_OFFLINE = "离线"
-	L_UF_DRAGON = "龙鹰守护"
-	L_UF_VIPER = "蝰蛇守护"
 	L_UF_MANA = "低法力值"
 	L_UF_TRINKET_READY = "饰品准备: "
 	L_UF_TRINKET_USED = "饰品使用: "
@@ -81,9 +79,24 @@ if SettingsDB.client == "zhCN" then
 	L_ERRORFRAME_L = "点击查看错误."
 	
 	-- Bags
-	L_BAG_FREE = "剩余: "
-	L_BAG_OUT_OFF = " / "
 	L_BAG_BANK = "银行"
+	L_BAG_NO_SLOTS = "can't buy anymore slots!"
+	L_BAG_COSTS = "Cost: %.2f gold"
+	L_BAG_BUY_SLOTS = "Buy new slot with /bags purchase yes"
+	L_BAG_OPEN_BANK = "You need to open your bank first."
+	L_BAG_SORT = "sort your bags or your bank, if open."
+	L_BAG_STACK = "fill up partial stacks in your bags or bank, if open."
+	L_BAG_BUY_BANKS_SLOT = "buy bank slot. (need to have bank open)"
+	L_BAG_SORT_MENU = "Sort"
+	L_BAG_SORT_SPECIAL = "Sort Special"
+	L_BAG_STACK_MENU = "Stack"
+	L_BAG_STACK_SPECIAL = "Stack Special"
+	L_BAG_SHOW_BAGS = "Show Bags"
+	L_BAG_SORTING_BAGS = "Sorting finished."
+	L_BAG_NOTHING_SORT = "Nothing to sort."
+	L_BAG_BAGS_BIDS = "Using bags: "
+	L_BAG_STACK_END = "Restacking finished."
+	L_BAG_RIGHT_CLICK_SEARCH = "Right-click to search"
 	
 	-- Grab mail
 	L_MAIL_STOPPED = "无法拾取, 背包已满."
@@ -133,10 +146,7 @@ if SettingsDB.client == "zhCN" then
 	L_BIND_KEY = "按键"
 	L_BIND_NO_SET = "没有绑定快捷键"
 	
-	-- Raid Planner
-	L_PLANNER_TITLE = "Raid Planner" -- Needs review
-	L_PLANNER_IMP_TALENT = "天赋强化"
-	L_PLANNER_INSPECT = "检测中"
+	-- Talent spec
 	L_PLANNER_DEATHKNIGHT_1 = "鲜血"
 	L_PLANNER_DEATHKNIGHT_2 = "冰霜"
 	L_PLANNER_DEATHKNIGHT_3 = "邪恶"

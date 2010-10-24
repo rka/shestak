@@ -4,51 +4,55 @@
 if GetLocale() == "frFR" then
 	L_GUI_BUTTON_RESET = "Réinitialisation totale de l'UI"
 	-- General options
-	L_GUI_GENERAL_UIICON = "Icone prиs de la minimap"
+	L_GUI_GENERAL_UIICON = "Icone près de la minimap"
 	L_GUI_GENERAL_AUTOSCALE = "Mise а l'échelle automatique"
 	L_GUI_GENERAL_MULTISAMPLE = "Protection multi échantillonnage (bordure 1px)"
 	L_GUI_GENERAL_UISCALE = "Mettre l'UI а l'échelle (si 'Mise а l'échelle automatique' est désactivée)"
 	L_GUI_GENERAL_WELCOME_MESSAGE = "Message de bienvenue pour le chat"
 
 	-- Miscellaneous options
-	L_GUI_MISC_AUTOQUEST = "Accepter les quкtes automatiquement"
+	L_GUI_MISC_AUTOQUEST = "Accepter les quêtes automatiquement"
 	L_GUI_MISC_AUTODUEL = "Décliner les duels automatiquement"
 	L_GUI_MISC_AUTOACCEPT = "Accepter automatiquement les invitations"
 	L_GUI_MISC_AUTORESSURECT = "Autorésurrection en champ de bataille"
 	L_GUI_MISC_MARKING = "Marque la cible quand vous appuyez sur MAJ"
 	L_GUI_MISC_INVKEYWORD = "Mot clé pour inviter (/ainv)"
-	L_GUI_MISC_RAID_PLANNER = "Activer le planificateur de raid (/com)"
 	L_GUI_MISC_SPIN_CAMERA = "Faire tourner la caméra quand absent"
-	L_GUI_MISC_MOVE_WATCH_FRAME = "Quest Watch frame movable" -- Needs review
-	L_GUI_MISC_VEHICLE_MOUSEOVER = "Vehicle frame on mouseover" -- Needs review
+	L_GUI_MISC_MOVE_WATCH_FRAME = "Fenêtre de suivi des quête déplacable"
+	L_GUI_MISC_VEHICLE_MOUSEOVER = "Fenêtre de véhicule en mouseover"
+	L_GUI_MISC_QUEST_AUTOBUTTON = "Quest/item auto button" -- Needs review
+	L_GUI_MISC_RAID_TOOLS = "Raid tools" -- Needs review
 	
 	-- Skins options
-	L_GUI_SKINS = "Stylization" -- Needs review
-	L_GUI_SKINS_DBM = "Enable styling DBM" -- Needs review
-	L_GUI_SKINS_PP = "Enable styling PallyPower" -- Needs review
+	L_GUI_SKINS = "Personalisation d'addon"
+	L_GUI_SKINS_DBM = "Activier la personalisation pour DBM"
+	L_GUI_SKINS_PP = "Activer  la personnalisation pour PallyPower"
 	
 	-- Combat text options
-	L_GUI_COMBATTEXT = "Combat Text" -- Needs review
-	L_GUI_COMBATTEXT_FONT_SIZE = "Font size" -- Needs review
-	L_GUI_COMBATTEXT_BLIZZ_HEAD_NUMBERS = "Use blizzard damage/healing output(above mob/player head)" -- Needs review
-	L_GUI_COMBATTEXT_DAMAGE = "Show outgoing damage in it's own frame" -- Needs review
-	L_GUI_COMBATTEXT_HEALING = "Show outgoing healing in it's own frame" -- Needs review
-	L_GUI_COMBATTEXT_DAMAGE_COLOR = "Display damage numbers depending on school of magic" -- Needs review
-	L_GUI_COMBATTEXT_CRIT_PREFIX = "Symbol that will be added before crit" -- Needs review
-	L_GUI_COMBATTEXT_CRIT_POSTFIX = "Symbol that will be added after crit" -- Needs review
-	L_GUI_COMBATTEXT_ICONS = "Show outgoing damage icons" -- Needs review
-	L_GUI_COMBATTEXT_ICON_SIZE = "Icon size of spells in outgoing damage frame, also has effect on dmg font size" -- Needs review
+	L_GUI_COMBATTEXT = "Texte de combat"
+	L_GUI_COMBATTEXT_FONT_SIZE = "Taille du texte"
+	L_GUI_COMBATTEXT_BLIZZ_HEAD_NUMBERS = "Utiliser les textes de combat de Blizzard"
 	L_GUI_COMBATTEXT_DAMAGE_STYLE = "Change default damage/healing font above mobs/player heads(you need to restart WoW to see changes)" -- Needs review
-	L_GUI_COMBATTEXT_TRESHOLD = "Minimum damage to show in damage frame" -- Needs review
-	L_GUI_COMBATTEXT_HEAL_TRESHOLD = "Minimum healing to show in incoming/outgoing healing messages" -- Needs review
-	L_GUI_COMBATTEXT_SCROLLABLE = "Allows you to scroll frame lines with mousewheel" -- Needs review
-	L_GUI_COMBATTEXT_MAX_LINES = "Max lines to keep in scrollable mode(more lines = more memory)" -- Needs review
+	L_GUI_COMBATTEXT_DAMAGE = "Afficher les dégâts dans une fenêtre dédiée"
+	L_GUI_COMBATTEXT_HEALING = "Afficher les soins dans une fenêtre dédiée"
+	L_GUI_COMBATTEXT_HOTS = "Show periodic healing effects in healing frame" -- Needs review
+	L_GUI_COMBATTEXT_PET_DAMAGE = "Show your pet damage" -- Needs review
+	L_GUI_COMBATTEXT_DOT_DAMAGE = "Show damage from your dots" -- Needs review
+	L_GUI_COMBATTEXT_DAMAGE_COLOR = "Afficher les dégâts en fonction de l'école de magie"
+	L_GUI_COMBATTEXT_CRIT_PREFIX = "Caractère à afficher avant le montant d'un critique"
+	L_GUI_COMBATTEXT_CRIT_POSTFIX = "Caractère à afficher après le montant d'un critique"
+	L_GUI_COMBATTEXT_ICONS = "Afficher l'icone du sort"
+	L_GUI_COMBATTEXT_ICON_SIZE = "Taille de l'icone du sort"
+	L_GUI_COMBATTEXT_TRESHOLD = "Dégâts minimum pour afficher dans la fenêtre de dégats"
+	L_GUI_COMBATTEXT_HEAL_TRESHOLD = "Soins minimum pour afficher dans la fenêtre de dégats"
+	L_GUI_COMBATTEXT_SCROLLABLE = "Autoriser le défilement avec la moulette dans la fenêtre de dégâts/soins"
+	L_GUI_COMBATTEXT_MAX_LINES = "Nombre de lignes maximum à conserver si l'option de défilement est activer (plus de ligne = plus de mémoire utilisée)"
 	L_GUI_COMBATTEXT_TIME_VISIBLE = "Time(seconds) a single message will be visible" -- Needs review
 	L_GUI_COMBATTEXT_STOP_VE_SPAM = "Automaticly turns off healing spam for priests in shadowform" -- Needs review
-	L_GUI_COMBATTEXT_DK_RUNES = "Show deatchknight rune recharge" -- Needs review
+	L_GUI_COMBATTEXT_DK_RUNES = "Afficher le recgargement des runes du chevalier de la mort"
 	
 	-- Buffs reminder options
-	L_GUI_REMINDER = "Contrфle des buffs"
+	L_GUI_REMINDER = "Contrôle des buffs"
 	L_GUI_REMINDER_SOLO_ENABLE = "Voir les buffs personnels manquants"
 	L_GUI_REMINDER_SOLO_SOUND = "Son d'alerte si buff manquant"
 	L_GUI_REMINDER_SOLO_SIZE = "Taille de l'icone pour les buffs personnels"
@@ -75,17 +79,17 @@ if GetLocale() == "frFR" then
 	L_GUI_COOLDOWN_ENEMY_IN_ARENA = "Voir les CD ennemis en arène"
 	
 	-- Threat options
-	L_GUI_THREAT = "Threat bars" -- Needs review
-	L_GUI_THREAT_ENABLE = "Enable threat bars" -- Needs review
-	L_GUI_THREAT_FONT_SIZE = "Threat bars font size" -- Needs review
-	L_GUI_THREAT_HEIGHT = "Threat bars height" -- Needs review
-	L_GUI_THREAT_WIDTH = "Threat bars width" -- Needs review
-	L_GUI_THREAT_ROWS = "Number of threat bars" -- Needs review
-	L_GUI_THREAT_TEST_MODE = "Enable test mode for threat bars" -- Needs review
+	L_GUI_THREAT = "Barre de menace"
+	L_GUI_THREAT_ENABLE = "Activer les barres de menace"
+	L_GUI_THREAT_FONT_SIZE = "Taille de police des barres de menace"
+	L_GUI_THREAT_HEIGHT = "Hauteur des barres de menace"
+	L_GUI_THREAT_WIDTH = "Largeur des barres de menace"
+	L_GUI_THREAT_ROWS = "Nombre de barres de menace"
+	L_GUI_THREAT_TEST_MODE = "Activer le mode test des barres de menace"
 	
 	-- Tooltip options
 	L_GUI_TOOLTIP = "Tooltip"
-	L_GUI_TOOLTIP_ENABLE = "Enable tooltip" -- Needs review
+	L_GUI_TOOLTIP_ENABLE = "Activer les tooltips"
 	L_GUI_TOOLTIP_SHIFT = "Afficher le tooltip quand *MAJ* est appuyée"
 	L_GUI_TOOLTIP_CURSOR = "Tooltip sous le curseur"
 	L_GUI_TOOLTIP_ICON = "Icone de l'objet dans le tooltip"
@@ -97,11 +101,12 @@ if GetLocale() == "frFR" then
 	L_GUI_TOOLTIP_TITLE = "Titre dans le tooltip"
 	L_GUI_TOOLTIP_RANK = "Afficher le rang de guilde dans le tooltip"
 	L_GUI_TOOLTIP_ARENA_EXPERIENCE = "Expérience en arène"
+	L_GUI_TOOLTIP_SPELL_ID = "ID du sort"
 	
 	-- Chat options
-	L_GUI_CHAT_ENABLE = "Enable chat" -- Needs review
-	L_GUI_CHAT_BACKGROUND = "Enable chat background" -- Needs review
-	L_GUI_CHAT_BACKGROUND_ALPHA = "Alpha of chat background" -- Needs review
+	L_GUI_CHAT_ENABLE = "Activer le chat"
+	L_GUI_CHAT_BACKGROUND = "Activer l'arrière plan du chat"
+	L_GUI_CHAT_BACKGROUND_ALPHA = "Transparence de l'arrière plan du chat"
 	L_GUI_CHAT_FONT_SIZE = "Taille de police du chat"
 	L_GUI_CHAT_FONT_STYLE = "Style de police"
 	L_GUI_CHAT_TAB_FONT_SIZE = "Taille de police des onglets du chat"
@@ -112,36 +117,38 @@ if GetLocale() == "frFR" then
 	L_GUI_CHAT_BAR = "Bouton pour changer de canal"
 	L_GUI_CHAT_TIMESTAMP = "Coloration du temps"
 	L_GUI_CHAT_WHISP = "Alerte sonore quand murmure"
+	L_GUI_CHAT_SKIN_BUBBLE = "Skin des bulles de discussions"
 	
 	-- Bag options
 	L_GUI_BAGS = "Sacs"
-	L_GUI_BAGS_BUTTON_SIZE = "Buttons size"  -- Needs review
-	L_GUI_BAGS_BUTTON_SPACE = "Buttons space"  -- Needs review
+	L_GUI_BAGS_ENABLE = "Activer les sacs"
+	L_GUI_BAGS_BUTTON_SIZE = "Taille des boutons"
+	L_GUI_BAGS_BUTTON_SPACE = "Espacement des boutons"
 	L_GUI_BAGS_BANK = "Nombre de colonne pour la banque"
 	L_GUI_BAGS_BAG = "Nombre de colonne pour les sacs"
 	
 	-- Minimap options
-	L_GUI_MINIMAP_ENABLE = "Enable minimap"  -- Needs review
+	L_GUI_MINIMAP_ENABLE = "Activer la minicarte"
 	L_GUI_MINIMAP_ICON = "Icone de pistage"
 	L_GUI_MINIMAP_SIZE = "Taille de la minicarte"
 	L_GUI_MINIMAP_HIDE_COMBAT = "Cacher la minimap en combat"
 	
 	-- Map options
-	L_GUI_MAP_ENABLE = "Enable world map"  -- Needs review
+	L_GUI_MAP_ENABLE = "Activer la carte du monde"
 	L_GUI_MAP_SCALE = "Echelle de la carte"
-	L_GUI_MAP_BG_STYLIZATION = "Style d'arriиre plan de la carte"
+	L_GUI_MAP_BG_STYLIZATION = "Style d'arrière plan de la carte"
 	
 	-- Loot options
-	L_GUI_LOOT_ENABLE = "Enable loot frame"  -- Needs review
-	L_GUI_LOOT_ROLL_ENABLE = "Enable group loot frame"  -- Needs review
-	L_GUI_LOOT_FONT_SIZE = "Taille de la police de la fenкtre de butin"
+	L_GUI_LOOT_ENABLE = "Activer la fenêtre de butin"
+	L_GUI_LOOT_ROLL_ENABLE = "Activier la fenêtre de butin de groupe"
+	L_GUI_LOOT_FONT_SIZE = "Taille de la police de la fenêtre de butin"
 	L_GUI_LOOT_ICON_SIZE = "Taille de l'icone"
 	L_GUI_LOOT_WIDTH = "Loot frame width"
 	L_GUI_LOOT_AUTOGREED = "Activer désenchantement automatique pour les objets verts au niveau maximum"
 	L_GUI_LOOT_AUTODE = "Confirmation automatique pour le désenchantement"
 	
 	-- Nameplate options
-	L_GUI_NAMEPLATE_ENABLE = "Enable nameplates"  -- Needs review
+	L_GUI_NAMEPLATE_ENABLE = "Activer les barres de nom"
 	L_GUI_NAMEPLATE_COMBAT = "Afficher automatiquement les barres de nom en combat"
 	L_GUI_NAMEPLATE_HEALTH = "Valeur de points de vie"
 	L_GUI_NAMEPLATE_CASTBAR = "Afficher la barre de sort"
@@ -151,45 +158,46 @@ if GetLocale() == "frFR" then
 	L_GUI_NAMEPLATE_CASTBAR_NAME = "Afficher le nom du sort"
 	L_GUI_NAMEPLATE_THREAT = "Afficher la menace (vert = aggro, rouge = OK)"
 	L_GUI_NAMEPLATE_CLASS_ICON = "Icone de classe en JcJ"
-	L_GUI_NAMEPLATE_NAME_ABBREV = "Display the abbreviated names"  -- Needs review
+	L_GUI_NAMEPLATE_NAME_ABBREV = "Afficher les noms abrégés"
+	L_GUI_NAMEPLATE_OVERLAP = "Allow nameplates to overlap"  -- Needs review
 	
 	-- ActionBar options
-	L_GUI_ACTIONBAR_ENABLE = "Enable action bars"  -- Needs review
+	L_GUI_ACTIONBAR_ENABLE = "Activer les barres d'action"
 	L_GUI_ACTIONBAR_HOTKEY = "Afficher le texte des macros"
 	L_GUI_ACTIONBAR_GRID = "Afficher les boutons vides"
 	L_GUI_ACTIONBAR_BUTTON_SIZE = "Taille des boutons"
-	L_GUI_ACTIONBAR_BUTTON_SPACE = "Buttons space"  -- Needs review
-	L_GUI_ACTIONBAR_BOTTOMBARS = "Number of action bars on the bottom (1, 2 or 3)"  -- Needs review
-	L_GUI_ACTIONBAR_RIGHTBARS = "Number of action bars on right (0, 1, 2 or 3)"  -- Needs review
+	L_GUI_ACTIONBAR_BUTTON_SPACE = "Espacement des boutons"
+	L_GUI_ACTIONBAR_BOTTOMBARS = "Nombre de barres d'action en bas (1, 2 ou 3)"
+	L_GUI_ACTIONBAR_RIGHTBARS = "Nombre de barres d'action à droite (0, 1, 2 ou 3)"
 	L_GUI_ACTIONBAR_RIGHTBARS_MOUSEOVER = "Barres de droite en 'mouseover'"
 	L_GUI_ACTIONBAR_PETBAR_MOUSEOVER = "Barre du familier en 'mouseover'(uniquement pour la barre horizontale)"
 	L_GUI_ACTIONBAR_PETBAR_HIDE = "Cacher la barre du familier"
 	L_GUI_ACTIONBAR_PETBAR_HORIZONTAL = "Activer la barre du familier horizontale"
 	L_GUI_ACTIONBAR_SHAPESHIFT_MOUSEOVER = "Changeforme/Posture/barre de totems en 'mouseover'"
 	L_GUI_ACTIONBAR_SHAPESHIFT_HIDE = "Cacher changeforme"
-	L_GUI_ACTIONBAR_SHAPESHIFT_HORIZONTAL = "Enable horizontal stance bar"  -- Needs review
+	L_GUI_ACTIONBAR_SHAPESHIFT_HORIZONTAL = "Activer la barre de posture horizontale"
 	
 	-- Auras/Buffs/Debuffs
-	L_GUI_AURA_FONT_SIZE = "Auras font size"  -- Needs review
-	L_GUI_AURA_PLAYER_BUFF_SIZE = "Player buffs size"  -- Needs review
-	L_GUI_AURA_SHOW_SPIRAL = "Spiral on aura icons"  -- Needs review
+	L_GUI_AURA_FONT_SIZE = "Taille de police des buffs"
+	L_GUI_AURA_PLAYER_BUFF_SIZE = "Taille des buffs du joueur"
+	L_GUI_AURA_SHOW_SPIRAL = "Spirale sur les icones d'aura"
 	L_GUI_AURA_SHOW_TIMER = "Afficher le cooldown des icones d'aura"
 	L_GUI_AURA_PLAYER_AURAS = "Auras sur la barre du joueur"
 	L_GUI_AURA_TARGET_AURAS = "Auras sur la barre de cible"
 	L_GUI_AURA_FOCUS_DEBUFFS = "Afficher les debuffs du focus"
-	L_GUI_AURA_FOT_DEBUFFS = "DeBuffs on focus target frame"  -- Needs review
+	L_GUI_AURA_FOT_DEBUFFS = "Afficher les debuffs de la cible du focus"
 	L_GUI_AURA_PET_DEBUFFS = "Afficher les debuffs du pet"
 	L_GUI_AURA_TOT_DEBUFFS = "Afficher les debuffs de la cible de la cible"
 	L_GUI_AURA_PLAYER_AURA_ONLY = "Afficher seulement ses propres debuffs sur la cible"
 	L_GUI_AURA_DEBUFF_COLOR_TYPE = "Coleur de debuff par type"
 	
 	-- Unit frame options
-	L_GUI_UF_ENABLE = "Enable unit frames"  -- Needs review
+	L_GUI_UF_ENABLE = "Activer les barres d'unité"
 	L_GUI_UF_FONT_SIZE = "Taille de la police"
 	L_GUI_UF_AGGRO_BORDER = "Aggro signalée en bordure"
 	L_GUI_UF_OWN_COLOR = "Mettre la couleur de classe comme couleur pour la barre de vie"
 	L_GUI_UF_ENEMY_HEALTH_COLOR = "Si activée, la couleur des cibles ennemi est rouge"
-	L_GUI_UF_TOTAL_VALUE = "Display of info text on player and target with XXXX/Total"  -- Needs review
+	L_GUI_UF_TOTAL_VALUE = "Afficher la vie des joueur/cible avec XXXX/Total"
 	L_GUI_UF_DEFICIT_HEALTH = "Déficit en vie du raid"
 	L_GUI_UF_COLOR_VALUE = "Valeur de vie/mana colorée"
 	L_GUI_UF_UNIT_CASTBAR = "Voir la barre de cast"
@@ -207,7 +215,7 @@ if GetLocale() == "frFR" then
 	L_GUI_UF_PLAYER_PARTY = "Afficher la barre du joueur en groupe"
 	L_GUI_UF_SHOW_TANK = "Afficher les tanks de raid"
 	L_GUI_UF_RAID_GROUP = "Nombre de groupe dans le raid (Seulement pour ShestakUI_Heal)"
-	L_GUI_UF_RAID_VERTICAL_GROUP = "Vertical raid groups(Only for ShestakUI_Heal)"  -- Needs review
+	L_GUI_UF_RAID_VERTICAL_GROUP = "Groupe de raid verticaux(Seulement pour ShestakUI_Heal)"
 	L_GUI_UF_ICONS_PVP = "Texte JcJ en Mouseover pour la barre du joueur et celle de la cible"
 	L_GUI_UF_ICONS_LEADER = "Icone du Chef de raid, icone de l'assistant, icone du maоtre du butin"
 	L_GUI_UF_ICONS_COMBAT = "Icone de combat"
@@ -222,42 +230,40 @@ if GetLocale() == "frFR" then
 	L_GUI_UF_PORTRAIT_WIDTH = "Largeur des portraits"
 	L_GUI_UF_PLUGINS_GCD = "Scintillement du GCD"
 	L_GUI_UF_PLUGINS_SWING = "Barre d'attaque automatique / tir automatique"
-	L_GUI_UF_PLUGINS_ECLIPSE_BAR = "Enable eclipse bar"  -- Needs review
-	L_GUI_UF_PLUGINS_HOLY_BAR = "Enable holy power bar"  -- Needs review
-	L_GUI_UF_PLUGINS_SHARD_BAR = "Enable shards bar" -- Needs review
+	L_GUI_UF_PLUGINS_ECLIPSE_BAR = "Activer la barre d'eclipse"
+	L_GUI_UF_PLUGINS_HOLY_BAR = "Activer la barre de puissance sacrée"
+	L_GUI_UF_PLUGINS_SHARD_BAR = "Activier la barre de fragment d'âme"
 	L_GUI_UF_PLUGINS_RUNE_BAR = "Barre de rune"
 	L_GUI_UF_PLUGINS_TOTEM_BAR = "Barre de totem"
 	L_GUI_UF_PLUGINS_TOTEM_BAR_NAME = "Nom des totems"
 	L_GUI_UF_PLUGINS_REPUTATION_BAR = "Barre de réputation"
 	L_GUI_UF_PLUGINS_EXPERIENCE_BAR = "Barre d'expérience"
 	L_GUI_UF_PLUGINS_SMOOTH_BAR = "Barre lisse"
-	L_GUI_UF_PLUGINS_TALENTS = "Show enemy talent spec" -- Needs review
+	L_GUI_UF_PLUGINS_TALENTS = "Afficher les talent de l'ennemi"
 	L_GUI_UF_PLUGINS_COMBAT_FEEDBACK = "Texte de combat sur les barres du joueur et de la cible"
 	L_GUI_UF_PLUGINS_DEBUFFHIGHLIGHT_ICON = "Mise en évidence des debuffs texture + icone"
 	L_GUI_UF_PLUGINS_AURA_WATCH = "Aura/debuff de raid"
-	L_GUI_UF_PLUGINS_HEALCOMM = "Afficher oUF_HealComm4 sur les barres de raid"
-	L_GUI_UF_PLUGINS_HEALCOMM_BAR = "Barre de soin entrant (incoming)"
-	L_GUI_UF_PLUGINS_HEALCOMM_OVER = "Barre d'overheal"
-	L_GUI_UF_PLUGINS_HEALCOMM_TEXT = "Texte de soin entrant (incoming)"
-	L_GUI_UF_PLUGINS_HEALCOMM_OTHERS = "Cacher votre soin entrant (incoming)"
+	L_GUI_UF_PLUGINS_HEALCOMM = "Barre de soin entrant (incoming)"
 	
 	-- Panel options
 	L_GUI_TOP_PANEL = "Panneau supérieur"
+	L_GUI_TOP_PANEL_ENABLE = "Enable top panel"	-- Needs review
 	L_GUI_TOP_PANEL_MOUSE = "Panneau supérieur en 'mouseover'"
 	L_GUI_TOP_PANEL_WIDTH = "Largeur du panneau"
 	L_GUI_TOP_PANEL_HEIGHT = "Hauteur du panneau"
 	
 	-- Stats options
-	L_GUI_STATS = "Stats"  -- Needs review
-	L_GUI_STATS_FONT_SIZE = "Stats font size"  -- Needs review
-	L_GUI_STATS_BG = "Battleground"  -- Needs review
-	L_GUI_STATS_CLOCK = "Clock"  -- Needs review
-	L_GUI_STATS_LATENCY = "Latency"  -- Needs review
-	L_GUI_STATS_MEMORY = "Memory"  -- Needs review
-	L_GUI_STATS_FPS = "FPS"  -- Needs review
-	L_GUI_STATS_EXPERIENCE = "Experience"  -- Needs review
-	L_GUI_STATS_COORDS = "Coords"  -- Needs review
-	L_GUI_STATS_LOCATION = "Location"  -- Needs review
+	L_GUI_STATS = "Stats"
+	L_GUI_STATS_FONT_SIZE = "Taille de police des stats"
+	L_GUI_STATS_BG = "Champ de bataille"
+	L_GUI_STATS_CLOCK = "Horloge"
+	L_GUI_STATS_LATENCY = "Latence"
+	L_GUI_STATS_MEMORY = "Memoire"
+	L_GUI_STATS_FPS = "FPS"
+	L_GUI_STATS_EXPERIENCE = "Experience"
+	L_GUI_STATS_COORDS = "Coordonnées"
+	L_GUI_STATS_LOCATION = "Lieu actuel"
+	L_GUI_STATS_GUILD_REPAIR = "Repair from guild bank" -- Needs review
 	
 	-- Error options
 	L_GUI_ERROR = "Erreurs"

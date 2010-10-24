@@ -17,6 +17,42 @@ if SettingsCF["misc"].quest_auto_button == true then
 		49278,	-- Goblin Rocket Pack (ICC)
 		--50356, -- Corroded Skeleton Key (Test)
 	}
+	
+	local function AutoButtonHide()
+		AutoButton:SetAlpha(0)
+		if not InCombatLockdown() then
+			AutoButton:EnableMouse(false)
+		else
+			AutoButton:RegisterEvent("PLAYER_REGEN_ENABLED")
+			AutoButton:SetScript("OnEvent", function(self, event) 
+				if event == "PLAYER_REGEN_ENABLED" then
+					AutoButton:EnableMouse(false) 
+					AutoButton:UnregisterEvent("PLAYER_REGEN_ENABLED") 
+				end
+			end)
+		end
+	end
+
+	local function AutoButtonShow(item)
+		AutoButton:SetAlpha(1)
+		if not InCombatLockdown() then
+			AutoButton:EnableMouse(true)
+			if item then
+				AutoButton:SetAttribute("item", item)
+			end
+		else
+			AutoButton:RegisterEvent("PLAYER_REGEN_ENABLED")
+			AutoButton:SetScript("OnEvent", function(self, event) 
+				if event == "PLAYER_REGEN_ENABLED" then
+					AutoButton:EnableMouse(true) 
+					if item then
+						AutoButton:SetAttribute("item", item)
+					end
+					AutoButton:UnregisterEvent("PLAYER_REGEN_ENABLED") 
+				end
+			end)
+		end
+	end
 
 	-- Create our Button
 	local AutoButton = CreateFrame("Button", "AutoButton", UIParent, "SecureActionButtonTemplate")
@@ -26,8 +62,7 @@ if SettingsCF["misc"].quest_auto_button == true then
 	SettingsDB.CreateTemplate(AutoButton)
 	SettingsDB.StyleButton(AutoButton, false) 
 	AutoButton:SetAttribute("type", "item")
-	AutoButton:SetAlpha(0)
-	AutoButton:EnableMouse(false)
+	AutoButtonHide()
 
 	-- Texture for our button
 	AutoButton.t = AutoButton:CreateTexture(nil, "OVERLAY", nil)
@@ -37,9 +72,9 @@ if SettingsCF["misc"].quest_auto_button == true then
 
 	-- Count text for our button
 	AutoButton.c = AutoButton:CreateFontString(nil, "OVERLAY", f)
-	AutoButton.c:SetFont(SettingsCF.media.pixel_font, SettingsCF.media.pixel_font_size, SettingsCF.media.pixel_font_style)
-	AutoButton.c:SetTextColor(0.8, 0.8, 0.8, 1)
-	AutoButton.c:SetPoint("BOTTOMRIGHT", SettingsDB.Scale(-2), SettingsDB.Scale(2))
+	AutoButton.c:SetFont(SettingsCF.media.pixel_font, SettingsCF.media.pixel_font_size*2, SettingsCF.media.pixel_font_style)
+	AutoButton.c:SetTextColor(1, 1, 1, 1)
+	AutoButton.c:SetPoint("BOTTOMRIGHT", SettingsDB.Scale(0.5), SettingsDB.Scale(-2))
 	AutoButton.c:SetJustifyH("CENTER")	
 
 	-- Cooldown
@@ -51,8 +86,7 @@ if SettingsCF["misc"].quest_auto_button == true then
 	Scanner:RegisterEvent("BAG_UPDATE")
 	Scanner:RegisterEvent("UNIT_INVENTORY_CHANGED")
 	Scanner:SetScript("OnEvent", function()
-		AutoButton:SetAlpha(0)
-		AutoButton:EnableMouse(false)
+		AutoButtonHide()
 		-- Scan bags for Item matchs
 		for b = 0, NUM_BAG_SLOTS do
 			for s = 1, GetContainerNumSlots(b) do
@@ -74,15 +108,11 @@ if SettingsCF["misc"].quest_auto_button == true then
 							AutoButton.c:SetText("")
 						end
 						
-						-- Make button use the set item when clicked
-						AutoButton:SetAttribute("item", itemName)
-						
 						AutoButton:SetScript("OnUpdate", function(self, elapsed)
 							local cd_start, cd_finish, cd_enable = GetContainerItemCooldown(b, s)
 							CooldownFrame_SetTimer(AutoButton.Cooldown, cd_start, cd_finish, cd_enable)
 						end)
-						AutoButton:SetAlpha(1)
-						AutoButton:EnableMouse(true)
+						AutoButtonShow(itemName)
 					end
 				end
 			end
@@ -98,15 +128,11 @@ if SettingsCF["misc"].quest_auto_button == true then
 					AutoButton.t:SetTexture(itemIcon)
 					AutoButton.c:SetText("")
 					
-					--Make button use the set item when clicked
-					AutoButton:SetAttribute("item", itemName)
-						
 					AutoButton:SetScript("OnUpdate", function(self, elapsed)
 						local cd_start, cd_finish, cd_enable = GetInventoryItemCooldown("player",w)
 						CooldownFrame_SetTimer(AutoButton.Cooldown, cd_start, cd_finish, cd_enable)
 					end)
-					AutoButton:SetAlpha(1)
-					AutoButton:EnableMouse(true)
+					AutoButtonShow(itemName)
 				end
 			end
 		end

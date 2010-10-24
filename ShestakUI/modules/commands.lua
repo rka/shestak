@@ -22,7 +22,8 @@ SLASH_ENABLE_ADDON1 = "/en"
 ----------------------------------------------------------------------------------------
 --	Disband party or raid(by Monolit)
 ----------------------------------------------------------------------------------------
-SlashCmdList["GROUPDISBAND"] = function()
+function DisbandRaidGroup()
+	if InCombatLockdown() then return end
 	SendChatMessage(L_INFO_DISBAND, "RAID" or "PARTY")
 	if UnitInRaid("player") then
 		for i = 1, GetNumRaidMembers() do
@@ -40,7 +41,35 @@ SlashCmdList["GROUPDISBAND"] = function()
 	end
 	LeaveParty()
 end
+
+StaticPopupDialogs["DISBAND_RAID"] = {
+	text = L_POPUP_DISBAND_RAID,
+	button1 = ACCEPT,
+	button2 = CANCEL,
+	OnAccept = DisbandRaidGroup,
+	timeout = 0,
+	whileDead = 1,
+}
+
+SlashCmdList["GROUPDISBAND"] = function()
+	StaticPopup_Show("DISBAND_RAID")
+end
 SLASH_GROUPDISBAND1 = "/rd"
+
+----------------------------------------------------------------------------------------
+--	Enable lua error
+----------------------------------------------------------------------------------------
+function SlashCmdList.LUAERROR(msg, editbox)
+	if (msg == "on") then
+		SetCVar("scriptErrors", 1)
+		ReloadUI()
+	elseif (msg == "off") then
+		SetCVar("scriptErrors", 0)
+	else
+		print("/luaerror on - /luaerror off")
+	end
+end
+SLASH_LUAERROR1 = "/luaerror"
 
 ----------------------------------------------------------------------------------------
 --	Spec switching(by Monolit)

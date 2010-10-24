@@ -10,12 +10,12 @@ if SettingsDB.client == "enUS" or SettingsDB.client == "enGB" then
 	L_TOOLTIP_ACH_INCOMPLETE = "Your Status: Incomplete"
 	L_TOOLTIP_SPELL_ID = "Spell ID:"
 
+	-- Raid Utility
+	L_RAID_UTIL = "Raid Utility"
+	L_RAID_UTIL_DISBAND = "Disband Group"
+	
 	-- Zone name
-	L_ZONE_DALARAN = "Dalaran"
-    L_ZONE_UNDERBELLY = "The Underbelly"
-    L_ZONE_KRASUS = "Krasus' Landing"
     L_ZONE_WINTERGRASP = "Wintergrasp"
-    L_ZONE_VC = "The Violet Citadel"
 	
 	-- Flask name
 	L_FLASK_STR = "Gained Flask of the North - Strength"
@@ -26,8 +26,6 @@ if SettingsDB.client == "enUS" or SettingsDB.client == "enGB" then
 	L_UF_GHOST = "Ghost"
 	L_UF_DEAD = "Dead"
 	L_UF_OFFLINE = "Offline"
-	L_UF_DRAGON = "Dragonhawk"
-	L_UF_VIPER = "Viper"
 	L_UF_MANA = "Low mana"
 	L_UF_TRINKET_READY = "Trinket ready: "
 	L_UF_TRINKET_USED = "Trinket used: "
@@ -81,9 +79,24 @@ if SettingsDB.client == "enUS" or SettingsDB.client == "enGB" then
 	L_ERRORFRAME_L = "Click to view errors."
 	
 	-- Bags
-	L_BAG_FREE = "Space: "
-	L_BAG_OUT_OFF = " / "
 	L_BAG_BANK = "Bank"
+	L_BAG_NO_SLOTS = "can't buy anymore slots!"
+	L_BAG_COSTS = "Cost: %.2f gold"
+	L_BAG_BUY_SLOTS = "Buy new slot with /bags purchase yes"
+	L_BAG_OPEN_BANK = "You need to open your bank first."
+	L_BAG_SORT = "sort your bags or your bank, if open."
+	L_BAG_STACK = "fill up partial stacks in your bags or bank, if open."
+	L_BAG_BUY_BANKS_SLOT = "buy bank slot. (need to have bank open)"
+	L_BAG_SORT_MENU = "Sort"
+	L_BAG_SORT_SPECIAL = "Sort Special"
+	L_BAG_STACK_MENU = "Stack"
+	L_BAG_STACK_SPECIAL = "Stack Special"
+	L_BAG_SHOW_BAGS = "Show Bags"
+	L_BAG_SORTING_BAGS = "Sorting finished."
+	L_BAG_NOTHING_SORT = "Nothing to sort."
+	L_BAG_BAGS_BIDS = "Using bags: "
+	L_BAG_STACK_END = "Restacking finished."
+	L_BAG_RIGHT_CLICK_SEARCH = "Right-click to search"
 	
 	-- Grab mail
 	L_MAIL_STOPPED = "Stopped, inventory is full."
@@ -133,10 +146,7 @@ if SettingsDB.client == "enUS" or SettingsDB.client == "enGB" then
 	L_BIND_KEY = "Key"
 	L_BIND_NO_SET = "No bindings set"
 	
-	-- Raid Planner
-	L_PLANNER_TITLE = "Raid Planner"
-	L_PLANNER_IMP_TALENT = "Improved talent"
-	L_PLANNER_INSPECT = "Inspecting"
+	-- Talent spec
 	L_PLANNER_DEATHKNIGHT_1 = "Blood"
 	L_PLANNER_DEATHKNIGHT_2 = "Frost"
 	L_PLANNER_DEATHKNIGHT_3 = "Unholy"
@@ -209,6 +219,7 @@ if SettingsDB.client == "enUS" or SettingsDB.client == "enGB" then
 	L_POPUP_INSTALLUI = "First time on ShestakUI with this Character. You must reload UI to configure it."
 	L_POPUP_RESETUI = "Are you sure you want to reset ShestakUI?"
 	L_POPUP_SWITCH_RAID = "2 raid layouts are active, please select a layout."
+	L_POPUP_DISBAND_RAID = "Are you sure you want to disband the group?"
 	L_POPUP_DISABLEUI = "ShestakUI doesn't work for this resolution, do you want to disable ShestakUI? (Cancel if you want to try another resolution)"
 	L_POPUP_SETTINGS_ALL = "Apply settings for all modifications? (DBM/DXE, Skada/Recount and MSBT)"
 	L_POPUP_SETTINGS_DBM = "Need to change the position of elements DBM."

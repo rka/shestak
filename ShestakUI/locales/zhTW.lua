@@ -10,12 +10,12 @@ if SettingsDB.client == "zhTW" then
 	L_TOOLTIP_ACH_INCOMPLETE = "你的狀態: 未完成"
 	L_TOOLTIP_SPELL_ID = "法術ID:"
 
+	-- Raid Utility
+	L_RAID_UTIL = "Raid Utility" -- Needs review
+	L_RAID_UTIL_DISBAND = "Disband Group" -- Needs review
+	
 	-- Zone name
-	L_ZONE_DALARAN = "達拉然"
-    L_ZONE_UNDERBELLY = "地底區"
-    L_ZONE_KRASUS = "卡薩斯平臺"
     L_ZONE_WINTERGRASP = "冬握湖"
-    L_ZONE_VC = "紫羅蘭城塞"
 	
 	-- Flask name
 	L_FLASK_STR = "獲得北方精鍊藥劑 - 力量"
@@ -26,8 +26,6 @@ if SettingsDB.client == "zhTW" then
 	L_UF_GHOST = "靈魂"
 	L_UF_DEAD = "死亡"
 	L_UF_OFFLINE = "離線"
-	L_UF_DRAGON = "龍鷹守護"
-	L_UF_VIPER = "蝮蛇守護"
 	L_UF_MANA = "低法力"
 	L_UF_TRINKET_READY = "PVP飾品準備就緒: "
 	L_UF_TRINKET_USED = "PVP飾品已使用: "
@@ -81,9 +79,24 @@ if SettingsDB.client == "zhTW" then
 	L_ERRORFRAME_L = "點擊查看錯誤."
 	
 	-- Bags
-	L_BAG_FREE = "剩餘: "
-	L_BAG_OUT_OFF = " / "
 	L_BAG_BANK = "銀行"
+	L_BAG_NO_SLOTS = "不能再購買更多的背包欄位!"
+	L_BAG_COSTS = "花費: %.2f 金"
+	L_BAG_BUY_SLOTS = "輸入 /bags purchase yes 以購買銀行背包欄位"
+	L_BAG_OPEN_BANK = "您需要先造訪您的銀行"
+	L_BAG_SORT = "將背包或銀行內的物品分類及排序"
+	L_BAG_STACK = "將背包或銀行內的不完整的物品堆疊重新堆疊"
+	L_BAG_BUY_BANKS_SLOT = "購買銀行背包欄位. (需要造訪銀行)"
+	L_BAG_SORT_MENU = "分類及排序"
+	L_BAG_SORT_SPECIAL = "分類及排序特殊物品"
+	L_BAG_STACK_MENU = "堆疊"
+	L_BAG_STACK_SPECIAL = "堆疊特殊物品"
+	L_BAG_SHOW_BAGS = "顯示背包"
+	L_BAG_SORTING_BAGS = "分類及排序完成"
+	L_BAG_NOTHING_SORT = "不需要分類"
+	L_BAG_BAGS_BIDS = "使用背包: "
+	L_BAG_STACK_END = "重新堆疊完成"
+	L_BAG_RIGHT_CLICK_SEARCH = "點擊右鍵以搜尋物品"
 	
 	-- Grab mail
 	L_MAIL_STOPPED = "無法拾取, 背囊已滿."
@@ -133,10 +146,7 @@ if SettingsDB.client == "zhTW" then
 	L_BIND_KEY = "按鍵"
 	L_BIND_NO_SET = "沒有綁定快捷鍵"
 	
-	-- Raid Planner
-	L_PLANNER_TITLE = "Raid Planner" -- Needs review
-	L_PLANNER_IMP_TALENT = "天賦強化" 
-	L_PLANNER_INSPECT = "檢測中"
+	-- Talent spec
 	L_PLANNER_DEATHKNIGHT_1 = "血魄"
 	L_PLANNER_DEATHKNIGHT_2 = "冰霜"
 	L_PLANNER_DEATHKNIGHT_3 = "穢邪"

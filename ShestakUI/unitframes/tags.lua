@@ -31,7 +31,7 @@ oUF.Tags["DiffColor"]  = function(unit)
 	return string.format("|cff%02x%02x%02x", r * 255, g * 255, b * 255)
 end
 
-oUF.TagEvents["GetNameColor"] = "UNIT_HAPPINESS"
+oUF.TagEvents["GetNameColor"] = "UNIT_HAPPINESS UNIT_POWER"
 oUF.Tags["GetNameColor"] = function(unit)
 	local reaction = UnitReaction(unit, "player")
 	if unit == "pet" and GetPetHappiness() then

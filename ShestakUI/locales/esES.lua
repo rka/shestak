@@ -1,5 +1,5 @@
 ﻿----------------------------------------------------------------------------------------
---	Localization for esES client(Thanks to Seal and Revisado for the translation)
+--	Localization for esES client(Thanks to Seal and eXecrate for the translation)
 ----------------------------------------------------------------------------------------
 if SettingsDB.client == "esES" then
 	-- Tooltip
@@ -8,26 +8,24 @@ if SettingsDB.client == "esES" then
 	L_TOOLTIP_ACH_STATUS = "Estado:"
 	L_TOOLTIP_ACH_COMPLETE = "Estado: Completado "
 	L_TOOLTIP_ACH_INCOMPLETE = "Estado: Incompleto"
-	L_TOOLTIP_SPELL_ID = "Spell ID:"  -- Needs review
+	L_TOOLTIP_SPELL_ID = "ID del hechizo:"
 
+	-- Raid Utility
+	L_RAID_UTIL = "Raid Utility" -- Needs review
+	L_RAID_UTIL_DISBAND = "Disband Group" -- Needs review
+	
 	-- Zone name
-	L_ZONE_DALARAN = "Dalaran"
-    L_ZONE_UNDERBELLY = "Cloacas"
-    L_ZONE_KRASUS = "Zona de vuelo"
     L_ZONE_WINTERGRASP = "Conquista del Invierno"
-    L_ZONE_VC = "La Ciudadela Violeta"
 	
 	-- Flask name
 	L_FLASK_STR = "Frasco del Norte - Fuerza"
-	L_FLASK_SPD = "Frasco del Norte - Daсo Magico"
+	L_FLASK_SPD = "Frasco del Norte - Daño Mágico"
 	L_FLASK_AP = "Frasco del Norte - Poder de Ataque"
 	
 	-- UnitFrame
 	L_UF_GHOST = "Fantasma"
 	L_UF_DEAD = "Muerto"
 	L_UF_OFFLINE = "Desconectado"
-	L_UF_DRAGON = "Dracohalcon"
-	L_UF_VIPER = "Vibora"
 	L_UF_MANA = "Mana bajo"
 	L_UF_TRINKET_READY = "Abalorio listo: "
 	L_UF_TRINKET_USED = "Abalorio usado: "
@@ -47,7 +45,7 @@ if SettingsDB.client == "esES" then
 	
 	-- ShestakUI_Config
 	L_GUI_MINIMAP_ICON_LM = "Click izquierdo - Entrar a la GUI"
-	L_GUI_MINIMAP_ICON_RM = "Click derecho - Menu adicional"
+	L_GUI_MINIMAP_ICON_RM = "Click derecho - Menú adicional"
 	L_GUI_MINIMAP_ICON_SD = "Shift + Arrastrar - Mover botón"
 	L_GUI_MINIMAP_ICON_SRM = "Shift + Click derecho - Recargar UI"
 	L_GUI_MINIMAP_ICON_SLASH = "Barra de comandos"
@@ -55,7 +53,7 @@ if SettingsDB.client == "esES" then
 	L_GUI_MINIMAP_ICON_CL = "Fijar registro de combate"
 	L_GUI_MINIMAP_ICON_DBM = "Modo test de DBM"
 	L_GUI_MINIMAP_ICON_HEAL = "Cambiar a interfaz de sanador"
-	L_GUI_MINIMAP_ICON_DPS = "Cambiar a interfaz de daсo"
+	L_GUI_MINIMAP_ICON_DPS = "Cambiar a interfaz de daño"
 
 	-- Chat
 	L_CHAT_WHISPER = "De"
@@ -81,24 +79,39 @@ if SettingsDB.client == "esES" then
 	L_ERRORFRAME_L = "Click para ver errores."
 	
 	-- Bags
-	L_BAG_FREE = "Espacio: "
-	L_BAG_OUT_OFF = " / "
 	L_BAG_BANK = "Banco"
+	L_BAG_NO_SLOTS = "¡no puedes comprar más espacios!"
+	L_BAG_COSTS = "Costo: %.2f oro"
+	L_BAG_BUY_SLOTS = "Compra un nuevo espacio mediante /bags purchase yes"
+	L_BAG_OPEN_BANK = "Necesitas abrir primero el banco."
+	L_BAG_SORT = "Ordena tu bolsa, o tu banco si está abierto."
+	L_BAG_STACK = "Llena los montones incompletos en tu bolsa, o en tu banco si está abierto"
+	L_BAG_BUY_BANKS_SLOT = "Compra un espacio en el banco. (Necesitas tener el banco abierto)"
+	L_BAG_SORT_MENU = "Ordenar"
+	L_BAG_SORT_SPECIAL = "Orden Especial"
+	L_BAG_STACK_MENU = "Amontonar"
+	L_BAG_STACK_SPECIAL = "Montón Especial"
+	L_BAG_SHOW_BAGS = "Mostrar Bolsas"
+	L_BAG_SORTING_BAGS = "Se ha acabado de ordenar."
+	L_BAG_NOTHING_SORT = "No hay nada que ordenar."
+	L_BAG_BAGS_BIDS = "Usando las bolsas: "
+	L_BAG_STACK_END = "Se ha acabado de amontonar."
+	L_BAG_RIGHT_CLICK_SEARCH = "Right-click to search"  -- Needs review
 	
 	-- Grab mail
 	L_MAIL_STOPPED = "Sin espacio, inventario lleno."
 	L_MAIL_COMPLETE = "Todo enviado."
-	L_MAIL_NEED = "Necesitas un buzon."
-	L_MAIL_MESSAGES =  "mensajes"
+	L_MAIL_NEED = "Necesitas un buzón."
+	L_MAIL_MESSAGES = "mensajes"
 	L_MAIL_GOLD = "Recoger efectivo"
 	
 	-- Loot
 	L_LOOT_RANDOM = "Jugador aleatorio"
-	L_LOOT_SELF = "Despojar automaticamente"
+	L_LOOT_SELF = "Despojar automáticamente"
 	L_LOOT_UNKNOWN = "Desconocido"
 	L_LOOT_FISH = "Despojar pescado"
-	L_LOOT_MONSTER = ">> Botin de "
-	L_LOOT_CHEST = ">> Botin del cofre"
+	L_LOOT_MONSTER = ">> Botín de "
+	L_LOOT_CHEST = ">> Botín del cofre"
 	L_LOOT_ANNOUNCE = "Anunciar a"
 	L_LOOT_TO_RAID = "  banda"
 	L_LOOT_TO_PARTY = "  grupo"
@@ -108,8 +121,8 @@ if SettingsDB.client == "esES" then
 
 	-- LitePanels AFK module
 	L_PANELS_AFK = "Estas ausente!"
-	L_PANELS_AFK_RCLICK = "Boton derecho para ocultar."
-	L_PANELS_AFK_LCLICK = "Boton izquierdo para retroceder."
+	L_PANELS_AFK_RCLICK = "Botón derecho para ocultar."
+	L_PANELS_AFK_LCLICK = "Botón izquierdo para retroceder."
 
 	-- Cooldowns
 	L_COOLDOWNS = "TR: "
@@ -133,10 +146,7 @@ if SettingsDB.client == "esES" then
 	L_BIND_KEY = "Tecla"
 	L_BIND_NO_SET = "No tiene asignación"
 	
-	-- Raid Planner
-	L_PLANNER_TITLE = "Planificador de banda"
-	L_PLANNER_IMP_TALENT = "Mejora de talento"
-	L_PLANNER_INSPECT = "Inspeccionando"
+	-- Talent spec
 	L_PLANNER_DEATHKNIGHT_1 = "Sangre"
 	L_PLANNER_DEATHKNIGHT_2 = "Escarcha"
 	L_PLANNER_DEATHKNIGHT_3 = "Profana"
@@ -187,16 +197,16 @@ if SettingsDB.client == "esES" then
 	L_DATATEXT_GATESDESTROYED = "Puertas Destruidas:"
 	
 	-- Class script
-	L_CLASS_HUNTER_UNHAPPY = "Tu mascota está descontenta!"
-	L_CLASS_HUNTER_CONTENT = "Tu mascota está contenta!"
-	L_CLASS_HUNTER_HAPPY = "Tu mascota está feliz!"
+	L_CLASS_HUNTER_UNHAPPY = "¡Tu mascota está descontenta!"
+	L_CLASS_HUNTER_CONTENT = "¡Tu mascota está contenta!"
+	L_CLASS_HUNTER_HAPPY = "¡Tu mascota está feliz!"
 	
 	-- Info text
-	L_INFO_ERRORS = "Ningun error aun."
-	L_INFO_INVITE = "Invitacion aceptada de: "
+	L_INFO_ERRORS = "Ningún error aun."
+	L_INFO_INVITE = "Invitación aceptada de: "
 	L_INFO_DUEL = "Duelo rechazado de: "
 	L_INFO_DISBAND = "Deshaciendo banda..."
-	L_INFO_ADDON_SETS1 = "Escribe /addons <solitario/grupo/banda/pvp/comercio/misiones>, para cargar las moficiaciones preinstaladas."
+	L_INFO_ADDON_SETS1 = "Escribe /addons <solitario/grupo/banda/pvp/comercio/misiones>, para cargar las modificaciones preinstaladas."
 	L_INFO_ADDON_SETS2 = "Puedes añadir, borrar o cambiar la lista de las modificaciones, modificando wtf.lua en la carpeta `scripts`."
 	L_INFO_SETTINGS_DBM = "Escribe /settings dbm, para aplicar las preferencias del DBM."
 	L_INFO_SETTINGS_MSBT = "Escribe /settings msbt, para aplicar las preferencias del MSBT."
@@ -210,9 +220,9 @@ if SettingsDB.client == "esES" then
 	L_POPUP_RESETUI = "¿Estás seguro de que desea restablecer ShestakUI?"
 	L_POPUP_SWITCH_RAID = "Hay activos 2 estilos para banda, por favor selecciona uno."
 	L_POPUP_DISABLEUI = "ShestakUI no funciona con esta resolución, ¿Quieres desactivar ShestakUI? (Pulsa cancelar si quieres probar otra resolución)"
-	L_POPUP_SETTINGS_ALL = "¿Aplicar modificaciones para todos los addons? (DBM/DXE, Skada/Recount ó MSBT)"
+	L_POPUP_SETTINGS_ALL = "¿Aplicar modificaciones para todos los addons? (DBM/DXE, Skada/Recount o MSBT)"
 	L_POPUP_SETTINGS_DBM = "Necesito cambiar la posición de los elementos del DBM."
-	L_POPUP_SETTINGS_CLIQUE = "Your Clique settings are not setup with ShestakUI, would you like to set them up?"  -- Needs review
+	L_POPUP_SETTINGS_CLIQUE = "Tus preferencias para Cloque no concuerdan con Shestak UI, ¿Quieres actualizarlas?"
 	
 	-- Welcome mesage
 	L_WELCOME_LINE_1 = "Bienvenido a ShestakUI "

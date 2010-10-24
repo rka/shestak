@@ -27,7 +27,8 @@ MinimapZoomIn:Hide()
 MinimapZoomOut:Hide()
 
 -- Hide Voice Chat Frame
-MiniMapVoiceChatFrame:Hide()
+SettingsDB.Kill(MiniMapVoiceChatFrame)
+SettingsDB.Kill(VoiceChatTalkers)
 
 -- Hide North texture at top
 MinimapNorthTag:SetTexture(nil)
@@ -60,12 +61,12 @@ MiniMapWorldMapButton:Hide()
 MiniMapInstanceDifficulty:SetParent(Minimap)
 MiniMapInstanceDifficulty:ClearAllPoints()
 MiniMapInstanceDifficulty:SetPoint("TOPRIGHT", Minimap, "TOPRIGHT", SettingsDB.Scale(3), SettingsDB.Scale(2))
-MiniMapInstanceDifficulty:SetScale(0.8)
+MiniMapInstanceDifficulty:SetScale(0.75)
 
 GuildInstanceDifficulty:SetParent(Minimap)
 GuildInstanceDifficulty:ClearAllPoints()
 GuildInstanceDifficulty:SetPoint("TOPRIGHT", Minimap, "TOPRIGHT", SettingsDB.Scale(-2), SettingsDB.Scale(2))
-GuildInstanceDifficulty:SetScale(0.8)
+GuildInstanceDifficulty:SetScale(0.75)
 
 -- Invites Icon
 GameTimeCalendarInvitesTexture:ClearAllPoints()

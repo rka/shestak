@@ -54,6 +54,8 @@ if SettingsDB.name == "Черешок"
 	SettingsCF["general"].welcome_message = false
 	SettingsCF["misc"].auto_quest = true
 	SettingsCF["misc"].vehicle_mouseover = true
+	SettingsCF["misc"].quest_auto_button = true
+	SettingsCF["misc"].raid_tools = true
 	SettingsCF["combattext"].treshold = 1000
 	SettingsCF["combattext"].heal_treshold = 1000
 	SettingsCF["combattext"].crit_postfix = ""
@@ -63,5 +65,4 @@ if SettingsDB.name == "Черешок"
 	SettingsCF["unitframe"].arena_on_right = false
 	SettingsCF["error"].black = false
 	SettingsCF["error"].white = true
-	SettingsCF["bag"].bag_columns = 10
 end

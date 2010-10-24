@@ -86,8 +86,8 @@
 	<Script file="scripts\reminder.lua"/>
 	<Script file="scripts\enemycd.lua"/>
 	<Script file="scripts\raidcd.lua"/>
-	<!--<Script file="scripts\bags.lua"/>-->
-	<!--<Script file="scripts\raidcomp.lua"/>-->
+	<Script file="scripts\bags.lua"/>
+	<Script file="scripts\raidutility.lua"/>
 	<!--<Script file="scripts\pulsecd.lua"/>-->
 	
 	<Script file="datatext\battleground.lua"/>

@@ -8,14 +8,14 @@ if SettingsDB.client == "frFR" then
 	L_TOOLTIP_ACH_STATUS = "Votre statut :"
 	L_TOOLTIP_ACH_COMPLETE = "Votre statut : Oui "
 	L_TOOLTIP_ACH_INCOMPLETE = "Votre statut : Non terminé"
-	L_TOOLTIP_SPELL_ID = "Spell ID:"  -- Needs review
+	L_TOOLTIP_SPELL_ID = "ID du sort:"
+	
+	-- Raid Utility
+	L_RAID_UTIL = "Outils de raids"
+	L_RAID_UTIL_DISBAND = "Fin du raid"
 	
 	-- Zone name
-	L_ZONE_DALARAN = "Dalaran"
-    L_ZONE_UNDERBELLY = "Les Entrailles"
-    L_ZONE_KRASUS = "Aire de Krasus"
     L_ZONE_WINTERGRASP = "Joug-d'hiver"
-    L_ZONE_VC = "Citadelle Pourpre"
 
 	-- Flask name
 	L_FLASK_STR = "Flacon du Grand Nord - Force"
@@ -26,8 +26,6 @@ if SettingsDB.client == "frFR" then
 	L_UF_GHOST = "Spectre"
 	L_UF_DEAD = "Mort"
 	L_UF_OFFLINE = "Hors ligne"
-	L_UF_DRAGON = "Aspect du faucon-dragon"
-	L_UF_VIPER = "Aspect de la vipère"
 	L_UF_MANA = "Peu de mana"
 	L_UF_TRINKET_READY = "Bijou Prêt : "
 	L_UF_TRINKET_USED = "Bijou Utilisé : "
@@ -58,8 +56,8 @@ if SettingsDB.client == "frFR" then
 	L_GUI_MINIMAP_ICON_DPS = "Passer à la configuration dps"
 	
 	-- Chat
-	L_CHAT_WHISPER = "From"
-	L_CHAT_BN_WHISPER = "From"
+	L_CHAT_WHISPER = "De"
+	L_CHAT_BN_WHISPER = "De"
 	L_CHAT_AFK = "[AFK]"
 	L_CHAT_DND = "[DND]"
 	L_CHAT_GM = "[GM]"
@@ -81,9 +79,24 @@ if SettingsDB.client == "frFR" then
 	L_ERRORFRAME_L = "Clic gauche pour afficher les erreurs."
 	
 	-- Bags
-	L_BAG_FREE = "Places libres : "
-	L_BAG_OUT_OFF = " sur "
 	L_BAG_BANK = "Banque"
+	L_BAG_NO_SLOTS = "Vous ne pouvez pas acheter plus de place!"
+	L_BAG_COSTS = "Prix: %.2f or"
+	L_BAG_BUY_SLOTS = "Acheter un nouvel emplacement avec /bags"
+	L_BAG_OPEN_BANK = "Vous devez d'abord ouvrir votre banque."
+	L_BAG_SORT = "Trier vos sacs ou votre banque, si elle est ouverte."
+	L_BAG_STACK = "Empile vos objets  dans votre sac ou en banque, si elle est ouverte."
+	L_BAG_BUY_BANKS_SLOT = "Acheter une place à la banque. (nécessite d'avoir votre banque ouverte)"
+	L_BAG_SORT_MENU = "Trier"
+	L_BAG_SORT_SPECIAL = "Tri personnalisé"
+	L_BAG_STACK_MENU = "Empiler"
+	L_BAG_STACK_SPECIAL = "Empilage personnalisé"
+	L_BAG_SHOW_BAGS = "Montrer les sacs"
+	L_BAG_SORTING_BAGS = "Tri terminé."
+	L_BAG_NOTHING_SORT = "Rien à trier."
+	L_BAG_BAGS_BIDS = "Emplacements utilisés: "
+	L_BAG_STACK_END = "Empilage terminé."
+	L_BAG_RIGHT_CLICK_SEARCH = "Click-droit pour rechercher"
 	
 	-- Grab mail
 	L_MAIL_STOPPED = "Inventaire plein."
@@ -133,10 +146,7 @@ if SettingsDB.client == "frFR" then
 	L_BIND_KEY = "Touche"
 	L_BIND_NO_SET = "Pas encore de raccourcis"
 	
-	-- Raid Planner
-	L_PLANNER_TITLE = "Raid Planner"  -- Needs review
-	L_PLANNER_IMP_TALENT = "Talent amélioré"
-	L_PLANNER_INSPECT = "Inspection"
+	-- Talent spec
 	L_PLANNER_DEATHKNIGHT_1 = "Sang"
 	L_PLANNER_DEATHKNIGHT_2 = "Givre"
 	L_PLANNER_DEATHKNIGHT_3 = "Impie"

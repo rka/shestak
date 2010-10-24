@@ -17,10 +17,11 @@ if GetLocale() == "deDE" then
 	L_GUI_MISC_AUTORESSURECT = "Automatisch im Schlachtfeld wiederbeleben"
 	L_GUI_MISC_MARKING = "Ziele markieren wenn *Umschalttaste* gedürckt wird"
 	L_GUI_MISC_INVKEYWORD = "Kurzes Schlüsselwort für Einladungen (/ainv)"
-	L_GUI_MISC_RAID_PLANNER = "Enable Raid planner (/com)" -- Needs review
 	L_GUI_MISC_SPIN_CAMERA = "Spin camera while afk" -- Needs review
 	L_GUI_MISC_MOVE_WATCH_FRAME = "Quest Watch frame movable" -- Needs review
 	L_GUI_MISC_VEHICLE_MOUSEOVER = "Vehicle frame on mouseover" -- Needs review
+	L_GUI_MISC_QUEST_AUTOBUTTON = "Quest/item auto button" -- Needs review
+	L_GUI_MISC_RAID_TOOLS = "Raid tools" -- Needs review
 	
 	-- Skins options
 	L_GUI_SKINS = "Stylization" -- Needs review
@@ -31,14 +32,17 @@ if GetLocale() == "deDE" then
 	L_GUI_COMBATTEXT = "Combat Text" -- Needs review
 	L_GUI_COMBATTEXT_FONT_SIZE = "Font size" -- Needs review
 	L_GUI_COMBATTEXT_BLIZZ_HEAD_NUMBERS = "Use blizzard damage/healing output(above mob/player head)" -- Needs review
+	L_GUI_COMBATTEXT_DAMAGE_STYLE = "Change default damage/healing font above mobs/player heads(you need to restart WoW to see changes)" -- Needs review
 	L_GUI_COMBATTEXT_DAMAGE = "Show outgoing damage in it's own frame" -- Needs review
 	L_GUI_COMBATTEXT_HEALING = "Show outgoing healing in it's own frame" -- Needs review
+	L_GUI_COMBATTEXT_HOTS = "Show periodic healing effects in healing frame" -- Needs review
+	L_GUI_COMBATTEXT_PET_DAMAGE = "Show your pet damage" -- Needs review
+	L_GUI_COMBATTEXT_DOT_DAMAGE = "Show damage from your dots" -- Needs review
 	L_GUI_COMBATTEXT_DAMAGE_COLOR = "Display damage numbers depending on school of magic" -- Needs review
 	L_GUI_COMBATTEXT_CRIT_PREFIX = "Symbol that will be added before crit" -- Needs review
 	L_GUI_COMBATTEXT_CRIT_POSTFIX = "Symbol that will be added after crit" -- Needs review
 	L_GUI_COMBATTEXT_ICONS = "Show outgoing damage icons" -- Needs review
 	L_GUI_COMBATTEXT_ICON_SIZE = "Icon size of spells in outgoing damage frame, also has effect on dmg font size" -- Needs review
-	L_GUI_COMBATTEXT_DAMAGE_STYLE = "Change default damage/healing font above mobs/player heads(you need to restart WoW to see changes)" -- Needs review
 	L_GUI_COMBATTEXT_TRESHOLD = "Minimum damage to show in damage frame" -- Needs review
 	L_GUI_COMBATTEXT_HEAL_TRESHOLD = "Minimum healing to show in incoming/outgoing healing messages" -- Needs review
 	L_GUI_COMBATTEXT_SCROLLABLE = "Allows you to scroll frame lines with mousewheel" -- Needs review
@@ -97,6 +101,7 @@ if GetLocale() == "deDE" then
 	L_GUI_TOOLTIP_TITLE = "Zeige Titel im Tooltip an"
 	L_GUI_TOOLTIP_RANK = "Gildenrank im Tooltip anzeigen"
 	L_GUI_TOOLTIP_ARENA_EXPERIENCE = "PVP-Erfahrung des Spielers im Tooltip anzeigen (Arena)"
+	L_GUI_TOOLTIP_SPELL_ID = "Spell ID" -- Needs review
 	
 	-- Chat options
 	L_GUI_CHAT_ENABLE = "Enable chat" -- Needs review
@@ -112,9 +117,11 @@ if GetLocale() == "deDE" then
 	L_GUI_CHAT_BAR = "Kleine Leiste um den Chatchannel zu wechseln"
 	L_GUI_CHAT_TIMESTAMP = "Farbe des Zeitstempels"
 	L_GUI_CHAT_WHISP = "Geräusch abspielen wenn eine private Nachricht empfangen wird"
+	L_GUI_CHAT_SKIN_BUBBLE = "Skin Blizzard chat bubbles"  -- Needs review
 	
 	-- Bag options
 	L_GUI_BAGS = "Taschen"
+	L_GUI_BAGS_ENABLE = "Enable bags"  -- Needs review
 	L_GUI_BAGS_BUTTON_SIZE = "Buttons size"  -- Needs review
 	L_GUI_BAGS_BUTTON_SPACE = "Buttons space"  -- Needs review
 	L_GUI_BAGS_BANK = "Anzahl der Spalten in der Bank"
@@ -152,6 +159,7 @@ if GetLocale() == "deDE" then
 	L_GUI_NAMEPLATE_THREAT = "Falls Tank und sichere Aggro = grün, keine = rot"
 	L_GUI_NAMEPLATE_CLASS_ICON = "Zeige Klassensymbole an (PVP)"
 	L_GUI_NAMEPLATE_NAME_ABBREV = "Display the abbreviated names"  -- Needs review
+	L_GUI_NAMEPLATE_OVERLAP = "Allow nameplates to overlap"  -- Needs review
 	
 	-- ActionBar options
 	L_GUI_ACTIONBAR_ENABLE = "Enable action bars"  -- Needs review
@@ -235,14 +243,11 @@ if GetLocale() == "deDE" then
 	L_GUI_UF_PLUGINS_COMBAT_FEEDBACK = "Kampftexts auf Spieler/Zielfenster"
 	L_GUI_UF_PLUGINS_DEBUFFHIGHLIGHT_ICON = "Debuff highlight texture + icon"  -- Needs review
 	L_GUI_UF_PLUGINS_AURA_WATCH = "*RAID* Buffüberwachung"
-	L_GUI_UF_PLUGINS_HEALCOMM = "oUF_HealComm4 für Raidframes"
-	L_GUI_UF_PLUGINS_HEALCOMM_BAR = "Leiste für Eingehende Heilung"
-	L_GUI_UF_PLUGINS_HEALCOMM_OVER = "Leiste für Overheal"
-	L_GUI_UF_PLUGINS_HEALCOMM_TEXT = "Text für eingehende Heilung"
-	L_GUI_UF_PLUGINS_HEALCOMM_OTHERS = "Verstecke eigene eingehende Heilung"
+	L_GUI_UF_PLUGINS_HEALCOMM = "Leiste für Eingehende Heilung"
 	
 	-- Panel options
 	L_GUI_TOP_PANEL = "Oberes Panel"
+	L_GUI_TOP_PANEL_ENABLE = "Enable top panel"	-- Needs review
 	L_GUI_TOP_PANEL_MOUSE = "Oberes Panel nur bei Mouseover anzeigen"
 	L_GUI_TOP_PANEL_WIDTH = "Breite des Panels"
 	L_GUI_TOP_PANEL_HEIGHT = "Höhe des Panels"
@@ -258,6 +263,7 @@ if GetLocale() == "deDE" then
 	L_GUI_STATS_EXPERIENCE = "Experience"  -- Needs review
 	L_GUI_STATS_COORDS = "Coords"  -- Needs review
 	L_GUI_STATS_LOCATION = "Location"  -- Needs review
+	L_GUI_STATS_GUILD_REPAIR = "Repair from guild bank" -- Needs review
 	
 	-- Error options
 	L_GUI_ERROR = "Fehler"

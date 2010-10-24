@@ -55,6 +55,7 @@ SettingsCF["misc"] = {
 	["move_watchframe"] = true,					-- Quest Watch frame movable
 	["vehicle_mouseover"] = false,				-- Vehicle frame on mouseover
 	["quest_auto_button"] = false,				-- Quest auto button
+	["raid_tools"] = false,						-- Raid tools
 }
 
 ----------------------------------------------------------------------------------------
@@ -71,14 +72,17 @@ SettingsCF["skins"] = {
 SettingsCF["combattext"] = {
 	["font_size"] = 16,							-- Font size
 	["blizz_head_numbers"] = false,				-- Use blizzard damage/healing output(above mob/player head)
+	["damage_style"] = true,					-- Change default damage/healing font above mobs/player heads(you need to restart WoW to see changes)
 	["damage"] = true,							-- Show outgoing damage in it's own frame
 	["healing"] = true,							-- Show outgoing healing in it's own frame
+	["show_hots"] = true,						-- Show periodic healing effects in healing frame
+	["pet_damage"] = true,						-- Show your pet damage
+	["dot_damage"] = true,						-- Show damage from your dots
 	["damage_color"] = true,					-- Display damage numbers depending on school of magic
 	["crit_prefix"] = "*",						-- Symbol that will be added before crit
 	["crit_postfix"] = "*",						-- Symbol that will be added after crit
 	["icons"] = true,							-- Show outgoing damage icons
 	["icon_size"] = 16,							-- Icon size of spells in outgoing damage frame, also has effect on dmg font size
-	["damage_style"] = true,					-- Change default damage/healing font above mobs/player heads(you need to restart WoW to see changes)
 	["treshold"] = 1,							-- Minimum damage to show in damage frame
 	["heal_treshold"] = 1,						-- Minimum healing to show in incoming/outgoing healing messages
 	["scrollable"] = false,						-- Allows you to scroll frame lines with mousewheel
@@ -174,6 +178,7 @@ SettingsCF["chat"] = {
 	["chat_bar"] = false,						-- Lite Button Bar for switch chat channel
 	["time_color"] = "FFD700",					-- Timestamp coloring(http://www.december.com/html/spec/colorcodes.html)
 	["whisp_sound"] = true,						-- Sound when whisper
+	["bubbles"] = true,							-- Skin Blizzard chat bubbles
 }
 
 ----------------------------------------------------------------------------------------
@@ -184,7 +189,7 @@ SettingsCF["bag"] = {
 	["button_size"] = 27,						-- Buttons size
 	["button_space"] = 3,						-- Buttons space
 	["bank_columns"] = 17,						-- Horizontal number of columns in bank
-	["bag_columns"] = 8,						-- Horizontal number of columns in main bag
+	["bag_columns"] = 10,						-- Horizontal number of columns in main bag
 }
 
 ----------------------------------------------------------------------------------------
@@ -233,6 +238,7 @@ SettingsCF["nameplate"] = {
 	["enhance_threat"] = true,					-- If tank good aggro = green, bad = red
 	["class_icons"] = false,					-- Icons by class in pvp
 	["name_abbrev"] = true,						-- Display the abbreviated names
+	["overlap"] = true,							-- Allow nameplates to overlap
 }
 
 ----------------------------------------------------------------------------------------
@@ -345,6 +351,7 @@ SettingsCF["unitframe"] = {
 --	Panel options
 ----------------------------------------------------------------------------------------
 SettingsCF["toppanel"] = {
+	["enable"] = true,							-- Enable top panel
 	["mouseover"] = true,						-- Top panel on mouseover
 	["height"] = 55,							-- Panel height
 	["width"] = 320,							-- Panel width
@@ -363,6 +370,7 @@ SettingsCF["stats"] = {
 	["experience"] = false,						-- Experience
 	["coords"] = true,							-- Coords
 	["location"] = true,						-- Location
+	["guild_repair"] = true,					-- Repair from guild bank
 }
 
 ----------------------------------------------------------------------------------------
@@ -485,15 +493,37 @@ SettingsCF["position"] = {
 --	Fonts options !!!!!!!!!!!NOT WORKING!!!!!!!!!!!
 ----------------------------------------------------------------------------------------
 SettingsCF["pixelfont"] = {
-	["stats"] = false,
-	["unit_frames"] = false,
-	["auras"] = false,
-	["combat_text"] = false,
-	["chat_tabs"] = false,
-	["action_bars"] = false,
-	["threat_meter"] = false,
-	["raid_cooldowns"] = false,
-	["cooldown_timers"] = false,
-	["filger_bars_name"] = false,
-	["stylization"] = false,
+	["stats_font"] = "Interface\\AddOns\\ShestakUI\\media\\pixel.ttf",
+	["stats_font_size"] = 8,
+	["stats_font_style"] = "OUTLINEMONOCHROME",
+	["unit_frames_font"] = "Interface\\AddOns\\ShestakUI\\media\\pixel.ttf",
+	["unit_frames_font_size"] = 8,
+	["unit_frames_font_style"] = "OUTLINEMONOCHROME",
+	["auras_font"] = "Interface\\AddOns\\ShestakUI\\media\\pixel.ttf",
+	["auras_font_size"] = 8,
+	["auras_font_style"] = "OUTLINEMONOCHROME",
+	["combat_text_font"] = "Interface\\AddOns\\ShestakUI\\media\\pixel.ttf",
+	["combat_text_font_size"] = 16,
+	["combat_text_font_style"] = "OUTLINEMONOCHROME",
+	["chat_tabs_font"] = "Interface\\AddOns\\ShestakUI\\media\\pixel.ttf",
+	["chat_tabs_font_size"] = 8,
+	["chat_tabs_font_style"] = "OUTLINEMONOCHROME",
+	["action_bars_font"] = "Interface\\AddOns\\ShestakUI\\media\\pixel.ttf",
+	["action_bars_font_size"] = 8,
+	["action_bars_font_style"] = "OUTLINEMONOCHROME",
+	["threat_meter_font"] = "Interface\\AddOns\\ShestakUI\\media\\pixel.ttf",
+	["threat_meter_font_size"] = 8,
+	["threat_meter_font_style"] = "OUTLINEMONOCHROME",
+	["raid_cooldowns_font"] = "Interface\\AddOns\\ShestakUI\\media\\pixel.ttf",
+	["raid_cooldowns_font_size"] = 8,
+	["raid_cooldowns_font_style"] = "OUTLINEMONOCHROME",
+	["cooldown_timers_font"] = "Interface\\AddOns\\ShestakUI\\media\\pixel.ttf",
+	["cooldown_timers_font_size"] = 16,
+	["cooldown_timers_font_style"] = "OUTLINEMONOCHROME",
+	["filger_bars_name_font"] = "Interface\\AddOns\\ShestakUI\\media\\pixel.ttf",
+	["filger_bars_name_font_size"] = 8,
+	["filger_bars_name_font_style"] = "OUTLINEMONOCHROME",
+	["stylization_font"] = "Interface\\AddOns\\ShestakUI\\media\\pixel.ttf",
+	["stylization_font_size"] = 8,
+	["stylization_font_style"] = "OUTLINEMONOCHROME",
 }

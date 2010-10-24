@@ -77,10 +77,6 @@ if (IsAddOnLoaded("Omen") or IsAddOnLoaded("sThreatMeter2") or IsAddOnLoaded("Sk
 	SettingsCF["threat"].enable = false
 end
 
-if (IsAddOnLoaded("RaidComp")) then
-	SettingsCF["misc"].raid_planner = false
-end
-
 if (IsAddOnLoaded("DBM-SpellTimers") or IsAddOnLoaded("alRaidCD")) then
 	SettingsCF["cooldown"].raid_enable = false
 end

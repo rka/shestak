@@ -10,12 +10,12 @@ if SettingsDB.client == "ruRU" then
 	L_TOOLTIP_ACH_INCOMPLETE = "Ваш статус: Не завершено"
 	L_TOOLTIP_SPELL_ID = "Номер заклинания:"
 	
+	-- Raid Utility
+	L_RAID_UTIL = "Инструменты рейда"
+	L_RAID_UTIL_DISBAND = "Распустить группу"
+	
 	-- Zone name
-	L_ZONE_DALARAN = "Даларан"
-    L_ZONE_UNDERBELLY = "Клоака"
-    L_ZONE_KRASUS = "Площадка Краса"
     L_ZONE_WINTERGRASP = "Озеро Ледяных Оков"
-    L_ZONE_VC = "Аметистовая цитадель"
 	
 	-- Flask name
 	L_FLASK_STR = "Настой Севера - Сила"
@@ -26,8 +26,6 @@ if SettingsDB.client == "ruRU" then
 	L_UF_GHOST = "Призрак"
 	L_UF_DEAD = "Мёртв"
 	L_UF_OFFLINE = "Не в сети"
-	L_UF_DRAGON = "Дух дракондора"
-	L_UF_VIPER = "Дух гадюки"
 	L_UF_MANA = "Мало маны"
 	L_UF_TRINKET_READY = "Аксессуар готов: "
 	L_UF_TRINKET_USED = "Аксессуар задействован: "
@@ -81,9 +79,24 @@ if SettingsDB.client == "ruRU" then
 	L_ERRORFRAME_L = "Щелкните, чтобы посмотреть ошибки."
 	
 	-- Bags
-	L_BAG_FREE = "Свободно: "
-	L_BAG_OUT_OFF = " из "
 	L_BAG_BANK = "Банк"
+	L_BAG_NO_SLOTS = "невозможно купить еще ячеек!"
+	L_BAG_COSTS = "Цена: %.2f золотых"
+	L_BAG_BUY_SLOTS = "Купить новую ячейку коммандой /bags purchase yes"
+	L_BAG_OPEN_BANK = "Сначала откройте банк."
+	L_BAG_SORT = "Сортировать предметы в сумке или банке, если они открыты."
+	L_BAG_STACK = "Заполнить неполные стопки в сумках или банке, если они открыты."
+	L_BAG_BUY_BANKS_SLOT = "купить банковскую ячейку. (банк должен быть открыт)"
+	L_BAG_SORT_MENU = "Сортировать"
+	L_BAG_SORT_SPECIAL = "Сортировать в спецсумках"
+	L_BAG_STACK_MENU = "Сложить"
+	L_BAG_STACK_SPECIAL = "Сложить в спецсумках"
+	L_BAG_SHOW_BAGS = "Показать сумки"
+	L_BAG_SORTING_BAGS = "Сортировка завершена."
+	L_BAG_NOTHING_SORT = "Нечего сортировать."
+	L_BAG_BAGS_BIDS = "Использование сумок: "
+	L_BAG_STACK_END = "Заполнение завершено."
+	L_BAG_RIGHT_CLICK_SEARCH = "ПКМ для поиска"
 	
 	-- Grab mail
 	L_MAIL_STOPPED = "Сбор почты преостановлен из-за Ваших заполненных сумок."
@@ -133,10 +146,7 @@ if SettingsDB.client == "ruRU" then
 	L_BIND_KEY = "Клавиша"
 	L_BIND_NO_SET = "Не назначено"
 	
-	-- Raid Planner
-	L_PLANNER_TITLE = "Планировщик рейда"
-	L_PLANNER_IMP_TALENT = "Улучшается талантами"
-	L_PLANNER_INSPECT = "Осматривается"
+	-- Talent spec
 	L_PLANNER_DEATHKNIGHT_1 = "Кровь"
 	L_PLANNER_DEATHKNIGHT_2 = "Холод"
 	L_PLANNER_DEATHKNIGHT_3 = "Нечестивость"
@@ -209,6 +219,7 @@ if SettingsDB.client == "ruRU" then
 	L_POPUP_INSTALLUI = "Это первый запуск ShestakUI для этого персонажа. Необходимо перезагрузить интерфейс для его настройки."
 	L_POPUP_RESETUI = "Вы уверены, что хотите сбросить настройки ShestakUI?"
 	L_POPUP_SWITCH_RAID = "Обе рейдовые раскладки активны, пожалуйста, выберите одну."
+	L_POPUP_DISBAND_RAID = "Вы уверены, что хотите распустить группу?"
 	L_POPUP_DISABLEUI = "ShestakUI не работает на этом разрешении, хотите отключить ShestakUI? (Отмена если хотите попробовать другое разрешение)"
 	L_POPUP_SETTINGS_ALL = "Применить настройки для всех модификаций? (DBM/DXE, Skada/Recount и MSBT)"
 	L_POPUP_SETTINGS_DBM = "Необходимо изменить позиции элементов DBM."

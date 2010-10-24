@@ -5,10 +5,14 @@ if not SettingsCF["nameplate"].enable == true then return end
 
 local caelNamePlates = CreateFrame("Frame", nil, UIParent)
 caelNamePlates:SetScript("OnEvent", function(self, event, ...) self[event](self, ...) end)
-SetCVar("bloattest", 1)
-SetCVar("spreadnameplates", 0)
-SetCVar("bloatnameplates", 0)
 SetCVar("bloatthreat", 0)
+SetCVar("bloattest", 1)
+SetCVar("bloatnameplates", 0)
+if SettingsCF["nameplate"].overlap == true then
+	SetCVar("spreadnameplates", "0")
+else
+	SetCVar("spreadnameplates", "1")
+end
  
 local select = select
  
@@ -51,6 +55,14 @@ local ShortValue = function(value)
 	end
 end
 
+local function CheckTarget(self)
+	if UnitName("target") == self.oldname:GetText() and self:GetAlpha() == 1 then
+		return true
+	else
+		return false
+	end
+end
+
 local threatUpdate = function(self, elapsed)
 	self.elapsed = self.elapsed + elapsed	
  
@@ -66,11 +78,7 @@ local threatUpdate = function(self, elapsed)
 			end
 		end
 		
-		if UnitName("target") == self.oldname:GetText() and self:GetAlpha() == 1 then
-			isTarget = true
-		else
-			isTarget = false
-		end
+		if not InCombatLockdown() then self:SetScale(1) end
 		
 		if SettingsCF["nameplate"].enhance_threat == true then
 			if not self.oldglow:IsShown() then
@@ -102,7 +110,7 @@ local threatUpdate = function(self, elapsed)
 				end
 			end
 		else
-			if not self.oldglow:IsShown() and not enemyPlayer then
+			if not self.oldglow:IsShown() and not isEnemyPlayer then
 				self.healthBar:SetStatusBarColor(self.r, self.g, self.b)
 			elseif not isTarget then
 				local r, g, b = self.oldglow:GetVertexColor()
@@ -115,13 +123,12 @@ local threatUpdate = function(self, elapsed)
 			self.healthBar:SetStatusBarColor(self.r, self.g, self.b)
 		end
  
-		local minHealth, maxHealth = self.OriginalHealth:GetMinMaxValues()
-		local valueHealth = self.OriginalHealth:GetValue()
+		local minHealth, maxHealth = self.oldhealth:GetMinMaxValues()
+		local valueHealth = self.oldhealth:GetValue()
 		local d = math.floor((valueHealth / maxHealth) * 100)
 		
 		if SettingsCF["nameplate"].health_value == true then
 			self.healthBar.percent:SetText(ShortValue(valueHealth).." - "..(string.format("%d%%", math.floor((valueHealth/maxHealth)*100))))
-
 			if isEnemyPlayer then
 				if (d <= 45 and d >= 20) then
 					self.healthBar.percent:SetTextColor(0.65, 0.63, 0.35)
@@ -133,12 +140,14 @@ local threatUpdate = function(self, elapsed)
 			end
 		end
 		
-		if isTarget then
+		self.healthBar:SetHeight(SettingsCF["nameplate"].height * UIParent:GetEffectiveScale())
+		self.healthBar:SetWidth(SettingsCF["nameplate"].width * UIParent:GetEffectiveScale())
+		
+		if CheckTarget(self) then
 			self.name:SetTextColor(1, 1, 0)
 		else
 			self.name:SetTextColor(1, 1, 1)
-		end	
-		
+		end
 		self.elapsed = 0
 	end
 end
@@ -149,6 +158,7 @@ local Abbrev = function(name)
 end
 
 local updatePlate = function(self)
+	if not InCombatLockdown() then self:Show() end
 	local r, g, b = self.healthBar:GetStatusBarColor()
 	local newr, newg, newb
 	if g + b == 0 then
@@ -266,7 +276,7 @@ local createPlate = function(frame)
 	frame.healthBar, frame.castBar = frame:GetChildren()
 	local healthBar, castBar = frame.healthBar, frame.castBar
 	local glowRegion, overlayRegion, castbarOverlay, shieldedRegion, spellIconRegion, highlightRegion, nameTextRegion, levelTextRegion, bossIconRegion, raidIconRegion, stateIconRegion = frame:GetRegions()
-	frame.OriginalHealth = healthBar
+	frame.oldhealth = healthBar
  
 	frame.oldname = nameTextRegion
 	nameTextRegion:Hide()
@@ -309,7 +319,7 @@ local createPlate = function(frame)
 	if SettingsCF["nameplate"].health_value == true then
 		healthBar.percent = healthBar:CreateFontString(nil, "OVERLAY")
 		healthBar.percent:SetFont(SettingsCF["media"].pixel_font, SettingsCF["nameplate"].font_size * offset, SettingsCF["media"].pixel_font_style)
-		healthBar.percent:SetPoint("RIGHT", healthBar, "RIGHT", 0, 1 * offset)
+		healthBar.percent:SetPoint("RIGHT", healthBar, "RIGHT", 0, 0)
 		healthBar.percent:SetTextColor(1, 1, 1)
 		healthBar.percent:SetJustifyH("RIGHT")
 	end
@@ -327,7 +337,7 @@ local createPlate = function(frame)
  
 	castBar.time = castBar:CreateFontString(nil, "ARTWORK")
 	castBar.time:SetFont(SettingsCF["media"].pixel_font, SettingsCF["nameplate"].font_size * offset, SettingsCF["media"].pixel_font_style)
-	castBar.time:SetPoint("RIGHT", castBar, "RIGHT", 0, 0.5)
+	castBar.time:SetPoint("RIGHT", castBar, "RIGHT", 0, 0)
 	castBar.time:SetJustifyH("RIGHT")
  
 	if SettingsCF["nameplate"].show_castbar_name == true then
@@ -335,7 +345,7 @@ local createPlate = function(frame)
 		castBar.castName:SetFont(SettingsCF["media"].pixel_font, SettingsCF["nameplate"].font_size * offset, SettingsCF["media"].pixel_font_style)
 		castBar.castName:SetHeight(SettingsCF["nameplate"].height)
 		castBar.castName:SetWidth(SettingsCF["nameplate"].width - 27)
-		castBar.castName:SetPoint("LEFT", castBar, "LEFT", 2, 0.5)
+		castBar.castName:SetPoint("LEFT", castBar, "LEFT", 2, 0)
 		castBar.castName:SetTextColor(1, 1, 1)
 		castBar.castName:SetJustifyH("LEFT")
 	end
@@ -479,25 +489,7 @@ if SettingsCF["nameplate"].class_icons == true then
 end
  
 local numKids = 0
-local lastUpdate = 0
 caelNamePlates:SetScript("OnUpdate", function(self, elapsed)
-	--[[lastUpdate = lastUpdate + elapsed
- 
-	if lastUpdate > 0.05 then
-		lastUpdate = 0
- 
-		local newNumKids = WorldFrame:GetNumChildren()
-		if newNumKids ~= numKids then
-			for i = numKids + 1, newNumKids do
-				local frame = select(i, WorldFrame:GetChildren())
- 
-				if isValidFrame(frame) then
-					createPlate(frame)
-				end
-			end
-			numKids = newNumKids
-		end
-	end]]
 	local newNumKids = WorldFrame:GetNumChildren()
 	if newNumKids ~= numKids then
 		for i = numKids + 1, newNumKids do

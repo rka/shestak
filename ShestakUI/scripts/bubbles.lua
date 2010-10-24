@@ -1,6 +1,8 @@
 ----------------------------------------------------------------------------------------
 --	Chat Bubbles(by Elv22 or nightcracker)
 ----------------------------------------------------------------------------------------
+if SettingsCF["chat"].bubbles ~= true then return end
+
 local chatbubblehook = CreateFrame("Frame", nil, UIParent)
 local noscalemult = SettingsDB.mult * SettingsCF.general.uiscale
 local tslu = 0
@@ -25,6 +27,7 @@ local function skinbubble(frame)
 	})
 	frame:SetBackdropColor(unpack(SettingsCF.media.overlay_color))
 	frame:SetBackdropBorderColor(unpack(SettingsCF.media.border_color))
+	frame:SetClampedToScreen(false)
 	
 	tinsert(bubbles, frame)
 end
