@@ -86,7 +86,7 @@ Filger_Spells = {
 			-- Siphoned Power
 			{ spellID = 71636, size = 37, unitId = "player", caster = "player", filter = "BUFF" },
 			-- Hyperspeed Accelerators
-			{ spellID = 54999, size = 37, unitId = "player", caster = "player", filter = "BUFF" },
+			{ spellID = 54758, size = 37, unitId = "player", caster = "player", filter = "BUFF" },
 			-- Cultivated Power
 			{ spellID = 71572, size = 37, unitId = "player", caster = "player", filter = "BUFF" },
 			-- Hardened Skin
