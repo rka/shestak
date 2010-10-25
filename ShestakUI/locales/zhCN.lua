@@ -11,8 +11,8 @@ if SettingsDB.client == "zhCN" then
 	L_TOOLTIP_SPELL_ID = "Spell ID:"  -- Needs review
 	
 	-- Raid Utility
-	L_RAID_UTIL = "Raid Utility" -- Needs review
-	L_RAID_UTIL_DISBAND = "Disband Group" -- Needs review
+	L_RAID_UTIL = "团队工具"
+	L_RAID_UTIL_DISBAND = "解散团队"
 	
 	-- Zone name
     L_ZONE_WINTERGRASP = "冬握湖"
@@ -80,23 +80,23 @@ if SettingsDB.client == "zhCN" then
 	
 	-- Bags
 	L_BAG_BANK = "银行"
-	L_BAG_NO_SLOTS = "can't buy anymore slots!"
-	L_BAG_COSTS = "Cost: %.2f gold"
-	L_BAG_BUY_SLOTS = "Buy new slot with /bags purchase yes"
-	L_BAG_OPEN_BANK = "You need to open your bank first."
-	L_BAG_SORT = "sort your bags or your bank, if open."
-	L_BAG_STACK = "fill up partial stacks in your bags or bank, if open."
-	L_BAG_BUY_BANKS_SLOT = "buy bank slot. (need to have bank open)"
-	L_BAG_SORT_MENU = "Sort"
-	L_BAG_SORT_SPECIAL = "Sort Special"
-	L_BAG_STACK_MENU = "Stack"
-	L_BAG_STACK_SPECIAL = "Stack Special"
-	L_BAG_SHOW_BAGS = "Show Bags"
-	L_BAG_SORTING_BAGS = "Sorting finished."
-	L_BAG_NOTHING_SORT = "Nothing to sort."
-	L_BAG_BAGS_BIDS = "Using bags: "
-	L_BAG_STACK_END = "Restacking finished."
-	L_BAG_RIGHT_CLICK_SEARCH = "Right-click to search"
+	L_BAG_NO_SLOTS = "不能再购买更多的背包字段!"
+	L_BAG_COSTS = "花费: %.2f 金"
+	L_BAG_BUY_SLOTS = "输入 /bags purchase yes 以购买银行背包字段"
+	L_BAG_OPEN_BANK = "您需要先造访您的银行"
+	L_BAG_SORT = "将背包或银行内的物品分类及排序"
+	L_BAG_STACK = "将背包或银行内的不完整的物品堆栈重新堆栈"
+	L_BAG_BUY_BANKS_SLOT = "购买银行背包字段. (需要造访银行)"
+	L_BAG_SORT_MENU = "分类及排序"
+	L_BAG_SORT_SPECIAL = "分类及排序特殊物品"
+	L_BAG_STACK_MENU = "堆栈"
+	L_BAG_STACK_SPECIAL = "堆栈特殊物品"
+	L_BAG_SHOW_BAGS = "显示背包"
+	L_BAG_SORTING_BAGS = "分类及排序完成"
+	L_BAG_NOTHING_SORT = "不需要分类"
+	L_BAG_BAGS_BIDS = "使用背包: "
+	L_BAG_STACK_END = "重新堆栈完成"
+	L_BAG_RIGHT_CLICK_SEARCH = "点击右键以搜寻物品"
 	
 	-- Grab mail
 	L_MAIL_STOPPED = "无法拾取, 背包已满."
@@ -219,6 +219,7 @@ if SettingsDB.client == "zhCN" then
 	L_POPUP_INSTALLUI = "该角色首次使用ShestakUI.你必须重新加载UI来配置."
 	L_POPUP_RESETUI = "你确定要重新加载ShestakUI?"
 	L_POPUP_SWITCH_RAID = "多个团队样式被加载,请选择一个样式."
+	L_POPUP_DISBAND_RAID = "Are you sure you want to disband the group?" -- Needs review
 	L_POPUP_DISABLEUI = "ShestakUI并不支援此分辨率, 你想要停用ShestakUI吗? (若果您想要尝试其他分辨率, 请按取消)"
 	L_POPUP_SETTINGS_ALL = "应用所有的插件设置? (DBM/DXE, Skada/Recount and MSBT)"
 	L_POPUP_SETTINGS_DBM = "Need to change the position of elements DBM."  -- Needs review
