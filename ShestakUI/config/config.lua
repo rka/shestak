@@ -47,15 +47,16 @@ SettingsCF["general"] = {
 SettingsCF["misc"] = {
 	["auto_quest"] = false,						-- Auto accept quests(if hold shift, auto accept is disable)
 	["auto_decline_duel"] = true,				-- Auto decline duel
-	["auto_accept_invite"] = false,				-- Auto accept invite
+	["auto_accept_invite"] = true,				-- Auto accept invite
 	["auto_resurrection"] = true,				-- Auto resurrection in Battle Ground
 	["shift_marking"] = true,					-- Marks target when you push "shift"
-	["invite_keyword"] = "invite",				-- Short keyword for invite(for enable - in game type /ainv)
+	["invite_keyword"] = "inv",				-- Short keyword for invite(for enable - in game type /ainv)
+	--["raid_planner"] = false,					-- Raid planner
 	["afk_spin_camera"] = false,				-- Spin camera while afk
 	["move_watchframe"] = true,					-- Quest Watch frame movable
 	["vehicle_mouseover"] = false,				-- Vehicle frame on mouseover
-	["quest_auto_button"] = false,				-- Quest auto button
-	["raid_tools"] = false,						-- Raid tools
+	["quest_auto_button"] = true,       		-- Quest auto button
+	["raid_tools"] = false,            -- Raid tools
 }
 
 ----------------------------------------------------------------------------------------
@@ -65,33 +66,31 @@ SettingsCF["skins"] = {
 	["dbm"] = true,								-- DBM skin
 	["pallypower"] = true,						-- PallyPower skin
 }
-
 ----------------------------------------------------------------------------------------
---	Combat text options
+-- Combat text options
 ----------------------------------------------------------------------------------------
 SettingsCF["combattext"] = {
-	["font_size"] = 16,							-- Font size
-	["blizz_head_numbers"] = false,				-- Use blizzard damage/healing output(above mob/player head)
-	["damage_style"] = true,					-- Change default damage/healing font above mobs/player heads(you need to restart WoW to see changes)
-	["damage"] = true,							-- Show outgoing damage in it's own frame
-	["healing"] = true,							-- Show outgoing healing in it's own frame
-	["show_hots"] = true,						-- Show periodic healing effects in healing frame
-	["pet_damage"] = true,						-- Show your pet damage
-	["dot_damage"] = true,						-- Show damage from your dots
-	["damage_color"] = true,					-- Display damage numbers depending on school of magic
-	["crit_prefix"] = "*",						-- Symbol that will be added before crit
-	["crit_postfix"] = "*",						-- Symbol that will be added after crit
-	["icons"] = true,							-- Show outgoing damage icons
-	["icon_size"] = 16,							-- Icon size of spells in outgoing damage frame, also has effect on dmg font size
-	["treshold"] = 1,							-- Minimum damage to show in damage frame
-	["heal_treshold"] = 1,						-- Minimum healing to show in incoming/outgoing healing messages
-	["scrollable"] = false,						-- Allows you to scroll frame lines with mousewheel
-	["max_lines"] = 15,							-- Max lines to keep in scrollable mode(more lines = more memory)
-	["time_visible"] = 3,						-- Time(seconds) a single message will be visible
-	["stop_ve_spam"] = false,					-- Automaticly turns off healing spam for priests in shadowform
-	["dk_runes"] = true,						-- Show deatchknight rune recharge
+	["font_size"] = 16, -- Font size
+	["blizz_head_numbers"] = false, -- Use blizzard damage/healing output(above mob/player head)
+	["damage_style"] = true,          -- Change default damage/healing font above mobs/player heads(you need to restart WoW to see changes)
+	["damage"] = true, -- Show outgoing damage in it's own frame
+	["healing"] = true, -- Show outgoing healing in it's own frame
+	["show_hots"] = true,            -- Show periodic healing effects in healing frame
+	["pet_damage"] = true,            -- Show your pet damage
+	["dot_damage"] = true,            -- Show damage from your dots
+	["damage_color"] = true, -- Display damage numbers depending on school of magic
+	["crit_prefix"] = "*", -- Symbol that will be added before crit
+	["crit_postfix"] = "*", -- Symbol that will be added after crit
+	["icons"] = true, -- Show outgoing damage icons
+	["icon_size"] = 16, -- Icon size of spells in outgoing damage frame, also has effect on dmg font size
+	["treshold"] = 1, -- Minimum damage to show in damage frame
+	["heal_treshold"] = 1, -- Minimum healing to show in incoming/outgoing healing messages
+	["scrollable"] = false, -- Allows you to scroll frame lines with mousewheel
+	["max_lines"] = 15, -- Max lines to keep in scrollable mode(more lines = more memory)
+	["time_visible"] = 3, -- Time(seconds) a single message will be visible
+	["stop_ve_spam"] = false, -- Automaticly turns off healing spam for priests in shadowform
+	["dk_runes"] = true, -- Show deatchknight rune recharge
 }
-
 ----------------------------------------------------------------------------------------
 --	Buffs reminder options
 ----------------------------------------------------------------------------------------
@@ -112,7 +111,7 @@ SettingsCF["reminder"] = {
 ----------------------------------------------------------------------------------------
 SettingsCF["cooldown"] = {
 	-- Raid cooldowns
-	["raid_enable"] = true,						-- Enable raid cooldowns
+	["raid_enable"] = false,						-- Enable raid cooldowns
 	["raid_font_size"] = 8,						-- Font size
 	["raid_height"] = 15,						-- Bars height
 	["raid_width"] = 186,						-- Bars width(if show_icon = false, bar width+28)
@@ -133,10 +132,10 @@ SettingsCF["cooldown"] = {
 --	Threat options
 ----------------------------------------------------------------------------------------
 SettingsCF["threat"] = {
-	["enable"] = false,							-- Enable threat meter
+	["enable"] = true,							-- Enable threat meter
 	["font_size"] = 8,							-- Font size
 	["height"] = 12,							-- Bars height
-	["width"] = 217,							-- Bars width
+	["width"] = 150,							-- Bars width
 	["bar_rows"] = 7,							-- Number of bars
 	["test_mode"] = false,						-- Test mode
 }
@@ -147,18 +146,18 @@ SettingsCF["threat"] = {
 SettingsCF["tooltip"] = {
 	["enable"] = true,							-- Enable tooltip
 	["shift_modifer"] = false,					-- Show tooltip when "shift" is pushed
-	["cursor"] = false,							-- ToolTip under cursor
+	["cursor"] = true,							-- ToolTip under cursor
 	["item_icon"] = false,						-- Item icon in tooltip
 	["health_value"] = false,					-- Numeral health value
 	["hidebuttons"] = false,					-- Hide tooltips for actions bars
 	-- Plugins
-	["talents"] = false,						-- Show tooltip talents
+	["talents"] = true,						-- Show tooltip talents
 	["achievements"] = true,					-- Comparing achievements in tooltip
 	["target"] = true,							-- Target player in tooltip
 	["title"] = false,							-- Player title in tooltip
 	["rank"] = true,							-- Player guild-rank in tooltip
 	["arena_experience"] = false,				-- Player PVP experience in arena
-	["spell_id"] = false,						-- Id number spells
+	["spell_id"] = false,           			-- Id number spells
 }
 
 ----------------------------------------------------------------------------------------
@@ -166,9 +165,9 @@ SettingsCF["tooltip"] = {
 ----------------------------------------------------------------------------------------
 SettingsCF["chat"] = {
 	["enable"] = true,							-- Enable chat
-	["background"] = false,						-- Enable background for chat
-	["background_alpha"] = 0.7,					-- Background alpha
-	["font_size"] = 11,							-- Chat font size
+	["background"] = false,						--
+	["background_alpha"] = 0.7,					-- 
+	["font_size"] = 12,							-- Chat font size
 	["font_style"] = "",						-- Font style("OUTLINE", "OUTLINEMONOCHROME", "THICKOUTLINE" or "")
 	["tab_font_size"] = 8,						-- Chat tab font size
 	["tab_font_style"] = "OUTLINEMONOCHROME",	-- Tab font style("OUTLINE", "OUTLINEMONOCHROME", "THICKOUTLINE" or "")
@@ -178,14 +177,13 @@ SettingsCF["chat"] = {
 	["chat_bar"] = false,						-- Lite Button Bar for switch chat channel
 	["time_color"] = "FFD700",					-- Timestamp coloring(http://www.december.com/html/spec/colorcodes.html)
 	["whisp_sound"] = true,						-- Sound when whisper
-	["bubbles"] = true,							-- Skin Blizzard chat bubbles
+	["bubbles"] = true,              -- Skin Blizzard chat bubbles
 }
 
 ----------------------------------------------------------------------------------------
 --	Bag options
 ----------------------------------------------------------------------------------------
 SettingsCF["bag"] = {
-	["enable"] = true,							-- Enable bags
 	["button_size"] = 27,						-- Buttons size
 	["button_space"] = 3,						-- Buttons space
 	["bank_columns"] = 17,						-- Horizontal number of columns in bank
@@ -215,8 +213,8 @@ SettingsCF["map"] = {
 --	Loot options
 ----------------------------------------------------------------------------------------
 SettingsCF["loot"] = {
-	["lootframe"] = true,						-- Enable loot frame
-	["rolllootframe"] = true,					-- Enable group roll frame
+	["lootframe"] = false,						-- Enable loot frame
+	["rolllootframe"] = false,					-- Enable group roll frame
 	["font_size"] = 8,							-- Loot frame font size
 	["icon_size"] = 22,							-- Icon size
 	["width"] = 221,							-- Loot window width
@@ -228,7 +226,7 @@ SettingsCF["loot"] = {
 --	Nameplate options
 ----------------------------------------------------------------------------------------
 SettingsCF["nameplate"] = {
-	["enable"] = true, 							-- Enable nameplate
+	["enable"] = false, 							-- Enable nameplate
 	["font_size"] = 8,							-- Nameplate font size
 	["height"] = 9,								-- Nameplate height
 	["width"] = 120,							-- Nameplate width
@@ -237,8 +235,6 @@ SettingsCF["nameplate"] = {
 	["show_castbar_name"] = false,				-- Show castbar name
 	["enhance_threat"] = true,					-- If tank good aggro = green, bad = red
 	["class_icons"] = false,					-- Icons by class in pvp
-	["name_abbrev"] = true,						-- Display the abbreviated names
-	["overlap"] = true,							-- Allow nameplates to overlap
 }
 
 ----------------------------------------------------------------------------------------
@@ -246,7 +242,7 @@ SettingsCF["nameplate"] = {
 ----------------------------------------------------------------------------------------
 SettingsCF["actionbar"] = {
 	-- Main
-	["enable"] = true,							-- Enable actionbars
+	["enable"] = false,							-- Enable actionbars
 	["hotkey"] = true,							-- Show text on you hotkey
 	["show_grid"] = true,						-- Show empty action bar buttons
 	["button_size"] = 25,						-- Buttons size
@@ -267,21 +263,21 @@ SettingsCF["actionbar"] = {
 }
 
 ----------------------------------------------------------------------------------------
---	Auras/Buffs/Debuffs
+-- Auras/Buffs/Debuffs
 ----------------------------------------------------------------------------------------
 SettingsCF["aura"] = {
-	["font_size"] = 8,							-- Auras font size
-	["player_buff_size"] = 25,					-- Player buffs size
-	["show_spiral"] = false,					-- Spiral on aura icons
-	["show_timer"] = true,						-- Show cooldown tier on aura icons
-	["player_auras"] = true,					-- Auras on player frame
-	["target_auras"] = true,					-- Auras on target frame
-	["focus_debuffs"] = false,					-- DeBuffs on focus frame
-	["fot_debuffs"] = false,					-- DeBuffs on focustarget frame
-	["pet_debuffs"] = false,					-- DeBuffs on pet frame
-	["tot_debuffs"] = false,					-- DeBuffs on targettarget frame
-	["player_aura_only"] = false,				-- Only your debuff on target frame
-	["debuff_color_type"] = true,				-- Color debuff by type
+["font_size"] = 8, -- Auras font size
+["player_buff_size"] = 25, -- Player buffs size
+["show_spiral"] = false, -- Spiral on aura icons
+["show_timer"] = true, -- Show cooldown tier on aura icons
+["player_auras"] = true, -- Auras on player frame
+["target_auras"] = true, -- Auras on target frame
+["focus_debuffs"] = false, -- DeBuffs on focus frame
+["fot_debuffs"] = false,  -- DeBuffs on focustarget frame
+["pet_debuffs"] = false, -- DeBuffs on pet frame
+["tot_debuffs"] = false, -- DeBuffs on targettarget frame
+["player_aura_only"] = false, -- Only your debuff on target frame
+["debuff_color_type"] = true, -- Color debuff by type
 }
 
 ----------------------------------------------------------------------------------------
@@ -319,7 +315,7 @@ SettingsCF["unitframe"] = {
 	["icons_leader"] = true,					-- Leader icon, assistant icon, master loot icon on frames
 	["icons_combat"] = true,					-- Combat icon
 	["icons_resting"] = true,					-- Resting icon for low lvl chars
-	["icons_lfd_role"] = false,					-- Party leader icon on frames
+	["icons_lfd_role"] = true,					-- Party leader icon on frames
 	["icons_raid_mark"] = true,					-- Raid marks
 	["icons_combo_point"] = true,				-- Rogue|Druid combo point icons
 	["icons_ready_check"] = true,				-- Ready check icons
@@ -348,10 +344,49 @@ SettingsCF["unitframe"] = {
 }
 
 ----------------------------------------------------------------------------------------
+--NOT WORKING!!!!!!!!!!! Fonts options
+----------------------------------------------------------------------------------------
+SettingsCF["pixelfont"] = {
+["stats_font"] = "Interface\\AddOns\\ShestakUI\\media\\pixel.ttf",
+["stats_font_size"] = 8,
+["stats_font_style"] = "OUTLINEMONOCHROME",
+["unit_frames_font"] = "Interface\\AddOns\\ShestakUI\\media\\pixel.ttf",
+["unit_frames_font_size"] = 8,
+["unit_frames_font_style"] = "OUTLINEMONOCHROME",
+["auras_font"] = "Interface\\AddOns\\ShestakUI\\media\\pixel.ttf",
+["auras_font_size"] = 8,
+["auras_font_style"] = "OUTLINEMONOCHROME",
+["combat_text_font"] = "Interface\\AddOns\\ShestakUI\\media\\pixel.ttf",
+["combat_text_font_size"] = 16,
+["combat_text_font_style"] = "OUTLINEMONOCHROME",
+["chat_tabs_font"] = "Interface\\AddOns\\ShestakUI\\media\\pixel.ttf",
+["chat_tabs_font_size"] = 8,
+["chat_tabs_font_style"] = "OUTLINEMONOCHROME",
+["action_bars_font"] = "Interface\\AddOns\\ShestakUI\\media\\pixel.ttf",
+["action_bars_font_size"] = 8,
+["action_bars_font_style"] = "OUTLINEMONOCHROME",
+["threat_meter_font"] = "Interface\\AddOns\\ShestakUI\\media\\pixel.ttf",
+["threat_meter_font_size"] = 8,
+["threat_meter_font_style"] = "OUTLINEMONOCHROME",
+["raid_cooldowns_font"] = "Interface\\AddOns\\ShestakUI\\media\\pixel.ttf",
+["raid_cooldowns_font_size"] = 8,
+["raid_cooldowns_font_style"] = "OUTLINEMONOCHROME",
+["cooldown_timers_font"] = "Interface\\AddOns\\ShestakUI\\media\\pixel.ttf",
+["cooldown_timers_font_size"] = 16,
+["cooldown_timers_font_style"] = "OUTLINEMONOCHROME",
+["filger_bars_name_font"] = "Interface\\AddOns\\ShestakUI\\media\\pixel.ttf",
+["filger_bars_name_font_size"] = 8,
+["filger_bars_name_font_style"] = "OUTLINEMONOCHROME",
+["stylization_font"] = "Interface\\AddOns\\ShestakUI\\media\\pixel.ttf",
+["stylization_font_size"] = 8,
+["stylization_font_style"] = "OUTLINEMONOCHROME",
+}
+
+----------------------------------------------------------------------------------------
 --	Panel options
 ----------------------------------------------------------------------------------------
 SettingsCF["toppanel"] = {
-	["enable"] = true,							-- Enable top panel
+	["enable"] = true,              -- Enable top panel
 	["mouseover"] = true,						-- Top panel on mouseover
 	["height"] = 55,							-- Panel height
 	["width"] = 320,							-- Panel width
@@ -367,10 +402,10 @@ SettingsCF["stats"] = {
 	["latency"] = true,							-- Latency
 	["memory"] = true,							-- Memory
 	["fps"] = true,								-- FPS
-	["experience"] = false,						-- Experience
+	["experience"] = true,						-- Experience
 	["coords"] = true,							-- Coords
 	["location"] = true,						-- Location
-	["guild_repair"] = true,					-- Repair from guild bank
+	["guild_repair"] = true,          			-- Repair from guild bank
 }
 
 ----------------------------------------------------------------------------------------
@@ -388,36 +423,53 @@ SettingsCF["error"] = {							-- http://www.wowwiki.com/WoW_Constants/Errors
 ----------------------------------------------------------------------------------------
 SettingsCF["addon"] = {							-- Group AddOns for fast selection
 	raid = {									-- Type /addons raid
-		"DBM-Core",
-		"DXE",
-		"PallyPower",
-		"alDamageMeter",
-		"Skada",
+		"PhoenixStyle",
+		"Orbituary",
+		"DrainSouler",
+		"BigBrother",
+		"Energized",
+		"Ora3",
 		"Recount",
-		"Omen",
-		"sThreatMeter2",
+		--"RhadaTip",
+		"Energized",
+		"RaidSlackCheck",
+		"ShadowGreenLight",
+		"Hudmap",
+		"SimpleBossWhisperer",
 	},
 	party = {									-- Type /addons party
 		"DBM-Core",
-		"DXE",
-		"PallyPower",
-		"alDamageMeter",
-		"Skada",
-		"Recount",
-		"Omen",
-		"sThreatMeter2",
 	},
 	pvp = {										-- Type /addons pvp
 		"ArenaHistorian",
 		"ncSpellalert",
 	},
 	quest = {									-- Type /addons quest
-		"QuestHelper",
+		"QuickTargetMacros",
+	    "Carbonite",
+		"EveryQuest",
+		"EveryQuest_Battlegrounds",
+		"EveryQuest_Classes",
+		"EveryQuest_Dungeons",
+		"EveryQuest_Eastern_Kingdoms",
+		"EveryQuest_Kalimdor",
+		"EveryQuest_Miscellaneous",
+		"EveryQuest_Northrend",
+		"EveryQuest_Outland",
+		"EveryQuest_Professions",
+		"EveryQuest_QuestGivers",
+		"EveryQuest_Raids",
+		"EveryQuest_World_Events",
+		"HandyNotes",
 	},
 	trade = {									-- Type /addons trade
-		"Auctionator",
-		"!Swatter",
+		"scrollmaster",
+		"MailOpener",
+		"SuperDuperMacro",
+--		"MySales",
 		"Auc-Advanced",
+		"zeroauctions",
+		--"auctionprofitmaster",
 		"Auc-Filter-Basic",
 		"Auc-ScanData",
 		"Auc-Stat-Histogram",
@@ -425,13 +477,42 @@ SettingsCF["addon"] = {							-- Group AddOns for fast selection
 		"Auc-Stat-Purchased",
 		"Auc-Stat-Simple",
 		"Auc-Stat-StdDev",
-		"Auc-Util-FixAH",
-		"BeanCounter",
-		"Enchantrix",
-		"Enchantrix-Barker",
-		"Informant",
-		"SlideBar",
-		"Stubby",
+		--"Auc-Util-BigPicture",
+		"Swatter",
+		"BagExport",
+		"Beancounter",
+		"QuickAuctions",
+		"MarketWatcher",
+		"Postal",
+		"Auctionator", 
+		"gnomeworks",
+		"stubby",
+		--"Skillet",
+		"BankStack",
+		"Altoholic",
+		"ItemAuditor",
+		"Altoholic_Achievements",
+		"Altoholic_Characters",
+		"Altoholic_Search",
+		"LilSparkysWorkshop",
+		"DataStore",
+		"DataStore_Achievements",
+		"DataStore_Auctions",
+		"DataStore_Mails",
+		"DataStore_Characters",
+		"DataStore_Containers",
+		"DataStore_Crafts",
+		"DataStore_Currencies",
+		"DataStore_Inventory",
+		"DataStore_Pets",
+		"DataStore_Quests",
+		"DataStore_Reputations",
+		"DataStore_Skills",
+		"DataStore_Spells",
+		"DataStore_Stats",
+		"DataStore_Talents",
+		"KevTool Queue",
+		"Panda",
 	},
 }
 
@@ -455,7 +536,8 @@ SettingsCF["position"] = {
 	["quest"] = {"TOPLEFT", UIParent, "TOPLEFT", 25, -10},					-- Quest log
 	["loot"] = {"TOPLEFT", UIParent, "TOPLEFT", 245, -220},					-- Loot
 	["group_loot"] = {"BOTTOM", UIParent, "BOTTOM", -210, 500},				-- Group roll loot
-	["threat_meter"] = {"BOTTOMLEFT", "oUF_Target", "TOPLEFT", 0, -123},	-- Threat meter
+	["threat_meter"] = {"BOTTOMLEFT", "oUF_Target", "TOPLEFT", -60, -73},	-- sThreatMeter2
+	--["threat_meter"] = {"BOTTOMLEFT", "oUF_Target", "TOPLEFT", 0, -123},	-- Threat meter
 	["raid_cooldown"] = {"TOPLEFT", UIParent, "TOPLEFT", 51, -28},			-- Raid cooldowns
 	["enemy_cooldown"] = {"BOTTOMRIGHT", "oUF_Player", "TOPRIGHT", 63, 62},	-- Enemy cooldowns
 	["bg_score"] = {"BOTTOMLEFT", UIParent, "BOTTOM", 176, 6},				-- BG stats
@@ -466,7 +548,6 @@ SettingsCF["position"] = {
 	["stance_bar"] = {"BOTTOMRIGHT", UIParent, "BOTTOM", -202, 167},		-- Stance/Shift/Totem bars
 	["vehicle_bar"] = {"BOTTOMRIGHT", "Bar1Holder", "BOTTOMLEFT", -3, 0},	-- Vehicle button
 	-- UnitFrame positions
-	["player_buffs"] = {"TOPRIGHT", UIParent, "TOPRIGHT", -22, -20},		-- Player buffs
 	unitframes = {
 		["player"] = {"BOTTOM", UIParent, "BOTTOM", -284, 236},						-- Player frame
 		["target"] = {"BOTTOM", UIParent, "BOTTOM", 284, 236},						-- Target frame
@@ -475,9 +556,11 @@ SettingsCF["position"] = {
 		["focus"] = {"BOTTOMRIGHT", "oUF_Player", "TOPRIGHT", 0, -54},				-- Focus frame
 		["focus_target"] = {"BOTTOMLEFT", "oUF_Target", "TOPLEFT", 0, -54},			-- Focus target frame
 		["party_heal"] = {"TOPLEFT", "oUF_Player", "BOTTOMRIGHT", 11, -12},			-- Heal layout Party frames
-		["raid_heal"] = {"TOPLEFT", "oUF_Player", "BOTTOMRIGHT", 11, -12},			-- Heal layout Raid frames
+		--["raid_heal"] = {"TOPLEFT", "oUF_Player", "BOTTOMRIGHT", 11, -12},			-- Heal layout Raid frames
+		["raid_heal"] = {"LEFT", "oUF_Player", "RIGHT", 490, -160}, 
 		["party_dps"] = {"BOTTOMLEFT", UIParent, "LEFT", 22, -70},					-- DPS layout Party frames
-		["raid_dps"] = {"TOPLEFT", UIParent, "TOPLEFT", 22, -22},					-- DPS layout Raid frames
+		--["raid_dps"] = {"TOPLEFT", UIParent, "TOPLEFT", 22, -22},					-- DPS layout Raid frames
+		["raid_dps"] = {"LEFT", "oUF_Player", "RIGHT", 490, -180}, 
 		["arena"] = {"BOTTOMRIGHT", UIParent, "RIGHT", -20, -70},					-- Arena frames
 		["boss"] = {"BOTTOMRIGHT", UIParent, "RIGHT", -20, -70},					-- Boss frames
 		["tank"] = {"BOTTOMLEFT", UIParent, "BOTTOM", 176, 26},						-- Tank frames
@@ -487,43 +570,4 @@ SettingsCF["position"] = {
 		["target_castbar"] = {"CENTER", "oUF_Player_Castbar", "CENTER", -23, 35},	-- Target Castbar
 		["focus_castbar"] = {"CENTER", UIParent, "CENTER", 0, 250},					-- Focus Castbar icon
 	},
-}
-
-----------------------------------------------------------------------------------------
---	Fonts options !!!!!!!!!!!NOT WORKING!!!!!!!!!!!
-----------------------------------------------------------------------------------------
-SettingsCF["pixelfont"] = {
-	["stats_font"] = "Interface\\AddOns\\ShestakUI\\media\\pixel.ttf",
-	["stats_font_size"] = 8,
-	["stats_font_style"] = "OUTLINEMONOCHROME",
-	["unit_frames_font"] = "Interface\\AddOns\\ShestakUI\\media\\pixel.ttf",
-	["unit_frames_font_size"] = 8,
-	["unit_frames_font_style"] = "OUTLINEMONOCHROME",
-	["auras_font"] = "Interface\\AddOns\\ShestakUI\\media\\pixel.ttf",
-	["auras_font_size"] = 8,
-	["auras_font_style"] = "OUTLINEMONOCHROME",
-	["combat_text_font"] = "Interface\\AddOns\\ShestakUI\\media\\pixel.ttf",
-	["combat_text_font_size"] = 16,
-	["combat_text_font_style"] = "OUTLINEMONOCHROME",
-	["chat_tabs_font"] = "Interface\\AddOns\\ShestakUI\\media\\pixel.ttf",
-	["chat_tabs_font_size"] = 8,
-	["chat_tabs_font_style"] = "OUTLINEMONOCHROME",
-	["action_bars_font"] = "Interface\\AddOns\\ShestakUI\\media\\pixel.ttf",
-	["action_bars_font_size"] = 8,
-	["action_bars_font_style"] = "OUTLINEMONOCHROME",
-	["threat_meter_font"] = "Interface\\AddOns\\ShestakUI\\media\\pixel.ttf",
-	["threat_meter_font_size"] = 8,
-	["threat_meter_font_style"] = "OUTLINEMONOCHROME",
-	["raid_cooldowns_font"] = "Interface\\AddOns\\ShestakUI\\media\\pixel.ttf",
-	["raid_cooldowns_font_size"] = 8,
-	["raid_cooldowns_font_style"] = "OUTLINEMONOCHROME",
-	["cooldown_timers_font"] = "Interface\\AddOns\\ShestakUI\\media\\pixel.ttf",
-	["cooldown_timers_font_size"] = 16,
-	["cooldown_timers_font_style"] = "OUTLINEMONOCHROME",
-	["filger_bars_name_font"] = "Interface\\AddOns\\ShestakUI\\media\\pixel.ttf",
-	["filger_bars_name_font_size"] = 8,
-	["filger_bars_name_font_style"] = "OUTLINEMONOCHROME",
-	["stylization_font"] = "Interface\\AddOns\\ShestakUI\\media\\pixel.ttf",
-	["stylization_font_size"] = 8,
-	["stylization_font_style"] = "OUTLINEMONOCHROME",
 }
