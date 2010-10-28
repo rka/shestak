@@ -3,6 +3,7 @@
 ----------------------------------------------------------------------------------------
 if not SettingsCF["cooldown"].raid_enable == true then return end
 
+local db = SettingsCF["font"]
 local show = {
 	raid = SettingsCF["cooldown"].raid_show_inraid,
 	party = SettingsCF["cooldown"].raid_show_inparty,
@@ -26,7 +27,8 @@ end
 
 local CreateFS = function(frame, fsize, fstyle)
 	local fstring = frame:CreateFontString(nil, "OVERLAY")
-	fstring:SetFont(SettingsCF["media"].pixel_font, SettingsCF["cooldown"].raid_font_size, SettingsCF["media"].pixel_font_style)
+	fstring:SetFont(db.raid_cooldowns_font, db.raid_cooldowns_font_size, db.raid_cooldowns_font_style)
+	fstring:SetShadowOffset(db.raid_cooldowns_font_shadow and 1 or 0, db.raid_cooldowns_font_shadow and -1 or 0)
 	return fstring
 end
 	
@@ -76,7 +78,7 @@ end
 
 local OnMouseDown = function(self, button)
 	if button == "LeftButton" then
-		SendChatMessage(sformat(L_COOLDOWNS.." %s: %s", self.left:GetText(), self.right:GetText()), "PARTY")
+		SendChatMessage(sformat(L_COOLDOWNS.." %s: %s", self.left:GetText(), self.right:GetText()), "RAID")
 	elseif button == "RightButton" then
 		StopTimer(self)
 	end
@@ -105,7 +107,7 @@ local CreateBar = function()
 	bar.left = CreateFS(bar)
 	bar.left:SetPoint("LEFT", SettingsDB.Scale(3), 0)
 	bar.left:SetJustifyH("LEFT")
-	bar.left:SetSize(SettingsCF["cooldown"].raid_width - 35, SettingsCF["cooldown"].raid_font_size)
+	bar.left:SetSize(SettingsCF["cooldown"].raid_width - 35, db.raid_cooldowns_font_size)
 	
 	bar.right = CreateFS(bar)
 	bar.right:SetPoint("RIGHT", SettingsDB.Scale(-1), 0)

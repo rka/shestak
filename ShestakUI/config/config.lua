@@ -70,7 +70,6 @@ SettingsCF["skins"] = {
 --	Combat text options
 ----------------------------------------------------------------------------------------
 SettingsCF["combattext"] = {
-	["font_size"] = 16,							-- Font size
 	["blizz_head_numbers"] = false,				-- Use blizzard damage/healing output(above mob/player head)
 	["damage_style"] = true,					-- Change default damage/healing font above mobs/player heads(you need to restart WoW to see changes)
 	["damage"] = true,							-- Show outgoing damage in it's own frame
@@ -90,6 +89,9 @@ SettingsCF["combattext"] = {
 	["time_visible"] = 3,						-- Time(seconds) a single message will be visible
 	["stop_ve_spam"] = false,					-- Automaticly turns off healing spam for priests in shadowform
 	["dk_runes"] = true,						-- Show deatchknight rune recharge
+	["killingblow"] = false,					-- Tells you about your killingblows
+	["merge_aoe_spam"] = true,					-- Merges multiple aoe damage spam into single message
+	["merge_aoe_spam_time"] = 3,				-- Time in seconds aoe spell will be merged into single message
 }
 
 ----------------------------------------------------------------------------------------
@@ -113,7 +115,6 @@ SettingsCF["reminder"] = {
 SettingsCF["cooldown"] = {
 	-- Raid cooldowns
 	["raid_enable"] = true,						-- Enable raid cooldowns
-	["raid_font_size"] = 8,						-- Font size
 	["raid_height"] = 15,						-- Bars height
 	["raid_width"] = 186,						-- Bars width(if show_icon = false, bar width+28)
 	["raid_upwards"] = false,					-- Sort upwards bars
@@ -127,6 +128,9 @@ SettingsCF["cooldown"] = {
 	["enemy_show_always"] = false,				-- Show everywhere
 	["enemy_show_inpvp"] = false,				-- Show in bg zone
 	["enemy_show_inarena"] = true,				-- Show in arena zone
+	-- Cooldowns pulse
+	["pulse_enable"] = false,					-- Show cooldowns pulse
+	["pulse_size"] = 75,						-- Icon size
 }
 
 ----------------------------------------------------------------------------------------
@@ -134,7 +138,6 @@ SettingsCF["cooldown"] = {
 ----------------------------------------------------------------------------------------
 SettingsCF["threat"] = {
 	["enable"] = false,							-- Enable threat meter
-	["font_size"] = 8,							-- Font size
 	["height"] = 12,							-- Bars height
 	["width"] = 217,							-- Bars width
 	["bar_rows"] = 7,							-- Number of bars
@@ -159,6 +162,7 @@ SettingsCF["tooltip"] = {
 	["rank"] = true,							-- Player guild-rank in tooltip
 	["arena_experience"] = false,				-- Player PVP experience in arena
 	["spell_id"] = false,						-- Id number spells
+	["raid_icon"] = false,						-- Raid icon
 }
 
 ----------------------------------------------------------------------------------------
@@ -170,8 +174,6 @@ SettingsCF["chat"] = {
 	["background_alpha"] = 0.7,					-- Background alpha
 	["font_size"] = 11,							-- Chat font size
 	["font_style"] = "",						-- Font style("OUTLINE", "OUTLINEMONOCHROME", "THICKOUTLINE" or "")
-	["tab_font_size"] = 8,						-- Chat tab font size
-	["tab_font_style"] = "OUTLINEMONOCHROME",	-- Tab font style("OUTLINE", "OUTLINEMONOCHROME", "THICKOUTLINE" or "")
 	["filter"] = true,							-- Removing some chat spam("Player1" won duel "Player2")
 	["width"] = 350,							-- Chat width
 	["height"] = 112,							-- Chat height
@@ -361,8 +363,7 @@ SettingsCF["toppanel"] = {
 --	Stats options
 ----------------------------------------------------------------------------------------
 SettingsCF["stats"] = {
-	["font_size"] = 8,							-- Stats font size
-	["battleground"] = true,					-- BG Score
+	["battleground"] = false,					-- BG Score
 	["clock"] = true,							-- Clock
 	["latency"] = true,							-- Latency
 	["memory"] = true,							-- Memory
@@ -433,97 +434,4 @@ SettingsCF["addon"] = {							-- Group AddOns for fast selection
 		"SlideBar",
 		"Stubby",
 	},
-}
-
-----------------------------------------------------------------------------------------
---	Position options
-----------------------------------------------------------------------------------------
-SettingsCF["position"] = {
-	-- Miscellaneous positions
-	["minimap"] = {"BOTTOMRIGHT", UIParent, "BOTTOMRIGHT", -23, 26},		-- Minimap
-	["map"] = {"CENTER", UIParent, "CENTER", 0, 70},						-- Map
-	["chat"] = {"BOTTOMLEFT", UIParent, "BOTTOMLEFT", 24, 22},				-- Chat
-	["bag"]	= {"BOTTOMRIGHT", Minimap, "TOPRIGHT", -1, 8},					-- Bag
-	["bank"] = {"LEFT", UIParent, "LEFT", 23, 150},							-- Bank
-	["bn_popup"] = {"BOTTOMLEFT", UIParent, "BOTTOMLEFT", 21, 20},			-- BattleNet popup
-	["tooltip"] = {"BOTTOMRIGHT", Minimap, "TOPRIGHT", 2, 5},				-- Tooltip
-	["ticket"] = {"TOPLEFT", UIParent, "TOPLEFT", 20, -20},					-- GM ticket
-	["attempt"] = {"TOP", UIParent, "TOP", -85, -20},						-- Attempts frame
-	["capture_bar"] = {"TOP", UIParent, "TOP", 0, 0},						-- BG capture bars
-	["vehicle"] = {"BOTTOM", Minimap, "TOP", 0, 30},						-- Vehicle frame
-	["uierror"] = {"TOP", UIParent, "TOP", 0, -30},							-- Errors frame
-	["quest"] = {"TOPLEFT", UIParent, "TOPLEFT", 25, -10},					-- Quest log
-	["loot"] = {"TOPLEFT", UIParent, "TOPLEFT", 245, -220},					-- Loot
-	["group_loot"] = {"BOTTOM", UIParent, "BOTTOM", -210, 500},				-- Group roll loot
-	["threat_meter"] = {"BOTTOMLEFT", "oUF_Target", "TOPLEFT", 0, -123},	-- Threat meter
-	["raid_cooldown"] = {"TOPLEFT", UIParent, "TOPLEFT", 51, -28},			-- Raid cooldowns
-	["enemy_cooldown"] = {"BOTTOMRIGHT", "oUF_Player", "TOPRIGHT", 63, 62},	-- Enemy cooldowns
-	["bg_score"] = {"BOTTOMLEFT", UIParent, "BOTTOM", 176, 6},				-- BG stats
-	-- ActionBar positions
-	["bottom_bars"] = {"BOTTOM", UIParent, "BOTTOM", 0, 8},					-- Bottom bars
-	["right_bars"] = {"BOTTOMRIGHT", UIParent, "BOTTOMRIGHT", -21, 320},	-- Right bars
-	["pet_horizontal"] = {"BOTTOMRIGHT", UIParent, "BOTTOM", -175, 167},	-- Horizontal pet bar
-	["stance_bar"] = {"BOTTOMRIGHT", UIParent, "BOTTOM", -202, 167},		-- Stance/Shift/Totem bars
-	["vehicle_bar"] = {"BOTTOMRIGHT", "Bar1Holder", "BOTTOMLEFT", -3, 0},	-- Vehicle button
-	-- UnitFrame positions
-	["player_buffs"] = {"TOPRIGHT", UIParent, "TOPRIGHT", -22, -20},		-- Player buffs
-	unitframes = {
-		["player"] = {"BOTTOM", UIParent, "BOTTOM", -284, 236},						-- Player frame
-		["target"] = {"BOTTOM", UIParent, "BOTTOM", 284, 236},						-- Target frame
-		["target_target"] = {"BOTTOMRIGHT", "oUF_Target", "TOPRIGHT", 0, -54},		-- ToT frame
-		["pet"] = {"BOTTOMLEFT", "oUF_Player", "TOPLEFT", 0, -54},					-- Pet frame
-		["focus"] = {"BOTTOMRIGHT", "oUF_Player", "TOPRIGHT", 0, -54},				-- Focus frame
-		["focus_target"] = {"BOTTOMLEFT", "oUF_Target", "TOPLEFT", 0, -54},			-- Focus target frame
-		["party_heal"] = {"TOPLEFT", "oUF_Player", "BOTTOMRIGHT", 11, -12},			-- Heal layout Party frames
-		["raid_heal"] = {"TOPLEFT", "oUF_Player", "BOTTOMRIGHT", 11, -12},			-- Heal layout Raid frames
-		["party_dps"] = {"BOTTOMLEFT", UIParent, "LEFT", 22, -70},					-- DPS layout Party frames
-		["raid_dps"] = {"TOPLEFT", UIParent, "TOPLEFT", 22, -22},					-- DPS layout Raid frames
-		["arena"] = {"BOTTOMRIGHT", UIParent, "RIGHT", -20, -70},					-- Arena frames
-		["boss"] = {"BOTTOMRIGHT", UIParent, "RIGHT", -20, -70},					-- Boss frames
-		["tank"] = {"BOTTOMLEFT", UIParent, "BOTTOM", 176, 26},						-- Tank frames
-		["player_portrait"] = {"TOPRIGHT", "oUF_Player", "TOPLEFT", -11, 28},		-- Player Portrait
-		["target_portrait"] = {"TOPLEFT", "oUF_Target", "TOPRIGHT", 11, 28},		-- Target Portrait
-		["player_castbar"] = {"BOTTOMLEFT", "oUF_Player", "BOTTOMRIGHT", 58, 0},	-- Player Castbar
-		["target_castbar"] = {"CENTER", "oUF_Player_Castbar", "CENTER", -23, 35},	-- Target Castbar
-		["focus_castbar"] = {"CENTER", UIParent, "CENTER", 0, 250},					-- Focus Castbar icon
-	},
-}
-
-----------------------------------------------------------------------------------------
---	Fonts options !!!!!!!!!!!NOT WORKING!!!!!!!!!!!
-----------------------------------------------------------------------------------------
-SettingsCF["pixelfont"] = {
-	["stats_font"] = "Interface\\AddOns\\ShestakUI\\media\\pixel.ttf",
-	["stats_font_size"] = 8,
-	["stats_font_style"] = "OUTLINEMONOCHROME",
-	["unit_frames_font"] = "Interface\\AddOns\\ShestakUI\\media\\pixel.ttf",
-	["unit_frames_font_size"] = 8,
-	["unit_frames_font_style"] = "OUTLINEMONOCHROME",
-	["auras_font"] = "Interface\\AddOns\\ShestakUI\\media\\pixel.ttf",
-	["auras_font_size"] = 8,
-	["auras_font_style"] = "OUTLINEMONOCHROME",
-	["combat_text_font"] = "Interface\\AddOns\\ShestakUI\\media\\pixel.ttf",
-	["combat_text_font_size"] = 16,
-	["combat_text_font_style"] = "OUTLINEMONOCHROME",
-	["chat_tabs_font"] = "Interface\\AddOns\\ShestakUI\\media\\pixel.ttf",
-	["chat_tabs_font_size"] = 8,
-	["chat_tabs_font_style"] = "OUTLINEMONOCHROME",
-	["action_bars_font"] = "Interface\\AddOns\\ShestakUI\\media\\pixel.ttf",
-	["action_bars_font_size"] = 8,
-	["action_bars_font_style"] = "OUTLINEMONOCHROME",
-	["threat_meter_font"] = "Interface\\AddOns\\ShestakUI\\media\\pixel.ttf",
-	["threat_meter_font_size"] = 8,
-	["threat_meter_font_style"] = "OUTLINEMONOCHROME",
-	["raid_cooldowns_font"] = "Interface\\AddOns\\ShestakUI\\media\\pixel.ttf",
-	["raid_cooldowns_font_size"] = 8,
-	["raid_cooldowns_font_style"] = "OUTLINEMONOCHROME",
-	["cooldown_timers_font"] = "Interface\\AddOns\\ShestakUI\\media\\pixel.ttf",
-	["cooldown_timers_font_size"] = 16,
-	["cooldown_timers_font_style"] = "OUTLINEMONOCHROME",
-	["filger_bars_name_font"] = "Interface\\AddOns\\ShestakUI\\media\\pixel.ttf",
-	["filger_bars_name_font_size"] = 8,
-	["filger_bars_name_font_style"] = "OUTLINEMONOCHROME",
-	["stylization_font"] = "Interface\\AddOns\\ShestakUI\\media\\pixel.ttf",
-	["stylization_font_size"] = 8,
-	["stylization_font_style"] = "OUTLINEMONOCHROME",
 }

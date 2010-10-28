@@ -10,6 +10,7 @@ local tooltips = {
 	ShoppingTooltip2,
 	ShoppingTooltip3,
 	WorldMapTooltip,
+	AtlasLootTooltip
 }
 
 for _, tt in pairs(tooltips) do
@@ -22,14 +23,10 @@ end
 
 LFDSearchStatus:SetFrameStrata("TOOLTIP")
 
-----------------------------------------------------------------------------------------
---	Hide PVP text
-----------------------------------------------------------------------------------------
+-- Hide PVP text
 PVP_ENABLED = ""
 
-----------------------------------------------------------------------------------------
---	Statusbar
-----------------------------------------------------------------------------------------
+-- Statusbar
 GameTooltipStatusBar:SetStatusBarTexture(SettingsCF.media.texture)
 GameTooltipStatusBar:SetHeight(4)
 GameTooltipStatusBar:ClearAllPoints()
@@ -50,6 +47,16 @@ local function ShortValue(value)
 		return value
 	end
 end
+
+-- Raid icon
+local ricon = GameTooltip:CreateTexture("GameTooltipRaidIcon", "OVERLAY")
+ricon:SetHeight(18)
+ricon:SetWidth(18)
+ricon:SetPoint("BOTTOM", "GameTooltip", "TOP", 0, 5)
+
+GameTooltip:HookScript("OnHide", function(self)
+	ricon:SetTexture(nil)
+end)
 
 ----------------------------------------------------------------------------------------
 --	Unit tooltip styling
@@ -82,19 +89,19 @@ aTooltip:SetScript("OnEvent", function(self, event, addon)
 				GameTooltip:Hide()
 			end
 		end
-	GameTooltip:SetScript("OnShow", ShiftShow)
-	local EventShow = function()
-		if arg1 == "LSHIFT" and arg2 == 1 then
-			GameTooltip:Show()
-			GameTooltip:SetBackdropColor(unpack(SettingsCF["media"].overlay_color)) 
-			GameTooltip:SetBackdropBorderColor(unpack(SettingsCF["media"].border_color))
-		elseif arg1 == "LSHIFT" and arg2 == 0 then
-			GameTooltip:Hide()
+		GameTooltip:SetScript("OnShow", ShiftShow)
+		local EventShow = function()
+			if arg1 == "LSHIFT" and arg2 == 1 then
+				GameTooltip:Show()
+				GameTooltip:SetBackdropColor(unpack(SettingsCF["media"].overlay_color)) 
+				GameTooltip:SetBackdropBorderColor(unpack(SettingsCF["media"].border_color))
+			elseif arg1 == "LSHIFT" and arg2 == 0 then
+				GameTooltip:Hide()
+			end
 		end
-	end
-	local sh = CreateFrame("Frame")
-	sh:RegisterEvent("MODIFIER_STATE_CHANGED")
-	sh:SetScript("OnEvent", EventShow)
+		local sh = CreateFrame("Frame")
+		sh:RegisterEvent("MODIFIER_STATE_CHANGED")
+		sh:SetScript("OnEvent", EventShow)
 	else
 		if SettingsCF["tooltip"].cursor == true then
 			hooksecurefunc("GameTooltip_SetDefaultAnchor", function (GameTooltip, parent)
@@ -201,6 +208,13 @@ aTooltip:SetScript("OnEvent", function(self, event, addon)
 
             self:AddLine(text, r, g, b)
         end
+		
+		if SettingsCF["tooltip"].raid_icon == true then
+			local raidIndex = GetRaidTargetIndex(unit)
+			if raidIndex then
+				ricon:SetTexture("Interface\\TargetingFrame\\UI-RaidTargetingIcon_"..raidIndex)
+			end
+		end
     end
 
     GameTooltip:HookScript("OnTooltipSetUnit", OnTooltipSetUnit)
@@ -236,14 +250,16 @@ if SettingsCF["tooltip"].talents == true then
 	-- Constants
 	local TALENTS_PREFIX = TALENTS..":|cffffffff ";
 	local CACHE_SIZE = 25;		-- Change cache size here (Default 25)
-	local MIN_INSPECT_DELAY = 0.2;
-	local MIN_INSPECT_FREQ = 2;
+	local INSPECT_DELAY = 0.2;
+	local INSPECT_FREQ = 2;
 	
 	-- Variables
 	local ttt = CreateFrame("Frame", "TipTacTalents");
 	local cache = {};
 	local current = {};
-	local lastInspectRequest = 0;
+	
+	-- Time of the last inspect reuqest. Init this to zero, just to make sure. This is a global so other addons could use this variable as well
+	lastInspectRequest = 0;
 
 	-- Allow these to be accessed through other addons
 	ttt.cache = cache;
@@ -257,16 +273,16 @@ if SettingsCF["tooltip"].talents == true then
 	local function GatherTalents(isInspect)
 		-- Inspect functions will always use the active spec when not inspecting
 		local group = GetActiveTalentGroup(isInspect);
-		-- Get points per tree, and set "maxTree" to the tree with most points
-		local maxTree, _ = 1;
+		-- Get points per tree, and set "primaryTree" to the tree with most points
+		local primaryTree = 1;
 		for i = 1, 3 do
 			local _, _, _, _, pointsSpent = GetTalentTabInfo(i,isInspect,nil,group);
 			current[i] = pointsSpent;
-			if (current[i] > current[maxTree]) then
-				maxTree = i;
+			if (current[i] > current[primaryTree]) then
+				primaryTree = i;
 			end
 		end
-		local _, tabName = GetTalentTabInfo(maxTree,isInspect,nil,group);
+		local _, tabName = GetTalentTabInfo(primaryTree,isInspect,nil,group);
 		current.tree = tabName;
 		-- Az: Clear Inspect, as we are done using it
 		if (isInspect) then
@@ -274,7 +290,7 @@ if SettingsCF["tooltip"].talents == true then
 		end
 		-- Customise output. Use TipTac setting if it exists, otherwise just use formatting style one.
 		local talentFormat = (1);
-		if (current[maxTree] == 0) then
+		if (current[primaryTree] == 0) then
 			current.format = L_TOOLTIP_NO_TALENT;
 		elseif (talentFormat == 1) then
 			current.format = current.tree.." ("..current[1].."/"..current[2].."/"..current[3]..")";
@@ -338,7 +354,7 @@ if SettingsCF["tooltip"].talents == true then
 				self:RegisterEvent("INSPECT_READY");
 				-- Az: Fix the blizzard inspect copypasta code (Blizzard_InspectUI\InspectPaperDollFrame.lua @ line 23)
 				if (InspectFrame) then
-					InspectFrame.unit = unit;
+					InspectFrame.unit = "player";
 				end
 				NotifyInspect(current.unit);
 			end
@@ -390,7 +406,7 @@ if SettingsCF["tooltip"].talents == true then
 			local isInspectOpen = (InspectFrame and InspectFrame:IsShown()) or (Examiner and Examiner:IsShown());
 			if (CanInspect(unit)) and (not isInspectOpen) then
 				local lastInspectTime = (GetTime() - lastInspectRequest);
-				ttt.nextUpdate = (lastInspectTime > MIN_INSPECT_FREQ) and MIN_INSPECT_DELAY or (MIN_INSPECT_FREQ - lastInspectTime + MIN_INSPECT_DELAY);
+				ttt.nextUpdate = (lastInspectTime > INSPECT_FREQ) and INSPECT_DELAY or (INSPECT_FREQ - lastInspectTime + INSPECT_DELAY);
 				ttt:Show();
 				if (not cacheLoaded) then
 					self:AddLine(TALENTS_PREFIX..L_TOOLTIP_LOADING);
@@ -749,3 +765,22 @@ if SettingsCF["tooltip"].spell_id == true then
 		end
 	end)
 end
+
+----------------------------------------------------------------------------------------
+--	Disable tooltip fading
+----------------------------------------------------------------------------------------
+GameTooltip.FadeOut = function(self)
+	GameTooltip:Hide()
+end
+
+local hasUnit
+local updateFrame = CreateFrame"Frame"
+updateFrame:SetScript("OnUpdate", function(self)
+	local _, unit = GameTooltip:GetUnit()
+	if hasUnit and not unit then
+		GameTooltip:Hide()
+		hasUnit = nil
+	elseif unit then
+		hasUnit = true
+	end
+end)

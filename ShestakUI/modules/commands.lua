@@ -135,7 +135,7 @@ SlashCmdList["FRAME"] = function(arg)
 		ChatFrame1:AddMessage("Strata: |cffFFD100"..arg:GetFrameStrata())
 		ChatFrame1:AddMessage("Level: |cffFFD100"..arg:GetFrameLevel())
  
-		if relativeTo then
+		if relativeTo and relativeTo:GetName() then
 			ChatFrame1:AddMessage("Point: |cffFFD100"..point.."|r anchored to "..relativeTo:GetName().."'s |cffFFD100"..relativePoint)
 		end
 		if xOfs then
@@ -169,7 +169,7 @@ SlashCmdList["CHANGEADDONS"] = function(s)
 		end
 		for i in pairs(SettingsCF["addon"].quest) do
 			DisableAddOn(SettingsCF["addon"].quest[i])
-        end
+		end
 		for i in pairs(SettingsCF["addon"].trade) do
 			DisableAddOn(SettingsCF["addon"].trade[i])
 		end
@@ -189,79 +189,79 @@ SlashCmdList["CHANGEADDONS"] = function(s)
 		end
 		for i in pairs(SettingsCF["addon"].trade) do
 			DisableAddOn(SettingsCF["addon"].trade[i])
-        end
-        ReloadUI()
-    elseif(s and s == "pvp") then
-        for i in pairs(SettingsCF["addon"].raid) do
-            DisableAddOn(SettingsCF["addon"].raid[i])
-        end
+		end
+		ReloadUI()
+	elseif(s and s == "pvp") then
+		for i in pairs(SettingsCF["addon"].raid) do
+			DisableAddOn(SettingsCF["addon"].raid[i])
+		end
 		for i in pairs(SettingsCF["addon"].party) do
 			DisableAddOn(SettingsCF["addon"].party[i])
-        end
+		end
 		for i in pairs(SettingsCF["addon"].pvp) do
-            EnableAddOn(SettingsCF["addon"].pvp[i])
-        end
+			EnableAddOn(SettingsCF["addon"].pvp[i])
+		end
 		for i in pairs(SettingsCF["addon"].quest) do
 			DisableAddOn(SettingsCF["addon"].quest[i])
-        end
+		end
 		for i in pairs(SettingsCF["addon"].trade) do
 			DisableAddOn(SettingsCF["addon"].trade[i])
-        end
-        ReloadUI()
+		end
+		ReloadUI()
 	elseif(s and s == "quest") then
-        for i in pairs(SettingsCF["addon"].raid) do
-            DisableAddOn(SettingsCF["addon"].raid[i])
-        end
+		for i in pairs(SettingsCF["addon"].raid) do
+			DisableAddOn(SettingsCF["addon"].raid[i])
+		end
 		for i in pairs(SettingsCF["addon"].party) do
 			DisableAddOn(SettingsCF["addon"].party[i])
-        end
+		end
 		for i in pairs(SettingsCF["addon"].pvp) do
 			DisableAddOn(SettingsCF["addon"].pvp[i])
-        end
-        for i in pairs(SettingsCF["addon"].quest) do
-            EnableAddOn(SettingsCF["addon"].quest[i])
-        end
+		end
+		for i in pairs(SettingsCF["addon"].quest) do
+			EnableAddOn(SettingsCF["addon"].quest[i])
+		end
 		for i in pairs(SettingsCF["addon"].trade) do
 			DisableAddOn(SettingsCF["addon"].trade[i])
-        end
-        ReloadUI()
+		end
+		ReloadUI()
 	elseif(s and s == "trade") then
-        for i in pairs(SettingsCF["addon"].raid) do
-            DisableAddOn(SettingsCF["addon"].raid[i])
-        end
+		for i in pairs(SettingsCF["addon"].raid) do
+			DisableAddOn(SettingsCF["addon"].raid[i])
+		end
 		for i in pairs(SettingsCF["addon"].party) do
 			DisableAddOn(SettingsCF["addon"].party[i])
-        end
+		end
 		for i in pairs(SettingsCF["addon"].pvp) do
-            DisableAddOn(SettingsCF["addon"].pvp[i])
-        end
+			DisableAddOn(SettingsCF["addon"].pvp[i])
+		end
 		for i in pairs(SettingsCF["addon"].quest) do
 			DisableAddOn(SettingsCF["addon"].quest[i])
-        end
+		end
 		for i in pairs(SettingsCF["addon"].trade) do
 			EnableAddOn(SettingsCF["addon"].trade[i])
-        end
-        ReloadUI()
-    elseif(s and s == "solo") then
-        for i in pairs(SettingsCF["addon"].raid) do
-            DisableAddOn(SettingsCF["addon"].raid[i])
-        end
+		end
+		ReloadUI()
+	elseif(s and s == "solo") then
+		for i in pairs(SettingsCF["addon"].raid) do
+			DisableAddOn(SettingsCF["addon"].raid[i])
+		end
 		for i in pairs(SettingsCF["addon"].party) do
 			DisableAddOn(SettingsCF["addon"].party[i])
-        end
+		end
 		for i in pairs(SettingsCF["addon"].pvp) do
-            DisableAddOn(SettingsCF["addon"].pvp[i])
-        end
+			DisableAddOn(SettingsCF["addon"].pvp[i])
+		end
 		for i in pairs(SettingsCF["addon"].quest) do
-            DisableAddOn(SettingsCF["addon"].quest[i])
-        end
+			DisableAddOn(SettingsCF["addon"].quest[i])
+		end
 		for i in pairs(SettingsCF["addon"].trade) do
 			DisableAddOn(SettingsCF["addon"].trade[i])
-        end
-        ReloadUI()
-    else
-        print("|cffffff00"..L_INFO_ADDON_SETS1.."|r")
-        print("|cffffff00"..L_INFO_ADDON_SETS2.."|r")
-    end
+		end
+		ReloadUI()
+	else
+		print("|cffffff00"..L_INFO_ADDON_SETS1.."|r")
+		print("|cffffff00"..L_INFO_ADDON_SETS2.."|r")
+	end
 end
 SLASH_CHANGEADDONS1 = "/addons"

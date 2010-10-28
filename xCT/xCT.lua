@@ -32,13 +32,13 @@ local ct={
 	["dotdamage"] = SettingsCF["combattext"].dot_damage,		-- show damage from your dots. someone asked an option to disable lol.
 	["treshold"] = SettingsCF["combattext"].treshold,		-- minimum damage to show in outgoing damage frame
 	["healtreshold"] = SettingsCF["combattext"].heal_treshold,		-- minimum healing to show in incoming/outgoing healing messages.
+	["killingblow"] = SettingsCF["combattext"].killingblow,		-- tells you about your killingblows
 	
-
 -- appearence
-	["font"] = SettingsCF["media"].pixel_font,	-- "Fonts\\ARIALN.ttf" is default WoW font.
-	["fontsize"] = SettingsCF["combattext"].font_size,
-	["fontstyle"] = SettingsCF["media"].pixel_font_style,	-- valid options are "OUTLINE", "MONOCHROME", "THICKOUTLINE", "OUTLINE,MONOCHROME", "THICKOUTLINE,MONOCHROME"
-	["damagefont"] = SettingsCF["media"].pixel_font,	 -- "Fonts\\FRIZQT__.ttf" is default WoW damage font
+	["font"] = SettingsCF["font"].combat_text_font,	-- "Fonts\\ARIALN.ttf" is default WoW font.
+	["fontsize"] = SettingsCF["font"].combat_text_font_size,
+	["fontstyle"] = SettingsCF["font"].combat_text_font_style,	-- valid options are "OUTLINE", "MONOCHROME", "THICKOUTLINE", "OUTLINE,MONOCHROME", "THICKOUTLINE,MONOCHROME"
+	["damagefont"] = SettingsCF["font"].combat_text_font,	 -- "Fonts\\FRIZQT__.ttf" is default WoW damage font
 	["timevisible"] = SettingsCF["combattext"].time_visible, 		-- time (seconds) a single message will be visible. 3 is a good value.
 	["scrollable"] = SettingsCF["combattext"].scrollable,		-- allows you to scroll frame lines with mousewheel.
 	["maxlines"] = SettingsCF["combattext"].max_lines,		-- max lines to keep in scrollable mode. more lines=more memory. nom nom nom.
@@ -46,13 +46,26 @@ local ct={
 -- class modules and goodies
 	["stopvespam"] = SettingsCF["combattext"].stop_ve_spam,		-- automaticly turns off healing spam for priests in shadowform. HIDE THOSE GREEN NUMBERS PLX!
 	["dkrunes"] = SettingsCF["combattext"].dk_runes,		-- show deatchknight rune recharge
+	["mergeaoespam"] = SettingsCF["combattext"].merge_aoe_spam,	-- merges multiple aoe spam into single message, can be useful for dots too.
+	["mergeaoespamtime"] = SettingsCF["combattext"].merge_aoe_spam_time,	-- time in seconds aoe spell will be merged into single message.
 }
 ---------------------------------------------------------------------------------
 -- outgoing healing filter, hide this spammy shit, plx
-ct.healfilter={}
-ct.healfilter[28176]=true -- Fel Armor
-ct.healfilter[63106]=true -- Siphon Life
-ct.healfilter[54181]=true -- Fel Synergy
+if(ct.healing)then
+	ct.healfilter={}
+	ct.healfilter[28176]=true -- Fel Armor
+	ct.healfilter[63106]=true -- Siphon Life
+	ct.healfilter[54181]=true -- Fel Synergy
+end
+---------------------------------------------------------------------------------
+if(ct.mergeaoespam)then
+	ct.aoespam={}
+	ct.aoespam[27285]=true	-- Seed of Corruption Explosion
+	ct.aoespam[172]=true	-- Corruption
+	ct.aoespam[30108]=true	-- Unstable Corruption
+	ct.aoespam[8921]=true	-- Moonfire
+	ct.aoespam[5570]=true	-- Insect Swarm
+end
 ---------------------------------------------------------------------------------
 -- class config, overrides general
 if ct.myclass == "WARRIOR" then
@@ -373,7 +386,8 @@ ct.frames={}
 for i=1,numf do
 	local f=CreateFrame("ScrollingMessageFrame","xCT"..i,UIParent)
 	f:SetFont(ct.font,ct.fontsize,ct.fontstyle)
-	f:SetShadowColor(0,0,0,0)
+	f:SetShadowColor(0,0,0,SettingsCF["font"].combat_text_font_shadow and 1 or 0)
+	f:SetShadowOffset(SettingsCF["font"].combat_text_font_shadow and 1 or 0, SettingsCF["font"].combat_text_font_shadow and -1 or 0)
 	f:SetFading(true)
 	f:SetFadeDuration(0.5)
 	f:SetTimeVisible(ct.timevisible)
@@ -410,10 +424,6 @@ for i=1,numf do
 	else
 		f:SetJustifyH"RIGHT"
 		f:SetPoint("CENTER",330,205)
-		--if (ct.icons)then
-			--a,_,c=f:GetFont()
-			--f:SetFont(a,ct.iconsize,c)
-		--end
 	end
 	ct.frames[i] = f
 end
@@ -433,6 +443,16 @@ xCT:RegisterEvent"UNIT_ENTERED_VEHICLE"
 xCT:RegisterEvent"UNIT_EXITING_VEHICLE"
 xCT:RegisterEvent"PLAYER_ENTERING_WORLD"
 xCT:SetScript("OnEvent",OnEvent)
+
+if(ct.killingblow)then
+	local xCTkb=CreateFrame"Frame"
+	xCTkb:SetScript("OnEvent", function(_, _, _, event, guid, _, _, _, tname)
+		if event == "PARTY_KILL" and guid==UnitGUID("player") then
+			xCT3:AddMessage("Killing Blow: "..tname, 1, 1, 0)
+		end
+	end)
+	xCTkb:RegisterEvent("COMBAT_LOG_EVENT_UNFILTERED")
+end
 
 -- turn off blizz ct
 CombatText:UnregisterAllEvents()
@@ -698,6 +718,7 @@ if(ct.stopvespam and ct.myclass=="PRIEST")then
 end
 
 -- damage
+local SQ
 if(ct.damage)then
 	local xCTd=CreateFrame"Frame"
 	if(ct.damagecolor)then
@@ -713,6 +734,45 @@ if(ct.damage)then
 	
 	if(ct.icons)then
 		ct.blank="Interface\\AddOns\\ShestakUI\\media\\blank"
+	end
+
+	if(ct.mergeaoespam)then
+		local pairs=pairs
+		SQ={}
+		for k,v in pairs(ct.aoespam) do
+			SQ[k]={queue = 0, msg = "", color={}, count=0}
+		end
+		ct.SpamQueue=function(spellId, add)
+			local amount
+			local spam=SQ[spellId]["queue"]
+			if (spam and type(spam=="number"))then
+				amount=spam+add
+			else
+				amount=add
+			end
+			return amount
+		end
+		local tslu=0
+		local xCTspam=CreateFrame"Frame"
+		xCTspam:SetScript("OnUpdate", function(self, elapsed)
+			local count
+			tslu=tslu+elapsed
+			if tslu > ct.mergeaoespamtime then
+				tslu=0
+				for k,v in pairs(SQ) do
+					if SQ[k]["queue"]>0 then
+						if SQ[k]["count"]>1 then
+							count=" |cffFFFFFFx"..SQ[k]["count"].."|r"
+						else
+							count=""
+						end
+						xCT4:AddMessage(SQ[k]["queue"]..SQ[k]["msg"]..count, unpack(SQ[k]["color"]))
+						SQ[k]["queue"]=0
+						SQ[k]["count"]=0
+					end
+				end
+			end
+		end)
 	end
 
 	local dmg=function(self,event,...) 
@@ -755,14 +815,11 @@ if(ct.damage)then
 	
 			elseif(eventType=="SPELL_DAMAGE")or(eventType=="SPELL_PERIODIC_DAMAGE" and ct.dotdamage)then
 				local spellId,_,spellSchool,amount,_,_,_,_,_,critical=select(9,...)
-				local id
 				if(amount>=ct.treshold)then
 					local color={}
+					local rawamount=amount
 					if (critical) then
-						id=5
-						msg=ct.critprefix..amount..ct.critpostfix
-					else
-						msg=amount
+						amount=ct.critprefix..amount..ct.critpostfix
 					end
 	
 					if(ct.icons)then
@@ -778,12 +835,19 @@ if(ct.damage)then
 						color={1,1,0}
 					end
 					if (icon) then
-						msg=msg.." \124T"..icon..":"..ct.iconsize..":"..ct.iconsize..":0:0:64:64:5:59:5:59\124t"
+						msg=" \124T"..icon..":"..ct.iconsize..":"..ct.iconsize..":0:0:64:64:5:59:5:59\124t"
 					elseif(ct.icons)then
-						msg=msg.." \124T"..ct.blank..":"..ct.iconsize..":"..ct.iconsize..":0:0:64:64:5:59:5:59\124t"
+						msg=" \124T"..ct.blank..":"..ct.iconsize..":"..ct.iconsize..":0:0:64:64:5:59:5:59\124t"
+					end
+					if ct.mergeaoespam and ct.aoespam[spellId] then
+						SQ[spellId]["queue"]=ct.SpamQueue(spellId, rawamount)
+						SQ[spellId]["msg"]=msg
+						SQ[spellId]["color"]=color
+						SQ[spellId]["count"]=SQ[spellId]["count"]+1
+						return
 					end
 					
-					xCT4:AddMessage(msg,unpack(color))
+					xCT4:AddMessage(amount.." "..msg,unpack(color))
 				end
 	
 			elseif(eventType=="SWING_MISSED")then

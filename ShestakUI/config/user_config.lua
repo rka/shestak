@@ -7,7 +7,7 @@
 ----------------------------------------------------------------------------------------
 -- if SettingsDB.name == "MegaChar" then
 --		SettingsCF["chat"].width = 100500
--- 		SettingsCF["tooltip"].cursor = false	
+-- 		SettingsCF["tooltip"].cursor = false
 --		SettingsCF["unitframe"].plugins_totem_bar = false
 --		SettingsCF["addon"].pvp = {ADDON1, ADDON2, ADDON3, ETC}
 --		SettingsCF["addon"].raid = {ADDON1, ADDON2, ADDON3, ETC}
@@ -62,6 +62,7 @@ if SettingsDB.name == "Черешок"
 	SettingsCF["tooltip"].shift_modifer = true
 	SettingsCF["tooltip"].cursor = true
 	SettingsCF["tooltip"].title = true
+	SettingsCF["tooltip"].talents = true
 	SettingsCF["unitframe"].arena_on_right = false
 	SettingsCF["error"].black = false
 	SettingsCF["error"].white = true
