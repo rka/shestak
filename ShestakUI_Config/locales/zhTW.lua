@@ -30,7 +30,6 @@ if GetLocale() == "zhTW" then
 	
 	-- Combat text options
 	L_GUI_COMBATTEXT = "戰鬥文字"
-	L_GUI_COMBATTEXT_FONT_SIZE = "字體大小"
 	L_GUI_COMBATTEXT_BLIZZ_HEAD_NUMBERS = "使用暴雪默認傷害/治療模式（模型頂部/玩家頭像）"
 	L_GUI_COMBATTEXT_DAMAGE_STYLE = "改變模型頂部/玩家頭像的傷害/治療字體"
 	L_GUI_COMBATTEXT_DAMAGE = "獨立顯示傷害輸出"
@@ -67,7 +66,6 @@ if GetLocale() == "zhTW" then
 	-- Raid/Enemy cooldown options
 	L_GUI_COOLDOWN = "團隊/敵對技能冷卻"  
 	L_GUI_COOLDOWN_RAID_ENABLE = "開啟團隊技能冷卻"  
-	L_GUI_COOLDOWN_RAID_FONT = "團隊技能冷卻文字大小"  
 	L_GUI_COOLDOWN_RAID_HEIGHT = "團隊技能冷卻欄高度"  
 	L_GUI_COOLDOWN_RAID_WIDTH = "團隊技能冷卻欄寬度"  
 	L_GUI_COOLDOWN_RAID_SORT = "團隊技能冷卻欄向上延伸"  
@@ -80,11 +78,12 @@ if GetLocale() == "zhTW" then
 	L_GUI_COOLDOWN_ENEMY_EVERYWHERE = "在任何時候顯示敵對技能冷卻"  
 	L_GUI_COOLDOWN_ENEMY_IN_BG = "在戰場中顯示敵對技能冷卻"  
 	L_GUI_COOLDOWN_ENEMY_IN_ARENA = "在競技場中顯示敵對技能冷卻"
+	L_GUI_COOLDOWN_PULSE_ENABLE = "開啟冷卻閃爍提示"
+	L_GUI_COOLDOWN_PULSE_SIZE = "冷卻閃爍提示大小"
 	
 	-- Threat options
 	L_GUI_THREAT = "仇恨欄"
 	L_GUI_THREAT_ENABLE = "開啟仇恨欄"
-	L_GUI_THREAT_FONT_SIZE = "仇恨欄字體大小"
 	L_GUI_THREAT_HEIGHT = "仇恨欄高度"
 	L_GUI_THREAT_WIDTH = "仇恨欄寬度"
 	L_GUI_THREAT_ROWS = "仇恨欄數目"
@@ -104,27 +103,24 @@ if GetLocale() == "zhTW" then
 	L_GUI_TOOLTIP_TITLE = "在提示資訊中顯示目標稱號"
 	L_GUI_TOOLTIP_RANK = "在提示資訊中顯示公會階級"
 	L_GUI_TOOLTIP_ARENA_EXPERIENCE = "在提示資訊中顯示競技場等級"
-	L_GUI_TOOLTIP_SPELL_ID = "Spell ID" -- Needs review
+	L_GUI_TOOLTIP_SPELL_ID = "法術ID"
+	L_GUI_TOOLTIP_RAID_ICON = "團隊圖示"
 	
 	-- Chat options
 	L_GUI_CHAT_ENABLE = "開啟聊天框增強"
 	L_GUI_CHAT_BACKGROUND = "開啟聊天框背景"
 	L_GUI_CHAT_BACKGROUND_ALPHA = "聊天背景透明度"
-	L_GUI_CHAT_FONT_SIZE = "聊天框字體大小"
-	L_GUI_CHAT_FONT_STYLE = "字體風格"
-	L_GUI_CHAT_TAB_FONT_SIZE = "標籤文字大小" 
-	L_GUI_CHAT_TAB_FONT_STYLE = "標籤文字風格"
 	L_GUI_CHAT_SPAM = "移除垃圾消息(*玩家1* 戰勝 *玩家2*)"
 	L_GUI_CHAT_WIDTH = "框體寬度"
 	L_GUI_CHAT_HEIGHT = "框體高度"
 	L_GUI_CHAT_BAR = "顯示頻道快捷圖示欄"
 	L_GUI_CHAT_TIMESTAMP = "時間標籤顏色"
 	L_GUI_CHAT_WHISP = "接受密語時聲音提示"
-	L_GUI_CHAT_SKIN_BUBBLE = "Skin Blizzard chat bubbles"  -- Needs review
+	L_GUI_CHAT_SKIN_BUBBLE = "美化默認聊天泡泡"
 	
 	-- Bag options
 	L_GUI_BAGS = "背包"
-	L_GUI_BAGS_ENABLE = "Enable bags"  -- Needs review
+	L_GUI_BAGS_ENABLE = "開啟背包增強"
 	L_GUI_BAGS_BUTTON_SIZE = "空格大小" 
 	L_GUI_BAGS_BUTTON_SPACE = "空格間隔" 
 	L_GUI_BAGS_BANK = "銀行背包每行數目"
@@ -144,7 +140,6 @@ if GetLocale() == "zhTW" then
 	-- Loot options
 	L_GUI_LOOT_ENABLE = "開啟拾取增強"
 	L_GUI_LOOT_ROLL_ENABLE = "開啟團隊拾取框體"
-	L_GUI_LOOT_FONT_SIZE = "拾取框體字體大小"
 	L_GUI_LOOT_ICON_SIZE = "拾取框體圖示大小"
 	L_GUI_LOOT_WIDTH = "拾取框體寬度"
 	L_GUI_LOOT_AUTOGREED = "滿級后自動貪婪綠色物品"
@@ -155,14 +150,13 @@ if GetLocale() == "zhTW" then
 	L_GUI_NAMEPLATE_COMBAT = "在戰鬥中自動顯示單位名條"
 	L_GUI_NAMEPLATE_HEALTH = "顯示百分比生命值"
 	L_GUI_NAMEPLATE_CASTBAR = "顯示施法條"
-	L_GUI_NAMEPLATE_FONT_SIZE = "單位名條字體大小"
 	L_GUI_NAMEPLATE_HEIGHT = "單位名條高度"
 	L_GUI_NAMEPLATE_WIDTH = "單位名條寬度"
 	L_GUI_NAMEPLATE_CASTBAR_NAME = "顯示施法名稱"
 	L_GUI_NAMEPLATE_THREAT = "顯示仇恨情況"
 	L_GUI_NAMEPLATE_CLASS_ICON = "在PVP情況下顯示職業圖示"
 	L_GUI_NAMEPLATE_NAME_ABBREV = "顯示名字縮寫"
-	L_GUI_NAMEPLATE_OVERLAP = "Allow nameplates to overlap"  -- Needs review
+	L_GUI_NAMEPLATE_OVERLAP = "允許單位名條重疊"
 	
 	-- ActionBar options
 	L_GUI_ACTIONBAR_ENABLE = "開啟快捷列"
@@ -181,7 +175,6 @@ if GetLocale() == "zhTW" then
 	L_GUI_ACTIONBAR_SHAPESHIFT_HORIZONTAL = "橫向顯示變身/姿態快捷列"
 	
 	-- Auras/Buffs/Debuffs
-	L_GUI_AURA_FONT_SIZE = "法術效果圖示大小"
 	L_GUI_AURA_PLAYER_BUFF_SIZE = "玩家Buffs圖示大小"
 	L_GUI_AURA_SHOW_SPIRAL = "在圖示上顯示漩渦冷卻樣式"
 	L_GUI_AURA_SHOW_TIMER = "在圖示上顯示層數堆疊"
@@ -196,7 +189,6 @@ if GetLocale() == "zhTW" then
 	
 	-- Unit frame options
 	L_GUI_UF_ENABLE = "開啟單位框架"
-	L_GUI_UF_FONT_SIZE = "字體大小"
 	L_GUI_UF_AGGRO_BORDER = "仇恨邊框"
 	L_GUI_UF_OWN_COLOR = "在預測治療中顯示你的治療量"
 	L_GUI_UF_ENEMY_HEALTH_COLOR = "敵對目標生命條以紅色著色"
@@ -209,6 +201,7 @@ if GetLocale() == "zhTW" then
 	L_GUI_UF_SHOW_BOSS = "顯示boss框體"
 	L_GUI_UF_SHOW_ARENA = "顯示競技場框體"
 	L_GUI_UF_ARENA_RIGHT = "在右側顯示競技場框體"
+	L_GUI_UF_SHOW_PARTY = "顯示隊伍框體"
 	L_GUI_UF_SHOW_RAID = "顯示團隊框體"
 	L_GUI_UF_VERTICAL_HEALTH = "垂直顯示團隊框體生命值"
 	L_GUI_UF_ALPHA_HEALTH = "100%生命值時透明顯示生命欄"
@@ -217,6 +210,7 @@ if GetLocale() == "zhTW" then
 	L_GUI_UF_SOLO_MODE = "總是顯示玩家框體"
 	L_GUI_UF_PLAYER_PARTY = "在小隊中顯示玩家框體"
 	L_GUI_UF_SHOW_TANK = "顯示團隊主坦克框體"
+	L_GUI_UF_SHOW_TANK_TT = "顯示坦克目標的目標"
 	L_GUI_UF_RAID_GROUP = "顯示小隊數目(ShestakUI_Heal風格)"
 	L_GUI_UF_RAID_VERTICAL_GROUP = "竪向排列團隊隊伍(ShestakUI_Heal風格)"
 	L_GUI_UF_ICONS_PVP = "滑鼠劃過玩家/目標顯示PVP狀態文字"  -- Needs review
@@ -257,7 +251,6 @@ if GetLocale() == "zhTW" then
 	
 	-- Stats options
 	L_GUI_STATS = "統計面板"
-	L_GUI_STATS_FONT_SIZE = "面板字體大小"
 	L_GUI_STATS_BG = "戰場分數"
 	L_GUI_STATS_CLOCK = "時鐘"
 	L_GUI_STATS_LATENCY = "延遲"
@@ -266,7 +259,7 @@ if GetLocale() == "zhTW" then
 	L_GUI_STATS_EXPERIENCE = "經驗"
 	L_GUI_STATS_COORDS = "座標"
 	L_GUI_STATS_LOCATION = "位置"
-	L_GUI_STATS_GUILD_REPAIR = "Repair from guild bank" -- Needs review
+	L_GUI_STATS_GUILD_REPAIR = "公會銀行修理"
 	
 	-- Error options
 	L_GUI_ERROR = "錯誤收集"

@@ -71,11 +71,9 @@ local function Shared(self, unit)
 	end
 	
 	if not (self:GetAttribute("unitsuffix") == "pet" or (self:GetAttribute("unitsuffix") == "target" and not (self:GetParent():GetName():match"oUF_MainTank"))) then
-		self.Health.value = self.Health:CreateFontString(nil, "OVERLAY")
+		self.Health.value = SettingsDB.SetFontString(self.Health, SettingsCF["font"].unit_frames_font, SettingsCF["font"].unit_frames_font_size, SettingsCF["font"].unit_frames_font_style)
 		self.Health.value:SetPoint("CENTER", self.Health, "CENTER", 0, SettingsDB.Scale(-5))
-		self.Health.value:SetFont(SettingsCF["media"].pixel_font, db.font_size, SettingsCF["media"].pixel_font_style)
 		self.Health.value:SetTextColor(1, 1, 1)
-		self.Health.value:SetShadowOffset(0, 0)
 		
 		self.Health.PostUpdate = SettingsDB.PostUpdateRaidHealth
 
@@ -103,13 +101,12 @@ local function Shared(self, unit)
 	end
 	
 	-- Names
-	self.Info = self.Health:CreateFontString(nil, "OVERLAY")
+	self.Info = SettingsDB.SetFontString(self.Health, SettingsCF["font"].unit_frames_font, SettingsCF["font"].unit_frames_font_size, SettingsCF["font"].unit_frames_font_style)
 	if (self:GetAttribute("unitsuffix") == "pet" or self:GetAttribute("unitsuffix") == "target") and not (self:GetParent():GetName():match"oUF_MainTank") then
 		self.Info:SetPoint("CENTER", self.Health, "CENTER", 0, SettingsDB.Scale(1))
 	else
 		self.Info:SetPoint("CENTER", self.Health, "CENTER", 0, SettingsDB.Scale(4))
 	end
-	self.Info:SetFont(SettingsCF["media"].pixel_font, db.font_size, SettingsCF["media"].pixel_font_style)
 	self:Tag(self.Info, "[GetNameColor][NameShort]")
 	
 	-- Agro border
@@ -135,14 +132,14 @@ local function Shared(self, unit)
 	end
 	
 	-- Ready check icons
-	if db.icons_ready_check == true and not (self:GetAttribute("unitsuffix") == "target") then
+	if db.icons_ready_check == true and not (self:GetAttribute("unitsuffix") == "target" or self:GetAttribute("unitsuffix") == "targettarget") then
 		self.ReadyCheck = self.Health:CreateTexture(nil, "OVERLAY")
 		self.ReadyCheck:SetSize(SettingsDB.Scale(12), SettingsDB.Scale(12))
 		self.ReadyCheck:SetPoint("BOTTOMRIGHT", SettingsDB.Scale(2), SettingsDB.Scale(1))
 	end
 	
 	-- Leader/Assistant/ML icons
-	if db.icons_leader == true and not (self:GetAttribute("unitsuffix") == "target") then
+	if db.icons_leader == true and not (self:GetAttribute("unitsuffix") == "target" or self:GetAttribute("unitsuffix") == "targettarget") then
 		-- Leader icon
 		self.Leader = self.Health:CreateTexture(nil, "OVERLAY")
 		self.Leader:SetSize(SettingsDB.Scale(12), SettingsDB.Scale(12))
@@ -160,7 +157,7 @@ local function Shared(self, unit)
 	end
 	
 	-- Debuff highlight
-	if not (self:GetAttribute("unitsuffix") == "target") then
+	if not (self:GetAttribute("unitsuffix") == "target" or self:GetAttribute("unitsuffix") == "targettarget") then
 		self.DebuffHighlight = self.Health:CreateTexture(nil, "OVERLAY")
 		self.DebuffHighlight:SetAllPoints(self.Health)
 		self.DebuffHighlight:SetTexture(SettingsCF["media"].highlight)
@@ -201,7 +198,7 @@ local function Shared(self, unit)
 	end
 
 	-- Range alpha
-	if db.show_range == true and not (self:GetAttribute("unitsuffix") == "target") then
+	if db.show_range == true and not (self:GetAttribute("unitsuffix") == "target" or self:GetAttribute("unitsuffix") == "targettarget") then
 		self.Range = {insideAlpha = 1, outsideAlpha = db.range_alpha}
 	end
 	
@@ -213,7 +210,7 @@ local function Shared(self, unit)
 		end
 	end
 
-	if db.plugins_aura_watch == true and not (self:GetAttribute("unitsuffix") == "pet" or self:GetAttribute("unitsuffix") == "target") then
+	if db.plugins_aura_watch == true and not (self:GetAttribute("unitsuffix") == "pet" or self:GetAttribute("unitsuffix") == "target" or self:GetAttribute("unitsuffix") == "targettarget") then
 		-- Classbuffs
 		SettingsDB.CreateAuraWatch(self, unit)
 		
@@ -237,8 +234,7 @@ local function Shared(self, unit)
 			self.RaidDebuffs.cd:SetReverse()
 		end
 
-		self.RaidDebuffs.count = self.RaidDebuffs:CreateFontString(nil, "OVERLAY")
-		self.RaidDebuffs.count:SetFont(SettingsCF["media"].pixel_font, db.font_size, SettingsCF["media"].pixel_font_style)
+		self.RaidDebuffs.count = SettingsDB.SetFontString(self.RaidDebuffs, SettingsCF["font"].unit_frames_font, SettingsCF["font"].unit_frames_font_size, SettingsCF["font"].unit_frames_font_style)
 		self.RaidDebuffs.count:SetPoint("BOTTOMRIGHT", self.RaidDebuffs, "BOTTOMRIGHT", SettingsDB.Scale(2), 0)
 		self.RaidDebuffs.count:SetTextColor(1, 1, 1)
 	end
@@ -252,19 +248,21 @@ end
 oUF:RegisterStyle("ShestakHeal", Shared)
 oUF:Factory(function(self)
 	oUF:SetActiveStyle("ShestakHeal")
-	local party = self:SpawnHeader("oUF_Party", nil, "custom [@raid6,exists] hide;show",
-		"showSolo", db.solo_mode,
-		"showPlayer", db.player_in_party, 
-		"showParty", true,
-		"showRaid", true,			
-		"xOffset", 7,
-		"point", "LEFT",
-		"template", "oUF_PartyH"
-	)
-	if db.player_in_party == true then
-		party:SetPoint(pos.party_heal[1], pos.party_heal[2], pos.party_heal[3], pos.party_heal[4], pos.party_heal[5])
-	else
-		party:SetPoint(pos.party_heal[1], pos.party_heal[2], pos.party_heal[3], pos.party_heal[4] + 32, pos.party_heal[5])
+	if db.show_party == true then
+		local party = self:SpawnHeader("oUF_Party", nil, "custom [@raid6,exists] hide;show",
+			"showSolo", db.solo_mode,
+			"showPlayer", db.player_in_party, 
+			"showParty", true,
+			"showRaid", true,			
+			"xOffset", 7,
+			"point", "LEFT",
+			"template", "oUF_PartyH"
+		)
+		if db.player_in_party == true then
+			party:SetPoint(pos.party_heal[1], pos.party_heal[2], pos.party_heal[3], pos.party_heal[4], pos.party_heal[5])
+		else
+			party:SetPoint(pos.party_heal[1], pos.party_heal[2], pos.party_heal[3], pos.party_heal[4] + 32, pos.party_heal[5])
+		end
 	end
 
 	if db.show_raid == true then
@@ -310,11 +308,16 @@ oUF:Factory(function(self)
 		end
 		
 		if db.raid_tanks == true then
+			if db.raid_tanks_tt == true then
+				mt_template = "oUF_MainTankTT"
+			else
+				mt_template = "oUF_MainTank"
+			end
 			local raidtank = self:SpawnHeader("oUF_MainTank", nil, "raid",
 				"showRaid", true,
 				"yOffset", -7,
 				"groupFilter", "MAINTANK",
-				"template", "oUF_MainTank"
+				"template", mt_template
 			)
 			raidtank:SetPoint(unpack(SettingsCF["position"].unitframes.tank))
 		end

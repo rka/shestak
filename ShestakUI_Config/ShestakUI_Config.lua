@@ -104,6 +104,8 @@ local function Local(o)
 	if o == "UIConfigcooldownenemy_show_always" then o = L_GUI_COOLDOWN_ENEMY_EVERYWHERE end
 	if o == "UIConfigcooldownenemy_show_inpvp" then o = L_GUI_COOLDOWN_ENEMY_IN_BG end
 	if o == "UIConfigcooldownenemy_show_inarena" then o = L_GUI_COOLDOWN_ENEMY_IN_ARENA end
+	if o == "UIConfigcooldownpulse_enable" then o = L_GUI_COOLDOWN_PULSE_ENABLE end
+	if o == "UIConfigcooldownpulse_size" then o = L_GUI_COOLDOWN_PULSE_SIZE end
 	
 	-- Threat options
 	if o == "UIConfigthreat" then o = L_GUI_THREAT end
@@ -129,6 +131,7 @@ local function Local(o)
 	if o == "UIConfigtooltiprank" then o = L_GUI_TOOLTIP_RANK end
 	if o == "UIConfigtooltiparena_experience" then o = L_GUI_TOOLTIP_ARENA_EXPERIENCE end
 	if o == "UIConfigtooltipspell_id" then o = L_GUI_TOOLTIP_SPELL_ID end
+	if o == "UIConfigtooltipraid_icon" then o = L_GUI_TOOLTIP_RAID_ICON end
 	
 	-- Chat options
 	if o == "UIConfigchat" then o = SOCIALS end
@@ -241,6 +244,7 @@ local function Local(o)
 	if o == "UIConfigunitframeshow_boss" then o = L_GUI_UF_SHOW_BOSS end
 	if o == "UIConfigunitframeshow_arena" then o = L_GUI_UF_SHOW_ARENA end
 	if o == "UIConfigunitframearena_on_right" then o = L_GUI_UF_ARENA_RIGHT end
+	if o == "UIConfigunitframeshow_party" then o = L_GUI_UF_SHOW_PARTY end
 	if o == "UIConfigunitframeshow_raid" then o = L_GUI_UF_SHOW_RAID end
 	if o == "UIConfigunitframevertical_health" then o = L_GUI_UF_VERTICAL_HEALTH end
 	if o == "UIConfigunitframealpha_health" then o = L_GUI_UF_ALPHA_HEALTH end
@@ -249,6 +253,7 @@ local function Local(o)
 	if o == "UIConfigunitframesolo_mode" then o = L_GUI_UF_SOLO_MODE end
 	if o == "UIConfigunitframeplayer_in_party" then o = L_GUI_UF_PLAYER_PARTY end
 	if o == "UIConfigunitframeraid_tanks" then o = L_GUI_UF_SHOW_TANK end
+	if o == "UIConfigunitframeraid_tanks_tt" then o = L_GUI_UF_SHOW_TANK_TT end
 	if o == "UIConfigunitframeraid_groups" then o = L_GUI_UF_RAID_GROUP end
 	if o == "UIConfigunitframeraid_groups_vertical" then o = L_GUI_UF_RAID_VERTICAL_GROUP end
 	if o == "UIConfigunitframeicons_pvp" then o = L_GUI_UF_ICONS_PVP end
@@ -501,7 +506,7 @@ function CreateUIConfig()
 		frame:SetPoint("TOPLEFT")
 		frame:SetWidth(225)
 	
-		local offset=5
+		local offset = 5
 		for option,value in pairs(SettingsCF[group]) do
 			
 			if type(value) == "boolean" then
@@ -562,78 +567,6 @@ function CreateUIConfig()
 				end
 				
 				offset = offset + 45
-			--[[elseif type(value) == "table" then
-				local label = frame:CreateFontString(nil, "OVERLAY", "GameFontHighlight")
-				local o = "UIConfig"..group..option
-				Local(o)
-				label:SetText(SettingsDB.option)
-				label:SetWidth(280)
-				label:SetHeight(20)
-				label:SetJustifyH("LEFT")
-				label:SetPoint("TOPLEFT", 5, -(offset))
-				
-				colorbuttonname = (label:GetText().."ColorPicker")
-				
-				local colorbutton = CreateFrame("Button", colorbuttonname, frame)
-				colorbutton:SetHeight(20)
-				colorbutton:SetWidth(60)
-				SettingsDB.CreateTemplate(colorbutton)
-				colorbutton:SetBackdropBorderColor(unpack(value))
-				colorbutton:SetPoint("LEFT", label, "RIGHT", 2, 1 * UIParent:GetEffectiveScale())
-				
-				local colortext = colorbutton:CreateFontString(nil, "OVERLAY", "GameFontHighlight")
-				colortext:SetText(COLOR)
-				colortext:SetPoint("CENTER")
-				colortext:SetJustifyH("CENTER")
-				
-				local oldvalue = value
-				
-				local function round(number, decimal)
-					return (("%%.%df"):format(decimal)):format(number)
-				end	
-				
-				colorbutton:SetScript("OnMouseDown", function(self) 
-					local button = _G[self:GetName()]
-					local r, g, b, a = button:GetBackdropBorderColor();
-					r, g, b, a = round(r, 2), round(g, 2), round(b, 2), round(a, 2)
-					local originalR, originalG, originalB, originalA = r, g, b, a
-
-					local function ShowColorPicker(r, g, b, a, changedCallback)
-						ColorPickerFrame:SetColorRGB(r,g,b)
-						ColorPickerFrame.hasOpacity = false
-						ColorPickerFrame.previousValues = {originalR, originalG, originalB, originalA}
-						ColorPickerFrame.func, ColorPickerFrame.cancelFunc = changedCallback, changedCallback
-						ColorPickerFrame:Hide()
-						ColorPickerFrame:Show()
-					end
-
-					local function myColorCallback(restore)
-						local newR, newG, newB, newA
-						if restore then
-							-- The user bailed, we extract the old color from the table created by ShowColorPicker
-							newR, newG, newB, newA = unpack(restore)
-							button:SetBackdropBorderColor(newR, newG, newB, newA)
-							value = oldvalue
-							if self == button then
-								SetValue(group, option, (oldvalue)) 
-							end
-						else
-							-- Something changed
-							newA, newR, newG, newB = OpacitySliderFrame:GetValue(), ColorPickerFrame:GetColorRGB();
-							value = { newR, newG, newB, newA }
-							if self == button then
-								SetValue(group, option, (value)) 
-							end
-						button:SetBackdropBorderColor(unpack(value))
-					end
-
-					r, g, b, a = newR, newG, newB, newA
-					end
-					
-					ShowColorPicker(originalR, originalG, originalB, originalA, myColorCallback)
-				end)
-				
-				offset = offset + 25]]
 			end
 		end
 		
@@ -704,7 +637,7 @@ do
 		subtitle:SetNonSpaceWrap(true)
 		subtitle:SetWordWrap(true)
 		subtitle:SetJustifyH("LEFT")
-		subtitle:SetText("ALZA, Katae, pHishr, Roth, P3lim, Led++, Haste, Caellian, Tekkub, Neal, Industrial, Nightcracker, Kemayo, Yleaf, Awbee, Monolit, Sart, Akimba, Antthemage, Tukz, Totalpackage, Syzgyn, AlleyKat, Phanx, Senryo, v6o, Stuck, Meurtcriss, Homicidal Retribution, Favorit, Leots, Allez, Baine, Ianchan, Aelb, Spacedragon, Sw2rT1, Nanjiqq, Cranan, Seal, Halogen, Mania, Fernir, Affli, Eclipse, Elv22, Sitatunga, Foof, Tohveli, FourOne, Addon Authors, UI Users, Russian Community and Other.")
+		subtitle:SetText("ALZA, Katae, pHishr, Roth, P3lim, Led++, Haste, Caellian, Tekkub, Neal, Industrial, Nightcracker, Kemayo, Yleaf, Monolit, Tukz, Totalpackage, Syzgyn, AlleyKat, Phanx, v6o, Meurtcriss, Favorit, Allez, Fernir, Affli, Eclipse, Elv22, Foof, Tohveli, FourOne, Akimba, Sart, Antthemage, Homicidal Retribution, Sitatunga, Mania, Baine, Sw2rT1, Nanjiqq, Cranan, Leots, Ianchan, Spacedragon, Seal, eXecrate, Aelb, Halogen, Illusion, Obakol, Elfrey, k07n, Kazarl, Scorpions, UI Users, Russian Community and Others.")
 	end)
 
 	InterfaceOptions_AddCategory(thxui)
