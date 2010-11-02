@@ -342,25 +342,17 @@ local function Shared(self, unit)
 				solarBar:SetStatusBarTexture(SettingsCF["media"].texture)
 				solarBar:SetStatusBarColor(0.80, 0.80, 0.20)
 				eclipseBar.SolarBar = solarBar
-
-				local eclipseBarText = SettingsDB.SetFontString(solarBar, SettingsCF["font"].unit_frames_font, SettingsCF["font"].unit_frames_font_size, SettingsCF["font"].unit_frames_font_style)
-				eclipseBarText:SetPoint("CENTER", eclipseBar, "CENTER")
-				eclipseBar.Text = eclipseBarText
 				
-				--[[local eclipseBarInd = solarBar:CreateFontString(nil, "OVERLAY")
-				eclipseBarInd:SetFont(SettingsCF["media"].pixel_font, db.font_size, SettingsCF["media"].pixel_font_style)
-
-				eclipseBar.PostDirectionChange = function(element, unit)
-					if(element.directionIsLunar) then
-						eclipseBarInd:SetPoint("LEFT", eclipseBarText, "RIGHT", 0, 0)
-						eclipseBarInd:SetText("|cff4478BC>>>|r")
-					else
-						eclipseBarInd:SetPoint("RIGHT", eclipseBarText, "LEFT", 0, 0)
-						eclipseBarInd:SetText("|cffE5994C<<<|r")
-					end
-				end]]
-
+				local eclipseBarText = SettingsDB.SetFontString(solarBar, SettingsCF["font"].unit_frames_font, SettingsCF["font"].unit_frames_font_size, SettingsCF["font"].unit_frames_font_style)
+				eclipseBarText:SetPoint("CENTER", eclipseBar, "CENTER", SettingsDB.Scale(-6), 0)
+				eclipseBar.PostUpdatePower = SettingsDB.EclipseDirection
+				
+				local eclipseBarPers = SettingsDB.SetFontString(solarBar, SettingsCF["font"].unit_frames_font, SettingsCF["font"].unit_frames_font_size, SettingsCF["font"].unit_frames_font_style)
+				eclipseBarPers:SetPoint("LEFT", eclipseBarText, "RIGHT", SettingsDB.Scale(2), 0)
+				self:Tag(eclipseBarPers, '[pereclipse]%')
+				
 				self.EclipseBar = eclipseBar
+				self.EclipseBar.Text = eclipseBarText
 			end
 		end
 		

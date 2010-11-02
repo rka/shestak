@@ -147,6 +147,9 @@ end
 --	Kill object function
 ----------------------------------------------------------------------------------------
 function SettingsDB.Kill(object)
+	if object.UnregisterAllEvents then
+		object:UnregisterAllEvents()
+	end
 	object.Show = SettingsDB.dummy
 	object:Hide()
 end
@@ -804,15 +807,28 @@ do
 			end
 		end
 	end
-		
+	
+	SettingsDB.EclipseDirection = function(self)
+		if ( GetEclipseDirection() == "sun" ) then
+			self.Text:SetText("|cff4478BC>>|r")
+		elseif ( GetEclipseDirection() == "moon" ) then
+			self.Text:SetText("|cffE5994C<<|r")
+		else
+			self.Text:SetText("")
+		end
+	end
+	
 	SettingsDB.UpdateEclipse = function(self, login)
 		local eb = self.EclipseBar
+		local txt = self.EclipseBar.Text
 		if login then
 			eb:SetScript("OnUpdate", nil)
 		end
 		if eb:IsShown() then
+			txt:Show()
 			if self.Debuffs then self.Debuffs:SetPoint("BOTTOMRIGHT", self, "TOPRIGHT", SettingsDB.Scale(2), SettingsDB.Scale(19)) end
 		else
+			txt:Hide()
 			if self.Debuffs then self.Debuffs:SetPoint("BOTTOMRIGHT", self, "TOPRIGHT", SettingsDB.Scale(2), SettingsDB.Scale(5)) end
 		end
 	end
