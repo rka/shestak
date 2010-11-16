@@ -396,16 +396,6 @@ for k, v in pairs(RAID_CLASS_COLORS) do
 end
 hexColors["UNKNOWN"] = string.format("|cff%02x%02x%02x", 0.6*255, 0.6*255, 0.6*255)
 
-if CUSTOM_CLASS_COLORS then
-	local function update()
-		for k, v in pairs(CUSTOM_CLASS_COLORS) do
-			hexColors[k] = ("|cff%02x%02x%02x"):format(v.r * 255, v.g * 255, v.b * 255)
-		end
-	end
-	CUSTOM_CLASS_COLORS:RegisterCallback(update)
-	update()
-end
-
 local playerName = UnitName("player")
 local unknownColor = { r = .6, g = .6, b = .6 }
 local classesInRaid = {}
@@ -513,7 +503,7 @@ local function init()
 		info.notCheckable = 1
 		info.text = L_LOOT_RANDOM
 		info.func = GroupLootDropDown_GiveLoot
-		info.icon = "Interface\\Buttons\\UI-GroupLoot-Dice-Up"
+		info.icon = nil
 		UIDropDownMenu_AddButton(info)
 	end
 	for i = 1, 40 do
@@ -526,7 +516,7 @@ local function init()
 			info.notCheckable = 1
 			info.text = L_LOOT_SELF
 			info.func = GroupLootDropDown_GiveLoot
-			info.icon = "Interface\\Buttons\\UI-GroupLoot-Coin-Up"
+			info.icon = nil
 			UIDropDownMenu_AddButton(info)
 		end
 	end
